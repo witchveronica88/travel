@@ -18,7 +18,8 @@
 
 *,*::before,*::after{box-sizing:border-box}
 html{background:var(--bg)}
-html,body{width:100%;min-height:calc(100dvh + 1px);margin:0;overscroll-behavior:none}
+/* 스크롤은 브라우저 기본 그대로 둔다. 화면 높이를 dvh로 묶거나 스크롤 위치를 코드로 고치지 않는다 */
+html,body{width:100%;margin:0}
 body{background:var(--bg);color:var(--text);font:var(--fs-m)/1.6 var(--font);letter-spacing:-.01em;-webkit-text-size-adjust:100%;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden}
 button,input{font:inherit;color:inherit;letter-spacing:inherit}
 button{cursor:pointer}
@@ -26,7 +27,7 @@ button,a,input{-webkit-tap-highlight-color:transparent}
 a{color:var(--accent);text-decoration:none;font-weight:650}
 [hidden]{display:none!important}
 .hotel{color:var(--accent);font-weight:650}
-.shell{position:relative;width:100%;max-width:560px;min-height:calc(100dvh + 1px);margin:0 auto}
+.shell{position:relative;width:100%;max-width:560px;margin:0 auto}
 .main{width:100%;padding:env(safe-area-inset-top,0px) 16px calc(84px + env(safe-area-inset-bottom,0px))}
 
 /* 맨 위 앱 이름: 가운데, 양옆 가는 두 줄. 위에 고정하지 않는다 */
@@ -1415,14 +1416,14 @@ function setStick(){main.querySelectorAll(".fold.open").forEach(measureRow)}
 /* 안쪽 펼친 제목은 바깥 제목 줄 높이만큼 아래에 붙는다 */
 function measureRow(box){const head=box.querySelector(":scope > .row-head");if(head)box.style.setProperty("--row-h",head.offsetHeight+"px")}
 function render(restore=true,storeScroll=true){
-  if(storeScroll)scrollByView[viewKey()]=Math.max(1,window.scrollY);
+  if(storeScroll)scrollByView[viewKey()]=window.scrollY;
   const v=VIEWS[tab]();
   main.innerHTML=`<header class="brand"><h1>이스탄불</h1></header>${v.search?'<div id="search-slot"></div>':""}${v.pills||""}<div id="view-body">${v.body}</div>`;
   if(v.search){qEl.placeholder=v.search;qEl.setAttribute("aria-label",v.search);if(qEl.value!==queries[tab])qEl.value=queries[tab]||"";qx.hidden=!qEl.value;main.querySelector("#search-slot").replaceWith(searchPanel);searchPanel.hidden=false}else searchPanel.hidden=true;
   setStick();
   nav.innerHTML=TABS.map(t=>`<button type="button" data-tab="${t.k}" class="${t.k===tab?"on":""}" aria-current="${t.k===tab?"page":"false"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${t.svg}</svg><span>${t.k}</span></button>`).join("");
   saveJSON(TAB_KEY,tab);
-  if(restore)requestAnimationFrame(()=>window.scrollTo(0,Math.max(1,scrollByView[viewKey()]||1)));
+  if(restore)requestAnimationFrame(()=>window.scrollTo(0,scrollByView[viewKey()]||0));
 }
 function renderBody(){const body=document.getElementById("view-body");if(body)body.innerHTML=VIEWS[tab]().body;qx.hidden=!qEl.value;setStick()}
 function stickTop(el){return parseFloat(getComputedStyle(el).top)||0}
@@ -1445,7 +1446,7 @@ function goTo(id){
   const e=BY[id];if(!e)return;
   let t,sub;
   if(e.tab==="장소"){t="장소";sub=e.group}else if(e.tab==="맛집"){t="맛집";sub=e.group}else if(e.tab==="음식"){t="정보";sub="food:"+e.group}else if(e.tab==="팁"){t="정보";sub=INFO_IDS.includes(id)?"info":"tips"}else return;
-  scrollByView[viewKey()]=Math.max(1,window.scrollY);
+  scrollByView[viewKey()]=window.scrollY;
   tab=t;subByTab[t]=sub;saveJSON(SUB_KEY,subByTab);queries[t]="";qEl.value="";openRows.add(id);
   render(false,false);
   requestAnimationFrame(()=>{const box=main.querySelector(`[data-fold="${CSS.escape(id)}"]`);if(box)window.scrollTo(0,box.getBoundingClientRect().top+window.scrollY)});
@@ -1455,16 +1456,16 @@ document.addEventListener("click",ev=>{
   const inner=ev.target.closest("[data-inner]");if(inner){toggleInner(inner);return}
   const go=ev.target.closest("[data-go]");if(go){goTo(go.dataset.go);return}
   const choose=ev.target.closest("[data-choose]");if(choose){const list=choose.closest(".stop").querySelector(`[data-choose-list="${choose.dataset.choose}"]`),opening=list.hidden;choose.closest(".stop").querySelectorAll("[data-choose-list]").forEach(x=>x.hidden=true);choose.closest(".stop").querySelectorAll("[data-choose]").forEach(x=>{x.classList.remove("on");x.setAttribute("aria-expanded","false")});list.hidden=!opening;choose.classList.toggle("on",opening);choose.setAttribute("aria-expanded",String(opening));return}
-  const sub=ev.target.closest("[data-sub]");if(sub){scrollByView[viewKey()]=Math.max(1,window.scrollY);subByTab[tab]=sub.dataset.sub;saveJSON(SUB_KEY,subByTab);queries[tab]="";qEl.value="";render(true,false);sub.blur();return}
-  const day=ev.target.closest("[data-day]");if(day){ev.preventDefault();scrollByView[viewKey()]=Math.max(1,window.scrollY);dayId=day.dataset.day;tab="일정";render(true,false);if(day.dataset.st!==undefined){const idx=Number(day.dataset.st);requestAnimationFrame(()=>requestAnimationFrame(()=>{const a=main.querySelectorAll("article.stop")[idx];if(!a)return;window.scrollTo(0,a.getBoundingClientRect().top+window.scrollY-12);a.classList.add("hit");setTimeout(()=>a.classList.remove("hit"),1600)}))}return}
-  const t=ev.target.closest("[data-tab]");if(t){scrollByView[viewKey()]=Math.max(1,window.scrollY);tab=t.dataset.tab;render(true,false)}
+  const sub=ev.target.closest("[data-sub]");if(sub){scrollByView[viewKey()]=window.scrollY;subByTab[tab]=sub.dataset.sub;saveJSON(SUB_KEY,subByTab);queries[tab]="";qEl.value="";render(true,false);sub.blur();return}
+  const day=ev.target.closest("[data-day]");if(day){ev.preventDefault();scrollByView[viewKey()]=window.scrollY;dayId=day.dataset.day;tab="일정";render(true,false);if(day.dataset.st!==undefined){const idx=Number(day.dataset.st);requestAnimationFrame(()=>requestAnimationFrame(()=>{const a=main.querySelectorAll("article.stop")[idx];if(!a)return;window.scrollTo(0,a.getBoundingClientRect().top+window.scrollY-12);a.classList.add("hit");setTimeout(()=>a.classList.remove("hit"),1600)}))}return}
+  const t=ev.target.closest("[data-tab]");if(t){scrollByView[viewKey()]=window.scrollY;tab=t.dataset.tab;render(true,false)}
 });
 document.addEventListener("change",ev=>{const c=ev.target.closest("input[data-check]");if(!c)return;if(c.checked)checks[c.dataset.check]=true;else delete checks[c.dataset.check];saveJSON(CHECKS_KEY,checks);renderBody()});
 qEl.addEventListener("input",()=>{queries[tab]=qEl.value;renderBody()});
 qx.addEventListener("click",()=>{qEl.value="";queries[tab]="";renderBody();qEl.focus()});
-window.addEventListener("scroll",()=>{if(window.scrollY<1)window.scrollTo(0,1);else scrollByView[viewKey()]=window.scrollY},{passive:true});
+window.addEventListener("scroll",()=>{scrollByView[viewKey()]=window.scrollY},{passive:true});
 window.addEventListener("resize",setStick);
-render(false);requestAnimationFrame(()=>requestAnimationFrame(()=>window.scrollTo(0,1)));
+render(false);
 </script>
 </body>
 </html>
