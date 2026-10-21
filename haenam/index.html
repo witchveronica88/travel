@@ -211,6 +211,15 @@ body .gh .cnt.complete{color:var(--accent)}
 .reset-confirm div{display:flex;gap:8px}
 .reset-confirm button{flex:1;min-height:40px;border:1px solid var(--edge);border-radius:8px;background:var(--surface);font-weight:700;cursor:pointer}
 .reset-confirm button[data-clear="yes"]{border-color:var(--accent);color:var(--accent)}
+/* 줄과 줄 사이 글자가 위아래 가운데에 오도록 칸마다 위·아래 여백을 같게 한다.
+   머리줄 10px, 표·함께 보기 8px. 카드 바닥 여백은 따로 두지 않고 마지막 칸의 아래 여백이 대신한다. */
+.stop{padding:10px 14px 0;overflow:hidden}
+.stop .hd{margin:0;padding:0 0 10px}
+.stop .hd.solo{border-bottom:0}
+.stop .kv div{padding:8px 0}
+.stop .sl{margin:0;padding:8px 0}
+.stop .kv+.sl{padding-top:8px}
+.stop .xp{margin:10px 0}
 </style>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="apple-touch-icon" href="icon.svg">
@@ -514,7 +523,7 @@ function stopHTML(st){
   const own = rel[0], see = st.chg ? rel : rel.slice(1);
   const actions = st.n ? `<span class="head-actions">${own ? `<button type="button" data-x="${own}" data-own="1" aria-label="설명 보기" aria-expanded="false">${actionIcon("info")}</button>${telBtn(BY[own].tel)}` : ""}${mapBtns(st.n, st.t)}</span>` : "";
   return (st.move ? `<div class="transit"><span class="tchip">${moveIcon(st.move)}<span>${rich(st.move)}</span></span></div>` : "") + `<article class="stop">` +
-    `<div class="hd"><div class="hd-copy"><time class="tm">${esc(st.time)}</time><span class="hd-title"><h3${st.chg ? ' class="chg-title"' : ""}>${rich(st.title)}</h3></span></div>${actions}</div>` +
+    `<div class="hd${rows.length || see.length || st.img ? "" : " solo"}"><div class="hd-copy"><time class="tm">${esc(st.time)}</time><span class="hd-title"><h3${st.chg ? ' class="chg-title"' : ""}>${rich(st.title)}</h3></span></div>${actions}</div>` +
     (st.img ? fig(st.img, "cover") : "") +
     (rows.length ? `<dl class="kv">${rows.map(r => `<div><dt>${r[0]}</dt><dd>${rich(r[1])}</dd></div>`).join("")}</dl>` : "") +
     (see.length ? `<div class="sl"><span class="lb">함께 보기</span>${see.map(id => `<button type="button" class="lk" data-x="${id}" aria-expanded="false">${esc(BY[id].title)}</button>`).join('<span class="sep">·</span>')}</div>` : "") +

@@ -134,6 +134,13 @@ h1{font-size:var(--fs-xl)}
 h2,.notes h2,.stop .xp h2,h2:has(+ .links.together),.tm,.stop .hd .tm{font-size:var(--fs-m)}
 .date-ym,.date-week,.day-weekday,.schedule-date,.schedule-sep,.map-place-row .schedule-date,.map-place-row .schedule-sep{font-size:var(--fs-s)}
 summary{box-sizing:border-box}
+/* 줄과 줄 사이 글자가 위아래 가운데에 오도록 칸마다 위·아래 여백을 같게 한다.
+   머리줄 10px, 표·함께 보기 8px. 카드 바닥 여백은 따로 두지 않고 마지막 칸의 아래 여백이 대신한다. */
+.stop{padding:10px 14px 0}
+.stop .hd,.stop .hd.has-detail{padding:0 0 10px}
+.stop .kv div{padding:8px 0}
+.stop .sl2{margin:0;padding:8px 0}
+.stop .xp{margin:10px 0}
 </style>
 </head>
 <body>
