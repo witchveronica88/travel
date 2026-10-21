@@ -10,137 +10,159 @@
 <style>
 /* 글자 크기는 4단계 토큰만 쓴다. 가장 큰 글자도 20px을 넘지 않는다 */
 :root{--fs-xl:20px;--fs-l:18px;--fs-m:16px;--fs-s:14px}
+/* 색은 모두 토큰으로 두고 다크 모드 값을 따로 둔다. 강조색은 청록 하나 */
+:root{--font:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;--bg:#EDEFF2;--card:#FFFFFF;--subtle:#F3F4F6;--disclosure-bg:#EEF5F5;--text:#111827;--muted:#657080;--line:#DFE3E8;--edge:#DDE1E6;--accent:#0D6B6B;--accent-soft:#E1EFEF;--on-accent:#FFFFFF;--rule:#C3CAD2;--weekend:#C62828;--journey-line:#CDD3DA;--shadow:0 1px 2px rgba(16,24,40,.05),0 3px 10px rgba(16,24,40,.05);--radius:16px;--pad:20px;--stick:0px;color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--bg:#0D1012;--card:#1A1F23;--subtle:#242B30;--disclosure-bg:#1F2C2D;--text:#EDF0F2;--muted:#A5ADB7;--line:#30373E;--edge:#2C3339;--accent:#4DB6B6;--accent-soft:#1D3536;--on-accent:#0D1012;--rule:#3E464E;--weekend:#FF7B72;--journey-line:#3A434B;--shadow:0 1px 2px rgba(0,0,0,.4)}}
 
-:root{--font:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;--bg:#f3f4f6;--surface:#fff;--soft:#eceff1;--text:#111827;--dim:#657080;--border:#dfe3e8;--accent:#0D6B6B;--visit:#0D6B6B;--radius:12px;color-scheme:light dark;box-sizing:border-box}
-@media(prefers-color-scheme:dark){:root{--bg:#0f1214;--surface:#191d20;--soft:#252b30;--text:#edf0f2;--dim:#a5adb7;--border:#30373e;--accent:#5bc1bd}}
-*,*:before,*:after{box-sizing:inherit}html,body{width:100%;min-height:calc(100dvh + 1px);margin:0;overscroll-behavior:none}body{background:var(--bg);color:var(--text);font:var(--fs-l)/1.58 var(--font);-webkit-text-size-adjust:100%;word-break:keep-all;overflow-x:hidden;overflow-wrap:break-word}button,input{font:inherit;color:inherit}button,summary,a,input{-webkit-tap-highlight-color:transparent}a{color:var(--accent);text-decoration:none;font-weight:650}.shell{position:relative;width:100%;max-width:560px;min-height:calc(100dvh + 1px);margin:0 auto}.main{width:100%;padding:calc(12px + env(safe-area-inset-top,0px)) 16px calc(92px + env(safe-area-inset-bottom,0px))}.searchbar{position:sticky;top:0;z-index:12;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 9px;background:var(--bg)}.searchwrap{display:flex;align-items:center;gap:9px;height:42px;padding:0 7px 0 12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}.searchwrap:focus-within{border-color:var(--accent)}.searchwrap svg{flex:none;color:var(--dim)}.searchwrap input{flex:1;min-width:0;border:0;outline:0;background:transparent}.searchwrap input::placeholder{color:var(--dim)}.searchbar[hidden]{display:none}.searchwrap button{width:30px;height:30px;border:0;background:transparent;color:var(--dim);font-size:var(--fs-xl);cursor:pointer}
-h1{margin:10px 0 3px;font-size:var(--fs-xl);line-height:1.3;font-weight:800;letter-spacing:-.02em}h2{margin:24px 0 9px;font-size:var(--fs-l);line-height:1.4;font-weight:750}h3{line-height:1.4}.desc{margin:0 0 14px;color:var(--dim);font-size:var(--fs-m)}.hotel{color:var(--accent);font-weight:650}.stop .hotel{color:inherit;font-weight:inherit}.dday{margin:0 0 11px;color:var(--accent);font-size:var(--fs-m);font-weight:750}.day-strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin:0 0 14px}.day-strip button{height:47px;padding:0;border:1px solid var(--border);border-radius:9px;background:var(--surface);color:var(--dim);line-height:1;cursor:pointer}.day-weekday,.day-number{display:block}.day-weekday{margin-bottom:5px;font-size:var(--fs-s);font-weight:650}.day-number{color:var(--text);font-size:var(--fs-m);font-weight:780}.day-strip button.on{border-color:var(--accent);background:var(--accent);color:#fff}.day-strip button.on .day-number{color:#fff}.day-strip button.weekend .day-weekday,.day-strip button.weekend .day-number,.date-block.weekend .date-day,.date-block.weekend .date-week{color:#c62828}.day-strip button.weekend.on{border-color:#c62828;background:#fff3f2}.day-strip button.weekend.on .day-weekday,.day-strip button.weekend.on .day-number{color:#c62828}@media(prefers-color-scheme:dark){.day-strip button.weekend .day-weekday,.day-strip button.weekend .day-number,.date-block.weekend .date-day,.date-block.weekend .date-week{color:#ff7b72}.day-strip button.weekend.on{border-color:#ff7b72;background:#2a1717}.day-strip button.weekend.on .day-weekday,.day-strip button.weekend.on .day-number{color:#ff7b72}}.hero{display:block;width:100%;aspect-ratio:16/7;margin:0 0 15px;border-radius:14px;background:var(--border);object-fit:cover}.dayhead{display:grid;grid-template-columns:66px minmax(0,1fr);gap:13px;align-items:center;margin:0 0 13px}.date-block{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:82px;padding:7px 5px;border-radius:10px;background:var(--soft);color:var(--accent);line-height:1}.date-ym{font-size:var(--fs-s);font-weight:700}.date-day{margin:4px 0 3px;font-size:var(--fs-xl);font-weight:850}.date-week{font-size:var(--fs-s);font-weight:700}.dayhead h2{margin:0;font-size:var(--fs-xl);font-weight:800}.day-copy p{margin:3px 0 0;color:var(--dim);font-size:var(--fs-m)}.tl{display:flex;flex-direction:column}.stop{margin:0;padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);overflow:hidden}.stop-media{display:grid;width:calc(100% + 32px);margin:-16px -16px 15px;background:var(--border);gap:2px}.stop-media.one{grid-template-columns:1fr}.stop-media.two,.stop-media.three{grid-template-columns:repeat(2,minmax(0,1fr))}.stop-photo{display:block;width:100%;aspect-ratio:1/1;background:var(--border);object-fit:cover}.stop-media.one .stop-photo{aspect-ratio:16/8}.stop-media.three .stop-photo:first-child{grid-column:1/-1;aspect-ratio:16/7}details[open] .summary-thumb{display:none}.tmline{margin:0 0 10px;padding:0 0 9px;border-bottom:1px solid var(--border)}.tm{display:block;color:var(--accent);font-size:var(--fs-xl);font-weight:800}.stop h3{margin:0 0 8px;font-size:var(--fs-l);font-weight:750}.journey{min-height:46px;margin:0 12px;padding:9px 12px;display:flex;align-items:center;background:var(--soft);color:var(--dim);font-size:var(--fs-s);line-height:1.45}.kv{margin:10px 0 0;border-top:1px solid var(--border)}.kv div{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}.kv div:last-child{border-bottom:0}.kv dt{color:var(--dim);font-size:var(--fs-s)}.kv dd{min-width:0;margin:0}.map-btn{display:flex;align-items:center;justify-content:center;min-height:42px;margin-top:13px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-size:var(--fs-s);font-weight:700}.inline-detail{margin-top:8px;border:1px solid var(--border);border-radius:10px;overflow:hidden}.inline-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:42px;padding:10px 13px;border:0;background:var(--soft);text-align:left;font-size:var(--fs-s);font-weight:700;cursor:pointer}.inline-toggle:after{content:"";width:7px;height:7px;border-right:2px solid var(--dim);border-bottom:2px solid var(--dim);transform:rotate(45deg)}.inline-detail.open .inline-toggle:after{transform:rotate(-135deg)}.inline-detail .body{padding:4px 14px 16px}.related{margin-top:13px;padding-top:12px;border-top:1px solid var(--border)}.related>.label{margin:0 0 7px;color:var(--dim);font-size:var(--fs-s);font-weight:400}.related .inline-toggle{font-weight:400}.notes{margin-top:14px;padding:15px 16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);font-size:var(--fs-m)}.notes h2{margin:0 0 7px;font-size:var(--fs-m)}.travel{margin-top:12px;border-radius:var(--radius);background:var(--surface);overflow:hidden}.travel-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:15px 16px;border:0;background:var(--soft);text-align:left;font-weight:700;cursor:pointer}.travel-toggle:after{content:"";width:8px;height:8px;border-right:2px solid var(--dim);border-bottom:2px solid var(--dim);transform:rotate(45deg)}.travel.open .travel-toggle:after{transform:rotate(-135deg)}.travel .body{padding:0 16px 17px}.travel-entry{padding:16px 0;border-bottom:1px solid var(--border)}.travel-entry:last-child{border-bottom:0}.travel-entry h3{margin:0 0 2px;font-size:var(--fs-l)}.travel-sub{margin:0 0 11px;color:var(--dim);font-size:var(--fs-s)}.pn{display:flex;justify-content:space-between;margin-top:10px}.pn button{padding:10px 4px;border:0;background:transparent;color:var(--accent);font-size:var(--fs-m);font-weight:650;cursor:pointer}
-details{margin-bottom:9px;border-radius:var(--radius);background:var(--surface);overflow:hidden}summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:50px;padding:14px 16px;background:var(--soft);cursor:pointer;font-weight:650}summary::-webkit-details-marker{display:none}summary:after{content:"";flex:none;width:8px;height:8px;margin:-3px 1px 0 2px;border-right:2px solid var(--dim);border-bottom:2px solid var(--dim);transform:rotate(45deg)}details[open]>summary:after{margin-top:3px;transform:rotate(-135deg)}summary>span:first-child{flex:1;min-width:0}.summary-main{display:flex;align-items:center;gap:11px;min-width:0}.summary-thumb{flex:none;width:42px;height:42px;border-radius:7px;background:var(--border);object-fit:cover}.summary-copy{min-width:0}.summary-title{display:flex;align-items:center;flex-wrap:wrap;gap:6px}.schedule-links{display:inline-flex;align-items:center;flex-wrap:wrap;gap:3px;color:var(--dim);white-space:nowrap}.schedule-date{color:var(--dim);font-size:var(--fs-s);font-weight:450;line-height:1.2;cursor:default}.schedule-sep{font-size:var(--fs-s);font-weight:400}.sum-s{display:block;margin-top:1px;color:var(--dim);font-size:var(--fs-s);font-weight:450}.body{padding:4px 16px 18px}.body>*:first-child{margin-top:12px}.stars{flex:none;color:var(--accent);font-size:var(--fs-s);letter-spacing:1px;white-space:nowrap}.stars .off{color:var(--border)}.ph{display:block;width:calc(100% + 32px);max-height:240px;margin:-4px -16px 14px;background:var(--border);object-fit:cover}.sl{margin-top:14px;color:var(--dim);font-size:var(--fs-s)}.sl .lb{margin-right:8px}.lk{padding:0;border:0;background:transparent;color:var(--accent);font-size:var(--fs-s);font-weight:400;cursor:pointer}.sep{margin:0 5px;color:var(--dim)}
-p.x{margin:0}ul.b,ol.b{margin:0;padding-left:20px}ul.b li,ol.b li{margin:4px 0}.note{margin:8px 0 0;color:var(--dim);font-size:var(--fs-s)}.links{margin:0;padding:0;list-style:none;font-size:var(--fs-m)}.links li{padding:5px 0}.links.together a{font-weight:400}.links.map{display:grid;gap:7px;margin:6px 0 0}.links.map li{padding:0}.links.map a{display:block;padding:10px 12px;border:1px solid var(--border);border-radius:9px;text-align:center}.table-wrap{max-width:100%;overflow:hidden}table{width:100%;border-collapse:collapse;font-size:var(--fs-s)}th{padding:7px 8px 7px 0;border-bottom:1px solid var(--border);color:var(--dim);text-align:left;font-weight:550}td{padding:9px 8px 9px 0;border-bottom:1px solid var(--border);vertical-align:top}tr:last-child td{border-bottom:0}.list{border-radius:var(--radius);background:var(--surface);overflow:hidden}.row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;width:100%;padding:13px 15px;border:0;border-bottom:1px solid var(--border);background:transparent;text-align:left;cursor:pointer}.row:last-child{border-bottom:0}.row .rt{flex:1;min-width:0}.row .t{font-weight:650}.row .s{margin-top:2px;color:var(--dim);font-size:var(--fs-s)}.row .tag{flex:none;color:var(--dim);font-size:var(--fs-s)}.list.one{margin-bottom:8px}.empty{padding:24px 16px;color:var(--dim);text-align:center}
-.person-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:0 0 10px;padding:4px;border-radius:var(--radius);background:var(--border)}.person-tabs button{min-height:43px;display:flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:9px;background:transparent;color:var(--dim);cursor:pointer}.person-tabs button strong{font-size:var(--fs-s)}.person-tabs button.on{background:var(--surface);color:var(--text);font-weight:750}.person-tabs button.on strong{color:var(--accent)}.prog{margin:0 0 10px;padding:13px 15px;border-radius:var(--radius);background:var(--surface)}.progline{display:flex;justify-content:space-between;gap:12px;font-size:var(--fs-m)}.progline strong{color:var(--accent)}.progbar{height:6px;margin-top:9px;border-radius:999px;background:var(--border);overflow:hidden}.prog>.progbar{margin-top:0}.progbar span{display:block;height:100%;background:var(--accent)}.save-note{margin:0 0 13px;color:var(--dim);font-size:var(--fs-s)}.check-person{margin:20px 0 5px}.check-intro{margin:0 0 14px;color:var(--dim);font-size:var(--fs-s)}.check-group{margin:9px 0 0;border:1px solid var(--border)}.check-group>summary{padding:12px 14px}.check-group-title{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%}.check-group-title small{flex:none;color:var(--dim);font-size:var(--fs-s);font-weight:650}.check-group-title small.complete{color:var(--accent)}.check-group .list{border-top:1px solid var(--border);border-radius:0;background:var(--surface)}.chk{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border-bottom:1px solid var(--border);cursor:pointer}.chk:last-child{border-bottom:0}.chk input{flex:none;width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent)}.chk span{flex:1;min-width:0}.chk.done span{color:var(--dim);text-decoration:line-through}.check-actions{margin:18px 0 0}.reset-btn{width:100%;min-height:44px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-weight:700;cursor:pointer}.reset-confirm{margin-top:9px;padding:13px 14px;border-radius:10px;background:var(--soft)}.reset-confirm p{margin:0 0 10px;font-size:var(--fs-s)}.reset-confirm .buttons{display:flex;gap:8px}.reset-confirm button{flex:1;min-height:38px;border:1px solid var(--border);border-radius:8px;background:var(--surface);font-weight:700;cursor:pointer}.reset-confirm button[data-clear-confirm="yes"]{border-color:var(--accent);color:var(--accent)}.search-check{padding:13px 15px;border-bottom:1px solid var(--border)}.search-check:last-child{border-bottom:0}.search-check .meta{margin:0 0 7px;color:var(--dim);font-size:var(--fs-s)}.search-check .chk{padding:0;border:0}.food-card.tried{border-color:var(--accent)}.food-card.tried>summary{background:color-mix(in srgb,var(--accent) 13%,var(--soft))}.food-local{margin:12px 0 4px;font-size:var(--fs-xl);line-height:1.35;font-weight:800;letter-spacing:-.01em}.food-local-label{margin:0 0 2px;color:var(--dim);font-size:var(--fs-s)}.food-action{width:100%;min-height:42px;margin-top:15px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:var(--fs-s);font-weight:700;cursor:pointer}.food-action[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:#fff}.food-note{margin:-5px 0 14px;color:var(--dim);font-size:var(--fs-s)}
-.place-view-toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 14px}.place-view-toggle button{min-height:44px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-weight:750;cursor:pointer}.place-view-toggle button.on{border:2px solid var(--accent);color:var(--accent)}.place-map-wrap{margin:0 0 18px}.place-map{width:100%;height:min(62vh,560px);min-height:420px;border:1px solid var(--border);border-radius:14px;background:var(--surface);overflow:hidden}.place-map-status{margin:9px 2px 0;color:var(--dim);font-size:var(--fs-s)}.place-map-status:empty{display:none}.map-place-list{display:grid;gap:7px;margin:14px 0 0;padding:0;list-style:none}.map-place-row{display:grid;grid-template-columns:27px minmax(0,1fr) auto;gap:9px;align-items:center;width:100%;min-height:46px;padding:8px 11px;border:1px solid var(--border);border-radius:10px;background:var(--surface);text-align:left;cursor:pointer}.map-place-row.map-selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}.map-place-number{display:flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:50%;background:var(--soft);color:var(--text);font-size:var(--fs-s);font-weight:800}.map-place-row.map-selected .map-place-number{background:var(--accent);color:#fff}.map-place-copy{min-width:0}.map-place-name{display:block;font-size:var(--fs-s);font-weight:700}.map-place-group{display:block;color:var(--dim);font-size:var(--fs-s)}.map-place-row .schedule-date,.map-place-row .schedule-sep{font-size:var(--fs-s)}.pin{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:2px solid #fff;border-radius:50%;background:var(--accent);color:#fff;font:800 var(--fs-s)/1 var(--font);box-shadow:0 1px 4px rgba(0,0,0,.35)}.pin--on{width:32px;height:32px;background:#fff;color:var(--accent);border-color:var(--accent);font-size:var(--fs-s)}
-nav{position:fixed;z-index:20;right:0;bottom:0;left:50%;width:min(100%,560px);transform:translateX(-50%);display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--border);background:var(--surface);padding-bottom:env(safe-area-inset-bottom,0px)}nav button{min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border:0;background:transparent;color:var(--dim);font-size:var(--fs-s);cursor:pointer}nav button svg{width:21px;height:21px}nav button.on{color:var(--accent);font-weight:700}@media(min-width:700px){.searchbar,.main{padding-right:24px;padding-left:24px}.day-strip{grid-template-columns:repeat(13,minmax(0,1fr))}}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg)}
+html,body{width:100%;min-height:calc(100dvh + 1px);margin:0;overscroll-behavior:none}
+body{background:var(--bg);color:var(--text);font:var(--fs-m)/1.6 var(--font);letter-spacing:-.01em;-webkit-text-size-adjust:100%;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden}
+button,input{font:inherit;color:inherit;letter-spacing:inherit}
+button{cursor:pointer}
+button,a,input{-webkit-tap-highlight-color:transparent}
+a{color:var(--accent);text-decoration:none;font-weight:650}
+[hidden]{display:none!important}
+.hotel{color:var(--accent);font-weight:650}
+.shell{position:relative;width:100%;max-width:560px;min-height:calc(100dvh + 1px);margin:0 auto}
+.main{width:100%;padding:env(safe-area-inset-top,0px) 16px calc(100px + env(safe-area-inset-bottom,0px))}
 
-/* 해남 앱과 같은 일정 화면 */
-:root{--bg:#EDEFF2;--soft:#F3F4F6;--edge:#DDE1E6;--shadow:0 1px 2px rgba(16,24,40,.05),0 3px 10px rgba(16,24,40,.05)}
-@media(prefers-color-scheme:dark){:root{--bg:#0D1012;--surface:#1A1F23;--soft:#242B30;--edge:#2C3339;--shadow:0 1px 2px rgba(0,0,0,.4)}}
-.searchwrap,.stop,details,.notes,.travel,.list{border:1px solid var(--edge);box-shadow:var(--shadow)}
-.stop{padding:12px 14px 14px;border-radius:14px;font-size:var(--fs-m)}
-.stop-media{width:calc(100% + 28px);margin:0 -14px}
-/* 사진은 시각·제목 줄 아래에 카드 폭 가득 */
-.stop .hd.has-detail:has(+ .stop-media){border-bottom:0}
-.stop-media.one .stop-photo{aspect-ratio:16/5}
-.stop-media.two .stop-photo{aspect-ratio:16/10}
-.stop-media.three .stop-photo{aspect-ratio:16/10}
-.stop-media.three .stop-photo:first-child{aspect-ratio:16/5}
-.stop .hd{display:flex;align-items:center;gap:10px;padding:0}.stop .hd.has-detail{padding-bottom:9px;border-bottom:1px solid var(--border)}
-.stop .hd .tm{flex:none;font-size:var(--fs-xl);font-weight:800}
-.stop .hd h3{flex:1;min-width:0;margin:0;font-size:var(--fs-m);font-weight:700;line-height:1.45}
-.stop .kv{margin:0;border-top:0}
-.kv dt,.map-btn,.inline-toggle,.related>.label,.notes,.notes h2,.day-copy p{font-size:var(--fs-m)}
-.map-btn{min-height:40px;margin-top:10px}
-.related{margin-top:10px;padding-top:10px}
-.dayhead h2{font-size:var(--fs-xl)}
-.journey{position:relative;display:flex;justify-content:center;min-height:0;margin:0;padding:30px 0;background:none;font-size:var(--fs-m)}
-.journey::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:2px dashed var(--journey-line);transform:translateX(-1px)}
-.tchip{position:relative;display:inline-block;max-width:92%;padding:7px 14px;border:1px solid var(--edge);border-radius:18px;background:var(--surface);color:var(--dim);line-height:1.4;text-align:center}
-.tl>.stop+.stop{margin-top:20px}
+/* 맨 위 앱 이름: 가운데, 양옆 가는 두 줄. 위에 고정하지 않는다 */
+.brand{display:flex;justify-content:center;padding:12px 0}
+.brand h1{display:flex;align-items:center;gap:12px;margin:0;font-size:var(--fs-l);font-weight:700;line-height:1.4;letter-spacing:.04em}
+.brand h1::before,.brand h1::after{content:"";width:36px;height:4px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 
-.stop .mb{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
-.stop .mb.two{grid-template-columns:1fr 1fr}
-.stop .mb .map-btn{width:100%;margin:0;font:inherit;font-size:var(--fs-m);font-weight:700;cursor:pointer}
-.stop .mb button.map-btn{background:var(--surface);border-color:var(--border)}
-.stop .mb .map-btn.on{border-color:var(--accent);color:var(--accent)}
-.sl2{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);line-height:1.9}
-.sl2 .lb{margin-right:8px;color:var(--dim)}
-.lk2{padding:0;border:0;background:transparent;color:var(--accent);font:inherit;font-size:var(--fs-m);font-weight:650;cursor:pointer}
-.lk2.on{text-decoration:underline;text-underline-offset:4px}
-.sl2 .sep{margin:0 7px;color:var(--dim)}
-.stop .xp{margin-top:10px;padding:12px 14px 14px;border-radius:10px;background:var(--soft)}
-.stop .xp .xh{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.stop .xp .xh span{color:var(--dim)}
-.stop .xp>*:nth-child(2){margin-top:8px}
-.stop .xp h2,.stop .xp h3{font-size:var(--fs-m)}
-
+/* 검색창: 그 탭 화면 맨 위에 하나 */
+.searchbar{margin:0 0 8px}
+.searchwrap{position:relative;display:flex;align-items:center;min-height:48px;padding:0 4px 0 42px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+.searchwrap:focus-within{border-color:var(--accent)}
+.searchwrap svg{position:absolute;top:50%;left:14px;width:20px;height:20px;color:var(--muted);transform:translateY(-50%)}
+.searchwrap input{flex:1;min-width:0;height:46px;border:0;outline:0;background:transparent;font-size:var(--fs-m)}
+.searchwrap input::placeholder{color:var(--muted)}
+.searchwrap button{flex:none;width:44px;height:44px;border:0;background:transparent;color:var(--muted);font-size:var(--fs-xl);line-height:1}
 input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
-.food-action{box-sizing:border-box}
-h2:has(+ .links.together){display:inline-block;margin:16px 8px 0 0;font-size:var(--fs-m);font-weight:400;color:var(--dim)}
-.links.together{display:inline;margin:0;padding:0;list-style:none}
-.links.together li{display:inline-block;padding:0;border:0;white-space:nowrap}
-.links.together li+li::before{content:"·";margin:0 7px;color:var(--dim)}
-.links.together a{font-size:var(--fs-m)}
-.links.together+.sl{margin-top:10px}
 
-/* 글자 크기 18 / 14 / 12로 통일 (날짜 큰 숫자·음식 현지 이름 제외) */
-body{font-size:var(--fs-m)}
-h1{font-size:var(--fs-xl)}
-h2,.notes h2,.travel-entry h3,.check-person,.summary-title,summary,.travel-toggle,.place-view-toggle button,.reset-btn,.person-tabs button{font-size:var(--fs-m)}
-.food-action,.lk,.sep,.sl,.check-intro,.note,table,td,th,.row .s,.links,.map-place-name,.pn button,.travel-sub,.progline,.desc,.food-note,.food-local-label,.save-note{font-size:var(--fs-m)}
-.date-ym,.day-weekday,.date-week,.schedule-date,.schedule-sep,.map-place-group,.map-place-number,.map-place-row .schedule-date,.map-place-row .schedule-sep,.sum-s,.stars,.row .tag,.person-tabs button strong,.check-group-title small,nav button{font-size:var(--fs-s)}
+/* 서브 탭(알약): 가로로 밀고, 스크롤해도 위에 붙어 있다 */
+.chip-tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:8px;margin:0 -16px 8px;padding:8px 16px;background:var(--bg);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chip-tabs::-webkit-scrollbar{display:none}
+.chip-tab{flex:none;min-height:40px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--muted);font-size:var(--fs-s);font-weight:700;line-height:1.35;white-space:nowrap}
+.chip-tab.on{border-color:var(--accent-soft);background:var(--accent-soft);color:var(--accent)}
+.chip-sep{flex:none;width:1px;height:24px;background:var(--rule)}
+
+/* 카드 = 머리 + ＋ 줄 */
+.fold-card{overflow:hidden;overflow:clip;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+.fold-card+.fold-card{margin-top:16px}
+.fold-head{padding:var(--pad);border-bottom:1px solid var(--line)}
+.fold-title{display:flex;align-items:baseline;gap:10px}
+.fold-title h2{min-width:0;margin:0;font-size:var(--fs-l);font-weight:700;line-height:1.3}
+.card-badge{margin-left:auto;padding:2px 10px;border-radius:999px;background:var(--subtle);color:var(--muted);font-size:var(--fs-s);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fold-head p{margin:8px 0 0;color:var(--muted);font-size:var(--fs-s);line-height:1.6}
+.empty{margin:0;padding:24px var(--pad);color:var(--muted);text-align:center}
+
+.fold,.plain-row{border-top:1px solid var(--line)}
+.fold-head+.fold,.fold-head+.plain-row,.fold-list>:first-child{border-top:0}
+.row-head{display:flex;align-items:center;gap:8px;width:100%;min-height:52px;padding:12px var(--pad);border:0;background:transparent;color:var(--text);text-align:left;line-height:1.4}
+/* 펼침 표시: ＋, 펼치면 － */
+.row-head::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(var(--muted),var(--muted)) center/12px 1.5px no-repeat,linear-gradient(var(--muted),var(--muted)) center/1.5px 12px no-repeat}
+.open>.row-head::after{background-size:12px 1.5px,1.5px 0}
+/* 다른 화면으로 가는 줄은 ＋ 대신 › */
+.row-head.go::after{content:"›";width:auto;height:auto;background:none;color:var(--muted);font-size:var(--fs-l);line-height:1}
+.row-copy{display:flex;flex:1 1 auto;align-items:baseline;gap:8px;min-width:0}
+.row-title{flex:0 1 auto;min-width:0;font-weight:700}
+.row-sub{flex:1 1 0;min-width:0;overflow:hidden;color:var(--muted);font-size:var(--fs-s);font-weight:400;text-overflow:ellipsis;white-space:nowrap}
+.row-date{flex:none;color:var(--muted);font-size:var(--fs-s);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* 맛집 탭: 이름이 길어서 회색 요약은 둘째 줄 */
+.row-head.two .row-copy{flex-direction:column;align-items:stretch;gap:2px}
+.row-head.two .row-sub{flex:none;white-space:normal}
+.plain-row{padding:12px var(--pad);line-height:1.5}
+
+/* 펼친 표시는 어느 화면에서든 같다. 첫 단계: 제목 줄 배경 + 왼쪽 끝 강조색 막대 */
+.fold.open{box-shadow:inset 3px 0 0 var(--accent)}
+.fold.open>.row-head{position:sticky;top:var(--stick);z-index:3;background:var(--disclosure-bg);box-shadow:inset 3px 0 0 var(--accent),0 1px 0 var(--line)}
+.fold-body{padding:16px var(--pad) 0}
+.fold-body>:last-child:not(.inner-list){margin-bottom:16px}
+.fold-body>:not(.act-row)+.inner-list{margin-top:16px}
+/* 한 단계 안쪽: 배경은 카드 폭 전체, 막대는 바깥 것을 이어 그린다. 내용은 회색 안내선과 들여쓰기 */
+.inner{border-top:1px solid var(--line)}
+.inner>.row-head{padding:12px 0}
+.inner.open>.row-head{position:sticky;top:calc(var(--stick) + var(--row-h,52px));z-index:2;width:calc(100% + 2*var(--pad));margin:0 calc(-1*var(--pad));padding:12px var(--pad);background:var(--disclosure-bg);box-shadow:inset 3px 0 0 var(--accent),0 1px 0 var(--line)}
+.inner-body{margin:12px 0;padding:4px 0 4px 14px;border-left:2px solid var(--line)}
+
+/* 펼친 내용 */
+.fold-body p.x,.inner-body p.x{margin:0}
+p.x+p.x{margin-top:8px}
+.ph{display:block;width:100%;aspect-ratio:16/9;margin:12px 0 0;border-radius:10px;background:var(--subtle);object-fit:cover}
+.fold-body>.ph:first-child{margin-top:0}
+ul.b,ol.b{margin:0;padding-left:20px}
+ul.b li+li,ol.b li+li{margin-top:6px}
+ul.b li::marker,ol.b li::marker{color:var(--accent)}
+.kv{display:flex;flex-direction:column;gap:10px;margin:0}
+.kv div{display:grid;grid-template-columns:76px minmax(0,1fr);gap:8px}
+.kv dt{color:var(--muted);font-size:var(--fs-s);line-height:1.7}
+.kv dd{min-width:0;margin:0}
+.table-wrap{max-width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:var(--fs-s)}
+th{padding:6px 8px 6px 0;border-bottom:1px solid var(--line);color:var(--muted);font-weight:600;text-align:left}
+td{padding:8px 8px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.order-label{margin:16px 0 0;color:var(--muted);font-size:var(--fs-s)}
+.order-text{margin:2px 0 0;font-size:var(--fs-xl);font-weight:800;line-height:1.35}
+/* 지도 · 전화 · 일정은 글자 대신 아이콘 */
+.act-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.icon-btn{display:inline-flex;flex:none;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--accent)}
+.icon-btn svg{width:20px;height:20px;pointer-events:none}
+.icon-btn.on{border-color:var(--accent);background:var(--accent-soft)}
+.date-btn{display:inline-flex;flex:none;align-items:center;gap:6px;height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--accent);font-size:var(--fs-s);font-weight:700;font-variant-numeric:tabular-nums}
+.date-btn svg{width:18px;height:18px;pointer-events:none}
+.text-link{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+.text-link::after{content:"\00a0↗"}
+
+/* 일정 */
+.day-strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.day-strip button{height:52px;padding:0;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--muted);line-height:1.15}
+.day-weekday,.day-number{display:block}
+.day-weekday{font-size:var(--fs-s);font-weight:700}
+.day-number{color:var(--text);font-size:var(--fs-m);font-weight:800}
+.day-strip button.weekend .day-weekday,.day-strip button.weekend .day-number{color:var(--weekend)}
+.day-strip button.on{border-color:var(--accent);background:var(--accent);color:var(--on-accent)}
+.day-strip button.on .day-weekday,.day-strip button.on .day-number{color:var(--on-accent)}
+.dayhead{margin:16px 0;text-align:center}
+.dayhead p{margin:0;font-size:var(--fs-m);line-height:1.5}
+.day-date{color:var(--accent);font-weight:700}
+.day-title{font-weight:700}
+.tl{display:flex;flex-direction:column}
+.stop{display:flex;flex-direction:column;gap:10px;padding:14px var(--pad);border:1px solid var(--edge);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);scroll-margin-top:16px}
+.stop .hd{display:flex;align-items:baseline;gap:10px}
+.stop .tm{flex:none;color:var(--accent);font-size:var(--fs-m);font-weight:800;font-variant-numeric:tabular-nums}
+.stop h3{flex:1;min-width:0;margin:0;font-size:var(--fs-m);font-weight:700;line-height:1.45}
+.stop-key{margin:0}
+.stop-route{margin:0;color:var(--muted);font-size:var(--fs-s)}
+.stop-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;overflow:hidden;border-radius:10px;background:var(--line)}
+.stop-photo{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--subtle)}
+.stop-media.one .stop-photo,.stop-media.three .stop-photo:first-child{grid-column:1/-1;aspect-ratio:16/9}
+.stop-foot{display:flex;align-items:center;gap:8px;margin:-2px 0 -4px}
+.stay{flex:1;min-width:0;color:var(--muted);font-size:var(--fs-s)}
+.stop-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-left:auto}
+.stop-choose{margin:0 calc(-1*var(--pad)) -14px;border-top:1px solid var(--line)}
+.stop-link{display:flex;align-items:baseline;gap:8px;width:100%;min-height:44px;padding:11px var(--pad);border:0;border-top:1px solid var(--line);background:transparent;color:var(--text);text-align:left}
+.stop-link:first-child{border-top:0}
+.stop-link strong{flex:1;min-width:0;font-weight:700}
+.stop-link span{flex:none;color:var(--muted);font-size:var(--fs-s)}
 .stop.hit{outline:2px solid var(--accent);outline-offset:2px}
-.search-status{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 2px 12px;color:var(--dim);font-size:var(--fs-s)}.search-group{margin-top:18px}.search-group:first-of-type{margin-top:0}.search-group>h2{margin:0 0 8px}.search-start{padding:34px 20px;border:1px solid var(--edge);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);color:var(--dim);text-align:center}.search-result-list{display:grid;gap:8px}.search-result-list .list.one{margin:0}.search-result-list details{margin:0}
+.journey{display:flex;align-items:stretch;gap:14px;padding:0 0 0 30px}
+.journey::before{content:"";flex:none;border-left:2px dashed var(--journey-line)}
+.journey p{margin:0;padding:14px 0;color:var(--muted);line-height:1.5}
+.journey strong{color:var(--text)}
+.day-extra{margin-top:16px}
+.pn{display:flex;justify-content:space-between;margin-top:8px}
+.pn button{min-height:44px;padding:10px 4px;border:0;background:transparent;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
 
-/* 글자 크기 위계와 일정 카드 규칙 */
-:root{--accent:#0D6B6B}
-@media(prefers-color-scheme:dark){:root{--accent:#4DB6B6}}
-body{font-size:var(--fs-m)}
-h1{font-size:var(--fs-xl)}
-h2,.notes h2,.stop .xp h2,h2:has(+ .links.together){font-size:var(--fs-l)}
-h3,.stop h3,.travel-entry h3,.stop .xp h3{font-size:var(--fs-m);font-weight:700}
-.dayhead h2,.food-local{font-size:var(--fs-xl)}
-.tm,.stop .hd .tm{font-size:var(--fs-l);font-weight:800}
-input,.dday,.day-number,.journey,.tchip,.kv dd,.notes,summary,.summary-title,.body,p.x,ul.b,ol.b,.links,.links.together a,table,th,td,.row .t,.progline,.chk,.reset-confirm p,.search-check,.map-place-name,.search-start,.empty{font-size:var(--fs-m)}
-button,nav button,.searchwrap button,.person-tabs button,.place-view-toggle button,.reset-btn,.reset-confirm button,.food-action,.map-btn,.inline-toggle,.travel-toggle,.pn button,.lk,.lk2{font-size:var(--fs-m)}
-.desc,.day-copy p,.kv dt,.travel-sub,.sum-s,.stars,.related>.label,.sl,.sl2,.sl2 .lb,.sl2 .sep,.note,.row .s,.row .tag,.save-note,.check-intro,.check-group-title small,.search-check .meta,.food-local-label,.place-map-status,.map-place-group,.map-place-number,.pin,.pin--on,.search-status{font-size:var(--fs-s)}
-.date-ym,.date-week,.day-weekday,.schedule-date,.schedule-sep,.map-place-row .schedule-date,.map-place-row .schedule-sep{font-size:var(--fs-s)}
-.date-day{font-size:var(--fs-xl)}
-.sl2{display:flex;align-items:baseline;flex-wrap:wrap;gap:0;line-height:1.7}.sl2 .lb{flex:none}.lk2{line-height:1.7}.sl2 .sep{line-height:1.7}
-.stop .hd{white-space:normal}.stop .hd .tm{line-height:1.25}.stop .hd h3{line-height:1.45}
-.place-cost{margin:14px 0 0;padding-top:11px;border-top:1px solid var(--border);color:var(--dim);font-size:var(--fs-s)}
-
-/* 카드 사이 연결선만 한 단계 또렷하게 */
-:root{--journey-line:#CDD3DA}
-@media(prefers-color-scheme:dark){:root{--journey-line:#3A434B}}
-.catalog-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:0 0 16px;padding:4px;border-radius:var(--radius);background:var(--border)}
-.catalog-tabs.info-tabs{grid-template-columns:repeat(3,1fr)}
-.catalog-tabs button{min-height:43px;border:0;border-radius:9px;background:transparent;color:var(--dim);font-weight:650;cursor:pointer}
-.catalog-tabs button.on{background:var(--surface);color:var(--text);font-weight:750}
-.catalog-section{margin:0}
-.catalog-section>.searchbar{position:relative;top:auto;z-index:auto;margin:0 0 14px;padding:0;background:transparent}
-.catalog-title{margin:0 0 13px;font-size:var(--fs-xl)}
-.restaurant-group-title{margin-bottom:8px}.restaurant-group-title small{display:block;margin-top:2px;color:var(--dim);font-size:var(--fs-s);font-weight:450;line-height:1.45}
-/* 일정은 제목 줄 오른쪽에 정보·지도, 장소·맛집은 지도 원형 아이콘을 배치한다. */
-.stop-actions{display:flex;flex:none;align-items:center;justify-content:flex-end;gap:8px;margin-left:auto}
-.stop-action,.entry-action{display:inline-flex;flex:0 0 44px;align-items:center;justify-content:center;width:44px;height:44px;min-height:44px;padding:0;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--accent);cursor:pointer}
-.stop-action svg,.entry-action svg{width:20px;height:20px;pointer-events:none}
-.stop-action:hover,.stop-action:focus-visible,.stop-action.on,.entry-action:hover,.entry-action:focus-visible,.entry-action.on{border-color:var(--accent);background:var(--soft);outline:none}
-.stop-action:focus-visible,.entry-action:focus-visible{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
-.entry-card{position:relative;margin-bottom:9px;border:1px solid var(--edge);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);overflow:hidden}
-.entry-card>details{margin:0;border:0;border-radius:0;box-shadow:none}
-.entry-card>details>summary{position:relative;box-sizing:border-box;width:100%;min-height:68px;padding:12px 70px 12px 14px}
-.entry-card>details>summary:after{display:none}
-.entry-card .summary-main{flex:1 1 auto;width:100%;max-width:100%;min-width:0;overflow:visible}
-.entry-card .summary-copy{display:flex;flex-direction:column;justify-content:center;min-width:0;line-height:1.35}
-.entry-card .summary-copy,.entry-card .summary-title{width:100%;max-width:100%;min-width:0}
-.entry-card .summary-title{display:block;line-height:1.35}
-.entry-card .entry-title-group{display:block;min-width:0}
-.entry-card .entry-title-text{display:inline;overflow-wrap:anywhere}
-.entry-card .schedule-links{display:inline-flex;width:auto;max-width:100%;margin:0 0 0 6px;vertical-align:baseline}
-.entry-card .sum-s{margin-top:2px;line-height:1.35}
-.entry-actions{position:absolute;top:50%;right:14px;display:flex;width:44px;margin:0;transform:translateY(-50%)}
-
-/* 글자 크기 3단계(12·14·18)와 날짜 숫자(30) */
-h1{font-size:var(--fs-xl)}
-h2,.notes h2,.stop .xp h2,h2:has(+ .links.together),.tm,.stop .hd .tm{font-size:var(--fs-m)}
-.date-ym,.date-week,.day-weekday,.schedule-date,.schedule-sep,.map-place-row .schedule-date,.map-place-row .schedule-sep{font-size:var(--fs-s)}
-summary{box-sizing:border-box}
-/* 줄과 줄 사이 글자가 위아래 가운데에 오도록 칸마다 위·아래 여백을 같게 한다.
-   머리줄 10px, 표·함께 보기 8px. 카드 바닥 여백은 따로 두지 않고 마지막 칸의 아래 여백이 대신한다. */
-.stop{padding:10px 14px 0}
-.stop .hd,.stop .hd.has-detail{padding:0 0 10px}
-.stop .kv div{padding:8px 0}
-.stop .sl2{margin:0;padding:8px 0}
-.stop .xp{margin:10px 0}
+/* 아래 고정 탭 바: 홈 바 영역을 피해 띄운다 */
+nav{position:fixed;z-index:20;left:50%;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:calc(min(100%,560px) - 24px);display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--edge);border-radius:22px;background:var(--card);box-shadow:var(--shadow);transform:translateX(-50%)}
+nav button{display:flex;min-height:60px;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:0;background:transparent;color:var(--muted);font-size:var(--fs-s);font-weight:700}
+nav button svg{width:21px;height:21px}
+nav button.on{color:var(--accent)}
+@media(min-width:700px){.day-strip{grid-template-columns:repeat(12,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -494,6 +516,8 @@ const MAP_COORDS = {
   dine5:{label:"Lezzet-i Şark Antep Sofrası",lat:41.01731,lng:28.9692}
 };
 const gmap = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+/* 전화번호 글에서 tel: 링크를 만든다 */
+const telOf = s => {const m=String(s||"").match(/\+?\d[\d\s-]{6,}\d/);return m?"tel:"+m[0].replace(/[\s-]/g,""):""};
 const isCostRow = r => r[0]==="요금"||r[0]==="주간 요금"||r[0]==="통합권"||(r[0]==="입장"&&/(무료|리라|유로|요금|비용)/.test(r[1]));
 const placeCost = o => (o.rows||[]).find(isCostRow)?.[1]||"";
 const paidPlaceCost = o => {const x=placeCost(o);return /(?:리라|유로|요금|비용|별도|이스탄불카드|음식값|카페 이용료)/.test(x)?x:""};
@@ -507,24 +531,22 @@ const PLACE_SCHEDULE_DATES = {
 };
 const place = o => {
   const isRestaurant=o.tab==="맛집";
+  const info=[...placeInfo(o),...(o.rows||[]).filter(isCostRow)].filter(r=>r[1]);
   return add({
     id:o.id, tab:o.tab||"장소", group:o.g, title:o.t, sub:o.s, scheduleDates:PLACE_SCHEDULE_DATES[o.id]||"", inSchedule:!!PLACE_SCHEDULE_DATES[o.id], restaurant:isRestaurant,
-    blocks:isRestaurant?[
-      ...(PHOTOS[o.id] ? [{t:"photo", src:PHOTOS[o.id], alt:PHOTO_ALTS[o.id]||`${o.t} 사진`}] : []),
-      {t:"rows",i:o.rows||[]},
-      {t:"links",i:[["지도 보기",o.map||gmap(LOCAL[o.id])]]}
-    ]:[
-      ...(PHOTOS[o.id] ? [{t:"photo", src:PHOTOS[o.id], alt:PHOTO_ALTS[o.id]||`${o.t} 전경`}] : []),
-      {h:"한 줄 소개", t:"p", x:o.intro},
-      {h:"어떤 곳", t:"p", x:o.about},
+    map:o.map||gmap(LOCAL[o.id]||o.t), tel:telOf((info.find(r=>r[0]==="전화")||[])[1]),
+    /* 펼치면: 한 줄 소개 → 사진 → 지도·전화·일정 아이콘 → 안쪽 ＋ 줄 */
+    blocks:[
+      ...(o.intro ? [{t:"p", x:o.intro}] : []),
+      ...(PHOTOS[o.id] ? [{t:"photo", src:PHOTOS[o.id], alt:PHOTO_ALTS[o.id]||`${o.t} ${isRestaurant?"사진":"전경"}`}] : []),
+      {t:"actions"},
+      ...(o.about ? [{h:"어떤 곳", t:"p", x:o.about}] : []),
       ...(o.memo ? [{h:"메모", t:"p", x:o.memo}] : []),
       ...(o.extra||[]),
-      {h:"재미있는 이야기", ...ul(o.fun)},
-      {h:"아인이 미션", t:"p", x:o.mission},
-      {h:"정보 표", t:"rows", i:placeInfo(o)},
-      {h:"주의할 점", ...ul(o.caution)},
-      ...(paidPlaceCost(o)?[{t:"p",cls:"place-cost",x:paidPlaceCost(o)}]:[]),
-      {h:"함께 보기", t:"links", cls:"together", i:[["지도 보기",o.map||gmap(LOCAL[o.id])]]}
+      ...(o.fun&&o.fun.length ? [{h:"재미있는 이야기", ...ul(o.fun)}] : []),
+      ...(o.mission ? [{h:"아인이 미션", t:"p", x:o.mission}] : []),
+      ...(info.length ? [{h:"정보", t:"rows", i:info}] : []),
+      ...(o.caution&&o.caution.length ? [{h:"주의할 점", ...ul(o.caution)}] : [])
     ]
   });
 };
@@ -973,30 +995,35 @@ place({id:"x6",g:"유료 명소",t:"터키 이슬람 미술관",s:"Türk ve İsl
 /* ---------- 음식 ---------- */
 const food = o => add({
   id:o.id, tab:"음식", group:o.group, title:o.title, local:o.local||"", sub:o.local||o.price||o.where, food:true, photo:o.photo||null,
+  /* 펼치면: 어떤 음식 → 사진 → 주문할 때 보여주기 → 안쪽 ＋ 줄 */
   blocks:[
+    {t:"p",x:o.desc},
     ...(o.photo?[{t:"photo",src:o.photo.src,alt:o.photo.alt}]:[]),
     ...(o.local?[{t:"order",x:o.local}]:[]),
-    {h:"어떤 음식",t:"p",x:o.desc},
     {h:"먹는 곳",t:"p",x:o.where},
     ...(o.note?[{h:"아인이 참고",t:"p",x:o.note}]:[]),
     ...(o.price?[{h:"가격",t:"p",x:o.price}]:[])
   ]
 });
-const wishlistRestaurant = o => add({
-  id:o.id, tab:"맛집", group:o.group||o.g||"가정식·로칸타", title:o.title||o.t, sub:[o.area||o.region,o.price].filter(Boolean).join(" · "), scheduleDates:o.visit?o.visit.split(" ")[0]:(PLACE_SCHEDULE_DATES[o.id]||""), restaurant:true,
-  blocks:[
-    ...(o.photo?[{t:"photo",src:o.photo.src,alt:o.photo.alt}]:[]),
-    {t:"rows",i:[
-      ...(o.address?[["주소",o.address]]:[]),
-      ...(o.hours?[["영업시간",o.hours]]:[]),
-      ...(o.phone?[["전화",o.phone]]:[]),
-      ...(o.status?[["영업 상태",o.status]]:[]),
-      ...((o.desc||o.feature)?[["특징",o.desc||o.feature]]:[]),
-      ...(o.price?[["가격대",o.price]]:[])
-    ]},
-    ...(o.map?[{t:"links",i:[["지도 보기",o.map]]}]:[])
-  ]
-});
+const wishlistRestaurant = o => {
+  const info=[
+    ...(o.address?[["주소",o.address]]:[]),
+    ...(o.hours?[["영업시간",o.hours]]:[]),
+    ...(o.phone?[["전화",o.phone]]:[]),
+    ...(o.status?[["영업 상태",o.status]]:[]),
+    ...(o.price?[["가격대",o.price]]:[])
+  ];
+  return add({
+    id:o.id, tab:"맛집", group:o.group||o.g||"가정식·로칸타", title:o.title||o.t, sub:[o.area||o.region,o.price].filter(Boolean).join(" · "), scheduleDates:o.visit?o.visit.split(" ")[0]:(PLACE_SCHEDULE_DATES[o.id]||""), restaurant:true,
+    map:o.map||gmap((o.title||o.t)+" İstanbul"), tel:telOf(o.phone),
+    blocks:[
+      ...((o.desc||o.feature)?[{t:"p",x:o.desc||o.feature}]:[]),
+      ...(o.photo?[{t:"photo",src:o.photo.src,alt:o.photo.alt}]:[]),
+      {t:"actions"},
+      ...(info.length?[{h:"정보",t:"rows",i:info}]:[])
+    ]
+  });
+};
 
 wishlistRestaurant({id:"wish-pide",group:"케밥·고기",title:"Görele Şakir Usta Pide",visit:"10/25 점심·간식",area:"베이올루 시샤네",address:"Kulaksız Cd. No:53/A, Beyoğlu",hours:"화~금·일 11:30~20:00 · 토 11:30~20:30 · 월 휴무",phone:"+90 212 256 80 20",desc:"1974년부터 이어온 흑해식 피데 전문점. 얇고 길게 구운 피데를 여러 토핑으로 고를 수 있다.",price:"가성비",photo:{src:I[83],alt:"괴레레 샤키르 우스타의 길쭉하게 구운 흑해식 피데"},map:"https://www.google.com/maps/place/Gorele+Sakir+Usta+Pide/@41.0301806,28.9656021,15.03z/data=!4m6!3m5!1s0x14cab75790132bb5:0x2e7da32e18f74671!8m2!3d41.037165!4d28.963691!16s%2Fg%2F11hchz9_60?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D"});
 
@@ -1299,77 +1326,225 @@ const TABS=[
 ];
 const travelByDay={d1024:["r1","r6","r2","r5"],d1026:["r3"],d1103:["r3"],d1104:["r4","r5"]};
 const main=document.getElementById("main"),nav=document.getElementById("nav"),searchPanel=document.getElementById("search-panel"),qEl=document.getElementById("q"),qx=document.getElementById("qx");
-const CHECKS_KEY="ist.checks",PERSON_TAB_KEY="ist.personTab",FOODS_KEY="ist.foods";
-function loadChecks(){try{const raw=localStorage.getItem(CHECKS_KEY);if(!raw)return{};const saved=JSON.parse(raw);return saved&&typeof saved==="object"&&!Array.isArray(saved)?saved:{}}catch(_){return{}}}
-function saveChecks(){try{localStorage.setItem(CHECKS_KEY,JSON.stringify(checks))}catch(_){}}
-function clearSavedChecks(){try{localStorage.removeItem(CHECKS_KEY)}catch(_){}}
-function loadPersonTab(){try{const saved=Number(localStorage.getItem(PERSON_TAB_KEY));return saved===1?1:0}catch(_){return 0}}
-function savePersonTab(){try{localStorage.setItem(PERSON_TAB_KEY,String(personIndex))}catch(_){}}
-function loadTriedFoods(){try{const raw=localStorage.getItem(FOODS_KEY);if(!raw)return new Set();const saved=JSON.parse(raw);return new Set(Array.isArray(saved)?saved.filter(id=>typeof id==="string"):[])}catch(_){return new Set()}}
-function saveTriedFoods(){try{localStorage.setItem(FOODS_KEY,JSON.stringify([...triedFoods]))}catch(_){}}
-let tab="일정",infoView="tips",triedFoods=loadTriedFoods(),dayId="d1024",personIndex=loadPersonTab(),checks=loadChecks(),scrollByView={},clearConfirm=false;
-const prepOpenByPerson=[-1,-1];
-const tipOpen={};
-function stableCheckId(person,text){let h=2166136261;const input=person+"|"+text;for(let i=0;i<input.length;i++){h^=input.charCodeAt(i);h=Math.imul(h,16777619)}return "check-"+(h>>>0).toString(36)}
-const CHECK_ITEMS=CHECK.flatMap((p,pi)=>p.groups.flatMap(g=>g[1].map(text=>({id:stableCheckId(p.idKey,text),personIndex:pi,person:p.person,when:g[0],text,search:[text,p.person,g[0]].join(" ").toLowerCase()}))));
-function blockSearchText(b){if(b.t==="photo"||b.t==="links")return "";if(b.t==="stops")return b.i.map(x=>[x.time,x.title,x.move,x.key].filter(Boolean).join(" ")).join(" ");if(b.t==="ul"||b.t==="ol")return [b.h,...b.i].filter(Boolean).join(" ");if(b.t==="p"||b.t==="order")return [b.h,b.x].filter(Boolean).join(" ");if(b.t==="rows")return [b.h,...b.i.flat()].filter(Boolean).join(" ");if(b.t==="table")return [b.h,...(b.head||[]),...b.i.flat()].filter(Boolean).join(" ");return ""}
+function blockSearchText(b){if(b.t==="photo"||b.t==="links"||b.t==="actions")return "";if(b.t==="stops")return b.i.map(x=>[x.time,x.title,x.move,x.key].filter(Boolean).join(" ")).join(" ");if(b.t==="ul"||b.t==="ol")return [b.h,...b.i].filter(Boolean).join(" ");if(b.t==="p"||b.t==="order")return [b.h,b.x].filter(Boolean).join(" ");if(b.t==="rows")return [b.h,...b.i.flat()].filter(Boolean).join(" ");if(b.t==="table")return [b.h,...(b.head||[]),...b.i.flat()].filter(Boolean).join(" ");return ""}
 ENTRIES.forEach(e=>{e.search=[e.title,e.local,e.sub,e.find,e.cost,...e.blocks.map(blockSearchText)].filter(Boolean).join(" ").toLowerCase()});
-function head(title,desc){return `<h1>${esc(title)}</h1><p class="desc">${rich(desc)}</p>`}
-function scheduleDateLinks(dates){if(!dates)return"";const labels=dates.split("·").filter(Boolean);return labels.length?`<span class="schedule-links" aria-label="일정 날짜 ${esc(dates)}">${labels.map(label=>`<span class="schedule-date">${esc(label)}</span>`).join('<span class="schedule-sep" aria-hidden="true">·</span>')}</span>`:""}
-function blockHTML(b){if(b.source)return "";const h=b.h?`<h2>${esc(b.h)}</h2>`:"";if(b.t==="photo")return `<img class="ph" src="${esc(b.src)}" alt="${esc(b.alt||"")}" loading="lazy">`;if(b.t==="ul")return h+`<ul class="b">${b.i.map(x=>`<li>${rich(x)}</li>`).join("")}</ul>`;if(b.t==="ol")return h+`<ol class="b">${b.i.map(x=>`<li>${rich(x)}</li>`).join("")}</ol>`;if(b.t==="p")return h+`<p class="${b.cls||"x"}">${rich(b.x)}</p>`;if(b.t==="order")return `<p class="food-local-label">주문할 때 보여주기</p><p class="food-local" lang="tr">${esc(b.x)}</p>`;if(b.t==="rows")return h+`<dl class="kv">${b.i.map(r=>`<div><dt>${esc(r[0])}</dt><dd>${rich(r[1])}</dd></div>`).join("")}</dl>`;if(b.t==="table")return h+`<div class="table-wrap"><table><thead><tr>${b.head.map(x=>`<th>${esc(x)}</th>`).join("")}</tr></thead><tbody>${b.i.map(r=>`<tr>${r.map(c=>`<td>${rich(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;if(b.t==="links")return h+`<ul class="links${b.cls?" "+b.cls:""}">${b.i.map(l=>`<li><a href="${esc(l[1])}" ${/^https?:/.test(l[1])?'target="_blank" rel="noopener noreferrer"':""}>${esc(l[0])}</a></li>`).join("")}</ul>`;return ""}
-function blocksHTML(blocks){return blocks.map(blockHTML).join("")}
-function detailHTML(e,open){const actionCard=e.tab==="장소"||e.tab==="맛집",photo=(e.tab==="장소"||e.tab==="음식"||e.tab==="맛집")&&e.blocks.find(b=>b.t==="photo"),mapBlock=actionCard&&e.blocks.find(b=>b.t==="links"&&b.i&&b.i.some(l=>/지도/.test(l[0]))),mapLink=mapBlock&&mapBlock.i.find(l=>/지도/.test(l[0])),blocks=mapBlock?e.blocks.filter(b=>b!==mapBlock):e.blocks;const scheduleBadge=actionCard?scheduleDateLinks(e.scheduleDates):"",actions=mapLink?`<span class="entry-actions"><a class="entry-action" href="${esc(mapLink[1])}" target="_blank" rel="noopener noreferrer" aria-label="지도 보기" title="지도 보기">${MAP_ICON}</a></span>`:"";const tried=e.food&&triedFoods.has(e.id),foodAction=e.food?`<button type="button" class="food-action" data-food="${e.id}" aria-pressed="${tried}">${tried?"✓ 먹어봄":"먹어봄"}</button>`:"";const details=`<details${e.id?` data-entry-id="${esc(e.id)}"`:""} class="${e.food?"food-card ":""}${tried?"tried":""}"${open?" open":""}><summary><span class="summary-main">${photo?`<img class="summary-thumb" src="${esc(photo.src)}" alt="${esc(photo.alt||e.title+" 사진")}" loading="lazy">`:""}<span class="summary-copy"><span class="summary-title"><span class="entry-title-group"><span class="entry-title-text">${esc(e.title)}</span>${scheduleBadge}</span>${actions}</span><span class="sum-s">${esc(e.sub||"")}</span></span></span></summary><div class="body">${blocksHTML(blocks)}${foodAction}</div></details>`;if(!actionCard)return details;return `<div class="entry-card">${details}</div>`}
-function placeInline(e,own){if(!e)return "";return `<div class="inline-detail"><button type="button" class="inline-toggle" data-inline="${e.id}" data-own="${own?"1":"0"}" aria-expanded="false"><span>${own?"장소 설명":esc(e.title)}</span></button><div class="body" hidden></div></div>`}
-function toggleInline(button){const box=button.closest(".inline-detail"),body=box.querySelector(".body"),opening=body.hidden;if(opening){const e=BY[button.dataset.inline],own=button.dataset.own==="1";const blocks=e.blocks.filter(b=>b.t!=="photo"&&b.h!=="함께 보기"&&!(own&&b.t==="links"&&b.cls==="map")).map(b=>own&&b.t==="rows"?{...b,i:b.i.filter(r=>r[0]!=="가는 법"&&r[0]!=="머무는 시간")}:b);body.innerHTML=blocksHTML(blocks)}else body.innerHTML="";body.hidden=!opening;box.classList.toggle("open",opening);button.setAttribute("aria-expanded",String(opening))}
-const MAP_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
-const INFO_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg>';
+
+/* ---------- 상태: 마지막으로 본 탭과 서브 탭은 이 기기에 기억한다 ---------- */
+const TAB_KEY="ist.tab",SUB_KEY="ist.sub";
+function loadJSON(key,fallback){try{const raw=localStorage.getItem(key);return raw==null?fallback:JSON.parse(raw)}catch(_){return fallback}}
+function saveJSON(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(_){}}
+let tab=loadJSON(TAB_KEY,"일정");if(!TABS.some(t=>t.k===tab))tab="일정";
+let subByTab=loadJSON(SUB_KEY,{});if(!subByTab||typeof subByTab!=="object"||Array.isArray(subByTab))subByTab={};
+let dayId="d1024";
+const queries={"장소":"","맛집":"","정보":""},scrollByView={},openRows=new Set(),openInner=new Set();
+
+/* ---------- 아이콘 ---------- */
+const svgIcon=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const MAP_ICON=svgIcon('<path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>');
+const INFO_ICON=svgIcon('<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/>');
+const SHOP_ICON=svgIcon('<path d="M4 10h16l-1-6H5l-1 6zM6 10v10h12V10M9 20v-6h6v6"/>');
+const FOOD_ICON=svgIcon('<path d="M7 3v7a2 2 0 01-2 2M7 3v7a2 2 0 002 2M7 12v9M5 3v6M9 3v6M17 3c-2 1.5-3 4-3 7h3v11"/>');
+const TIP_ICON=svgIcon('<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.9V16h5v-.2c0-.8.4-1.5 1-1.9A6 6 0 0 0 12 3z"/>');
+const PHONE_ICON=svgIcon('<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>');
+const CAL_ICON=svgIcon('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>');
+const SEARCH_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>';
+
+/* ---------- 날짜: 연도는 빼고 10.25처럼 ---------- */
+const pad2=n=>String(n).padStart(2,"0");
+const dotDate=md=>{const [m,d]=String(md).split("/");return d?`${pad2(m)}.${pad2(d)}`:String(md)};
+const dateList=dates=>String(dates||"").split("·").map(x=>x.trim()).filter(Boolean);
+const dateLabel=dates=>dateList(dates).map(dotDate).join(" · ");
+const DAY_BY_MD=Object.fromEntries(DAYS.map(d=>[d.find.split(" ")[0],d.id]));
+
+/* ---------- 펼친 내용 ---------- */
+function linksHTML(items){return `<div class="act-row">${items.map(([label,href])=>{const ext=/^https?:/.test(href)?' target="_blank" rel="noopener noreferrer"':"";return /지도/.test(label)?`<a class="icon-btn" href="${esc(href)}"${ext} aria-label="${esc(label)}" title="${esc(label)}">${MAP_ICON}</a>`:`<a class="text-link" href="${esc(href)}"${ext}>${esc(label)}</a>`}).join("")}</div>`}
+function rowValue(r){if(r[0]==="전화"){const tel=telOf(r[1]);return tel?`<a href="${esc(tel)}">${esc(r[1])}</a>`:rich(r[1])}return rich(r[1])}
+function blockBodyHTML(b){
+  if(b.source)return "";
+  if(b.t==="photo")return `<img class="ph" src="${esc(b.src)}" alt="${esc(b.alt||"")}" loading="lazy">`;
+  if(b.t==="ul")return `<ul class="b">${b.i.map(x=>`<li>${rich(x)}</li>`).join("")}</ul>`;
+  if(b.t==="ol")return `<ol class="b">${b.i.map(x=>`<li>${rich(x)}</li>`).join("")}</ol>`;
+  if(b.t==="p")return `<p class="x">${rich(b.x)}</p>`;
+  if(b.t==="order")return `<p class="order-label">주문할 때 보여주기</p><p class="order-text" lang="tr">${esc(b.x)}</p>`;
+  if(b.t==="rows")return `<dl class="kv">${b.i.map(r=>`<div><dt>${esc(r[0])}</dt><dd>${rowValue(r)}</dd></div>`).join("")}</dl>`;
+  if(b.t==="table")return `<div class="table-wrap"><table><thead><tr>${b.head.map(x=>`<th>${esc(x)}</th>`).join("")}</tr></thead><tbody>${b.i.map(r=>`<tr>${r.map(c=>`<td>${rich(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  if(b.t==="links")return linksHTML(b.i);
+  return "";
+}
+function actionsHTML(e){
+  const items=[];
+  if(e.map)items.push(`<a class="icon-btn" href="${esc(e.map)}" target="_blank" rel="noopener noreferrer" aria-label="지도" title="지도">${MAP_ICON}</a>`);
+  if(e.tel)items.push(`<a class="icon-btn" href="${esc(e.tel)}" aria-label="전화 걸기" title="전화 걸기">${PHONE_ICON}</a>`);
+  dateList(e.scheduleDates).forEach(md=>{const id=DAY_BY_MD[md];if(id)items.push(`<button type="button" class="date-btn" data-day="${id}" aria-label="${esc(dotDate(md))} 일정으로">${CAL_ICON}${esc(dotDate(md))}</button>`)});
+  return items.length?`<div class="act-row">${items.join("")}</div>`:"";
+}
+const countLabel=b=>(b.t==="ul"||b.t==="ol"||b.t==="rows"||b.t==="table")&&b.i.length>1?b.i.length+"가지":"";
+function innerRowHTML(e,b,i){const key=e.id+"::"+i,open=openInner.has(key),cnt=countLabel(b);return `<div class="inner${open?" open":""}"><button type="button" class="row-head" data-inner="${esc(key)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${esc(b.h)}</span>${cnt?`<span class="row-sub">${cnt}</span>`:""}</span></button><div class="inner-body"${open?"":" hidden"}>${open?blockBodyHTML(b):""}</div></div>`}
+function entryBody(e){
+  const lead=[],inner=[];
+  e.blocks.forEach((b,i)=>{if(b.source)return;(b.h?inner:lead).push([b,i])});
+  return lead.map(([b])=>b.t==="actions"?actionsHTML(e):blockBodyHTML(b)).join("")+(inner.length?`<div class="inner-list">${inner.map(([b,i])=>innerRowHTML(e,b,i)).join("")}</div>`:"");
+}
+
+/* ---------- 카드 = 머리 + ＋ 줄 ---------- */
+function rowHTML(e,o={}){
+  const open=openRows.has(e.id),sub=o.sub!==undefined?o.sub:e.sub,date=o.date!==undefined?o.date:dateLabel(e.scheduleDates);
+  return `<div class="fold${open?" open":""}" data-fold="${esc(e.id)}"><button type="button" class="row-head${o.two?" two":""}" data-row="${esc(e.id)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${rich(e.title)}</span>${sub?`<span class="row-sub">${esc(sub)}</span>`:""}</span>${date?`<span class="row-date">${esc(date)}</span>`:""}</button><div class="fold-body"${open?"":" hidden"}>${open?entryBody(e):""}</div></div>`;
+}
+function cardHTML(title,badge,summary,rows){return `<section class="fold-card"><div class="fold-head"><div class="fold-title"><h2>${esc(title)}</h2>${badge?`<span class="card-badge">${esc(badge)}</span>`:""}</div>${summary?`<p>${rich(summary)}</p>`:""}</div>${rows}</section>`}
+function groupCard(g){
+  if(!g.items.length)return cardHTML(g.label,"",null,`<p class="empty">${esc(g.empty||"항목이 없습니다")}</p>`);
+  const scheduled=g.items.filter(e=>e.scheduleDates).length;
+  return cardHTML(g.label,g.items.length+g.unit,scheduled&&g.unit==="곳"?`일정에 들어간 곳 ${scheduled}곳`:null,g.items.map(e=>rowHTML(e,{two:g.two})).join(""));
+}
+function pillsHTML(groups,cur){return `<div class="chip-tabs" role="tablist">${groups.map(g=>`${g.sepBefore?'<span class="chip-sep" aria-hidden="true"></span>':""}<button type="button" role="tab" class="chip-tab${g.key===cur?" on":""}" data-sub="${esc(g.key)}" aria-selected="${g.key===cur}">${esc(g.label)}</button>`).join("")}</div>`}
+function currentSub(groups){const k=subByTab[tab];return groups.some(g=>g.key===k)?k:groups[0].key}
+const matches=(e,terms)=>terms.every(t=>e.search.includes(t));
+const termsOf=q=>q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+
+/* ---------- 장소 ---------- */
+const PLACE_ITEMS=ENTRIES.filter(e=>e.tab==="장소");
+const PLACE_GROUPS=[...new Set(PLACE_ITEMS.map(e=>e.group))].map(name=>({key:name,label:name,unit:"곳",items:PLACE_ITEMS.filter(e=>e.group===name)}));
+function viewPlaces(){
+  const cur=currentSub(PLACE_GROUPS),terms=termsOf(queries["장소"]);
+  if(terms.length){const found=PLACE_ITEMS.filter(e=>matches(e,terms));return{search:"장소 검색",pills:pillsHTML(PLACE_GROUPS,cur),body:found.length?groupCard({label:"검색 결과",unit:"곳",items:found}):cardHTML("검색 결과","",null,'<p class="empty">찾는 장소가 없습니다</p>')}}
+  return{search:"장소 검색",pills:pillsHTML(PLACE_GROUPS,cur),body:groupCard(PLACE_GROUPS.find(g=>g.key===cur))};
+}
+
+/* ---------- 맛집: 동네별 식당 + 음식 ---------- */
+const EAT_ITEMS=ENTRIES.filter(e=>e.tab==="맛집"),FOOD_ITEMS=ENTRIES.filter(e=>e.tab==="음식");
+const FOOD_GROUP_NAMES=["식사","길거리 간식","달콤한 것","마실 것"];
+const EAT_GROUPS=[
+  ...RESTAURANT_REGION_GROUPS.map(g=>({key:g.name,label:g.name,unit:"곳",two:true,items:EAT_ITEMS.filter(e=>e.group===g.name)})).filter(g=>g.items.length),
+  ...FOOD_GROUP_NAMES.map((name,i)=>({key:"food:"+name,label:name,unit:"가지",two:true,sepBefore:i===0,items:FOOD_ITEMS.filter(e=>e.group===name)})).filter(g=>g.items.length)
+];
+function viewEat(){
+  const cur=currentSub(EAT_GROUPS),terms=termsOf(queries["맛집"]);
+  if(terms.length){
+    const rest=EAT_ITEMS.filter(e=>matches(e,terms)),foods=FOOD_ITEMS.filter(e=>matches(e,terms));
+    const body=(rest.length?groupCard({label:"맛집",unit:"곳",two:true,items:rest}):"")+(foods.length?groupCard({label:"음식",unit:"가지",two:true,items:foods}):"");
+    return{search:"맛집 · 음식 검색",pills:pillsHTML(EAT_GROUPS,cur),body:body||cardHTML("검색 결과","",null,'<p class="empty">찾는 맛집이나 음식이 없습니다</p>')};
+  }
+  return{search:"맛집 · 음식 검색",pills:pillsHTML(EAT_GROUPS,cur),body:groupCard(EAT_GROUPS.find(g=>g.key===cur))};
+}
+
+/* ---------- 정보: 여행 정보 · 여행 팁, 맨 위 검색은 전체를 찾는다 ---------- */
+const INFO_IDS=["a1","a2","t5","a4","a5","a3"],TIP_IDS=["t0","t1","t2","t3","t8","t4","t6","t7"];
+const INFO_GROUPS=[
+  {key:"info",label:"여행 정보",unit:"가지",items:INFO_IDS.map(id=>BY[id]).filter(Boolean)},
+  {key:"tips",label:"여행 팁",unit:"가지",items:TIP_IDS.map(id=>BY[id]).filter(Boolean)}
+];
+const PREP_ITEMS=CHECK.flatMap(p=>p.groups.flatMap(g=>g[1].map(text=>({person:p.person,when:g[0],text,search:[text,p.person,g[0]].join(" ").toLowerCase()}))));
+function searchAll(terms){
+  const stopText=st=>[st.time,st.title,st.key,st.move,st.stay,st.route,st.afterMove].filter(Boolean).join(" ").toLowerCase();
+  const scheduleRows=[];
+  DAYS.forEach(d=>{const stops=d.blocks[0].i,hits=stops.map((st,i)=>[st,i]).filter(([st])=>terms.every(t=>stopText(st).includes(t)));
+    if(hits.length)hits.forEach(([st,i])=>scheduleRows.push(`<div class="fold"><button type="button" class="row-head go" data-day="${d.id}" data-st="${i}"><span class="row-copy"><span class="row-title">${esc(shortTime(st.time))} ${rich(st.title)}</span></span><span class="row-date">${esc(dotDate(d.find.split(" ")[0]))}</span></button></div>`));
+    else if(matches(d,terms))scheduleRows.push(`<div class="fold"><button type="button" class="row-head go" data-day="${d.id}"><span class="row-copy"><span class="row-title">${esc(d.title)}</span></span><span class="row-date">${esc(dotDate(d.find.split(" ")[0]))}</span></button></div>`)});
+  const cards=[];
+  if(scheduleRows.length)cards.push(cardHTML("일정",scheduleRows.length+"건",null,scheduleRows.join("")));
+  [["장소","곳"],["맛집","곳"],["음식","가지"],["팁","가지"],["이동","가지"]].forEach(([kind,unit])=>{const found=ENTRIES.filter(e=>e.tab===kind&&matches(e,terms));if(found.length)cards.push(cardHTML(kind==="팁"?"정보":kind,found.length+unit,null,found.map(e=>rowHTML(e,{two:kind==="맛집"||kind==="음식"})).join("")))});
+  const prep=PREP_ITEMS.filter(x=>terms.every(t=>x.search.includes(t)));
+  if(prep.length)cards.push(cardHTML("준비",prep.length+"가지",null,prep.map(x=>`<div class="plain-row">${rich(x.text)}</div>`).join("")));
+  return cards.length?cards.join(""):cardHTML("검색 결과","",null,'<p class="empty">찾는 내용이 없습니다</p>');
+}
+function viewInfo(){
+  const cur=currentSub(INFO_GROUPS),terms=termsOf(queries["정보"]);
+  return{search:"일정, 장소, 맛집, 정보 검색",pills:pillsHTML(INFO_GROUPS,cur),body:terms.length?searchAll(terms):groupCard(INFO_GROUPS.find(g=>g.key===cur))};
+}
+
+/* ---------- 준비: 체크 없이 목록만 ---------- */
+const PREP_GROUPS=CHECK.map((p,i)=>({key:"p"+i,label:p.person,person:p}));
+function viewPrep(){
+  const cur=currentSub(PREP_GROUPS),p=PREP_GROUPS.find(g=>g.key===cur).person;
+  return{pills:pillsHTML(PREP_GROUPS,cur),body:p.groups.map((g,gi)=>cardHTML(g[0],g[1].length+"가지",gi===0?p.intro:null,g[1].map(text=>`<div class="plain-row">${rich(text)}</div>`).join(""))).join("")};
+}
+
+/* ---------- 일정 ---------- */
 /* 카드 머리에는 시작 시각만 둔다. "11:00~11:20 예상" → "11:00" */
 const shortTime=t=>(String(t).match(/^\d{1,2}:\d{2}/)||[t])[0];
-function stopHTML(stop){const stay=stop.stay&&/\d/.test(stop.stay)?stop.stay:"";const rows=[["가는 길",stop.route],["체류 시간",stay],["메모",stop.key]].filter(r=>r[1]);const ids=(stop.rel||[]).filter(id=>BY[id]);const ownId=stop.q&&stop.placeId&&BY[stop.placeId]?stop.placeId:(stop.q?ids.find(id=>LOCAL[id]===stop.q):null);const infoId=ownId||ids[0]||null;const own=ownId?BY[ownId]:ids.map(id=>BY[id]).find(e=>e&&e.blocks.some(b=>b.t==="photo"));const placePhoto=own&&own.blocks.find(b=>b.t==="photo");const photos=stop.noPhoto?[]:(stop.photos&&stop.photos.length?stop.photos:(placePhoto?[placePhoto]:[]));const related=ids.filter(id=>id!==ownId).map(id=>BY[id]);const media=photos.length?`<div class="stop-media ${photos.length===1?"one":photos.length===2?"two":"three"}">${photos.map(photo=>`<img class="stop-photo" src="${esc(photo.src)}" alt="${esc(photo.alt||stop.title+" 전경")}" loading="lazy">`).join("")}</div>`:"";const actions=stop.q?`<div class="stop-actions">${infoId?`<button type="button" class="stop-action" data-xp="${infoId}" data-own="1" aria-label="장소 설명" title="장소 설명" aria-expanded="false">${INFO_ICON}</button>`:`<button type="button" class="stop-action" data-stop-info aria-label="일정 정보" title="일정 정보" aria-expanded="false">${INFO_ICON}</button>`}<a class="stop-action" href="${esc(stop.map||gmap(stop.q))}" target="_blank" rel="noopener noreferrer" aria-label="지도 보기" title="지도 보기">${MAP_ICON}</a></div>`:"";return `<article class="stop"><div class="hd${rows.length||related.length?" has-detail":""}"><time class="tm">${esc(shortTime(stop.time))}</time><h3>${rich(stop.title)}</h3>${actions}</div>${media}${rows.length?`<dl class="kv">${rows.map(r=>`<div><dt>${esc(r[0])}</dt><dd>${rich(r[1])}</dd></div>`).join("")}</dl>`:""}${related.length?`<div class="sl2"><span class="lb">함께 보기</span>${related.map(e=>`<button type="button" class="lk2" data-xp="${e.id}" aria-expanded="false">${esc(e.title)}</button>`).join('<span class="sep">·</span>')}</div>`:""}${stop.q||infoId||related.length?`<div class="xp" hidden></div>`:""}</article>`}
-function toggleXp(button){const art=button.closest(".stop"),xp=art.querySelector(".xp"),id=button.dataset.xp,own=button.dataset.own==="1",same=!xp.hidden&&xp.dataset.id===id;art.querySelectorAll("[data-xp]").forEach(b=>{b.setAttribute("aria-expanded","false");b.classList.remove("on")});if(same){xp.hidden=true;xp.innerHTML="";xp.dataset.id="";return}const e=BY[id];const blocks=e.blocks.filter(b=>b.t!=="photo"&&b.h!=="함께 보기"&&!(own&&b.t==="links"&&b.cls==="map")).map(b=>own&&b.t==="rows"?{...b,i:b.i.filter(r=>r[0]!=="가는 법"&&r[0]!=="머무는 시간")}:b);xp.innerHTML=`<div class="xh"><strong>${esc(e.title)}</strong>${e.sub?`<span>${esc(e.sub)}</span>`:""}</div>${blocksHTML(blocks)}`;xp.dataset.id=id;xp.hidden=false;button.setAttribute("aria-expanded","true");button.classList.add("on")}
-function toggleStopInfo(button){const art=button.closest(".stop"),xp=art.querySelector(".xp"),opening=xp.hidden;art.querySelectorAll("[data-xp]").forEach(b=>{b.setAttribute("aria-expanded","false");b.classList.remove("on")});if(opening){const title=art.querySelector("h3")?.textContent||"일정 정보",time=art.querySelector("time")?.textContent||"",rows=art.querySelector(":scope > .kv"),timeHtml=time?"<span>"+esc(time)+"</span>":"",bodyHtml=rows?rows.outerHTML:'<p class="x">지도에서 위치와 최신 운영 정보를 확인해 주세요.</p>';xp.innerHTML='<div class="xh"><strong>'+esc(title)+"</strong>"+timeHtml+"</div>"+bodyHtml}else xp.innerHTML="";xp.hidden=!opening;button.setAttribute("aria-expanded",String(opening));button.classList.toggle("on",opening)}
-function journey(stop){if(!stop.move)return "";if(stop.moveOnly)return `<div class="journey"><span class="tchip">${rich(stop.move)}</span></div>`;const at=String(stop.moveAt||"").replace(/\s*출발.*$/,"");return `<div class="journey"><span class="tchip">${rich(`${at?at+" 출발 · ":""}${stop.move}`)}</span></div>`}
-function stopsHTML(stops){return `<div class="tl">${stops.map((s,i)=>`${journey(s)}${stopHTML(s)}${s.afterMove&&i<stops.length-1?`<div class="journey"><span class="tchip">${rich(`${String(s.departAt||s.time).replace(/\s*출발.*$/,"")} 출발 · ${s.afterMove}`)}</span></div>`:""}`).join("")}</div>`}
-function dayStrip(){return `<div class="day-strip" role="tablist" aria-label="날짜 바로 선택">${DAYS.map(d=>`<button type="button" role="tab" aria-selected="${d.id===dayId}" class="${d.id===dayId?"on ":""}${/토요일|일요일/.test(d.date.w)?"weekend":""}" data-day="${d.id}"><span class="day-weekday">${esc(d.date.w.slice(0,1))}</span><strong class="day-number">${Number(d.date.d)}</strong></button>`).join("")}</div>`}
-function travelInfo(id){const items=(travelByDay[id]||[]).map(x=>BY[x]).filter(Boolean);if(!items.length)return "";return `<div class="travel"><button type="button" class="travel-toggle" data-travel="${id}" aria-expanded="false"><span>이동 정보<span class="sum-s">${items.length===1?esc(items[0].title):items.length+"가지 안내"}</span></span></button><div class="body" hidden></div></div>`}
-function toggleTravel(button){const box=button.closest(".travel"),body=box.querySelector(".body"),opening=body.hidden;if(opening){const items=(travelByDay[button.dataset.travel]||[]).map(x=>BY[x]).filter(Boolean);body.innerHTML=items.map(e=>`<section class="travel-entry"><h3>${esc(e.title)}</h3>${e.sub?`<p class="travel-sub">${esc(e.sub)}</p>`:""}${blocksHTML(e.blocks)}</section>`).join("")}else body.innerHTML="";body.hidden=!opening;box.classList.toggle("open",opening);button.setAttribute("aria-expanded",String(opening))}
-function viewSchedule(){const e=BY[dayId]||DAYS[0],i=DAYS.indexOf(e),prev=DAYS[i-1],next=DAYS[i+1],dayPhoto=DAY_PHOTOS[e.id];return dayStrip()+`<div class="dayhead"><div class="date-block ${/토요일|일요일/.test(e.date.w)?"weekend":""}"><span class="date-ym">${esc(e.date.ym)}</span><strong class="date-day">${Number(e.date.d)}</strong><span class="date-week">${esc(e.date.w)}</span></div><div class="day-copy"><h2>${esc(e.title)}</h2><p>${esc(e.sub)}</p></div></div>`+stopsHTML(e.blocks[0].i)+travelInfo(e.id)+`<div class="pn">${prev?`<button type="button" data-day="${prev.id}">‹ ${esc(prev.find.split(" ")[0])}</button>`:"<span></span>"}${next?`<button type="button" data-day="${next.id}">${esc(next.find.split(" ")[0])} ›</button>`:"<span></span>"}</div>`}
-function mappedSearchEntries(){const clean=qEl.value.trim(),terms=clean.toLowerCase().split(/\s+/).filter(Boolean);return ENTRIES.filter(e=>(e.tab==="장소"||e.tab==="맛집")&&MAP_COORDS[e.id]&&(!terms.length||terms.every(t=>e.search.includes(t))))}
-function searchMapHTML(){const mapped=mappedSearchEntries();if(!mapped.length)return `<div class="list"><div class="empty">지도에 표시할 장소나 맛집이 없어요. 다른 단어로 검색해 보세요.</div></div>`;return `<p class="search-status"><span>장소와 맛집을 지도에서 함께 봐요.</span><strong>${mapped.length}곳</strong></p><section class="place-map-wrap"><div id="places-map" class="place-map" role="region" aria-label="이스탄불 장소와 맛집 지도"></div><p id="places-map-status" class="place-map-status" role="status"></p><ol class="map-place-list">${mapped.map((e,i)=>`<li><div class="map-place-row" data-map-row="${e.id}" role="button" tabindex="0" aria-label="지도에서 ${esc(e.title)} 보기"><span class="map-place-number">${i+1}</span><span class="map-place-copy"><span class="map-place-name">${esc(e.title)}</span><span class="map-place-group">${esc(e.tab)} · ${esc(e.group)}</span></span>${scheduleDateLinks(e.scheduleDates)}</div></li>`).join("")}</ol></section>`}
-function mountPlacesMap(){if(tab!=="정보"||infoView!=="map")return;const container=document.getElementById("places-map"),status=document.getElementById("places-map-status");if(!container||!globalThis.MapHelpers)return;const entries=mappedSearchEntries(),places=entries.map(e=>({...MAP_COORDS[e.id],locality:"Istanbul",country:"TR"})),rows=entries.map(e=>document.querySelector(`[data-map-row="${e.id}"]`));const unavailable=()=>{container.innerHTML='<div class="empty">지도를 표시할 수 없어요.</div>';status.textContent="아래 장소·맛집 목록이나 각 카드의 지도 링크를 이용해 주세요."};try{MapHelpers.mountPlaceListMap(container,{places,rows,baseStyle:matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"},unavailable)}catch(_){unavailable()}}
-function viewPlaces(){const items=ENTRIES.filter(e=>e.tab==="장소"),map=new Map;items.forEach(e=>map.set(e.group,[...(map.get(e.group)||[]),e]));return [...map.entries()].map(([name,groupItems])=>`<section><h2>${esc(name)}</h2>${groupItems.map(e=>detailHTML(e,false)).join("")}</section>`).join("")}
-function viewFood(){const items=ENTRIES.filter(e=>e.tab==="음식"),groups=["식사","길거리 간식","달콤한 것","마실 것"];return groups.map(group=>{const list=items.filter(e=>e.group===group);return list.length?`<section><h2>${esc(group)}</h2>${list.map(e=>detailHTML(e,false)).join("")}</section>`:""}).join("")}
-function viewRestaurants(){const restaurantItems=ENTRIES.filter(e=>e.tab==="맛집");return RESTAURANT_REGION_GROUPS.map(group=>{const list=restaurantItems.filter(e=>e.group===group.name);return list.length?`<section><h2 class="restaurant-group-title">${esc(group.name)}<small>${esc(group.note)}</small></h2>${list.map(e=>detailHTML(e,false)).join("")}</section>`:""}).join("")}
-function viewTips(){const info=["a1","a2","t5","a4","a5","a3"].map(id=>BY[id]).filter(Boolean),tips=["t0","t1","t2","t3","t8","t4","t6","t7"].map(id=>BY[id]).filter(Boolean);return `<section><h2>여행 정보</h2>${info.map(e=>detailHTML(e,false)).join("")}</section><section><h2>여행 팁</h2>${tips.map(e=>detailHTML(e,tipOpen[e.id]===true)).join("")}</section>`}
-function infoTabs(){const items=[["tips","여행"],["foods","음식"],["search","검색"]];return `<div class="catalog-tabs info-tabs" role="tablist" aria-label="정보 보기">${items.map(([key,label])=>`<button type="button" role="tab" data-info-view="${key}" class="${infoView===key?"on":""}" aria-selected="${infoView===key}">${label}</button>`).join("")}</div>`}
-function viewInfo(){let content="";if(infoView==="foods")content=viewFood();else if(infoView==="tips")content=viewTips();else if(infoView==="search")content=viewSearch(qEl.value);else content=searchMapHTML();return infoTabs()+`<section class="catalog-section">${content}</section>`}
-function personStats(index){const items=CHECK_ITEMS.filter(item=>item.personIndex===index),total=items.length,done=items.filter(item=>checks[item.id]).length;return{total,done}}
-function viewPrep(){const personOrder=[0,1],stats=CHECK.map((_,i)=>personStats(i)),p=CHECK[personIndex],s=stats[personIndex],pct=s.total?Math.round(s.done/s.total*100):0,groupData=p.groups.map((g,gi)=>{const ids=g[1].map(text=>stableCheckId(p.idKey,text)),done=ids.filter(id=>checks[id]).length;return{g,gi,done,total:ids.length,complete:done===ids.length}}),selected=prepOpenByPerson[personIndex];return `<div class="person-tabs" role="tablist">${personOrder.map(i=>`<button type="button" role="tab" data-person="${i}" class="${i===personIndex?"on":""}"><span>${esc(CHECK[i].person)}</span><strong>${stats[i].done}/${stats[i].total}</strong></button>`).join("")}</div><div class="prog" aria-label="${esc(p.person)} 준비 진행률 ${pct}%"><div class="progbar"><span style="width:${pct}%"></span></div></div><p class="save-note">체크는 이 폰에 저장됨. 다른 사람 폰과는 따로</p><section><h2 class="check-person">${esc(p.person)} 체크리스트</h2><p class="check-intro">${esc(p.intro)}</p>${groupData.map(({g,gi,done,total,complete})=>{const isOpen=selected===gi;return `<details class="check-group" data-prep-group="${gi}"${isOpen?" open":""}><summary><span class="check-group-title"><span>${esc(g[0])}</span><small class="${complete?"complete":""}">${complete?"완료":done+"/"+total}</small></span></summary><div class="list">${g[1].map(text=>{const id=stableCheckId(p.idKey,text),on=!!checks[id];return `<label class="chk${on?" done":""}"><input type="checkbox" data-check="${id}" ${on?"checked":""}><span>${esc(text)}</span></label>`}).join("")}</div></details>`}).join("")}</section><div class="check-actions"><button type="button" class="reset-btn" data-reset-checks>체크 모두 해제</button>${clearConfirm?`<div class="reset-confirm" role="group" aria-label="체크 해제 확인"><p>모든 체크를 해제할까요?</p><div class="buttons"><button type="button" data-clear-confirm="no">취소</button><button type="button" data-clear-confirm="yes">모두 해제</button></div></div>`:""}</div>`}
-function checkSearchHTML(items){return `<div class="list one">${items.map(item=>{const on=!!checks[item.id];return `<div class="search-check"><p class="meta">${esc(item.person)} · ${esc(item.when)}</p><label class="chk${on?" done":""}"><input type="checkbox" data-check="${item.id}" ${on?"checked":""}><span>${esc(item.text)}</span></label></div>`}).join("")}</div>`}
-function viewSearch(query){
-  const clean=query.trim();
-  if(!clean)return `<div class="search-start">검색어를 입력하면 일정 카드, 장소, 음식, 팁, 준비물을 한 번에 찾아요.</div>`;
-  const terms=clean.toLowerCase().split(/\s+/).filter(Boolean),stopText=st=>[st.time,st.title,st.key,st.move,st.stay,st.route,st.afterMove].filter(Boolean).join(" ").toLowerCase();
-  const entries=ENTRIES.filter(e=>terms.every(t=>e.search.includes(t))),checkItems=CHECK_ITEMS.filter(item=>terms.every(t=>item.search.includes(t)));
-  const schedule=[];
-  entries.filter(e=>e.date).forEach(e=>{const stops=(e.blocks.find(b=>b.t==="stops")||{i:[]}).i,hit=stops.map((st,i)=>[st,i]).filter(([st])=>terms.every(t=>stopText(st).includes(t)));if(hit.length)hit.forEach(([st,i])=>schedule.push(`<div class="list one"><button type="button" class="row" data-day="${e.id}" data-st="${i}"><div class="rt"><div class="t">${esc(st.time)} ${rich(st.title)}</div><div class="s">${esc(e.find)} · ${esc(e.title)}</div></div><span class="tag">일정</span></button></div>`));else schedule.push(`<div class="list one"><button type="button" class="row" data-day="${e.id}"><div class="rt"><div class="t">${esc(e.find)} ${esc(e.title)}</div><div class="s">${esc(e.sub)}</div></div><span class="tag">일정</span></button></div>`) });
-  const sections=[];
-  if(schedule.length)sections.push(`<section class="search-group"><h2>일정</h2><div class="search-result-list">${schedule.join("")}</div></section>`);
-  ["장소","음식","맛집","팁","이동"].forEach(kind=>{const found=entries.filter(e=>!e.date&&e.tab===kind);if(found.length)sections.push(`<section class="search-group"><h2>${kind}</h2><div class="search-result-list">${found.map(e=>detailHTML(e,false)).join("")}</div></section>`)});
-  if(checkItems.length)sections.push(`<section class="search-group"><h2>준비</h2>${checkSearchHTML(checkItems)}</section>`);
-  const count=schedule.length+entries.filter(e=>!e.date).length+checkItems.length;
-  return `<p class="search-status"><span>“${esc(clean)}” 검색 결과</span><strong>${count}건</strong></p>`+(sections.length?sections.join(""):`<div class="list"><div class="empty">결과가 없어요. 다른 단어로 검색해 보세요.</div></div>`)
+const LINK_KINDS=[["장소","장소 정보",INFO_ICON],["맛집","맛집 정보",SHOP_ICON],["음식","음식 정보",FOOD_ICON],["팁","여행 팁",TIP_ICON]];
+function stopLinks(stop){const ids=[...new Set([...(stop.placeId?[stop.placeId]:[]),...(stop.rel||[])])].filter(id=>BY[id]);return LINK_KINDS.map(([kind,label,icon])=>({kind,label,icon,ids:ids.filter(id=>BY[id].tab===kind)})).filter(x=>x.ids.length)}
+function stopHTML(stop,si){
+  const stay=stop.stay&&/\d/.test(stop.stay)?stop.stay:"";
+  const ids=(stop.rel||[]).filter(id=>BY[id]);
+  const ownId=stop.q&&stop.placeId&&BY[stop.placeId]?stop.placeId:(stop.q?ids.find(id=>LOCAL[id]===stop.q):null);
+  const own=ownId?BY[ownId]:ids.map(id=>BY[id]).find(e=>e&&e.blocks.some(b=>b.t==="photo"));
+  const placePhoto=own&&own.blocks.find(b=>b.t==="photo");
+  const photos=stop.noPhoto?[]:(stop.photos&&stop.photos.length?stop.photos:(placePhoto?[placePhoto]:[]));
+  const media=photos.length?`<div class="stop-media ${photos.length===1?"one":photos.length===2?"two":"three"}">${photos.map(photo=>`<img class="stop-photo" src="${esc(photo.src)}" alt="${esc(photo.alt||stop.title+" 전경")}" loading="lazy">`).join("")}</div>`:"";
+  const links=stopLinks(stop);
+  const icons=links.map(l=>l.ids.length===1?`<button type="button" class="icon-btn" data-go="${esc(l.ids[0])}" aria-label="${esc(l.label)}: ${esc(BY[l.ids[0]].title)}" title="${esc(l.label)}">${l.icon}</button>`:`<button type="button" class="icon-btn" data-choose="${si}-${l.kind}" aria-expanded="false" aria-label="${esc(l.label)} ${l.ids.length}곳" title="${esc(l.label)}">${l.icon}</button>`);
+  if(stop.q)icons.push(`<a class="icon-btn" href="${esc(stop.map||gmap(stop.q))}" target="_blank" rel="noopener noreferrer" aria-label="지도" title="지도">${MAP_ICON}</a>`);
+  const choosers=links.filter(l=>l.ids.length>1).map(l=>`<div class="stop-choose" data-choose-list="${si}-${l.kind}" hidden>${l.ids.map(id=>`<button type="button" class="stop-link" data-go="${esc(id)}"><strong>${esc(BY[id].title)}</strong><span>${esc(l.label)} ›</span></button>`).join("")}</div>`).join("");
+  const foot=stay||icons.length?`<div class="stop-foot"><span class="stay">${stay?"체류 "+esc(stay):""}</span>${icons.length?`<span class="stop-actions">${icons.join("")}</span>`:""}</div>`:"";
+  return `<article class="stop"><div class="hd"><time class="tm">${esc(shortTime(stop.time))}</time><h3>${rich(stop.title)}</h3></div>${stop.key?`<p class="stop-key">${rich(stop.key)}</p>`:""}${stop.route?`<p class="stop-route">가는 길 · ${rich(stop.route)}</p>`:""}${media}${foot}${choosers}</article>`;
 }
-const views={"일정":viewSchedule,"장소":viewPlaces,"맛집":viewRestaurants,"정보":viewInfo,"준비":viewPrep};
-function currentView(){if(tab==="정보")return `${tab}:${infoView}`;return tab}
-function render(restore=true,storeScroll=true){if(storeScroll)scrollByView[currentView()]=Math.max(1,window.scrollY);const q=qEl.value.trim(),searching=tab==="정보"&&infoView==="search";searchPanel.hidden=!searching;main.innerHTML=views[tab]();if(searching)main.querySelector(".catalog-section")?.prepend(searchPanel);qx.hidden=!qEl.value;nav.innerHTML=TABS.map(t=>`<button type="button" data-tab="${t.k}" class="${t.k===tab?"on":""}" aria-current="${t.k===tab?"page":"false"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${t.svg}</svg><span>${t.k}</span></button>`).join("");requestAnimationFrame(mountPlacesMap);if(restore)requestAnimationFrame(()=>window.scrollTo(0,Math.max(1,scrollByView[currentView()]||1)))}
-document.addEventListener("click",ev=>{if(ev.target.closest(".schedule-date")){ev.preventDefault();ev.stopPropagation()}},true);
-document.addEventListener("click",ev=>{const entryToggle=ev.target.closest("[data-entry-toggle]");if(entryToggle){const card=entryToggle.closest(".entry-card"),details=card&&card.querySelector("details"),opening=details&&!details.open;if(details){details.open=opening;entryToggle.classList.toggle("on",opening);entryToggle.setAttribute("aria-expanded",String(opening))}return}const infoMode=ev.target.closest("[data-info-view]");if(infoMode){scrollByView[currentView()]=Math.max(1,window.scrollY);infoView=infoMode.dataset.infoView;scrollByView[currentView()]=1;render(true,false);if(infoView==="search")requestAnimationFrame(()=>qEl.focus());return}const tipSummary=ev.target.closest("details>summary");if(tipSummary&&tab==="정보"&&infoView==="tips"){const details=tipSummary.closest("details"),entry=details.dataset.entryId;if(entry)tipOpen[entry]=!details.open;return}const prepSummary=ev.target.closest(".check-group>summary");if(prepSummary){const group=prepSummary.closest(".check-group");prepOpenByPerson[personIndex]=group.open?-1:Number(group.dataset.prepGroup);return}const xpb=ev.target.closest("[data-xp]");if(xpb){toggleXp(xpb);return}const stopInfo=ev.target.closest("[data-stop-info]");if(stopInfo){toggleStopInfo(stopInfo);return}const inline=ev.target.closest("[data-inline]");if(inline){toggleInline(inline);return}const travel=ev.target.closest("[data-travel]");if(travel){toggleTravel(travel);return}const day=ev.target.closest("[data-day]");if(day){ev.preventDefault();if(day.classList.contains("schedule-date"))ev.stopPropagation();scrollByView[currentView()]=Math.max(1,window.scrollY);dayId=day.dataset.day;tab="일정";qEl.value="";scrollByView["일정"]=1;render(true,false);if(day.dataset.st!==undefined){const idx=Number(day.dataset.st);requestAnimationFrame(()=>requestAnimationFrame(()=>{const a=main.querySelectorAll("article.stop")[idx];if(!a)return;const sb=document.querySelector(".searchbar");window.scrollTo(0,a.getBoundingClientRect().top+window.scrollY-(sb?sb.offsetHeight:0)-12);a.classList.add("hit");setTimeout(()=>a.classList.remove("hit"),1600)}))}return}const person=ev.target.closest("[data-person]");if(person){personIndex=Number(person.dataset.person);savePersonTab();clearConfirm=false;render(false);return}const reset=ev.target.closest("[data-reset-checks]");if(reset){clearConfirm=true;render(false);return}const answer=ev.target.closest("[data-clear-confirm]");if(answer){if(answer.dataset.clearConfirm==="yes"){checks={};clearSavedChecks()}clearConfirm=false;render(false);return}const foodButton=ev.target.closest("[data-food]");if(foodButton){const id=foodButton.dataset.food;if(triedFoods.has(id))triedFoods.delete(id);else triedFoods.add(id);saveTriedFoods();render(false);return}const t=ev.target.closest("[data-tab]");if(t){scrollByView[currentView()]=Math.max(1,window.scrollY);tab=t.dataset.tab;clearConfirm=false;render(true,false);}});
-document.addEventListener("toggle",ev=>{const details=ev.target;if(!details.matches?.(".entry-card>details"))return;const button=details.closest(".entry-card")?.querySelector("[data-entry-toggle]");if(!button)return;button.classList.toggle("on",details.open);button.setAttribute("aria-expanded",String(details.open))},true);
-document.addEventListener("keydown",ev=>{const row=ev.target.closest(".map-place-row");if(row&&ev.target===row&&(ev.key==="Enter"||ev.key===" ")){ev.preventDefault();row.click()}});
-document.addEventListener("change",ev=>{const c=ev.target.closest("input[data-check]");if(!c)return;if(c.checked)checks[c.dataset.check]=true;else delete checks[c.dataset.check];saveChecks();render(false);});
-qEl.addEventListener("input",()=>render(false));qx.addEventListener("click",()=>{qEl.value="";render(false);qEl.focus()});
-window.addEventListener("scroll",()=>{if(window.scrollY<1)window.scrollTo(0,1);else scrollByView[currentView()]=window.scrollY},{passive:true});
+const journeyHTML=html=>`<div class="journey"><p>${html}</p></div>`;
+function journey(stop){if(!stop.move)return "";if(stop.moveOnly)return journeyHTML(rich(stop.move));const at=String(stop.moveAt||"").replace(/\s*출발.*$/,"");return journeyHTML(`${at?`<strong>${esc(at)} 출발</strong> · `:""}${rich(stop.move)}`)}
+function stopsHTML(stops){return `<div class="tl">${stops.map((s,i)=>`${journey(s)}${stopHTML(s,i)}${s.afterMove&&i<stops.length-1?journeyHTML(`<strong>${esc(String(s.departAt||s.time).replace(/\s*출발.*$/,""))} 출발</strong> · ${rich(s.afterMove)}`):""}`).join("")}</div>`}
+function dayStrip(){return `<div class="day-strip" role="tablist" aria-label="날짜 바로 선택">${DAYS.map(d=>`<button type="button" role="tab" aria-selected="${d.id===dayId}" class="${d.id===dayId?"on ":""}${/토요일|일요일/.test(d.date.w)?"weekend":""}" data-day="${d.id}"><span class="day-weekday">${esc(d.date.w.slice(0,1))}</span><strong class="day-number">${Number(d.date.d)}</strong></button>`).join("")}</div>`}
+function travelCard(id){const items=(travelByDay[id]||[]).map(x=>BY[x]).filter(Boolean);return items.length?`<div class="day-extra">${cardHTML("이동 정보",items.length+"가지",null,items.map(e=>rowHTML(e,{date:""})).join(""))}</div>`:""}
+function viewSchedule(){
+  const e=BY[dayId]||DAYS[0],i=DAYS.indexOf(e),prev=DAYS[i-1],next=DAYS[i+1],month=Number(e.date.ym.split(".")[1]);
+  const md=d=>dotDate(d.find.split(" ")[0]);
+  return{body:dayStrip()+`<div class="dayhead"><p class="day-date">${month}월 ${Number(e.date.d)}일 ${esc(e.date.w)}</p><p class="day-title">${esc(e.title)}</p></div>`+stopsHTML(e.blocks[0].i)+travelCard(e.id)+`<div class="pn">${prev?`<button type="button" data-day="${prev.id}">‹ ${esc(md(prev))}</button>`:"<span></span>"}${next?`<button type="button" data-day="${next.id}">${esc(md(next))} ›</button>`:"<span></span>"}</div>`};
+}
+
+/* ---------- 그리기 ---------- */
+const VIEWS={"일정":viewSchedule,"장소":viewPlaces,"맛집":viewEat,"정보":viewInfo,"준비":viewPrep};
+const SUB_GROUPS={"장소":PLACE_GROUPS,"맛집":EAT_GROUPS,"정보":INFO_GROUPS,"준비":PREP_GROUPS};
+function viewKey(){return tab==="일정"?tab+":"+dayId:SUB_GROUPS[tab]?tab+":"+currentSub(SUB_GROUPS[tab])+(queries[tab]?":q":""):tab}
+function setStick(){const bar=main.querySelector(".chip-tabs");main.style.setProperty("--stick",bar?`calc(env(safe-area-inset-top, 0px) + ${bar.offsetHeight}px)`:"env(safe-area-inset-top, 0px)")}
+function render(restore=true,storeScroll=true){
+  if(storeScroll)scrollByView[viewKey()]=Math.max(1,window.scrollY);
+  const v=VIEWS[tab]();
+  main.innerHTML=`<header class="brand"><h1>이스탄불</h1></header>${v.search?'<div id="search-slot"></div>':""}${v.pills||""}<div id="view-body">${v.body}</div>`;
+  if(v.search){qEl.placeholder=v.search;qEl.setAttribute("aria-label",v.search);if(qEl.value!==queries[tab])qEl.value=queries[tab]||"";qx.hidden=!qEl.value;main.querySelector("#search-slot").replaceWith(searchPanel);searchPanel.hidden=false}else searchPanel.hidden=true;
+  setStick();
+  nav.innerHTML=TABS.map(t=>`<button type="button" data-tab="${t.k}" class="${t.k===tab?"on":""}" aria-current="${t.k===tab?"page":"false"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${t.svg}</svg><span>${t.k}</span></button>`).join("");
+  saveJSON(TAB_KEY,tab);
+  if(restore)requestAnimationFrame(()=>window.scrollTo(0,Math.max(1,scrollByView[viewKey()]||1)));
+}
+function renderBody(){const body=document.getElementById("view-body");if(body)body.innerHTML=VIEWS[tab]().body;qx.hidden=!qEl.value}
+function stickTop(el){return parseFloat(getComputedStyle(el).top)||0}
+/* 펼친 제목을 눌러 접으면 화면이 제목 자리로 돌아온다 */
+function backToRow(box,head){const top=box.getBoundingClientRect().top,stick=stickTop(head);if(top<stick)window.scrollTo(0,top+window.scrollY-stick)}
+function toggleRow(button){
+  const box=button.closest(".fold"),body=box.querySelector(":scope > .fold-body"),id=button.dataset.row,opening=!box.classList.contains("open");
+  if(opening){body.innerHTML=entryBody(BY[id]);body.hidden=false;openRows.add(id);box.classList.add("open");box.style.setProperty("--row-h",button.offsetHeight+"px")}
+  else{backToRow(box,button);body.hidden=true;body.innerHTML="";openRows.delete(id);[...openInner].forEach(k=>{if(k.startsWith(id+"::"))openInner.delete(k)});box.classList.remove("open")}
+  button.setAttribute("aria-expanded",String(opening));
+}
+function toggleInner(button){
+  const box=button.closest(".inner"),body=box.querySelector(":scope > .inner-body"),key=button.dataset.inner,opening=!box.classList.contains("open");
+  if(opening){const cut=key.lastIndexOf("::"),e=BY[key.slice(0,cut)],b=e&&e.blocks[Number(key.slice(cut+2))];body.innerHTML=b?blockBodyHTML(b):"";body.hidden=false;openInner.add(key);box.classList.add("open")}
+  else{backToRow(box,button);body.hidden=true;body.innerHTML="";openInner.delete(key);box.classList.remove("open")}
+  button.setAttribute("aria-expanded",String(opening));
+}
+/* 일정의 아이콘이나 검색에서 항목으로 가면 그 탭과 서브 탭으로 바꾸고 그 줄을 펼친다 */
+function goTo(id){
+  const e=BY[id];if(!e)return;
+  let t,sub;
+  if(e.tab==="장소"){t="장소";sub=e.group}else if(e.tab==="맛집"){t="맛집";sub=e.group}else if(e.tab==="음식"){t="맛집";sub="food:"+e.group}else if(e.tab==="팁"){t="정보";sub=INFO_IDS.includes(id)?"info":"tips"}else return;
+  scrollByView[viewKey()]=Math.max(1,window.scrollY);
+  tab=t;subByTab[t]=sub;saveJSON(SUB_KEY,subByTab);queries[t]="";qEl.value="";openRows.add(id);
+  render(false,false);
+  requestAnimationFrame(()=>{const box=main.querySelector(`[data-fold="${CSS.escape(id)}"]`);if(!box)return;const head=box.querySelector(".row-head");if(head)box.style.setProperty("--row-h",head.offsetHeight+"px");const bar=main.querySelector(".chip-tabs");window.scrollTo(0,box.getBoundingClientRect().top+window.scrollY-(bar?bar.offsetHeight:0))});
+}
+document.addEventListener("click",ev=>{
+  const row=ev.target.closest("[data-row]");if(row){toggleRow(row);return}
+  const inner=ev.target.closest("[data-inner]");if(inner){toggleInner(inner);return}
+  const go=ev.target.closest("[data-go]");if(go){goTo(go.dataset.go);return}
+  const choose=ev.target.closest("[data-choose]");if(choose){const list=choose.closest(".stop").querySelector(`[data-choose-list="${choose.dataset.choose}"]`),opening=list.hidden;choose.closest(".stop").querySelectorAll("[data-choose-list]").forEach(x=>x.hidden=true);choose.closest(".stop").querySelectorAll("[data-choose]").forEach(x=>{x.classList.remove("on");x.setAttribute("aria-expanded","false")});list.hidden=!opening;choose.classList.toggle("on",opening);choose.setAttribute("aria-expanded",String(opening));return}
+  const sub=ev.target.closest("[data-sub]");if(sub){scrollByView[viewKey()]=Math.max(1,window.scrollY);subByTab[tab]=sub.dataset.sub;saveJSON(SUB_KEY,subByTab);queries[tab]="";qEl.value="";render(true,false);sub.blur();return}
+  const day=ev.target.closest("[data-day]");if(day){ev.preventDefault();scrollByView[viewKey()]=Math.max(1,window.scrollY);dayId=day.dataset.day;tab="일정";render(true,false);if(day.dataset.st!==undefined){const idx=Number(day.dataset.st);requestAnimationFrame(()=>requestAnimationFrame(()=>{const a=main.querySelectorAll("article.stop")[idx];if(!a)return;window.scrollTo(0,a.getBoundingClientRect().top+window.scrollY-12);a.classList.add("hit");setTimeout(()=>a.classList.remove("hit"),1600)}))}return}
+  const t=ev.target.closest("[data-tab]");if(t){scrollByView[viewKey()]=Math.max(1,window.scrollY);tab=t.dataset.tab;render(true,false)}
+});
+qEl.addEventListener("input",()=>{queries[tab]=qEl.value;renderBody()});
+qx.addEventListener("click",()=>{qEl.value="";queries[tab]="";renderBody();qEl.focus()});
+window.addEventListener("scroll",()=>{if(window.scrollY<1)window.scrollTo(0,1);else scrollByView[viewKey()]=window.scrollY},{passive:true});
+window.addEventListener("resize",setStick);
 render(false);requestAnimationFrame(()=>requestAnimationFrame(()=>window.scrollTo(0,1)));
 </script>
 </body>
