@@ -138,6 +138,9 @@ details .list,details .card{box-shadow:none}
 .stop .hd h3{margin:0}
 .stop .chg-title{color:var(--chg-text)}
 .stop .kv{margin-top:0;border-top:0}
+/* 카드 맨 아래 줄에는 밑줄을 긋지 않는다. '함께 보기'가 이어질 때만 구분선 */
+.stop .kv div:last-child{border-bottom:0}
+.stop .kv+.sl{padding-top:8px;border-top:1px solid var(--line)}
 
 /* 카드 안쪽 여백 줄임 */
 .stop{padding:12px 14px 14px}
