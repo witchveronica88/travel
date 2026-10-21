@@ -1216,15 +1216,15 @@ const CHECK = [
   ]}
 ];
 const RESTAURANT_REGION_GROUPS=[
-  {name:"술탄아흐메트·구시가지",note:"술탄아흐메트 · 시르케지 · 에미뇌뉘 · 그랜드 바자르 일대",ids:["dine1","dine5","wish-balik-ekmek","wish-sultanahmet-kofte","wish-lunch3","wish-lunch8","wish-lunch9","wish-lunch10","wish-lunch14","wish-dinner6","wish-dinner8"]},
-  {name:"베이올루·탁심",note:"탁심 · 이스티클랄 · 지한기르 일대",ids:["dine2","dine4","wish-pide","wish-rec1","wish-iskender1867","wish-breakfast1","wish-breakfast4","wish-breakfast5","wish-lunch4","wish-lunch5","wish-lunch12","wish-lunch15","wish-dinner1","wish-dinner2","wish-dinner3"]},
-  {name:"갈라타·카라쾨이",note:"갈라타 탑 · 카라쾨이 일대",ids:["dine3","wish-mehmet","wish-breakfast3","wish-lunch17","wish-dinner4","wish-dinner7"]},
-  {name:"카디쾨이",note:"아시아",ids:["wish-lunch11","wish-kadikoy-midye","wish-dondurmaci-ali","wish-dinner5"]},
-  {name:"위스퀴다르·쿠즈군죽",note:"아시아",ids:[]},
-  {name:"베벡·에미르간",note:"보스포루스",ids:["wish-breakfast2","wish-lunch1","wish-lunch6","wish-mangerie","wish-cup-joy"]},
-  {name:"발랏·페네르",note:"골든혼",ids:["wish-lunch13","wish-old-balat"]},
-  {name:"첸겔쾨이",note:"아시아 · 보스포루스",ids:["wish-cengelkoy-kokorec"]},
-  {name:"에위프",note:"골든혼 서쪽",ids:["wish-eyup-guvec"]}
+  {name:"술탄아흐메트·구시가지",note:"모스크와 바자르가 모인 옛 시가지. 술탄아흐메트 · 시르케지 · 에미뇌뉘",ids:["dine1","dine5","wish-balik-ekmek","wish-sultanahmet-kofte","wish-lunch3","wish-lunch8","wish-lunch9","wish-lunch10","wish-lunch14","wish-dinner6","wish-dinner8"]},
+  {name:"베이올루·탁심",note:"탁심 광장 주변 번화가. 이스티클랄 · 지한기르 · 페라 · 니샨타시",ids:["dine2","dine4","wish-pide","wish-rec1","wish-iskender1867","wish-breakfast1","wish-breakfast4","wish-breakfast5","wish-lunch4","wish-lunch5","wish-lunch12","wish-lunch15","wish-dinner1","wish-dinner2","wish-dinner3"]},
+  {name:"갈라타·카라쾨이",note:"갈라타 탑 아래 골목과 카라쾨이 바닷가",ids:["dine3","wish-mehmet","wish-breakfast3","wish-lunch17","wish-dinner4","wish-dinner7"]},
+  {name:"카디쾨이",note:"아시아 쪽 시장 골목과 모다 해안. 페리로 건너간다",ids:["wish-lunch11","wish-kadikoy-midye","wish-dondurmaci-ali","wish-dinner5"]},
+  {name:"위스퀴다르·쿠즈군죽",note:"아시아 쪽 보스포루스 해안 동네",ids:[]},
+  {name:"베벡·에미르간",note:"보스포루스 해안을 따라 이어지는 동네. 베식타시 · 아르나부트쾨이 · 베벡",ids:["wish-breakfast2","wish-lunch1","wish-lunch6","wish-mangerie","wish-cup-joy"]},
+  {name:"발랏·페네르",note:"골든혼 옆 알록달록한 옛 동네",ids:["wish-lunch13","wish-old-balat"]},
+  {name:"첸겔쾨이",note:"아시아 쪽 보스포루스 해안 마을",ids:["wish-cengelkoy-kokorec"]},
+  {name:"에위프",note:"골든혼 안쪽, 에위프 술탄 모스크 주변",ids:["wish-eyup-guvec"]}
 ];
 const RESTAURANT_REGION_BY_ID=Object.fromEntries(RESTAURANT_REGION_GROUPS.flatMap(group=>group.ids.map(id=>[id,group.name])));
 ENTRIES.filter(e=>e.tab==="맛집").forEach(e=>{if(RESTAURANT_REGION_BY_ID[e.id])e.group=RESTAURANT_REGION_BY_ID[e.id]});
@@ -1309,7 +1309,7 @@ function rowHTML(e,o={}){
 function cardHTML(title,badge,summary,rows){return `<section class="fold-card"><div class="fold-head"><div class="fold-title"><h2>${esc(title)}</h2>${badge?`<span class="card-badge">${esc(badge)}</span>`:""}</div>${summary?`<p>${rich(summary)}</p>`:""}</div>${rows}</section>`}
 function groupCard(g){
   if(!g.items.length)return cardHTML(g.label,"",null,`<p class="empty">${esc(g.empty||"항목이 없습니다")}</p>`);
-  return cardHTML(g.label,g.items.length+g.unit,null,g.items.map(e=>rowHTML(e,{two:g.two})).join(""));
+  return cardHTML(g.label,g.items.length+g.unit,g.note||null,g.items.map(e=>rowHTML(e,{two:g.two})).join(""));
 }
 function pillsHTML(groups,cur){return `<div class="chip-tabs" role="tablist">${groups.map(g=>`<button type="button" role="tab" class="chip-tab${g.key===cur?" on":""}" data-sub="${esc(g.key)}" aria-selected="${g.key===cur}">${esc(g.label)}</button>`).join("")}</div>`}
 function currentSub(groups){const k=subByTab[tab];return groups.some(g=>g.key===k)?k:groups[0].key}
@@ -1327,7 +1327,8 @@ function viewPlaces(){
 
 /* ---------- 맛집: 동네별 식당 ---------- */
 const EAT_ITEMS=ENTRIES.filter(e=>e.tab==="맛집");
-const EAT_GROUPS=RESTAURANT_REGION_GROUPS.map(g=>({key:g.name,label:g.name,unit:"곳",items:EAT_ITEMS.filter(e=>e.group===g.name)})).filter(g=>g.items.length);
+/* 지역 카드 머리에는 지역 설명 한 줄 */
+const EAT_GROUPS=RESTAURANT_REGION_GROUPS.map(g=>({key:g.name,label:g.name,note:g.note,unit:"곳",items:EAT_ITEMS.filter(e=>e.group===g.name)})).filter(g=>g.items.length);
 function viewEat(){
   const cur=currentSub(EAT_GROUPS),terms=termsOf(queries["맛집"]);
   if(terms.length){const found=EAT_ITEMS.filter(e=>matches(e,terms));return{search:"맛집 검색",pills:pillsHTML(EAT_GROUPS,cur),body:found.length?groupCard({label:"검색 결과",unit:"곳",items:found}):cardHTML("검색 결과","",null,'<p class="empty">찾는 맛집이 없습니다</p>')}}
