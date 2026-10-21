@@ -10,8 +10,10 @@
 <style>
 /* 글자 크기는 4단계 토큰만 쓴다. 가장 큰 글자도 20px을 넘지 않는다 */
 :root{--fs-xl:20px;--fs-l:18px;--fs-m:16px;--fs-s:14px}
+/* ＋ 칸 폭: 날짜(10.25.일) 한 개가 들어가는 폭. 줄마다 ＋가 같은 세로줄에 선다 */
+:root{--side-w:64px}
 /* 색은 모두 토큰으로 두고 다크 모드 값을 따로 둔다. 강조색은 청록 하나 */
-:root{--font:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;--bg:#EDEFF2;--card:#FFFFFF;--subtle:#F3F4F6;--disclosure-bg:#EEF5F5;--text:#111827;--muted:#657080;--line:#DFE3E8;--edge:#DDE1E6;--accent:#0D6B6B;--accent-soft:#E1EFEF;--on-accent:#FFFFFF;--rule:#C3CAD2;--weekend:#C62828;--journey-line:#CDD3DA;--shadow:0 1px 2px rgba(16,24,40,.05),0 3px 10px rgba(16,24,40,.05);--radius:16px;--pad:20px;--stick:0px;color-scheme:light dark}
+:root{--font:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;--bg:#EDEFF2;--card:#FFFFFF;--subtle:#F3F4F6;--disclosure-bg:#EEF5F5;--text:#111827;--muted:#657080;--line:#DFE3E8;--edge:#DDE1E6;--accent:#0D6B6B;--accent-soft:#E1EFEF;--on-accent:#FFFFFF;--rule:#C3CAD2;--weekend:#C62828;--journey-line:#CDD3DA;--shadow:0 1px 2px rgba(16,24,40,.05),0 3px 10px rgba(16,24,40,.05);--radius:16px;--pad:20px;--stick:env(safe-area-inset-top,0px);color-scheme:light dark}
 @media(prefers-color-scheme:dark){:root{--bg:#0D1012;--card:#1A1F23;--subtle:#242B30;--disclosure-bg:#1F2C2D;--text:#EDF0F2;--muted:#A5ADB7;--line:#30373E;--edge:#2C3339;--accent:#4DB6B6;--accent-soft:#1D3536;--on-accent:#0D1012;--rule:#3E464E;--weekend:#FF7B72;--journey-line:#3A434B;--shadow:0 1px 2px rgba(0,0,0,.4)}}
 
 *,*::before,*::after{box-sizing:border-box}
@@ -25,7 +27,7 @@ a{color:var(--accent);text-decoration:none;font-weight:650}
 [hidden]{display:none!important}
 .hotel{color:var(--accent);font-weight:650}
 .shell{position:relative;width:100%;max-width:560px;min-height:calc(100dvh + 1px);margin:0 auto}
-.main{width:100%;padding:env(safe-area-inset-top,0px) 16px calc(100px + env(safe-area-inset-bottom,0px))}
+.main{width:100%;padding:env(safe-area-inset-top,0px) 16px calc(84px + env(safe-area-inset-bottom,0px))}
 
 /* 맨 위 앱 이름: 가운데, 양옆 가는 두 줄. 위에 고정하지 않는다 */
 .brand{display:flex;justify-content:center;padding:12px 0}
@@ -42,12 +44,10 @@ a{color:var(--accent);text-decoration:none;font-weight:650}
 .searchwrap button{flex:none;width:44px;height:44px;border:0;background:transparent;color:var(--muted);font-size:var(--fs-xl);line-height:1}
 input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
 
-/* 서브 탭(알약): 가로로 밀고, 스크롤해도 위에 붙어 있다 */
-.chip-tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:8px;margin:0 -16px 8px;padding:8px 16px;background:var(--bg);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.chip-tabs::-webkit-scrollbar{display:none}
+/* 서브 탭(알약): 여러 줄로 감싸 모두 한눈에 보인다. 가로로 밀지 않는다 */
+.chip-tabs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 16px}
 .chip-tab{flex:none;min-height:40px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--muted);font-size:var(--fs-s);font-weight:700;line-height:1.35;white-space:nowrap}
 .chip-tab.on{border-color:var(--accent-soft);background:var(--accent-soft);color:var(--accent)}
-.chip-sep{flex:none;width:1px;height:24px;background:var(--rule)}
 
 /* 카드 = 머리 + ＋ 줄 */
 .fold-card{overflow:hidden;overflow:clip;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
@@ -59,30 +59,39 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .fold-head p{margin:8px 0 0;color:var(--muted);font-size:var(--fs-s);line-height:1.6}
 .empty{margin:0;padding:24px var(--pad);color:var(--muted);text-align:center}
 
-.fold,.plain-row{border-top:1px solid var(--line)}
-.fold-head+.fold,.fold-head+.plain-row,.fold-list>:first-child{border-top:0}
+.fold,.check-row{border-top:1px solid var(--line)}
+.fold-head+.fold,.fold-head+.check-row,.fold-list>:first-child{border-top:0}
 .row-head{display:flex;align-items:center;gap:8px;width:100%;min-height:52px;padding:12px var(--pad);border:0;background:transparent;color:var(--text);text-align:left;line-height:1.4}
 /* 펼침 표시: ＋, 펼치면 － */
-.row-head::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(var(--muted),var(--muted)) center/12px 1.5px no-repeat,linear-gradient(var(--muted),var(--muted)) center/1.5px 12px no-repeat}
+.row-head::after{content:"";flex:none;width:12px;height:12px;margin-right:calc((var(--side-w) - 12px)/2);background:linear-gradient(var(--muted),var(--muted)) center/12px 1.5px no-repeat,linear-gradient(var(--muted),var(--muted)) center/1.5px 12px no-repeat}
 .open>.row-head::after{background-size:12px 1.5px,1.5px 0}
 
 .row-copy{display:flex;flex:1 1 auto;align-items:baseline;gap:8px;min-width:0}
 .row-title{flex:0 1 auto;min-width:0;font-weight:700}
 .row-sub{flex:1 1 0;min-width:0;overflow:hidden;color:var(--muted);font-size:var(--fs-s);font-weight:400;text-overflow:ellipsis;white-space:nowrap}
 .row-date{flex:none;color:var(--muted);font-size:var(--fs-s);font-variant-numeric:tabular-nums;white-space:nowrap}
-/* 첫 단계 ＋ 줄: 회색 요약은 잘리지 않게 둘째 줄, 날짜는 오른쪽 위, ＋(다른 화면으로 가는 줄은 ›)는 그 아래 */
+/* 첫 단계 ＋ 줄: 회색 요약은 잘리지 않게 둘째 줄, 날짜는 오른쪽 위, ＋(다른 화면으로 가는 줄은 ›)는 그 아래 가운데 */
 .row-head.two{align-items:stretch;gap:12px}
 .row-head.two::after{display:none}
 .row-head.two .row-copy{flex-direction:column;align-items:stretch;justify-content:center;gap:2px}
-.row-side{display:flex;flex:none;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px}
+.row-side{display:flex;flex:none;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:var(--side-w)}
 .row-side:has(.row-date){justify-content:space-between}
-.row-side .row-date{line-height:1.6}
+.row-side .row-date{line-height:1.6;text-align:center}
 .plus{display:block;flex:none;width:12px;height:12px;margin-bottom:4px;background:linear-gradient(var(--muted),var(--muted)) center/12px 1.5px no-repeat,linear-gradient(var(--muted),var(--muted)) center/1.5px 12px no-repeat}
 .row-side:not(:has(.row-date)) .plus{margin-bottom:0}
 .open>.row-head .plus{background-size:12px 1.5px,1.5px 0}
 .go-mark{color:var(--muted);font-size:var(--fs-l);line-height:1}
 .row-head.two .row-sub{flex:none;white-space:normal}
-.plain-row{padding:12px var(--pad);line-height:1.5}
+/* 준비 체크: 체크하면 이 기기에 저장된다 */
+.check-row{position:relative;display:flex;align-items:flex-start;gap:12px;padding:12px var(--pad);line-height:1.5;cursor:pointer}
+.check-row input{position:absolute;width:1px;height:1px;margin:0;opacity:0}
+.check-box{flex:none;width:22px;height:22px;margin-top:1px;border:1.5px solid var(--rule);border-radius:6px;background:var(--card)}
+.check-box::after{content:"";display:block;width:6px;height:11px;margin:2px auto 0;border:solid var(--on-accent);border-width:0 2px 2px 0;transform:rotate(45deg);opacity:0}
+.check-row input:checked+.check-box{border-color:var(--accent);background:var(--accent)}
+.check-row input:checked+.check-box::after{opacity:1}
+.check-row input:focus-visible+.check-box{outline:2px solid var(--accent);outline-offset:2px}
+.check-text{flex:1;min-width:0}
+.check-row.done .check-text{color:var(--muted);text-decoration:line-through}
 
 /* 펼친 표시는 어느 화면에서든 같다. 첫 단계: 제목 줄 배경 + 왼쪽 끝 강조색 막대 */
 .fold.open{box-shadow:inset 3px 0 0 var(--accent)}
@@ -165,8 +174,8 @@ tr:last-child td{border-bottom:0}
 .pn{display:flex;justify-content:space-between;margin-top:8px}
 .pn button{min-height:44px;padding:10px 4px;border:0;background:transparent;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
 
-/* 아래 고정 탭 바: 홈 바 영역을 피해 띄운다 */
-nav{position:fixed;z-index:20;left:50%;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:calc(min(100%,560px) - 24px);display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--edge);border-radius:22px;background:var(--card);box-shadow:var(--shadow);transform:translateX(-50%)}
+/* 아래 고정 탭 바: 바닥에 딱 붙인다. 둥근 모서리 없이 위쪽 가는 선 하나, 홈 바 영역만큼 안쪽 여백 */
+nav{position:fixed;z-index:20;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(5,1fr);padding:0 max(0px,calc((100% - 560px)/2)) env(safe-area-inset-bottom,0px);border-top:1px solid var(--line);background:var(--card)}
 nav button{display:flex;min-height:60px;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:0;background:transparent;color:var(--muted);font-size:var(--fs-s);font-weight:700}
 nav button svg{width:21px;height:21px}
 nav button.on{color:var(--accent)}
@@ -1361,7 +1370,6 @@ const SEARCH_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
 const WEEKDAYS="일월화수목금토",TRIP_YEAR=Number(DAYS[0].date.ym.split(".")[0]);
 const dotDate=md=>{const [m,d]=String(md).split("/").map(Number);return d?`${m}.${d}.${WEEKDAYS[new Date(TRIP_YEAR,m-1,d).getDay()]}`:String(md)};
 const dateList=dates=>String(dates||"").split("·").map(x=>x.trim()).filter(Boolean);
-const dateLabel=dates=>dateList(dates).map(dotDate).join(" · ");
 const DAY_BY_MD=Object.fromEntries(DAYS.map(d=>[d.find.split(" ")[0],d.id]));
 
 /* ---------- 펼친 내용 ---------- */
@@ -1396,8 +1404,9 @@ function entryBody(e){
 
 /* ---------- 카드 = 머리 + ＋ 줄 ---------- */
 function rowHTML(e,o={}){
-  const open=openRows.has(e.id),sub=o.sub!==undefined?o.sub:e.sub,date=o.date!==undefined?o.date:dateLabel(e.scheduleDates);
-  return `<div class="fold${open?" open":""}" data-fold="${esc(e.id)}"><button type="button" class="row-head two" data-row="${esc(e.id)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${rich(e.title)}</span>${sub?`<span class="row-sub">${esc(sub)}</span>`:""}</span><span class="row-side">${date?`<span class="row-date">${esc(date)}</span>`:""}<span class="plus" aria-hidden="true"></span></span></button><div class="fold-body"${open?"":" hidden"}>${open?entryBody(e):""}</div></div>`;
+  /* 날짜가 여럿이면 한 줄에 하나씩 쌓는다 */
+  const open=openRows.has(e.id),sub=o.sub!==undefined?o.sub:e.sub,dates=o.date!==undefined?[o.date].filter(Boolean):dateList(e.scheduleDates).map(dotDate);
+  return `<div class="fold${open?" open":""}" data-fold="${esc(e.id)}"><button type="button" class="row-head two" data-row="${esc(e.id)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${rich(e.title)}</span>${sub?`<span class="row-sub">${esc(sub)}</span>`:""}</span><span class="row-side">${dates.length?`<span class="row-date">${dates.map(esc).join("<br>")}</span>`:""}<span class="plus" aria-hidden="true"></span></span></button><div class="fold-body"${open?"":" hidden"}>${open?entryBody(e):""}</div></div>`;
 }
 function cardHTML(title,badge,summary,rows){return `<section class="fold-card"><div class="fold-head"><div class="fold-title"><h2>${esc(title)}</h2>${badge?`<span class="card-badge">${esc(badge)}</span>`:""}</div>${summary?`<p>${rich(summary)}</p>`:""}</div>${rows}</section>`}
 function groupCard(g){
@@ -1405,7 +1414,7 @@ function groupCard(g){
   const scheduled=g.items.filter(e=>e.scheduleDates).length;
   return cardHTML(g.label,g.items.length+g.unit,scheduled&&g.unit==="곳"?`일정에 들어간 곳 ${scheduled}곳`:null,g.items.map(e=>rowHTML(e,{two:g.two})).join(""));
 }
-function pillsHTML(groups,cur){return `<div class="chip-tabs" role="tablist">${groups.map(g=>`${g.sepBefore?'<span class="chip-sep" aria-hidden="true"></span>':""}<button type="button" role="tab" class="chip-tab${g.key===cur?" on":""}" data-sub="${esc(g.key)}" aria-selected="${g.key===cur}">${esc(g.label)}</button>`).join("")}</div>`}
+function pillsHTML(groups,cur){return `<div class="chip-tabs" role="tablist">${groups.map(g=>`<button type="button" role="tab" class="chip-tab${g.key===cur?" on":""}" data-sub="${esc(g.key)}" aria-selected="${g.key===cur}">${esc(g.label)}</button>`).join("")}</div>`}
 function currentSub(groups){const k=subByTab[tab];return groups.some(g=>g.key===k)?k:groups[0].key}
 const matches=(e,terms)=>terms.every(t=>e.search.includes(t));
 const termsOf=q=>q.trim().toLowerCase().split(/\s+/).filter(Boolean);
@@ -1419,30 +1428,29 @@ function viewPlaces(){
   return{search:"장소 검색",pills:pillsHTML(PLACE_GROUPS,cur),body:groupCard(PLACE_GROUPS.find(g=>g.key===cur))};
 }
 
-/* ---------- 맛집: 동네별 식당 + 음식 ---------- */
-const EAT_ITEMS=ENTRIES.filter(e=>e.tab==="맛집"),FOOD_ITEMS=ENTRIES.filter(e=>e.tab==="음식");
-const FOOD_GROUP_NAMES=["식사","길거리 간식","달콤한 것","마실 것"];
-const EAT_GROUPS=[
-  ...RESTAURANT_REGION_GROUPS.map(g=>({key:g.name,label:g.name,unit:"곳",two:true,items:EAT_ITEMS.filter(e=>e.group===g.name)})).filter(g=>g.items.length),
-  ...FOOD_GROUP_NAMES.map((name,i)=>({key:"food:"+name,label:name,unit:"가지",two:true,sepBefore:i===0,items:FOOD_ITEMS.filter(e=>e.group===name)})).filter(g=>g.items.length)
-];
+/* ---------- 맛집: 동네별 식당 ---------- */
+const EAT_ITEMS=ENTRIES.filter(e=>e.tab==="맛집");
+const EAT_GROUPS=RESTAURANT_REGION_GROUPS.map(g=>({key:g.name,label:g.name,unit:"곳",items:EAT_ITEMS.filter(e=>e.group===g.name)})).filter(g=>g.items.length);
 function viewEat(){
   const cur=currentSub(EAT_GROUPS),terms=termsOf(queries["맛집"]);
-  if(terms.length){
-    const rest=EAT_ITEMS.filter(e=>matches(e,terms)),foods=FOOD_ITEMS.filter(e=>matches(e,terms));
-    const body=(rest.length?groupCard({label:"맛집",unit:"곳",two:true,items:rest}):"")+(foods.length?groupCard({label:"음식",unit:"가지",two:true,items:foods}):"");
-    return{search:"맛집 · 음식 검색",pills:pillsHTML(EAT_GROUPS,cur),body:body||cardHTML("검색 결과","",null,'<p class="empty">찾는 맛집이나 음식이 없습니다</p>')};
-  }
-  return{search:"맛집 · 음식 검색",pills:pillsHTML(EAT_GROUPS,cur),body:groupCard(EAT_GROUPS.find(g=>g.key===cur))};
+  if(terms.length){const found=EAT_ITEMS.filter(e=>matches(e,terms));return{search:"맛집 검색",pills:pillsHTML(EAT_GROUPS,cur),body:found.length?groupCard({label:"검색 결과",unit:"곳",items:found}):cardHTML("검색 결과","",null,'<p class="empty">찾는 맛집이 없습니다</p>')}}
+  return{search:"맛집 검색",pills:pillsHTML(EAT_GROUPS,cur),body:groupCard(EAT_GROUPS.find(g=>g.key===cur))};
 }
 
-/* ---------- 정보: 여행 정보 · 여행 팁, 맨 위 검색은 전체를 찾는다 ---------- */
+/* ---------- 정보: 여행 정보 · 여행 팁 · 음식 종류, 맨 위 검색은 전체를 찾는다 ---------- */
 const INFO_IDS=["a1","a2","t5","a4","a5","a3"],TIP_IDS=["t0","t1","t2","t3","t8","t4","t6","t7"];
+const FOOD_ITEMS=ENTRIES.filter(e=>e.tab==="음식"),FOOD_GROUP_NAMES=["식사","길거리 간식","달콤한 것","마실 것"];
 const INFO_GROUPS=[
   {key:"info",label:"여행 정보",unit:"가지",items:INFO_IDS.map(id=>BY[id]).filter(Boolean)},
-  {key:"tips",label:"여행 팁",unit:"가지",items:TIP_IDS.map(id=>BY[id]).filter(Boolean)}
+  {key:"tips",label:"여행 팁",unit:"가지",items:TIP_IDS.map(id=>BY[id]).filter(Boolean)},
+  ...FOOD_GROUP_NAMES.map(name=>({key:"food:"+name,label:name,unit:"가지",items:FOOD_ITEMS.filter(e=>e.group===name)})).filter(g=>g.items.length)
 ];
-const PREP_ITEMS=CHECK.flatMap(p=>p.groups.flatMap(g=>g[1].map(text=>({person:p.person,when:g[0],text,search:[text,p.person,g[0]].join(" ").toLowerCase()}))));
+/* 준비 체크는 이 기기에 저장된다. id는 사람과 항목 글로 만들어 예전에 한 체크도 그대로 살아난다 */
+const CHECKS_KEY="ist.checks";
+let checks=loadJSON(CHECKS_KEY,{});if(!checks||typeof checks!=="object"||Array.isArray(checks))checks={};
+function stableCheckId(person,text){let h=2166136261;const input=person+"|"+text;for(let i=0;i<input.length;i++){h^=input.charCodeAt(i);h=Math.imul(h,16777619)}return "check-"+(h>>>0).toString(36)}
+const PREP_ITEMS=CHECK.flatMap(p=>p.groups.flatMap(g=>g[1].map(text=>({id:stableCheckId(p.idKey,text),person:p.person,when:g[0],text,search:[text,p.person,g[0]].join(" ").toLowerCase()}))));
+function checkRowHTML(id,text){const on=!!checks[id];return `<label class="check-row${on?" done":""}"><input type="checkbox" data-check="${esc(id)}"${on?" checked":""}><span class="check-box" aria-hidden="true"></span><span class="check-text">${rich(text)}</span></label>`}
 function searchAll(terms){
   const stopText=st=>[st.time,st.title,st.key,st.move,st.stay,st.route,st.afterMove].filter(Boolean).join(" ").toLowerCase();
   const scheduleRows=[];
@@ -1453,7 +1461,7 @@ function searchAll(terms){
   if(scheduleRows.length)cards.push(cardHTML("일정",scheduleRows.length+"건",null,scheduleRows.join("")));
   [["장소","곳"],["맛집","곳"],["음식","가지"],["팁","가지"],["이동","가지"]].forEach(([kind,unit])=>{const found=ENTRIES.filter(e=>e.tab===kind&&matches(e,terms));if(found.length)cards.push(cardHTML(kind==="팁"?"정보":kind,found.length+unit,null,found.map(e=>rowHTML(e,{two:kind==="맛집"||kind==="음식"})).join("")))});
   const prep=PREP_ITEMS.filter(x=>terms.every(t=>x.search.includes(t)));
-  if(prep.length)cards.push(cardHTML("준비",prep.length+"가지",null,prep.map(x=>`<div class="plain-row">${rich(x.text)}</div>`).join("")));
+  if(prep.length)cards.push(cardHTML("준비",prep.length+"가지",null,prep.map(x=>checkRowHTML(x.id,x.text)).join("")));
   return cards.length?cards.join(""):cardHTML("검색 결과","",null,'<p class="empty">찾는 내용이 없습니다</p>');
 }
 function viewInfo(){
@@ -1461,11 +1469,11 @@ function viewInfo(){
   return{search:"일정, 장소, 맛집, 정보 검색",pills:pillsHTML(INFO_GROUPS,cur),body:terms.length?searchAll(terms):groupCard(INFO_GROUPS.find(g=>g.key===cur))};
 }
 
-/* ---------- 준비: 체크 없이 목록만 ---------- */
+/* ---------- 준비: 사람별 체크리스트, 배지는 체크한 수/전체 ---------- */
 const PREP_GROUPS=CHECK.map((p,i)=>({key:"p"+i,label:p.person,person:p}));
 function viewPrep(){
   const cur=currentSub(PREP_GROUPS),p=PREP_GROUPS.find(g=>g.key===cur).person;
-  return{pills:pillsHTML(PREP_GROUPS,cur),body:p.groups.map((g,gi)=>cardHTML(g[0],g[1].length+"가지",gi===0?p.intro:null,g[1].map(text=>`<div class="plain-row">${rich(text)}</div>`).join(""))).join("")};
+  return{pills:pillsHTML(PREP_GROUPS,cur),body:p.groups.map((g,gi)=>{const ids=g[1].map(text=>stableCheckId(p.idKey,text)),done=ids.filter(id=>checks[id]).length;return cardHTML(g[0],done+"/"+ids.length,gi===0?p.intro:null,g[1].map((text,i)=>checkRowHTML(ids[i],text)).join(""))}).join("")};
 }
 
 /* ---------- 일정 ---------- */
@@ -1503,7 +1511,7 @@ function viewSchedule(){
 const VIEWS={"일정":viewSchedule,"장소":viewPlaces,"맛집":viewEat,"정보":viewInfo,"준비":viewPrep};
 const SUB_GROUPS={"장소":PLACE_GROUPS,"맛집":EAT_GROUPS,"정보":INFO_GROUPS,"준비":PREP_GROUPS};
 function viewKey(){return tab==="일정"?tab+":"+dayId:SUB_GROUPS[tab]?tab+":"+currentSub(SUB_GROUPS[tab])+(queries[tab]?":q":""):tab}
-function setStick(){const bar=main.querySelector(".chip-tabs");main.style.setProperty("--stick",bar?`calc(env(safe-area-inset-top, 0px) + ${bar.offsetHeight}px)`:"env(safe-area-inset-top, 0px)");main.querySelectorAll(".fold.open").forEach(measureRow)}
+function setStick(){main.querySelectorAll(".fold.open").forEach(measureRow)}
 /* 안쪽 펼친 제목은 바깥 제목 줄 높이만큼 아래에 붙는다 */
 function measureRow(box){const head=box.querySelector(":scope > .row-head");if(head)box.style.setProperty("--row-h",head.offsetHeight+"px")}
 function render(restore=true,storeScroll=true){
@@ -1536,11 +1544,11 @@ function toggleInner(button){
 function goTo(id){
   const e=BY[id];if(!e)return;
   let t,sub;
-  if(e.tab==="장소"){t="장소";sub=e.group}else if(e.tab==="맛집"){t="맛집";sub=e.group}else if(e.tab==="음식"){t="맛집";sub="food:"+e.group}else if(e.tab==="팁"){t="정보";sub=INFO_IDS.includes(id)?"info":"tips"}else return;
+  if(e.tab==="장소"){t="장소";sub=e.group}else if(e.tab==="맛집"){t="맛집";sub=e.group}else if(e.tab==="음식"){t="정보";sub="food:"+e.group}else if(e.tab==="팁"){t="정보";sub=INFO_IDS.includes(id)?"info":"tips"}else return;
   scrollByView[viewKey()]=Math.max(1,window.scrollY);
   tab=t;subByTab[t]=sub;saveJSON(SUB_KEY,subByTab);queries[t]="";qEl.value="";openRows.add(id);
   render(false,false);
-  requestAnimationFrame(()=>{const box=main.querySelector(`[data-fold="${CSS.escape(id)}"]`);if(!box)return;const bar=main.querySelector(".chip-tabs");window.scrollTo(0,box.getBoundingClientRect().top+window.scrollY-(bar?bar.offsetHeight:0))});
+  requestAnimationFrame(()=>{const box=main.querySelector(`[data-fold="${CSS.escape(id)}"]`);if(box)window.scrollTo(0,box.getBoundingClientRect().top+window.scrollY)});
 }
 document.addEventListener("click",ev=>{
   const row=ev.target.closest("[data-row]");if(row){toggleRow(row);return}
@@ -1551,6 +1559,7 @@ document.addEventListener("click",ev=>{
   const day=ev.target.closest("[data-day]");if(day){ev.preventDefault();scrollByView[viewKey()]=Math.max(1,window.scrollY);dayId=day.dataset.day;tab="일정";render(true,false);if(day.dataset.st!==undefined){const idx=Number(day.dataset.st);requestAnimationFrame(()=>requestAnimationFrame(()=>{const a=main.querySelectorAll("article.stop")[idx];if(!a)return;window.scrollTo(0,a.getBoundingClientRect().top+window.scrollY-12);a.classList.add("hit");setTimeout(()=>a.classList.remove("hit"),1600)}))}return}
   const t=ev.target.closest("[data-tab]");if(t){scrollByView[viewKey()]=Math.max(1,window.scrollY);tab=t.dataset.tab;render(true,false)}
 });
+document.addEventListener("change",ev=>{const c=ev.target.closest("input[data-check]");if(!c)return;if(c.checked)checks[c.dataset.check]=true;else delete checks[c.dataset.check];saveJSON(CHECKS_KEY,checks);renderBody()});
 qEl.addEventListener("input",()=>{queries[tab]=qEl.value;renderBody()});
 qx.addEventListener("click",()=>{qEl.value="";queries[tab]="";renderBody();qEl.focus()});
 window.addEventListener("scroll",()=>{if(window.scrollY<1)window.scrollTo(0,1);else scrollByView[viewKey()]=window.scrollY},{passive:true});
