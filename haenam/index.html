@@ -141,7 +141,9 @@ details .list,details .card{box-shadow:none}
 
 /* 카드 안쪽 여백 줄임 */
 .stop{padding:12px 14px 14px}
-.stop>figure.cover{margin:-12px -14px 12px}
+/* 사진은 시각·제목 줄 아래에 카드 폭 가득 */
+.stop>figure.cover{margin:0 -14px;border-radius:0}
+.stop .hd:has(+ figure.cover){border-bottom:0}
 .stop .hd{padding:0 0 9px}
 .stop .kv div{padding:6px 0}
 .stop .mb{margin-top:10px;gap:6px}
@@ -176,12 +178,11 @@ main>.section-title:first-child{margin-top:0}
 body .action-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .action-title>span:first-child{flex:1;min-width:0}
 
-/* 날 머리: 날짜 블록 + 그날 제목 (이스탄불과 같은 형식) */
-.dayhead{display:grid;grid-template-columns:66px minmax(0,1fr);gap:13px;align-items:center}
-.date-block{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:82px;padding:7px 5px;border-radius:10px;background:var(--surface);border:1px solid var(--edge);color:var(--accent);line-height:1}
-body .date-ym,body .date-week{font-size:var(--fs-s);font-weight:700}
-body .date-day{margin:5px 0 4px;font-size:var(--fs-xl);font-weight:800}
-.date-block.weekend{color:var(--chg-text)}
+/* 날 머리: 날짜·지역 한 줄 + 그날 제목 + 핵심 시각 */
+.dayhead{margin:4px 2px 18px}
+.dayhead .day-eyebrow{margin:0 0 6px;font-size:var(--fs-s);font-weight:700;color:var(--accent);letter-spacing:.02em}
+.dayhead h2{font-weight:700;letter-spacing:-.02em;line-height:1.3}
+.dayhead .day-sub{margin:6px 0 0;color:var(--sub)}
 
 /* 그날 이동 정보 (접는 상자) + 이전/다음 날 */
 details.travel{margin:16px 0 0}
@@ -512,8 +513,9 @@ function stopHTML(st){
   const rel = (st.rel || []).filter(id => BY[id]);
   const own = rel[0], see = st.chg ? rel : rel.slice(1);
   const actions = st.n ? `<span class="head-actions">${own ? `<button type="button" data-x="${own}" data-own="1" aria-label="설명 보기" aria-expanded="false">${actionIcon("info")}</button>${telBtn(BY[own].tel)}` : ""}${mapBtns(st.n, st.t)}</span>` : "";
-  return (st.move ? `<div class="transit"><span class="tchip">${moveIcon(st.move)}<span>${rich(st.move)}</span></span></div>` : "") + `<article class="stop">` + (st.img ? fig(st.img, "cover") : "") +
+  return (st.move ? `<div class="transit"><span class="tchip">${moveIcon(st.move)}<span>${rich(st.move)}</span></span></div>` : "") + `<article class="stop">` +
     `<div class="hd"><div class="hd-copy"><time class="tm">${esc(st.time)}</time><span class="hd-title"><h3${st.chg ? ' class="chg-title"' : ""}>${rich(st.title)}</h3></span></div>${actions}</div>` +
+    (st.img ? fig(st.img, "cover") : "") +
     (rows.length ? `<dl class="kv">${rows.map(r => `<div><dt>${r[0]}</dt><dd>${rich(r[1])}</dd></div>`).join("")}</dl>` : "") +
     (see.length ? `<div class="sl"><span class="lb">함께 보기</span>${see.map(id => `<button type="button" class="lk" data-x="${id}" aria-expanded="false">${esc(BY[id].title)}</button>`).join('<span class="sep">·</span>')}</div>` : "") +
     (rel.length ? `<div class="xp" hidden></div>` : "") +
@@ -528,9 +530,8 @@ function travelInfo(dayId){
 }
 function viewSchedule(dayId){
   const e = BY[dayId], i = DAYS.indexOf(e), prev = DAYS[i-1], next = DAYS[i+1];
-  const weekend = /토요일|일요일/.test(e.date.w) ? " weekend" : "";
   const dayLabel = d => `${+d.date.ym.slice(5)}/${+d.date.d} ${DAY_TAB[d.id]}`;
-  return `<div class="dayhead"><div class="date-block${weekend}"><span class="date-ym">${esc(e.date.ym)}</span><strong class="date-day">${+e.date.d}</strong><span class="date-week">${esc(e.date.w)}</span></div><div class="day-copy"><h2>${esc(e.title)}</h2><p>${esc(e.sub)}</p></div></div>` +
+  return `<header class="dayhead"><p class="day-eyebrow">${+e.date.ym.slice(5)}월 ${+e.date.d}일 ${esc(e.date.w)} · ${esc(e.pl)}</p><h2>${esc(e.title)}</h2><p class="day-sub">${esc(e.sub)}</p></header>` +
     `<div class="tl">${e.stops.map(stopHTML).join("")}</div>` +
     (e.notes.length ? `<aside class="notes"><h2>알아둘 것</h2><ul class="b">${e.notes.map(x => `<li>${rich(x)}</li>`).join("")}</ul></aside>` : "") +
     travelInfo(dayId) +
