@@ -22,7 +22,7 @@
 *,*::before,*::after{box-sizing:border-box}
 html{background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--text);font:var(--fs-m)/1.6 var(--font);-webkit-text-size-adjust:100%;word-break:keep-all;overflow-wrap:break-word}
-#app{max-width:560px;margin:0 auto;padding:calc(12px + env(safe-area-inset-top,0px)) 16px calc(88px + env(safe-area-inset-bottom,0px))}
+#app{max-width:720px;margin:0 auto;padding:calc(12px + env(safe-area-inset-top,0px)) 16px calc(88px + env(safe-area-inset-bottom,0px))}
 button{font:inherit;color:inherit}
 a{color:var(--accent)}
 img{display:block;width:100%}
@@ -119,7 +119,7 @@ td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
 .list{background:var(--surface);border-radius:12px;overflow:hidden}
 
 /* 하단 탭 */
-nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:560px;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px);z-index:10}
+nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:720px;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px);z-index:10}
 nav button{background:none;border:0;padding:8px 0 7px;color:var(--sub);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:var(--fs-s);cursor:pointer}
 nav button svg{width:22px;height:22px}
 nav button.on{color:var(--accent);font-weight:700}
