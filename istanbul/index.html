@@ -10,8 +10,8 @@
 <style>
 /* 글자 크기는 4단계 토큰만 쓴다. 가장 큰 글자도 20px을 넘지 않는다 */
 :root{--fs-xl:20px;--fs-l:18px;--fs-m:16px;--fs-s:14px}
-/* ＋ 칸 폭: 날짜(10.25.일) 한 개가 들어가는 폭. 줄마다 ＋가 같은 세로줄에 선다 */
-:root{--side-w:64px}
+/* ＋ 칸 폭: 날짜(10.25) 한 개가 들어가는 폭. 줄마다 ＋가 같은 세로줄에 선다 */
+:root{--side-w:42px}
 /* 색은 모두 토큰으로 두고 다크 모드 값을 따로 둔다. 강조색은 청록 하나 */
 :root{--font:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;--bg:#EDEFF2;--card:#FFFFFF;--subtle:#F3F4F6;--disclosure-bg:#EEF5F5;--text:#111827;--muted:#657080;--line:#DFE3E8;--edge:#DDE1E6;--accent:#0D6B6B;--accent-soft:#E1EFEF;--on-accent:#FFFFFF;--rule:#C3CAD2;--weekend:#C62828;--journey-line:#CDD3DA;--shadow:0 1px 2px rgba(16,24,40,.05),0 3px 10px rgba(16,24,40,.05);--radius:16px;--pad:20px;--stick:env(safe-area-inset-top,0px);color-scheme:light dark}
 @media(prefers-color-scheme:dark){:root{--bg:#0D1012;--card:#1A1F23;--subtle:#242B30;--disclosure-bg:#1F2C2D;--text:#EDF0F2;--muted:#A5ADB7;--line:#30373E;--edge:#2C3339;--accent:#4DB6B6;--accent-soft:#1D3536;--on-accent:#0D1012;--rule:#3E464E;--weekend:#FF7B72;--journey-line:#3A434B;--shadow:0 1px 2px rgba(0,0,0,.4)}}
@@ -148,7 +148,7 @@ tr:last-child td{border-bottom:0}
 .day-date{color:var(--accent);font-weight:700}
 .day-title{font-weight:700}
 .tl{display:flex;flex-direction:column}
-.stop{display:flex;flex-direction:column;gap:10px;padding:14px var(--pad);border:1px solid var(--edge);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);scroll-margin-top:16px}
+.stop{display:flex;flex-direction:column;gap:10px;overflow:hidden;overflow:clip;padding:14px var(--pad);border:1px solid var(--edge);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);scroll-margin-top:16px}
 .stop .hd{display:flex;align-items:baseline;gap:10px}
 .stop .tm{flex:none;color:var(--accent);font-size:var(--fs-l);font-weight:800;font-variant-numeric:tabular-nums}
 .stop h3{flex:1;min-width:0;margin:0;font-size:var(--fs-l);font-weight:700;line-height:1.4}
@@ -160,17 +160,21 @@ tr:last-child td{border-bottom:0}
 .stop-foot{display:flex;align-items:center;gap:8px;margin:-2px 0 -4px}
 .stay{flex:1;min-width:0;color:var(--muted);font-size:var(--fs-s)}
 .stop-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-left:auto}
-.stop-choose{margin:0 calc(-1*var(--pad)) -14px;border-top:1px solid var(--line)}
+.stop-choose{margin:4px calc(-1*var(--pad)) -14px;border-top:1px solid var(--line)}
+/* 일정 카드에 붙은 이동 정보: 카드 맨 아래, 카드 폭을 꽉 채운 ＋ 줄 */
+.stop-more{margin:4px calc(-1*var(--pad)) -14px;border-top:1px solid var(--line)}
+.stop:has(.stop-more) .stop-choose{margin-bottom:0}
+.stop:has(.stop-choose:not([hidden]))>.stop-more{margin-top:-10px}
 .stop-link{display:flex;align-items:baseline;gap:8px;width:100%;min-height:44px;padding:11px var(--pad);border:0;border-top:1px solid var(--line);background:transparent;color:var(--text);text-align:left}
 .stop-link:first-child{border-top:0}
 .stop-link strong{flex:1;min-width:0;font-weight:700}
 .stop-link span{flex:none;color:var(--muted);font-size:var(--fs-s)}
 .stop.hit{outline:2px solid var(--accent);outline-offset:2px}
-.journey{display:flex;align-items:stretch;gap:14px;padding:0 0 0 30px}
+/* 이동 글: 첫 줄 출발 시각, 둘째 줄부터 회색 설명. 오른쪽도 왼쪽 들여쓰기(30px + 점선 2px + 14px)만큼 비운다 */
+.journey{display:flex;align-items:stretch;gap:14px;padding:0 46px 0 30px}
 .journey::before{content:"";flex:none;border-left:2px dashed var(--journey-line)}
 .journey p{margin:0;padding:14px 0;color:var(--muted);line-height:1.5}
-.journey strong{color:var(--text)}
-.day-extra{margin-top:16px}
+.journey strong{display:block;color:var(--text)}
 .pn{display:flex;justify-content:space-between;margin-top:8px}
 .pn button{min-height:44px;padding:10px 4px;border:0;background:transparent;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
 
@@ -252,8 +256,8 @@ const day = (id, ym, d, w, title, sub, stops, _notes, cost) => add({
 const HQ = "Sheraton Istanbul City Center";
 
 day("d1024","2026.10","24","토요일","출국과 도착","09:30 수원역 출발 · 4100번 공항리무진 T2 직통",[
-  s("11:00~11:20 예상","인천공항 제2터미널",{move:"4100번 (01·02번)",moveAt:"09:30 수원역",route:"수원역 → 인천공항 제2터미널 직통",stay:"출국 수속·탑승 준비 약 2시간 20분~2시간 40분",departAt:"13:40 출발",key:"버스타고 예매 완료. 09:30 수원역 출발, 좌석 01·02번(맨 앞 2인석) 2매로 은영·아인이 탑승한다. 성인 15,000원 × 2. T2에는 약 11:00~11:20 도착 예상으로, KE955 13:40 출발 전 권장 도착 시각인 11:40보다 여유가 있다.",afterMove:"대한항공 KE955 · 약 12시간",photos:[{src:I[29],alt:"인천국제공항 제2터미널 출국장 대기 공간"}],q:"Incheon International Airport Terminal 2"}),
-  s("19:40","이스탄불 도착",{departAt:"21:00 출발",stay:"입국 수속 약 1시간 20분",key:"입국 심사 → 짐 → 세관. M11 배차는 최대 20분, 가이레테페 환승 통로는 8~12분으로 잡는다. 탁심 도착 예정 시각이 탁심발 셔틀 막차(21:30) 이후라 이 구간은 택시를 이용한다. 도착이 늦어지거나 짐이 많으면 공항에서 바로 택시(약 40~50분)를 타는 것도 방법이다. 메트로보다 30분 이상 빠르고 비용은 몇만 원 더 든다.",afterMove:"공항역 도보 10~15분 → M11 30분 → 가이레테페 환승 8~12분 → M2 탁심 7분 → 택시 5~10분 · 총 75~110분",photos:[MEDIA.trans02,MEDIA.trans01],q:"Istanbul Airport",rel:["r6"]}),
+  s("11:00~11:20 예상","인천공항 제2터미널",{route:"09:30 수원역 출발 · 4100번 공항리무진으로 제2터미널 직통",stay:"출국 수속·탑승 준비 약 2시간 20분~2시간 40분",departAt:"13:40 출발",key:"버스타고 예매 완료. 09:30 수원역 출발, 좌석 01·02번(맨 앞 2인석) 2매로 은영·아인이 탑승한다. 성인 15,000원 × 2. T2에는 약 11:00~11:20 도착 예상으로, KE955 13:40 출발 전 권장 도착 시각인 11:40보다 여유가 있다.",afterMove:"대한항공 KE955 · 약 12시간",photos:[{src:I[29],alt:"인천국제공항 제2터미널 출국장 대기 공간"}],q:"Incheon International Airport Terminal 2",rel:["r5"]}),
+  s("19:40","이스탄불 도착",{departAt:"21:00 출발",stay:"입국 수속 약 1시간 20분",key:"입국 심사 → 짐 → 세관. M11 배차는 최대 20분, 가이레테페 환승 통로는 8~12분으로 잡는다. 탁심 도착 예정 시각이 탁심발 셔틀 막차(21:30) 이후라 이 구간은 택시를 이용한다. 도착이 늦어지거나 짐이 많으면 공항에서 바로 택시(약 40~50분)를 타는 것도 방법이다. 메트로보다 30분 이상 빠르고 비용은 몇만 원 더 든다.",afterMove:"공항역 도보 10~15분 → M11 30분 → 가이레테페 환승 8~12분 → M2 탁심 7분 → 택시 5~10분 · 총 75~110분",photos:[MEDIA.trans02,MEDIA.trans01],q:"Istanbul Airport",rel:["r1","r6","r2"]}),
   s("22:30",`${HOTEL} 도착`,{stay:"체크인",key:"입국 수속이나 환승이 지연되면 더 늦어질 수 있다. 로비에서 남편과 만난 뒤 쉰다.",photos:[{src:I[30],alt:"쉐라톤 이스탄불 시티센터의 프런트 데스크와 로비"}],q:HQ,rel:["a2"]})
 ],[],"교통비만");
 
@@ -271,7 +275,7 @@ day("d1025","2026.10","25","일요일","베이올루와 쥐쿠르주마","09:00 
 
 day("d1026","2026.10","26","월요일","바예지트 일대","10:30 쉴레이마니예 모스크 · 13:50 Lezzet-i Şark 점심",[
   s("08:30","호텔 아침",{stay:"1시간",key:"어깨와 무릎을 가리는 옷과 스카프를 챙긴다. 모스크의 복장 규칙이기 때문이다."}),
-  s("10:30","쉴레이마니예 모스크",{move:"호텔→탁심 도보 15~20분 → M2 베즈네질레르 7분 → 오르막 도보 12분 · 열차 대기 포함 총 40~55분",moveAt:"09:30",stay:"1시간",key:"호텔 셔틀은 10:00부터 운행해 09:30 출발에는 탈 수 없어 도보와 지하철로 간다. 미마르 시난 설계 · 큰 돔과 4개의 미나렛을 함께 본다.",photos:[{src:I[12],alt:"골든혼 너머로 보이는 쉴레이마니예 모스크의 큰 돔과 네 개 미나렛"}],q:"Süleymaniye Camii",rel:["m1","s10"]}),
+  s("10:30","쉴레이마니예 모스크",{move:"호텔→탁심 도보 15~20분 → M2 베즈네질레르 7분 → 오르막 도보 12분 · 열차 대기 포함 총 40~55분",moveAt:"09:30",stay:"1시간",key:"호텔 셔틀은 10:00부터 운행해 09:30 출발에는 탈 수 없어 도보와 지하철로 간다. 미마르 시난 설계 · 큰 돔과 4개의 미나렛을 함께 본다.",photos:[{src:I[12],alt:"골든혼 너머로 보이는 쉴레이마니예 모스크의 큰 돔과 네 개 미나렛"}],q:"Süleymaniye Camii",rel:["m1","s10","r3"]}),
   s("11:50","그랜드 바자르(큰 지붕 시장)",{move:"쉴레이마니예에서 도보 14~18분 · 약 1.2km",moveAt:"11:30",stay:"1시간 40분",key:"시장 중간에 쉰다.",q:"Kapalıçarşı",rel:["m3"]}),
   s("13:50","점심: Lezzet-i Şark Antep Sofrası",{move:"그랜드 바자르에서 이집션 바자르 방향 내리막 도보 12~15분 · 약 1km · Hasırcılar Cd. No:38",moveAt:"13:35",stay:"1시간",key:"평점 4.4 · 베이란 수프·아다나 케밥·퀴네페",photos:[{src:I[33],alt:"Lezzet-i Şark Antep Sofrası의 케밥과 불구르 요리"}],q:"Lezzet-i Şark Antep Sofrası, Hasırcılar Cd. No:38, Fatih",placeId:"dine5",rel:["dine5"]}),
   s("14:55","이집션 바자르(향신료 시장)",{move:"식당에서 도보 2~3분 · 약 120m",moveAt:"14:50",stay:"1시간 25분",q:"Mısır Çarşısı",rel:["m4"]}),
@@ -338,7 +342,7 @@ day("d1031","2026.10","31","토요일","에위프의 하루","10:30 에위프 �
 ],[],"교통비와 점심·차 비용");
 
 day("d1101","2026.11","01","일요일","이스탄불 클래식 투어","08:25 독일분수 집합 · 바우처 재확인",[
-  s("08:15","히포드롬 독일분수 집합 대기",{move:"일요일 이른 시간 택시 20~30분 · 08:25 집합보다 10분 먼저 도착",moveAt:"07:40",stay:"집합 시각과 장소는 예약 바우처에서 재확인",key:"호텔 셔틀은 10:00부터 운행해 07:40 출발에는 탈 수 없어 택시로 간다. 나자르투어 ‘아야소피아 가이드 동반입장, 이스탄불 클래식 투어’다. 상품은 한국어로 약 7시간 진행되며 최소 인원은 10명이다. 대중교통 이용 횟수와 취소 조건은 바우처를 따른다. 늦지 않도록 10분 정도 여유를 둔다.",q:"German Fountain Istanbul",placeId:"s3",rel:["s3"]}),
+  s("08:15","히포드롬 독일분수 집합 대기",{route:"07:40 호텔 출발 · 일요일 이른 시간 택시 20~30분 · 08:25 집합보다 10분 먼저 도착",stay:"집합 시각과 장소는 예약 바우처에서 재확인",key:"호텔 셔틀은 10:00부터 운행해 07:40 출발에는 탈 수 없어 택시로 간다. 나자르투어 ‘아야소피아 가이드 동반입장, 이스탄불 클래식 투어’다. 상품은 한국어로 약 7시간 진행되며 최소 인원은 10명이다. 대중교통 이용 횟수와 취소 조건은 바우처를 따른다. 늦지 않도록 10분 정도 여유를 둔다.",q:"German Fountain Istanbul",placeId:"s3",rel:["s3"]}),
   s("투어 중","블루 모스크",{move:"독일분수에서 가이드와 도보 3~5분",moveAt:"집합 후",stay:"가이드 동반 내부 관람",key:"입장은 무료다. 예배 시간에는 관광객 입장이 제한될 수 있다.",q:"Sultanahmet Camii",rel:["m2"]}),
   s("투어 중","히포드롬 광장(옛 전차 경주장)",{move:"블루 모스크 앞 광장까지 도보 2~3분",moveAt:"블루 모스크 관람 후",stay:"야외 해설",q:"Sultanahmet Meydanı",rel:["s3"]}),
   s("투어 중","아야소피아",{move:"히포드롬에서 가이드와 도보 5~8분",moveAt:"히포드롬 해설 후",stay:"가이드 동반 내부 관람",key:"관광객용 상부 갤러리에 들어간다. 입장료 25유로는 투어비와 별도다.",q:"Ayasofya",rel:["x1"]}),
@@ -359,7 +363,7 @@ day("d1102","2026.11","02","월요일","첸겔쾨이 선택일","날씨·체력 
 
 day("d1103","2026.11","03","화요일","술탄아흐메트와 아라스타 바자르","10:30 터키 이슬람 미술관 · 11:30 아라스타 바자르 · 12:45 자 케밥",[
   s("08:30","호텔 아침",{stay:"45분",key:"11/1 투어에서 블루 모스크를 보았으므로 이날은 맞은편 터키 이슬람 미술관을 본다."}),
-  s("10:30","터키 이슬람 미술관",{move:"호텔→탁심 도보 15~20분 → M2 베즈네질레르 7분 → 히포드롬까지 도보 10~12분 · 열차 대기 포함 40~55분",moveAt:"09:20",stay:"45분",key:"블루 모스크 맞은편 이브라힘 파샤 궁전에서 융단·캘리그라피·목조 코란 거치대와 앤틱 카펫을 본다. 외국인 1인 17유로.",photos:[{src:I[48],alt:"히포드롬 광장에서 본 이브라힘 파샤 궁전의 터키 이슬람 미술관 외관"}],q:"Türk ve İslam Eserleri Müzesi",rel:["x6"]}),
+  s("10:30","터키 이슬람 미술관",{move:"호텔→탁심 도보 15~20분 → M2 베즈네질레르 7분 → 히포드롬까지 도보 10~12분 · 열차 대기 포함 40~55분",moveAt:"09:20",stay:"45분",key:"블루 모스크 맞은편 이브라힘 파샤 궁전에서 융단·캘리그라피·목조 코란 거치대와 앤틱 카펫을 본다. 외국인 1인 17유로.",photos:[{src:I[48],alt:"히포드롬 광장에서 본 이브라힘 파샤 궁전의 터키 이슬람 미술관 외관"}],q:"Türk ve İslam Eserleri Müzesi",rel:["x6","r3"]}),
   s("11:30","Arasta Bazaar",{move:"미술관에서 블루 모스크 뒤편까지 도보 5~7분",moveAt:"11:15",stay:"45분",key:"카펫·킬림, 도자기, 텍스타일과 수공예품을 천천히 둘러본다. 그랜드 바자르보다 한적하고 정찰제 분위기다.",photos:[{src:I[49],alt:"양옆으로 카펫과 수공예품 가게가 이어진 아라스타 바자르 골목"}],q:"Arasta Bazaar",map:"https://www.google.com/maps/place/아라스타+바자르/@41.0053286,28.9782023,17z",rel:["shop5"]}),
   s("12:45","점심: 셰흐자데 자 케밥",{move:"술탄아흐메트 T1→시르케지 5분 → 식당 도보 5분 · 대기 포함 15~30분",moveAt:"12:15",stay:"1시간",key:"에르주룸식 양고기 자 케밥을 먹는다. 월~토 10:00~22:30 · 일 11:00~22:00 영업.",photos:[{src:I[50],alt:"작은 꼬치에 끼운 에르주룸식 양고기 자 케밥"}],q:"Şehzade Cağ Kebap",map:"https://maps.app.goo.gl/6G76PUyHREKwU9p38",rel:["dine1","f23"]}),
   s("14:00","귈하네 공원 산책",{move:"셰흐자데 자 케밥에서 공원 입구까지 도보 5분",moveAt:"13:55",stay:"1시간 30분",q:"Gülhane Parkı",rel:["p2"]}),
@@ -1341,7 +1345,6 @@ const TABS=[
 {k:"정보",svg:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/>'},
 {k:"준비",svg:'<rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 12l3 3 5-6"/>'}
 ];
-const travelByDay={d1024:["r1","r6","r2","r5"],d1026:["r3"],d1103:["r3"],d1104:["r4","r5"]};
 const main=document.getElementById("main"),nav=document.getElementById("nav"),searchPanel=document.getElementById("search-panel"),qEl=document.getElementById("q"),qx=document.getElementById("qx");
 function blockSearchText(b){if(b.t==="photo"||b.t==="links"||b.t==="actions")return "";if(b.t==="stops")return b.i.map(x=>[x.time,x.title,x.move,x.key].filter(Boolean).join(" ")).join(" ");if(b.t==="ul"||b.t==="ol")return [b.h,...b.i].filter(Boolean).join(" ");if(b.t==="p"||b.t==="order")return [b.h,b.x].filter(Boolean).join(" ");if(b.t==="rows")return [b.h,...b.i.flat()].filter(Boolean).join(" ");if(b.t==="table")return [b.h,...(b.head||[]),...b.i.flat()].filter(Boolean).join(" ");return ""}
 ENTRIES.forEach(e=>{e.search=[e.title,e.local,e.sub,e.find,e.cost,...e.blocks.map(blockSearchText)].filter(Boolean).join(" ").toLowerCase()});
@@ -1366,9 +1369,8 @@ const PHONE_ICON=svgIcon('<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.
 const CAL_ICON=svgIcon('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>');
 const SEARCH_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>';
 
-/* ---------- 날짜: 연도는 빼고 10.25.일처럼 (월.일.요일) ---------- */
-const WEEKDAYS="일월화수목금토",TRIP_YEAR=Number(DAYS[0].date.ym.split(".")[0]);
-const dotDate=md=>{const [m,d]=String(md).split("/").map(Number);return d?`${m}.${d}.${WEEKDAYS[new Date(TRIP_YEAR,m-1,d).getDay()]}`:String(md)};
+/* ---------- 날짜: 연도와 요일은 빼고 10.25처럼 (월.일) ---------- */
+const dotDate=md=>{const [m,d]=String(md).split("/").map(Number);return d?`${m}.${d}`:String(md)};
 const dateList=dates=>String(dates||"").split("·").map(x=>x.trim()).filter(Boolean);
 const DAY_BY_MD=Object.fromEntries(DAYS.map(d=>[d.find.split(" ")[0],d.id]));
 
@@ -1493,18 +1495,20 @@ function stopHTML(stop,si){
   const icons=links.map(l=>l.ids.length===1?`<button type="button" class="icon-btn" data-go="${esc(l.ids[0])}" aria-label="${esc(l.label)}: ${esc(BY[l.ids[0]].title)}" title="${esc(l.label)}">${l.icon}</button>`:`<button type="button" class="icon-btn" data-choose="${si}-${l.kind}" aria-expanded="false" aria-label="${esc(l.label)} ${l.ids.length}곳" title="${esc(l.label)}">${l.icon}</button>`);
   if(stop.q)icons.push(`<a class="icon-btn" href="${esc(stop.map||gmap(stop.q))}" target="_blank" rel="noopener noreferrer" aria-label="지도" title="지도">${MAP_ICON}</a>`);
   const choosers=links.filter(l=>l.ids.length>1).map(l=>`<div class="stop-choose" data-choose-list="${si}-${l.kind}" hidden>${l.ids.map(id=>`<button type="button" class="stop-link" data-go="${esc(id)}"><strong>${esc(BY[id].title)}</strong><span>${esc(l.label)} ›</span></button>`).join("")}</div>`).join("");
+  /* 이 카드와 이어지는 이동 정보는 카드 맨 아래 ＋ 줄로 붙인다 */
+  const more=(stop.rel||[]).map(id=>BY[id]).filter(e=>e&&e.tab==="이동");
   const foot=stay||icons.length?`<div class="stop-foot"><span class="stay">${stay?"체류 "+esc(stay):""}</span>${icons.length?`<span class="stop-actions">${icons.join("")}</span>`:""}</div>`:"";
-  return `<article class="stop"><div class="hd"><time class="tm">${esc(shortTime(stop.time))}</time><h3>${rich(stop.title)}</h3></div>${stop.key?`<p class="stop-key">${rich(stop.key)}</p>`:""}${stop.route?`<p class="stop-route">가는 길 · ${rich(stop.route)}</p>`:""}${media}${foot}${choosers}</article>`;
+  return `<article class="stop"><div class="hd"><time class="tm">${esc(shortTime(stop.time))}</time><h3>${rich(stop.title)}</h3></div>${stop.key?`<p class="stop-key">${rich(stop.key)}</p>`:""}${stop.route?`<p class="stop-route">가는 길 · ${rich(stop.route)}</p>`:""}${media}${foot}${choosers}${more.length?`<div class="stop-more fold-list">${more.map(e=>rowHTML(e,{date:""})).join("")}</div>`:""}</article>`;
 }
 const journeyHTML=html=>`<div class="journey"><p>${html}</p></div>`;
-function journey(stop){if(!stop.move)return "";if(stop.moveOnly)return journeyHTML(rich(stop.move));const at=String(stop.moveAt||"").replace(/\s*출발.*$/,"");return journeyHTML(`${at?`<strong>${esc(at)} 출발</strong> · `:""}${rich(stop.move)}`)}
-function stopsHTML(stops){return `<div class="tl">${stops.map((s,i)=>`${journey(s)}${stopHTML(s,i)}${s.afterMove&&i<stops.length-1?journeyHTML(`<strong>${esc(String(s.departAt||s.time).replace(/\s*출발.*$/,""))} 출발</strong> · ${rich(s.afterMove)}`):""}`).join("")}</div>`}
+function journey(stop){if(!stop.move)return "";if(stop.moveOnly)return journeyHTML(rich(stop.move));const at=String(stop.moveAt||"").replace(/\s*출발.*$/,"");return journeyHTML(`${at?`<strong>${esc(at)} 출발</strong>`:""}${rich(stop.move)}`)}
+/* 하루는 항상 카드로 시작한다. 첫 카드 위에는 이동 글을 두지 않는다 */
+function stopsHTML(stops){return `<div class="tl">${stops.map((s,i)=>`${i?journey(s):""}${stopHTML(s,i)}${s.afterMove&&i<stops.length-1?journeyHTML(`<strong>${esc(String(s.departAt||s.time).replace(/\s*출발.*$/,""))} 출발</strong>${rich(s.afterMove)}`):""}`).join("")}</div>`}
 function dayStrip(){return `<div class="day-strip" role="tablist" aria-label="날짜 바로 선택">${DAYS.map(d=>`<button type="button" role="tab" aria-selected="${d.id===dayId}" class="${d.id===dayId?"on ":""}${/토요일|일요일/.test(d.date.w)?"weekend":""}" data-day="${d.id}"><span class="day-weekday">${esc(d.date.w.slice(0,1))}</span><strong class="day-number">${Number(d.date.d)}</strong></button>`).join("")}</div>`}
-function travelCard(id){const items=(travelByDay[id]||[]).map(x=>BY[x]).filter(Boolean);return items.length?`<div class="day-extra">${cardHTML("이동 정보",items.length+"가지",null,items.map(e=>rowHTML(e,{date:""})).join(""))}</div>`:""}
 function viewSchedule(){
   const e=BY[dayId]||DAYS[0],i=DAYS.indexOf(e),prev=DAYS[i-1],next=DAYS[i+1],month=Number(e.date.ym.split(".")[1]);
   const md=d=>dotDate(d.find.split(" ")[0]);
-  return{body:dayStrip()+`<div class="dayhead"><p class="day-date">${month}월 ${Number(e.date.d)}일 ${esc(e.date.w)}</p><p class="day-title">${esc(e.title)}</p></div>`+stopsHTML(e.blocks[0].i)+travelCard(e.id)+`<div class="pn">${prev?`<button type="button" data-day="${prev.id}">‹ ${esc(md(prev))}</button>`:"<span></span>"}${next?`<button type="button" data-day="${next.id}">${esc(md(next))} ›</button>`:"<span></span>"}</div>`};
+  return{body:dayStrip()+`<div class="dayhead"><p class="day-date">${month}월 ${Number(e.date.d)}일 ${esc(e.date.w)}</p><p class="day-title">${esc(e.title)}</p></div>`+stopsHTML(e.blocks[0].i)+`<div class="pn">${prev?`<button type="button" data-day="${prev.id}">‹ ${esc(md(prev))}</button>`:"<span></span>"}${next?`<button type="button" data-day="${next.id}">${esc(md(next))} ›</button>`:"<span></span>"}</div>`};
 }
 
 /* ---------- 그리기 ---------- */
