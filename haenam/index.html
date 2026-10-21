@@ -31,7 +31,7 @@ img{display:block;width:100%}
 h2{font-size:var(--fs-m);font-weight:700;margin:24px 0 8px}
 
 .dayhead{margin:6px 0 14px}
-.dayhead h2{font-size:var(--fs-xl);font-weight:800;line-height:1.35;margin:0}
+.dayhead h2{font-size:var(--fs-m);font-weight:700;line-height:1.4;margin:0}
 .dayhead p{font-size:var(--fs-m);color:var(--sub);margin:4px 0 0}
 
 /* 일정 카드 */
@@ -43,7 +43,7 @@ h2{font-size:var(--fs-m);font-weight:700;margin:24px 0 8px}
 .tchip svg{flex:none;width:17px;height:17px;color:var(--accent)}
 .stop>figure.cover{margin:-16px -16px 14px;border-radius:15px 15px 0 0}
 .stop{padding:16px 16px 18px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
-.tm{display:flex;align-items:baseline;gap:8px;font-size:var(--fs-xl);font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;margin:0 0 12px;padding:0 0 12px;border-bottom:1px solid var(--line)}
+.tm{display:flex;align-items:baseline;gap:8px;font-size:var(--fs-m);font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;margin:0 0 12px;padding:0 0 12px;border-bottom:1px solid var(--line)}
 .tm small{font-size:var(--fs-m);font-weight:700;color:var(--chg-text)}
 .stop h3{font-size:var(--fs-m);font-weight:700;line-height:1.4;margin:0}
 .stop .flag{display:block;font-size:var(--fs-m);font-weight:700;color:var(--top-text);margin-top:2px}
@@ -93,7 +93,7 @@ details .body>figure:first-child{margin-top:14px}
 .tkh h3{margin:0;font-weight:700}
 .tkh span{color:var(--sub);flex:none}
 .tkr{display:flex;align-items:baseline;gap:12px;padding:3px 0}
-.tkr time{font-size:var(--fs-xl);font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent);width:52px;flex:none}
+.tkr time{font-size:var(--fs-m);font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent);width:52px;flex:none}
 .tkn{margin:4px 0 0;color:var(--sub)}
 .card+.card{margin-top:10px}
 .gh{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
@@ -151,9 +151,8 @@ details .list,details .card{box-shadow:none}
 .stop .sl{margin-top:8px;line-height:1.7}
 .stop .xp{margin-top:10px}
 
-/* 글자 크기: 24(그날 제목·일정 시각) · 18(그룹 제목) · 16(본문) · 14(하단 탭·날짜 라벨) */
+/* 글자 크기: 18(그룹 제목) · 16(본문·날 머리·시각) · 14(하단 탭) */
 body *{font-size:var(--fs-m)}
-.dayhead h2,.tm,.tkr time{font-size:var(--fs-xl)}
 nav button,nav button span{font-size:var(--fs-s)}
 .kv dt{flex:0 0 44px}
 .rows dt{flex:0 0 80px}
@@ -165,8 +164,8 @@ nav button,nav button span{font-size:var(--fs-s)}
 .tkh h3{min-width:0}
 .tkh span{white-space:nowrap}
 .tkb{display:grid}
-.tkr{display:grid;grid-template-columns:76px minmax(0,1fr);align-items:baseline;gap:10px;padding:5px 0}
-.tkr time{width:auto;font-size:var(--fs-xl);line-height:1.3;white-space:nowrap}
+.tkr{display:grid;grid-template-columns:52px minmax(0,1fr);align-items:baseline;gap:10px;padding:5px 0}
+.tkr time{width:auto;line-height:1.5;white-space:nowrap}
 .tkr span{min-width:0;font-size:var(--fs-m)}
 .tkn{font-size:var(--fs-m);line-height:1.5}
 
@@ -178,11 +177,9 @@ main>.section-title:first-child{margin-top:0}
 body .action-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .action-title>span:first-child{flex:1;min-width:0}
 
-/* 날 머리: 날짜·지역 한 줄 + 그날 제목 + 핵심 시각 */
-.dayhead{margin:4px 2px 18px}
-.dayhead .day-eyebrow{margin:0 0 6px;font-size:var(--fs-s);font-weight:700;color:var(--accent);letter-spacing:.02em}
-.dayhead h2{font-weight:700;letter-spacing:-.02em;line-height:1.3}
-.dayhead .day-sub{margin:6px 0 0;color:var(--sub)}
+/* 날 머리: 날짜·지역과 그날 제목 두 줄만, 가운데 정렬, 16px */
+.dayhead{margin:6px 0 18px;text-align:center}
+.dayhead .day-eyebrow{margin:0 0 2px;font-weight:600;color:var(--accent)}
 
 /* 그날 이동 정보 (접는 상자) + 이전/다음 날 */
 details.travel{margin:16px 0 0}
@@ -531,7 +528,7 @@ function travelInfo(dayId){
 function viewSchedule(dayId){
   const e = BY[dayId], i = DAYS.indexOf(e), prev = DAYS[i-1], next = DAYS[i+1];
   const dayLabel = d => `${+d.date.ym.slice(5)}/${+d.date.d} ${DAY_TAB[d.id]}`;
-  return `<header class="dayhead"><p class="day-eyebrow">${+e.date.ym.slice(5)}월 ${+e.date.d}일 ${esc(e.date.w)} · ${esc(e.pl)}</p><h2>${esc(e.title)}</h2><p class="day-sub">${esc(e.sub)}</p></header>` +
+  return `<header class="dayhead"><p class="day-eyebrow">${+e.date.ym.slice(5)}월 ${+e.date.d}일 ${esc(e.date.w)} · ${esc(e.pl)}</p><h2>${esc(e.title)}</h2></header>` +
     `<div class="tl">${e.stops.map(stopHTML).join("")}</div>` +
     (e.notes.length ? `<aside class="notes"><h2>알아둘 것</h2><ul class="b">${e.notes.map(x => `<li>${rich(x)}</li>`).join("")}</ul></aside>` : "") +
     travelInfo(dayId) +
