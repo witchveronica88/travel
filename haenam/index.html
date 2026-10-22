@@ -203,7 +203,10 @@ nav button.on{color:var(--accent)}
 .note-row{padding:12px var(--pad);border-top:1px solid var(--line);line-height:1.5}
 .fold-head+.note-row{border-top:0}
 .day-extra{margin-top:16px}
-/* 해남은 탭이 셋(첫째날 · 둘째날 · 체크) */
+/* 펼친 내용은 한 단계: 덩어리 사이 12px */
+.fold-body>*+*,.fold-body>*+p.x,.fold-body>*+ul.b,.fold-body>*+ol.b{margin-top:12px}
+.fold-body>.tk+.tk{margin-top:0}
+/* 해남은 탭이 셋(첫째날 · 둘째날 · 체크리스트) */
 nav{grid-template-columns:repeat(3,1fr)}
 </style>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -286,7 +289,7 @@ place({id:"t3",g:"땅끝",title:"맴섬",sub:"갈두항 앞 바위섬",stars:3,i
   about:"땅끝 선착장 바로 앞의 바위섬 두 개. 바위 위에 소나무가 뿌리를 내리고 있음.",
   why:"숙소에서 걸어서 10분. 바다 위로 뜨는 해를 보기 좋은 자리.",
   story:"2월 중순과 10월 20일 무렵, 1년에 두 번 며칠씩만 해가 두 바위 틈 사이로 떠올라 사진가들이 몰려듦. 11월 8일엔 바위 위쪽으로 해가 지나감. 사진은 바위 사이 일출 시기의 모습.",
-  rows:[["위치","땅끝마을 선착장 앞바다"],["운영","야외 상시 관람"],["일출","11/8 07:00 전후 (계산값, 전날 날씨 앱으로 확인)"],["요금","무료"],["머무는 시간","20~30분"]]});
+  rows:[["위치","땅끝마을 선착장 앞바다"],["운영","야외 상시 관람"],["일출","11.8 07:00 전후 (계산값, 전날 날씨 앱으로 확인)"],["요금","무료"],["머무는 시간","20~30분"]]});
 place({id:"k1",g:"목포",title:"목포해상케이블카",sub:"북항 → 유달산 → 고하도",stars:5,img:"i11",n:"목포해상케이블카 북항승강장",t:"목포해상케이블카 북항승강장",
   about:"길이 3.23km로 우리나라에서 가장 긴 케이블카. 북항에서 출발해 유달산 꼭대기 근처를 지나 바다 건너 고하도 섬까지 감.",
   why:"가장 높은 곳이 155m. 목포 시내, 유달산 바위, 다도해, 목포대교를 하늘에서 한 번에 봄.",
@@ -340,7 +343,7 @@ food({id:"f5",g:"둘째날 점심",title:"영란횟집",sub:"점심 대안 · �
   tips:["주말 대기가 길어 전화 예약 권장"],tel:"061-243-7311"});
 food({id:"f8",g:"둘째날 저녁",title:"미락식당",sub:"저녁 · 상동(하당)",stars:5,n:"목포 미락식당",t:"목포 미락식당",
   about:"꽃게살비빔밥으로 유명한 목포 음식 명인의 집. 게 껍질을 발라 낸 양념 꽃게살을 밥에 비벼 먹음.",
-  rows:[["주소","목포시 백년대로231번길 12"],["영업","11:00~22:00 · 쉬는 시간 15:30~17:00"],["휴무","매주 월요일 (11/8은 일요일)"],["전화","0507-1350-3828"],["메뉴","꽃게살비빔밥 1인 15,000원 · 갈치구이 1인 20,000원 (둘 다 2인 이상)"]],tel:"0507-1350-3828"});
+  rows:[["주소","목포시 백년대로231번길 12"],["영업","11:00~22:00 · 쉬는 시간 15:30~17:00"],["휴무","매주 월요일 (11.8은 일요일)"],["전화","0507-1350-3828"],["메뉴","꽃게살비빔밥 1인 15,000원 · 갈치구이 1인 20,000원 (둘 다 2인 이상)"]],tel:"0507-1350-3828"});
 food({id:"f9",g:"둘째날 저녁",title:"장모님밥상",sub:"저녁 대안 · 평화광장 앞",stars:4,n:"목포 장모님밥상",t:"목포 장모님밥상",
   about:"갈치조림, 홍어삼합, 보리굴비 정식을 내는 한정식집.",
   rows:[["주소","목포시 평화로95번길 11"],["영업·휴무","방문 전 확인"],["전화","061-282-3447"],["메뉴","갈치조림 중 60,000원 · 회+보리굴비정식 1인 35,000원 (2인 이상)"]],tel:"061-282-3447"});
@@ -391,15 +394,15 @@ day("d1108","2026.11","08","일요일","목포","일출 · 케이블카 · 원�
 /* ---------- 이동 ---------- */
 const mv = (id, title, sub, blocks) => add({id, tab:"이동", title, sub, blocks});
 const moveTrain = mv("m1","열차","가는 편·오는 편 예매 완료",[
-  {t:"tk", h:"가는 편 · 모두 함께", d:"11/7 토", r:[["06:56","동탄 출발"],["09:15","목포 도착"]], n:"KTX-산천 605 · 2시간 19분"},
-  {t:"tk", h:"오는 편 · 일행 1명", d:"11/8 일", r:[["19:55","목포 출발"]]},
-  {t:"tk", h:"오는 편 · 나머지 일행", d:"11/8 일", r:[["20:22","목포 출발"],["22:45","동탄 도착"]], n:"KTX-산천 632 · 2시간 23분"}
+  {t:"tk", h:"가는 편 · 모두 함께", d:"11.7", r:[["06:56","동탄 출발"],["09:15","목포 도착"]], n:"KTX-산천 605 · 2시간 19분"},
+  {t:"tk", h:"오는 편 · 일행 1명", d:"11.8", r:[["19:55","목포 출발"]]},
+  {t:"tk", h:"오는 편 · 나머지 일행", d:"11.8", r:[["20:22","목포 출발"],["22:45","동탄 도착"]], n:"KTX-산천 632 · 2시간 23분"}
 ]);
 const moveCar = mv("m3","렌터카","목포역 인수·반납",[
-  {t:"rows", i:[["인수","11/7 09:25, 목포역 렌터카 영업소"],["반납","11/8 13:15, 같은 곳"],["주유","반납 직전 13:00, 목포역 근처 주유소"],["운전","이틀 합계 약 4시간 50분"]]},
+  {t:"rows", i:[["인수","11.7 09:25, 목포역 렌터카 영업소"],["반납","11.8 13:15, 같은 곳"],["주유","반납 직전 13:00, 목포역 근처 주유소"],["운전","이틀 합계 약 4시간 50분"]]},
   ul("할 일",["연료 규정(가득 반납 등) 확인","운전자가 둘이면 제2운전자 등록하고 번갈아 운전"])
 ]);
-const moveTaxi = mv("m4","택시","11/8 저녁 두 번",[
+const moveTaxi = mv("m4","택시","11.8 저녁 두 번",[
   {t:"rows", i:[["16:45","원도심 → 미락식당(하당), 약 20분"],["19:15","미락식당 → 목포역, 약 20분"]]},
   ul("팁",["하당은 원도심과 떨어진 신도심이라 카카오T로 미리 호출","19:55 열차를 타는 일행이 있어 19:15 출발은 꼭 지키기"])
 ]);
@@ -408,7 +411,7 @@ const prepHotel = add({id:"p1", tab:"준비", title:"숙소", sub:HOTEL, img:"i0
   {t:"rows", i:[["숙소",HOTEL],["주소","해남군 송지면 땅끝마을길 56-13"],["전화","061-534-1033"],["위치","세계의땅끝공원 걸어서 1분, 땅끝탑 스카이워크 걸어서 6분"],["체크인","16:00부터. 도착은 18:00"],["체크아웃","11:00"],["주차","무료"],["아침","조식 없음. 목포 코롬방제과에서"]]}
 ]});
 const prepSun = add({id:"p2", tab:"준비", title:"해 뜨고 지는 시각", sub:"땅끝 기준", blocks:[
-  {t:"rows", i:[["11/7 일몰","17:36 전후"],["11/8 일출","07:00 전후"]]},
+  {t:"rows", i:[["11.7 일몰","17:36 전후"],["11.8 일출","07:00 전후"]]},
   {t:"p", cls:"note", x:"위치로 계산한 값. 전날 밤 날씨 앱에서 다시 확인."}
 ]});
 const prepWear = add({id:"p3", tab:"준비", title:"옷차림", sub:"11월 초 남해안", blocks:[
@@ -416,9 +419,9 @@ const prepWear = add({id:"p3", tab:"준비", title:"옷차림", sub:"11월 초 �
 ]});
 /* ---------- 체크 ---------- */
 const CHECK = [
-  {n:"출발 전", w:"11/6까지", i:[
-    ["c01","KTX 표 확인","11/7 605편, 11/8 632편, 일행 1명 19:55"],
-    ["c02","렌터카 예약 확인","인수 11/7 09:25, 반납 11/8 13:15"],
+  {n:"출발 전", w:"11.6까지", i:[
+    ["c01","KTX 표 확인","11.7 605편, 11.8 632편, 일행 1명 19:55"],
+    ["c02","렌터카 예약 확인","인수 11.7 09:25, 반납 11.8 13:15"],
     ["c04","미락식당 일요일 영업·대기 확인","0507-1350-3828"],
     ["c05","해남읍 떡갈비집 정하기","당일 영업하는 곳"]]},
   {n:"짐", w:"싸면서 체크", i:[
@@ -431,7 +434,8 @@ const CHECK = [
 ];
 
 /* ---------- 이동 정보는 이어지는 일정 카드 맨 아래에 붙인다 ---------- */
-[["d1107","동탄역 KTX 출발","m1"],["d1108","저녁 예정","m4"],["d1108","일행 1명 열차 출발","m1"]].forEach(([d,t,id])=>{const st=BY[d].stops.find(x=>x.title===t);if(st)st.rel=[...(st.rel||[]),id]});
+/* 국내 짧은 여행은 따로 찾아볼 곳 없이 일정에 다 담는다: 옷차림·해 뜨고 지는 시각도 관련 카드에 붙인다 */
+[["d1107","동탄역 KTX 출발","m1"],["d1107","동탄역 KTX 출발","p3"],["d1107","땅끝탑 · 땅끝 비석","p2"],["d1108","땅끝 일출 · 선택","p2"],["d1108","저녁 예정","m4"],["d1108","일행 1명 열차 출발","m1"]].forEach(([d,t,id])=>{const st=BY[d].stops.find(x=>x.title===t);if(st)st.rel=[...(st.rel||[]),id]});
 
 /* ---------- 펼친 내용: 이스탄불과 같은 블록 구조로 바꾼다 ---------- */
 const DAY_TAB={d1107:"첫째날",d1108:"둘째날"};
@@ -467,13 +471,13 @@ prepHotel.blocks=[...(photoBlock(prepHotel.img,HOTEL)?[photoBlock(prepHotel.img,
 const TABS=[
   {k:"첫째날",svg:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'},
   {k:"둘째날",svg:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'},
-  {k:"체크",svg:'<rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 12l3 3 5-6"/>'}
+  {k:"체크리스트",svg:'<rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 12l3 3 5-6"/>'}
 ];
 const main=document.getElementById("main"),nav=document.getElementById("nav");
 const TAB_KEY="hn.tab",CHECKS_KEY="hn.checks";
-let tab=store.get(TAB_KEY,"첫째날");if(!TABS.some(t=>t.k===tab))tab="첫째날";
+let tab=store.get(TAB_KEY,"첫째날");if(tab==="체크")tab="체크리스트";if(!TABS.some(t=>t.k===tab))tab="첫째날";
 let checks=store.get(CHECKS_KEY,{});if(!checks||typeof checks!=="object"||Array.isArray(checks))checks={};
-const scrollByView={},openRows=new Set(),openInner=new Set();
+const scrollByView={},openRows=new Set();
 
 /* ---------- 아이콘 ---------- */
 const svgIcon=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
@@ -505,14 +509,10 @@ function actionsHTML(e,own){
   if(e.map&&!own)items.push(mapBtn(e.map));
   return items.length?`<div class="act-row end">${items.join("")}</div>`:"";
 }
-const countLabel=b=>(b.t==="ul"||b.t==="rows")&&b.i.length>1?b.i.length+"가지":"";
-function innerRowHTML(e,b,i){const key=e.id+"::"+i,open=openInner.has(key),cnt=countLabel(b);return `<div class="inner${open?" open":""}"><button type="button" class="row-head" data-inner="${esc(key)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${esc(b.h)}</span>${cnt?`<span class="row-sub">${cnt}</span>`:""}</span></button><div class="inner-body"${open?"":" hidden"}>${open?blockBodyHTML(b):""}</div></div>`}
-/* own: 일정 카드 자신의 장소. 사진은 카드에 이미 있어 뺀다 */
+/* 펼치면 한 단계로 다 보인다(국내 짧은 여행이라 안쪽 ＋ 줄로 나누지 않는다).
+   own: 일정 카드 자신의 장소. 사진은 카드에 이미 있어 뺀다 */
 function entryBody(e,own){
-  const lead=[],inner=[];
-  /* 승차권은 제목이 있어도 접지 않고 바로 보여 준다 */
-  (e.blocks||[]).forEach((b,i)=>(b.h&&b.t!=="tk"?inner:lead).push([b,i]));
-  return lead.map(([b])=>b.t==="actions"?actionsHTML(e,own):own&&b.t==="photo"?"":blockBodyHTML(b)).join("")+(inner.length?`<div class="inner-list">${inner.map(([b,i])=>innerRowHTML(e,b,i)).join("")}</div>`:"");
+  return (e.blocks||[]).map(b=>b.t==="actions"?actionsHTML(e,own):own&&b.t==="photo"?"":blockBodyHTML(b)).join("");
 }
 
 /* ---------- 카드 = 머리 + ＋ 줄 ---------- */
@@ -522,11 +522,10 @@ function rowHTML(e,o={}){
 }
 function cardHTML(title,badge,summary,rows){return `<section class="fold-card"><div class="fold-head"><div class="fold-title"><h2>${esc(title)}</h2>${badge?`<span class="card-badge">${esc(badge)}</span>`:""}</div>${summary?`<p>${rich(summary)}</p>`:""}</div>${rows}</section>`}
 
-/* ---------- 체크: 체크리스트(배지는 체크한 수/전체) + 여행 정보 ---------- */
+/* ---------- 체크리스트: 배지는 체크한 수/전체 ---------- */
 function checkRowHTML(it){const on=!!checks[it[0]];return `<label class="check-row${on?" done":""}"><input type="checkbox" data-check="${esc(it[0])}"${on?" checked":""}><span class="check-box" aria-hidden="true"></span><span class="check-text">${rich(it[1])}${it[2]?`<span class="check-note">${esc(it[2])}</span>`:""}</span></label>`}
-const INFO_ITEMS=[prepHotel,prepSun,prepWear,moveTrain,moveCar,moveTaxi];
 function viewCheck(){
-  return CHECK.map(g=>{const done=g.i.filter(it=>checks[it[0]]).length;return cardHTML(`${g.n} · ${g.w.replace(/(\d+)\/(\d+)/g,"$1.$2")}`,`${done}/${g.i.length}`,null,g.i.map(checkRowHTML).join(""))}).join("")+cardHTML("여행 정보",INFO_ITEMS.length+"가지",null,INFO_ITEMS.map(e=>rowHTML(e,{at:"info:"})).join(""));
+  return CHECK.map(g=>{const done=g.i.filter(it=>checks[it[0]]).length;return cardHTML(`${g.n} · ${g.w.replace(/(\d+)\/(\d+)/g,"$1.$2")}`,`${done}/${g.i.length}`,null,g.i.map(checkRowHTML).join(""))}).join("");
 }
 
 /* ---------- 일정: 첫째날 · 둘째날 탭 ---------- */
@@ -554,7 +553,7 @@ function viewSchedule(dayId){
 }
 
 /* ---------- 그리기 ---------- */
-const VIEWS={"첫째날":()=>viewSchedule("d1107"),"둘째날":()=>viewSchedule("d1108"),"체크":viewCheck};
+const VIEWS={"첫째날":()=>viewSchedule("d1107"),"둘째날":()=>viewSchedule("d1108"),"체크리스트":viewCheck};
 /* 안쪽 펼친 제목은 바깥 제목 줄 높이만큼 아래에 붙는다 */
 function measureRow(box){const head=box.querySelector(":scope > .row-head");if(head)box.style.setProperty("--row-h",head.offsetHeight+"px")}
 function setStick(){main.querySelectorAll(".fold.open").forEach(measureRow)}
@@ -573,18 +572,11 @@ function backToRow(box,head){const top=box.getBoundingClientRect().top,stick=sti
 function toggleRow(button){
   const box=button.closest(".fold"),body=box.querySelector(":scope > .fold-body"),id=button.dataset.row,key=box.dataset.fold,opening=!box.classList.contains("open");
   if(opening){body.innerHTML=entryBody(BY[id],box.dataset.own==="1");body.hidden=false;openRows.add(key);box.classList.add("open");measureRow(box)}
-  else{backToRow(box,button);body.hidden=true;body.innerHTML="";openRows.delete(key);[...openInner].forEach(k=>{if(k.startsWith(id+"::"))openInner.delete(k)});box.classList.remove("open")}
-  button.setAttribute("aria-expanded",String(opening));
-}
-function toggleInner(button){
-  const box=button.closest(".inner"),body=box.querySelector(":scope > .inner-body"),key=button.dataset.inner,opening=!box.classList.contains("open");
-  if(opening){const cut=key.lastIndexOf("::"),e=BY[key.slice(0,cut)],b=e&&e.blocks[Number(key.slice(cut+2))];body.innerHTML=b?blockBodyHTML(b):"";body.hidden=false;openInner.add(key);box.classList.add("open")}
-  else{backToRow(box,button);body.hidden=true;body.innerHTML="";openInner.delete(key);box.classList.remove("open")}
+  else{backToRow(box,button);body.hidden=true;body.innerHTML="";openRows.delete(key);box.classList.remove("open")}
   button.setAttribute("aria-expanded",String(opening));
 }
 document.addEventListener("click",ev=>{
   const row=ev.target.closest("[data-row]");if(row){toggleRow(row);return}
-  const inner=ev.target.closest("[data-inner]");if(inner){toggleInner(inner);return}
   const day=ev.target.closest("[data-day]");if(day){ev.preventDefault();scrollByView[tab]=window.scrollY;tab=DAY_TAB[day.dataset.day];render(true,false);return}
   const t=ev.target.closest("[data-tab]");if(t){scrollByView[tab]=window.scrollY;tab=t.dataset.tab;render(true,false)}
 });
