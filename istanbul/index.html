@@ -65,8 +65,6 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .fold-head+.fold,.fold-head+.check-row,.fold-list>:first-child{border-top:0}
 .row-head{display:flex;align-items:center;gap:8px;width:100%;min-height:52px;padding:12px var(--pad);border:0;background:transparent;color:var(--text);text-align:left;line-height:1.4}
 /* 펼침 표시: ＋, 펼치면 － */
-.row-head::after{content:"";flex:none;width:12px;height:12px;margin-right:calc((var(--side-w) - 12px)/2);background:linear-gradient(var(--muted),var(--muted)) center/12px 1.5px no-repeat,linear-gradient(var(--muted),var(--muted)) center/1.5px 12px no-repeat}
-.open>.row-head::after{background-size:12px 1.5px,1.5px 0}
 
 .row-copy{display:flex;flex:1 1 auto;align-items:baseline;gap:8px;min-width:0}
 .row-title{flex:0 1 auto;min-width:0;font-weight:700}
@@ -74,7 +72,6 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .row-date{flex:none;color:var(--muted);font-size:var(--fs-s);font-variant-numeric:tabular-nums;white-space:nowrap}
 /* 첫 단계 ＋ 줄: 회색 요약은 잘리지 않게 둘째 줄, 날짜는 오른쪽 위, ＋(다른 화면으로 가는 줄은 ›)는 그 아래 가운데 */
 .row-head.two{align-items:stretch;gap:12px}
-.row-head.two::after{display:none}
 .row-head.two .row-copy{flex-direction:column;align-items:stretch;justify-content:center;gap:2px}
 .row-side{display:flex;flex:none;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:var(--side-w)}
 .row-side:has(.row-date){justify-content:space-between}
@@ -99,19 +96,9 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .fold.open{box-shadow:inset 3px 0 0 var(--accent)}
 .fold.open>.row-head{position:sticky;top:var(--stick);z-index:3;background:var(--disclosure-bg);box-shadow:inset 3px 0 0 var(--accent),0 1px 0 var(--line)}
 .fold-body{padding:16px var(--pad) 0}
-.fold-body>:last-child:not(.inner-list){margin-bottom:16px}
-.fold-body>:not(.act-row)+.inner-list{margin-top:16px}
-/* 펼친 내용이 안쪽 ＋ 줄로 바로 시작하면 제목 줄 바로 밑에 붙인다(빈칸·겹선 없이) */
-.fold-body>.inner-list:first-child{margin-top:-16px}
-.fold-body>.inner-list:first-child>.inner:first-child{border-top:0}
-/* 한 단계 안쪽: 배경은 카드 폭 전체, 막대는 바깥 것을 이어 그린다. 내용은 회색 안내선과 들여쓰기 */
-.inner{border-top:1px solid var(--line)}
-.inner>.row-head{padding:12px 0}
-.inner.open>.row-head{position:sticky;top:calc(var(--stick) + var(--row-h,52px));z-index:2;width:calc(100% + 2*var(--pad));margin:0 calc(-1*var(--pad));padding:12px var(--pad);background:var(--disclosure-bg);box-shadow:inset 3px 0 0 var(--accent),0 1px 0 var(--line)}
-.inner-body{margin:12px 0;padding:4px 0 4px 14px;border-left:2px solid var(--line)}
-
+.fold-body>:last-child{margin-bottom:16px}
 /* 펼친 내용 */
-.fold-body p.x,.inner-body p.x{margin:0}
+.fold-body p.x{margin:0}
 p.x+p.x{margin-top:8px}
 .ph{display:block;width:100%;aspect-ratio:16/9;margin:12px 0 0;border-radius:10px;background:var(--subtle);object-fit:cover}
 .fold-body>.ph:first-child{margin-top:0}
@@ -184,6 +171,11 @@ nav button{display:flex;min-height:60px;flex-direction:column;align-items:center
 nav button svg{width:21px;height:21px}
 nav button.on{color:var(--accent)}
 @media(min-width:700px){.day-strip{grid-template-columns:repeat(12,minmax(0,1fr))}}
+/* 펼친 내용은 한 단계로 다 보인다: 덩어리 사이 12px, 제목 있는 덩어리는 위에 회색 작은 제목 */
+.fold-body>*+*,.fold-body>*+p.x,.fold-body>*+ul.b,.fold-body>*+ol.b{margin-top:12px}
+.fold-body>.sec{margin:20px 0 0;color:var(--muted);font-size:var(--fs-s);font-weight:700;line-height:1.4}
+.fold-body>.sec:first-child{margin-top:0}
+.fold-body>.sec+*,.fold-body>.sec+p.x,.fold-body>.sec+ul.b,.fold-body>.sec+ol.b{margin-top:6px}
 </style>
 </head>
 <body>
@@ -556,7 +548,7 @@ const place = o => {
   return add({
     id:o.id, tab:o.tab||"장소", group:o.g, title:o.t, sub:o.s, scheduleDates:PLACE_SCHEDULE_DATES[o.id]||"", inSchedule:!!PLACE_SCHEDULE_DATES[o.id], restaurant:isRestaurant,
     map:o.map||gmap(LOCAL[o.id]||o.t), tel:telOf((info.find(r=>r[0]==="전화")||[])[1]),
-    /* 펼치면: 한 줄 소개 → 사진 → 지도·전화·일정 아이콘 → 안쪽 ＋ 줄 */
+    /* 펼치면: 한 줄 소개 → 사진 → 지도·전화·일정 아이콘 → 제목 붙은 덩어리(어떤 곳 · 메모 · 정보 · 주의할 점) */
     blocks:[
       ...(o.intro ? [{t:"p", x:o.intro}] : []),
       ...(PHOTOS[o.id] ? [{t:"photo", src:PHOTOS[o.id], alt:PHOTO_ALTS[o.id]||`${o.t} ${isRestaurant?"사진":"전경"}`}] : []),
@@ -912,7 +904,7 @@ place({id:"x6",g:"유료 명소",t:"터키 이슬람 미술관",s:"Türk ve İsl
 /* ---------- 음식 ---------- */
 const food = o => add({
   id:o.id, tab:"음식", group:o.group, title:o.title, local:o.local||"", sub:o.local||o.price||o.where, food:true, photo:o.photo||null,
-  /* 펼치면: 어떤 음식 → 사진 → 주문할 때 보여주기 → 안쪽 ＋ 줄 */
+  /* 펼치면: 어떤 음식 → 사진 → 주문할 때 보여주기 → 제목 붙은 덩어리 */
   blocks:[
     {t:"p",x:o.desc},
     ...(o.photo?[{t:"photo",src:o.photo.src,alt:o.photo.alt}]:[]),
@@ -1252,7 +1244,7 @@ function saveJSON(key,value){try{localStorage.setItem(key,JSON.stringify(value))
 let tab=loadJSON(TAB_KEY,"일정");if(!TABS.some(t=>t.k===tab))tab="일정";
 let subByTab=loadJSON(SUB_KEY,{});if(!subByTab||typeof subByTab!=="object"||Array.isArray(subByTab))subByTab={};
 let dayId="d1024";
-const queries={"장소":"","맛집":"","정보":""},scrollByView={},openRows=new Set(),openInner=new Set();
+const queries={"장소":"","맛집":"","정보":""},scrollByView={},openRows=new Set();
 
 /* ---------- 아이콘 ---------- */
 const svgIcon=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
@@ -1291,19 +1283,16 @@ function actionsHTML(e,ctx=""){
   if(e.map&&!ctx.includes("m"))items.push(`<a class="icon-btn" href="${esc(e.map)}" target="_blank" rel="noopener noreferrer" aria-label="지도" title="지도">${MAP_ICON}</a>`);
   return items.length?`<div class="act-row end">${items.join("")}</div>`:"";
 }
-const countLabel=b=>(b.t==="ul"||b.t==="ol"||b.t==="rows"||b.t==="table")&&b.i.length>1?b.i.length+"가지":"";
-function innerRowHTML(e,b,i,k){const key=(k||e.id)+"::"+i,open=openInner.has(key),cnt=countLabel(b);return `<div class="inner${open?" open":""}"><button type="button" class="row-head" data-inner="${esc(key)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${esc(b.h)}</span>${cnt?`<span class="row-sub">${cnt}</span>`:""}</span></button><div class="inner-body"${open?"":" hidden"}>${open?blockBodyHTML(b):""}</div></div>`}
-function entryBody(e,key=e.id,ctx=""){
-  const lead=[],inner=[];
-  e.blocks.forEach((b,i)=>{if(b.source)return;(b.h?inner:lead).push([b,i])});
-  return lead.map(([b])=>b.t==="actions"?actionsHTML(e,ctx):b.t==="photo"&&ctx.includes("p")?"":blockBodyHTML(b)).join("")+(inner.length?`<div class="inner-list">${inner.map(([b,i])=>innerRowHTML(e,b,i,key)).join("")}</div>`:"");
+/* 펼치면 안쪽 ＋ 줄 없이 한 번에 다 보인다. 제목 있는 덩어리(어떤 곳 · 메모 · 정보 · 주의할 점)는 작은 제목을 단다 */
+function entryBody(e,ctx=""){
+  return e.blocks.map(b=>b.source||(b.t==="photo"&&ctx.includes("p"))?"":b.t==="actions"?actionsHTML(e,ctx):(b.h?`<h4 class="sec">${esc(b.h)}</h4>`:"")+blockBodyHTML(b)).join("");
 }
 
 /* ---------- 카드 = 머리 + ＋ 줄 ---------- */
 function rowHTML(e,o={}){
   /* 날짜가 여럿이면 한 줄에 하나씩 쌓는다 */
   const key=(o.at||"")+e.id,open=openRows.has(key),sub=o.sub!==undefined?o.sub:e.sub,dates=o.date!==undefined?[o.date].filter(Boolean):dateList(e.scheduleDates).map(dotDate);
-  return `<div class="fold${open?" open":""}" data-fold="${esc(key)}"${o.ctx?` data-ctx="${o.ctx}"`:""}><button type="button" class="row-head two" data-row="${esc(e.id)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${rich(e.title)}</span>${sub?`<span class="row-sub">${esc(sub)}</span>`:""}</span><span class="row-side">${dates.length?`<span class="row-date">${dates.map(esc).join("<br>")}</span>`:""}<span class="plus" aria-hidden="true"></span></span></button><div class="fold-body"${open?"":" hidden"}>${open?entryBody(e,key,o.ctx):""}</div></div>`;
+  return `<div class="fold${open?" open":""}" data-fold="${esc(key)}"${o.ctx?` data-ctx="${o.ctx}"`:""}><button type="button" class="row-head two" data-row="${esc(e.id)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${rich(e.title)}</span>${sub?`<span class="row-sub">${esc(sub)}</span>`:""}</span><span class="row-side">${dates.length?`<span class="row-date">${dates.map(esc).join("<br>")}</span>`:""}<span class="plus" aria-hidden="true"></span></span></button><div class="fold-body"${open?"":" hidden"}>${open?entryBody(e,o.ctx):""}</div></div>`;
 }
 function cardHTML(title,badge,summary,rows){return `<section class="fold-card"><div class="fold-head"><div class="fold-title"><h2>${esc(title)}</h2>${badge?`<span class="card-badge">${esc(badge)}</span>`:""}</div>${summary?`<p>${rich(summary)}</p>`:""}</div>${rows}</section>`}
 function groupCard(g){
@@ -1407,33 +1396,24 @@ function viewSchedule(){
 const VIEWS={"일정":viewSchedule,"장소":viewPlaces,"맛집":viewEat,"정보":viewInfo,"준비":viewPrep};
 const SUB_GROUPS={"장소":PLACE_GROUPS,"맛집":EAT_GROUPS,"정보":INFO_GROUPS,"준비":PREP_GROUPS};
 function viewKey(){return tab==="일정"?tab+":"+dayId:SUB_GROUPS[tab]?tab+":"+currentSub(SUB_GROUPS[tab])+(queries[tab]?":q":""):tab}
-function setStick(){main.querySelectorAll(".fold.open").forEach(measureRow)}
 /* 안쪽 펼친 제목은 바깥 제목 줄 높이만큼 아래에 붙는다 */
-function measureRow(box){const head=box.querySelector(":scope > .row-head");if(head)box.style.setProperty("--row-h",head.offsetHeight+"px")}
 function render(restore=true,storeScroll=true){
   if(storeScroll)scrollByView[viewKey()]=window.scrollY;
   const v=VIEWS[tab]();
   main.innerHTML=`<header class="brand"><h1>이스탄불</h1></header>${v.search?'<div id="search-slot"></div>':""}${v.pills||""}<div id="view-body">${v.body}</div>`;
   if(v.search){qEl.placeholder=v.search;qEl.setAttribute("aria-label",v.search);if(qEl.value!==queries[tab])qEl.value=queries[tab]||"";qx.hidden=!qEl.value;main.querySelector("#search-slot").replaceWith(searchPanel);searchPanel.hidden=false}else searchPanel.hidden=true;
-  setStick();
   nav.innerHTML=TABS.map(t=>`<button type="button" data-tab="${t.k}" class="${t.k===tab?"on":""}" aria-current="${t.k===tab?"page":"false"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${t.svg}</svg><span>${t.k}</span></button>`).join("");
   saveJSON(TAB_KEY,tab);
   if(restore)requestAnimationFrame(()=>window.scrollTo(0,scrollByView[viewKey()]||0));
 }
-function renderBody(){const body=document.getElementById("view-body");if(body)body.innerHTML=VIEWS[tab]().body;qx.hidden=!qEl.value;setStick()}
+function renderBody(){const body=document.getElementById("view-body");if(body)body.innerHTML=VIEWS[tab]().body;qx.hidden=!qEl.value}
 function stickTop(el){return parseFloat(getComputedStyle(el).top)||0}
 /* 펼친 제목을 눌러 접으면 화면이 제목 자리로 돌아온다 */
 function backToRow(box,head){const top=box.getBoundingClientRect().top,stick=stickTop(head);if(top<stick)window.scrollTo(0,top+window.scrollY-stick)}
 function toggleRow(button){
   const box=button.closest(".fold"),body=box.querySelector(":scope > .fold-body"),id=button.dataset.row,key=box.dataset.fold,opening=!box.classList.contains("open");
-  if(opening){body.innerHTML=entryBody(BY[id],key,box.dataset.ctx||"");body.hidden=false;openRows.add(key);box.classList.add("open");measureRow(box)}
-  else{backToRow(box,button);body.hidden=true;body.innerHTML="";openRows.delete(key);[...openInner].forEach(k=>{if(k.startsWith(key+"::"))openInner.delete(k)});box.classList.remove("open")}
-  button.setAttribute("aria-expanded",String(opening));
-}
-function toggleInner(button){
-  const box=button.closest(".inner"),body=box.querySelector(":scope > .inner-body"),key=button.dataset.inner,opening=!box.classList.contains("open");
-  if(opening){const cut=key.lastIndexOf("::"),e=BY[box.closest(".fold").querySelector(":scope > .row-head").dataset.row],b=e&&e.blocks[Number(key.slice(cut+2))];body.innerHTML=b?blockBodyHTML(b):"";body.hidden=false;openInner.add(key);box.classList.add("open")}
-  else{backToRow(box,button);body.hidden=true;body.innerHTML="";openInner.delete(key);box.classList.remove("open")}
+  if(opening){body.innerHTML=entryBody(BY[id],box.dataset.ctx||"");body.hidden=false;openRows.add(key);box.classList.add("open")}
+  else{backToRow(box,button);body.hidden=true;body.innerHTML="";openRows.delete(key);box.classList.remove("open")}
   button.setAttribute("aria-expanded",String(opening));
 }
 /* 일정의 아이콘이나 검색에서 항목으로 가면 그 탭과 서브 탭으로 바꾸고 그 줄을 펼친다 */
@@ -1448,7 +1428,6 @@ function goTo(id){
 }
 document.addEventListener("click",ev=>{
   const row=ev.target.closest("[data-row]");if(row){toggleRow(row);return}
-  const inner=ev.target.closest("[data-inner]");if(inner){toggleInner(inner);return}
   const go=ev.target.closest("[data-go]");if(go){goTo(go.dataset.go);return}
   const sub=ev.target.closest("[data-sub]");if(sub){scrollByView[viewKey()]=window.scrollY;subByTab[tab]=sub.dataset.sub;saveJSON(SUB_KEY,subByTab);queries[tab]="";qEl.value="";render(true,false);sub.blur();return}
   const day=ev.target.closest("[data-day]");if(day){ev.preventDefault();scrollByView[viewKey()]=window.scrollY;dayId=day.dataset.day;tab="일정";render(true,false);if(day.dataset.st!==undefined){const idx=Number(day.dataset.st);requestAnimationFrame(()=>requestAnimationFrame(()=>{const a=main.querySelectorAll("article.stop")[idx];if(!a)return;window.scrollTo(0,a.getBoundingClientRect().top+window.scrollY-12);a.classList.add("hit");setTimeout(()=>a.classList.remove("hit"),1600)}))}return}
@@ -1458,7 +1437,6 @@ document.addEventListener("change",ev=>{const c=ev.target.closest("input[data-ch
 qEl.addEventListener("input",()=>{queries[tab]=qEl.value;renderBody()});
 qx.addEventListener("click",()=>{qEl.value="";queries[tab]="";renderBody();qEl.focus()});
 window.addEventListener("scroll",()=>{scrollByView[viewKey()]=window.scrollY},{passive:true});
-window.addEventListener("resize",setStick);
 render(false);
 </script>
 </body>
