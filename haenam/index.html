@@ -189,7 +189,7 @@ nav button{display:flex;min-height:60px;flex-direction:column;align-items:center
 nav button svg{width:21px;height:21px}
 nav button.on{color:var(--accent)}
 @media(min-width:700px){.day-strip{grid-template-columns:repeat(12,minmax(0,1fr))}}
-/* 해남: 미정 끼니는 빨간 제목, 열차 승차권(시각–역 두 열), 날 아래 알아둘 것 */
+/* 해남: 미정 끼니는 빨간 제목, 열차 승차권(시각–역 두 열) */
 .stop h3.chg-title{color:var(--weekend)}
 .tk{padding:12px 0;border-top:1px solid var(--line)}
 .tk:first-child{padding-top:0;border-top:0}
@@ -200,9 +200,6 @@ nav button.on{color:var(--accent)}
 .tkr time{flex:none;width:52px;color:var(--accent);font-weight:800;font-variant-numeric:tabular-nums}
 .tkn{margin:4px 0 0;color:var(--muted);font-size:var(--fs-s)}
 .check-note{display:block;color:var(--muted);font-size:var(--fs-s)}
-.note-row{padding:12px var(--pad);border-top:1px solid var(--line);line-height:1.5}
-.fold-head+.note-row{border-top:0}
-.day-extra{margin-top:16px}
 /* 펼친 내용은 한 단계: 덩어리 사이 12px */
 .fold-body>*+*,.fold-body>*+p.x,.fold-body>*+ul.b,.fold-body>*+ol.b{margin-top:12px}
 .fold-body>.tk+.tk{margin-top:0}
@@ -355,12 +352,12 @@ food({id:"f10",g:"둘째날 저녁",title:"하당먹거리",sub:"저녁 대안 �
 /* ---------- 일정 ---------- */
 const DAYS = [];
 const s = (time, title, o) => ({time, title, ...o});
-const day = (id, ym, d, w, pl, ps, title, sub, stops, notes) => { const e = add({id, tab:"일정", title, sub, pl, ps, date:{ym,d,w}, stops, notes}); DAYS.push(e); return e; };
+const day = (id, ym, d, w, pl, ps, title, sub, stops) => { const e = add({id, tab:"일정", title, sub, pl, ps, date:{ym,d,w}, stops}); DAYS.push(e); return e; };
 
 day("d1107","2026.11","07","토요일","해남","우수영 · 대흥사 · 땅끝","해남의 역사와 땅끝 바다","06:56 동탄 출발 · 18:00 체크인",[
   s("06:56","동탄역 KTX 출발",{key:"KTX-산천 605, 예매 완료.",n:"동탄역",t:"동탄역"}),
   s("09:25","렌터카 인수",{move:"06:56 출발 · KTX 2시간 19분 → 09:15 목포역 → 도보 5분",stay:"25분",key:"차 바깥 상태를 사진으로 남기고 짐 싣기.",n:"목포역 렌터카",t:"목포역 렌터카",rel:["m3"]}),
-  s("10:40","우수영국민관광지",{move:"09:50 출발 · 차 50분",stay:"50분",key:"울돌목과 스카이워크. 09:00~17:30, 입장·주차 무료.",img:"i01",n:"우수영국민관광지",t:"우수영관광지",rel:["u1"]}),
+  s("10:40","우수영국민관광지",{move:"09:50 출발 · 차 50분",stay:"50분",key:"울돌목과 스카이워크. 09:00~17:30, 입장·주차 무료. 일정이 밀리면 여기는 빼고 목포역에서 해남읍으로 바로. 땅끝탑 시간을 먼저 지키기.",img:"i01",n:"우수영국민관광지",t:"우수영관광지",rel:["u1"]}),
   s("12:05","점심 예정",{chg:1,move:"11:30 출발 · 차 35분",stay:"1시간",key:"떡갈비 정식. 식당은 당일 영업하는 곳으로.",n:"해남읍 떡갈비",t:"해남읍 떡갈비",rel:["f1"]}),
   s("13:25","대흥사",{move:"13:05 출발 · 차 20분",stay:"1시간 30분",key:"일지암은 제외하고 경내 중심으로. 단풍철 토요일이라 주차장이 붐빌 수 있음.",img:"i03",n:"해남 대흥사",t:"해남 대흥사",rel:["u2"]}),
   s("15:35","미황사",{move:"14:55 출발 · 차 40분",stay:"45분",key:"주차장에서 가까워 경내만 짧게.",img:"i04",n:"해남 미황사",t:"해남 미황사",rel:["u3"]}),
@@ -369,8 +366,6 @@ day("d1107","2026.11","07","토요일","해남","우수영 · 대흥사 · 땅�
   s("17:30","땅끝탑 · 땅끝 비석",{top:1,move:"17:20 출발 · 도보 10분",stay:"20분",key:"해 지는 시각(17:36 전후)과 겹쳐 노을과 함께 볼 수 있음. 항상 열려 있고 무료.",img:"i06",n:"해남 땅끝탑",t:"해남 땅끝탑",rel:["t2"]}),
   s("18:00","땅끝비치모텔 체크인",{move:"17:50 출발 · 도보 10분",stay:"15분",key:"해 진 뒤라 데크길은 휴대폰 손전등. 자기 전: 짐을 차에 실어두기, 다음 날 일출 시각·날씨 확인.",img:"i07",n:"땅끝비치모텔",t:"땅끝비치모텔",rel:["p1"]}),
   s("18:20","저녁 예정",{chg:1,move:"18:15 출발 · 도보 5분",stay:"1시간 15분",key:"숙소 가까운 횟집·해산물 식당. 작은 마을이라 일찍 닫는 곳이 있어 바로 가기.",n:"해남 땅끝항",t:"해남 갈두항",rel:["f2"]})
-],[
-  "일정이 밀리면 우수영부터 빼고 목포역에서 해남읍으로 바로. 땅끝탑 시간을 먼저 지키기"
 ]);
 
 day("d1108","2026.11","08","일요일","목포","일출 · 케이블카 · 원도심","땅끝 일출 뒤 목포","07:00 땅끝 일출 · 22:45 동탄 도착",[
@@ -380,15 +375,13 @@ day("d1108","2026.11","08","일요일","목포","일출 · 케이블카 · 원�
   s("11:45","점심 예정",{chg:1,move:"11:30 출발 · 차 15분",stay:"1시간",key:"후보: JD인동주마을 - 간장게장 정식, 홍어삼합. 영업시간은 출발 전 확인. 대기가 길면 원도심의 영란횟집으로.",n:"JD인동주마을",t:"목포 인동주마을",rel:["f4","f5"]}),
   s("13:00","주유 · 렌터카 반납",{move:"12:45 출발 · 차 15분",stay:"25분",key:"목포역 근처에서 주유하고 13:15 영업소에 반납. 이후 원도심은 걸어서.",n:"목포역 주유소",t:"목포역 주유소",rel:["m3"]}),
   s("13:30","근대역사문화거리",{move:"13:25 출발 · 도보 5분",stay:"40분",key:"100년 넘은 근대 건물을 밖에서 보며 걷기.",img:"i12",n:"목포근대역사관 1관",t:"목포근대역사관 1관",rel:["k2"]}),
-  s("14:25","서산동 시화골목 · 연희네슈퍼",{move:"14:10 출발 · 도보 15분",stay:"45분",key:"영화 <1987> 촬영지. 야외 포토스팟이라 별도 운영시간 없음. 가파른 오르막을 천천히 올라 보리마당 골목길에서 항구 전망.",img:"i13",n:"목포 연희네슈퍼",t:"목포 연희네슈퍼",rel:["k3","k4"]}),
+  s("14:25","서산동 시화골목 · 연희네슈퍼",{move:"14:10 출발 · 도보 15분",stay:"45분",key:"영화 <1987> 촬영지. 야외 포토스팟이라 별도 운영시간 없음. 가파른 오르막을 천천히 올라 보리마당 골목길에서 항구 전망. 오르막이 힘들면 여기는 빼고 노적봉 산책만.",img:"i13",n:"목포 연희네슈퍼",t:"목포 연희네슈퍼",rel:["k3","k4"]}),
   s("15:25","간식 예정",{chg:1,move:"15:10 출발 · 도보 15분 · 내리막",stay:"25분",key:"화신연쇄점(20:00까지)이나 유달콩물(17:00까지) 중에서.",n:"목포 화신연쇄점",t:"목포 화신연쇄점",rel:["f6","f7"]}),
   s("16:05","노적봉 산책 · 선택",{move:"15:50 출발 · 도보 15분",stay:"40분",key:"이순신 장군 전설이 있는 유달산 입구의 큰 바위. 정상은 오르지 않고 입구 주변만.",n:"목포 유달산 노적봉",t:"목포 유달산 노적봉",rel:["k5"]}),
   s("17:05","저녁 예정",{chg:1,move:"16:45 출발 · 택시 20분",stay:"2시간 10분",key:"후보: 미락식당 - 꽃게살비빔밥과 갈치구이. 17:00 쉬는 시간 종료. 대기가 길면 장모님밥상이나 하당먹거리로.",n:"목포 미락식당",t:"목포 미락식당",rel:["f8","f9","f10"]}),
   s("19:55","일행 1명 열차 출발",{move:"19:15 출발 · 택시 20분 · 19:35 목포역 도착",n:"목포역",t:"목포역"}),
   s("20:22","나머지 일행 KTX 출발",{key:"KTX-산천 632, 예매 완료."}),
   s("22:45","동탄역 도착",{move:"20:22 출발 · KTX 2시간 23분"})
-],[
-  "오르막이 힘들면 서산동 대신 노적봉 산책만"
 ]);
 
 /* ---------- 이동 ---------- */
@@ -548,7 +541,6 @@ function viewSchedule(dayId){
   const e=BY[dayId],i=DAYS.indexOf(e),prev=DAYS[i-1],next=DAYS[i+1];
   return `<div class="dayhead"><p class="day-date">${+e.date.ym.slice(5)}월 ${+e.date.d}일 ${esc(e.date.w)} · ${esc(e.pl)}</p><p class="day-title">${esc(e.title)}</p></div>`+
     `<div class="tl">${e.stops.map((st,si)=>`${si?journey(st):""}${stopHTML(st,si,dayId)}`).join("")}</div>`+
-    (e.notes.length?`<div class="day-extra">${cardHTML("알아둘 것","",null,e.notes.map(x=>`<div class="note-row">${rich(x)}</div>`).join(""))}</div>`:"")+
     `<div class="pn">${prev?`<button type="button" data-day="${prev.id}">‹ ${esc(dotDate(md(prev)))}</button>`:"<span></span>"}${next?`<button type="button" data-day="${next.id}">${esc(dotDate(md(next)))} ›</button>`:"<span></span>"}</div>`;
 }
 
