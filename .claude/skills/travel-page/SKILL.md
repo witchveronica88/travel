@@ -194,7 +194,7 @@ description: 새 여행 페이지(여행지/index.html)를 만들거나 기존 �
 | `I=[...]`, `MEDIA`, `PHOTOS` | base64 사진 |
 | `HOTEL`, `HQ` | 숙소 이름(강조 표시용), 지도 검색어 |
 | `L` | 외부 참고 링크 `[이름, URL]` |
-| `day(id, ym, d, 요일, 제목, 부제, [s(...)...], 메모, 비용)` | 하루 일정. 플랜 B는 날 메모가 아니라 해당 카드의 `key` 끝에 쓴다 |
+| `day(id, ym, d, 요일, 제목, 부제, [s(...)...], 비용)` | 하루 일정. 날 메모는 두지 않는다: 플랜 B · 투어비 · 확인할 것은 해당 카드의 `key` 끝에 쓴다 |
 | `s(time, title, {move, moveAt, route, stay, key, q, map, placeId, rel, photos})` | 정류장 카드. `move`·`moveAt`이 카드 **위**의 이동 칩이 된다 |
 | `DEPARTURES` | 날짜별 이동 칩의 출발지 짧은 이름 |
 | `LOCAL`, `MAP_COORDS` | 장소별 현지어 검색어, 좌표 |
