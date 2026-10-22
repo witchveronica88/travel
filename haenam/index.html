@@ -203,6 +203,8 @@ nav button.on{color:var(--accent)}
 .note-row{padding:12px var(--pad);border-top:1px solid var(--line);line-height:1.5}
 .fold-head+.note-row{border-top:0}
 .day-extra{margin-top:16px}
+/* 해남은 탭이 셋(첫째날 · 둘째날 · 체크) */
+nav{grid-template-columns:repeat(3,1fr)}
 </style>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="apple-touch-icon" href="icon.svg">
@@ -432,15 +434,13 @@ const CHECK = [
 [["d1107","동탄역 KTX 출발","m1"],["d1108","저녁 예정","m4"],["d1108","일행 1명 열차 출발","m1"]].forEach(([d,t,id])=>{const st=BY[d].stops.find(x=>x.title===t);if(st)st.rel=[...(st.rel||[]),id]});
 
 /* ---------- 펼친 내용: 이스탄불과 같은 블록 구조로 바꾼다 ---------- */
-const DAY_TAB={d1107:"첫째날",d1108:"둘째날"},TAB_DAY={"첫째날":"d1107","둘째날":"d1108"};
+const DAY_TAB={d1107:"첫째날",d1108:"둘째날"};
 const telOf=s=>{const m=String(s||"").match(/\d[\d-]{6,}\d/);return m?"tel:"+m[0].replace(/-/g,""):""};
 const photoBlock=(k,alt)=>k&&IMG[k]?{t:"photo",src:IMG[k],alt:alt||""}:null;
 const md=d=>`${+d.date.ym.slice(5)}/${+d.date.d}`;
 ENTRIES.forEach(e=>{
   if(e.tab!=="장소"&&e.tab!=="맛집")return;
   const ph=photoBlock(e.img,e.title);
-  e.group=e.g;
-  e.scheduleDates=DAYS.filter(d=>d.stops.some(x=>(x.rel||[]).includes(e.id))).map(md).join("·");
   e.tel=e.tel?"tel:"+e.tel.replace(/-/g,""):telOf(((e.rows||[]).find(r=>r[0]==="전화")||[])[1]);
   e.map=e.n?naver(e.n):"";e.nav=tmap(e.t);
   /* 장소: 왜 가는지 → 사진 → 아이콘 → 어떤 곳 · 메모 · 정보. 식당: 어떤 곳 → 사진 → 아이콘 → 메모 · 정보 */
@@ -462,18 +462,16 @@ ENTRIES.forEach(e=>{
 prepHotel.map=naver(HOTEL);prepHotel.nav=tmap(HOTEL);
 prepHotel.blocks=[...(photoBlock(prepHotel.img,HOTEL)?[photoBlock(prepHotel.img,HOTEL)]:[]),{t:"actions"},...prepHotel.blocks];
 
-/* ---------- 상태: 마지막으로 본 탭과 서브 탭, 체크는 이 기기에 기억한다 ---------- */
+/* ---------- 상태: 마지막으로 본 탭, 체크는 이 기기에 기억한다 ---------- */
+/* 장소·식당은 모두 일정에 나오므로 장소·맛집 탭을 두지 않고 일정 카드 아래에 붙인다 */
 const TABS=[
   {k:"첫째날",svg:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'},
   {k:"둘째날",svg:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'},
-  {k:"장소",svg:'<path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>'},
-  {k:"맛집",svg:'<path d="M7 3v7a2 2 0 01-2 2M7 3v7a2 2 0 002 2M7 12v9M5 3v6M9 3v6M17 3c-2 1.5-3 4-3 7h3v11"/>'},
   {k:"체크",svg:'<rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 12l3 3 5-6"/>'}
 ];
 const main=document.getElementById("main"),nav=document.getElementById("nav");
-const TAB_KEY="hn.tab",SUB_KEY="hn.sub",CHECKS_KEY="hn.checks";
-let tab=store.get(TAB_KEY,"첫째날");if(tab==="일정")tab="첫째날";if(!TABS.some(t=>t.k===tab))tab="첫째날";
-let subByTab=store.get(SUB_KEY,{});if(!subByTab||typeof subByTab!=="object"||Array.isArray(subByTab))subByTab={};
+const TAB_KEY="hn.tab",CHECKS_KEY="hn.checks";
+let tab=store.get(TAB_KEY,"첫째날");if(!TABS.some(t=>t.k===tab))tab="첫째날";
 let checks=store.get(CHECKS_KEY,{});if(!checks||typeof checks!=="object"||Array.isArray(checks))checks={};
 const scrollByView={},openRows=new Set(),openInner=new Set();
 
@@ -481,17 +479,12 @@ const scrollByView={},openRows=new Set(),openInner=new Set();
 const svgIcon=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
 const MAP_ICON=svgIcon('<path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>');
 const NAV_ICON=svgIcon('<path d="M4 15l1.7-5.2A2 2 0 017.6 8.4h8.8a2 2 0 011.9 1.4L20 15"/><rect x="3" y="15" width="18" height="4" rx="1.5"/><path d="M6 19v2M18 19v2M7 12h10"/>');
-const INFO_ICON=svgIcon('<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/>');
-const FOOD_ICON=svgIcon('<path d="M7 3v7a2 2 0 01-2 2M7 3v7a2 2 0 002 2M7 12v9M5 3v6M9 3v6M17 3c-2 1.5-3 4-3 7h3v11"/>');
 const PHONE_ICON=svgIcon('<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>');
-const CAL_ICON=svgIcon('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>');
 const mapBtn=href=>href?`<a class="icon-btn" href="${esc(href)}" target="_blank" rel="noopener noreferrer" aria-label="네이버지도" title="지도">${MAP_ICON}</a>`:"";
 const navBtn=href=>href?`<a class="icon-btn" href="${esc(href)}" aria-label="티맵 내비" title="내비">${NAV_ICON}</a>`:"";
 
 /* ---------- 날짜: 연도와 요일은 빼고 11.7처럼 (월.일) ---------- */
 const dotDate=v=>{const [m,d]=String(v).split("/").map(Number);return d?`${m}.${d}`:String(v)};
-const dateList=dates=>String(dates||"").split("·").map(x=>x.trim()).filter(Boolean);
-const DAY_BY_MD=Object.fromEntries(DAYS.map(d=>[md(d),d.id]));
 
 /* ---------- 펼친 내용 ---------- */
 function rowValue(r){if(/전화|문의/.test(r[0])){const tel=telOf(r[1]);return tel?`<a href="${esc(tel)}">${esc(r[1])}</a>`:rich(r[1])}return rich(r[1])}
@@ -504,108 +497,83 @@ function blockBodyHTML(b){
   if(b.t==="tk")return `<section class="tk"><div class="tkh"><h3>${esc(b.h)}</h3><span>${esc(b.d)}</span></div>${b.r.map(r=>`<div class="tkr"><time>${esc(r[0])}</time><span>${esc(r[1])}</span></div>`).join("")}${b.n?`<p class="tkn">${esc(b.n)}</p>`:""}</section>`;
   return "";
 }
-/* 아이콘 줄: 전화 → 내비 → 일정 날짜 → 지도(항상 맨 오른쪽) */
-function actionsHTML(e){
+/* 아이콘 줄: 전화 → 내비 → 지도(항상 맨 오른쪽). 일정 카드 자신의 장소면 내비·지도는 카드에 이미 있어 뺀다 */
+function actionsHTML(e,own){
   const items=[];
   if(e.tel)items.push(`<a class="icon-btn" href="${esc(e.tel)}" aria-label="전화 걸기" title="전화 걸기">${PHONE_ICON}</a>`);
-  if(e.nav)items.push(navBtn(e.nav));
-  dateList(e.scheduleDates).forEach(v=>{const id=DAY_BY_MD[v];if(id)items.push(`<button type="button" class="date-btn" data-day="${id}" aria-label="${esc(dotDate(v))} 일정으로">${CAL_ICON}${esc(dotDate(v))}</button>`)});
-  if(e.map)items.push(mapBtn(e.map));
+  if(e.nav&&!own)items.push(navBtn(e.nav));
+  if(e.map&&!own)items.push(mapBtn(e.map));
   return items.length?`<div class="act-row end">${items.join("")}</div>`:"";
 }
 const countLabel=b=>(b.t==="ul"||b.t==="rows")&&b.i.length>1?b.i.length+"가지":"";
 function innerRowHTML(e,b,i){const key=e.id+"::"+i,open=openInner.has(key),cnt=countLabel(b);return `<div class="inner${open?" open":""}"><button type="button" class="row-head" data-inner="${esc(key)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${esc(b.h)}</span>${cnt?`<span class="row-sub">${cnt}</span>`:""}</span></button><div class="inner-body"${open?"":" hidden"}>${open?blockBodyHTML(b):""}</div></div>`}
-function entryBody(e){
+/* own: 일정 카드 자신의 장소. 사진은 카드에 이미 있어 뺀다 */
+function entryBody(e,own){
   const lead=[],inner=[];
   /* 승차권은 제목이 있어도 접지 않고 바로 보여 준다 */
   (e.blocks||[]).forEach((b,i)=>(b.h&&b.t!=="tk"?inner:lead).push([b,i]));
-  return lead.map(([b])=>b.t==="actions"?actionsHTML(e):blockBodyHTML(b)).join("")+(inner.length?`<div class="inner-list">${inner.map(([b,i])=>innerRowHTML(e,b,i)).join("")}</div>`:"");
+  return lead.map(([b])=>b.t==="actions"?actionsHTML(e,own):own&&b.t==="photo"?"":blockBodyHTML(b)).join("")+(inner.length?`<div class="inner-list">${inner.map(([b,i])=>innerRowHTML(e,b,i)).join("")}</div>`:"");
 }
 
 /* ---------- 카드 = 머리 + ＋ 줄 ---------- */
 function rowHTML(e,o={}){
-  /* 날짜가 여럿이면 한 줄에 하나씩 쌓는다 */
-  const open=openRows.has(e.id),sub=o.sub!==undefined?o.sub:e.sub,dates=o.date!==undefined?[o.date].filter(Boolean):dateList(e.scheduleDates).map(dotDate);
-  return `<div class="fold${open?" open":""}" data-fold="${esc(e.id)}"><button type="button" class="row-head two" data-row="${esc(e.id)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${rich(e.title)}</span>${sub?`<span class="row-sub">${esc(sub)}</span>`:""}</span><span class="row-side">${dates.length?`<span class="row-date">${dates.map(esc).join("<br>")}</span>`:""}<span class="plus" aria-hidden="true"></span></span></button><div class="fold-body"${open?"":" hidden"}>${open?entryBody(e):""}</div></div>`;
+  const key=(o.at||"")+e.id,open=openRows.has(key),sub=o.sub!==undefined?o.sub:e.sub;
+  return `<div class="fold${open?" open":""}" data-fold="${esc(key)}"${o.own?' data-own="1"':""}><button type="button" class="row-head two" data-row="${esc(e.id)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${rich(e.title)}</span>${sub?`<span class="row-sub">${esc(sub)}</span>`:""}</span><span class="row-side"><span class="plus" aria-hidden="true"></span></span></button><div class="fold-body"${open?"":" hidden"}>${open?entryBody(e,!!o.own):""}</div></div>`;
 }
 function cardHTML(title,badge,summary,rows){return `<section class="fold-card"><div class="fold-head"><div class="fold-title"><h2>${esc(title)}</h2>${badge?`<span class="card-badge">${esc(badge)}</span>`:""}</div>${summary?`<p>${rich(summary)}</p>`:""}</div>${rows}</section>`}
-function groupCard(g){return cardHTML(g.label,g.items.length+g.unit,g.note||null,g.items.map(e=>rowHTML(e)).join(""))}
-function pillsHTML(groups,cur){return `<div class="chip-tabs" role="tablist">${groups.map(g=>`<button type="button" role="tab" class="chip-tab${g.key===cur?" on":""}" data-sub="${esc(g.key)}" aria-selected="${g.key===cur}">${esc(g.label)}</button>`).join("")}</div>`}
-function currentSub(groups){const k=subByTab[tab];return groups.some(g=>g.key===k)?k:groups[0].key}
-
-/* ---------- 장소: 지역별 ---------- */
-const PLACE_ITEMS=ENTRIES.filter(e=>e.tab==="장소");
-const PLACE_GROUPS=[...new Set(PLACE_ITEMS.map(e=>e.group))].map(name=>({key:name,label:name,unit:"곳",items:PLACE_ITEMS.filter(e=>e.group===name)}));
-function viewPlaces(){const cur=currentSub(PLACE_GROUPS);return{pills:pillsHTML(PLACE_GROUPS,cur),body:groupCard(PLACE_GROUPS.find(g=>g.key===cur))}}
-
-/* ---------- 맛집: 끼니별. 카드 머리에 일정 속 시각과 정해졌는지 ---------- */
-const EAT_ITEMS=ENTRIES.filter(e=>e.tab==="맛집");
-function mealSlot(ids){for(const d of DAYS){const st=d.stops.find(x=>(x.rel||[]).some(id=>ids.includes(id)));if(st)return{d,st}}return null}
-const EAT_GROUPS=[...new Set(EAT_ITEMS.map(e=>e.group))].map(name=>{
-  const items=EAT_ITEMS.filter(e=>e.group===name),m=mealSlot(items.map(e=>e.id));
-  const note=m?[`${dotDate(md(m.d))} ${m.st.time}`,m.st.chg?"미정":"확정"].join(" · "):"";
-  return{key:name,label:name,unit:"곳",note,items,order:m?DAYS.indexOf(m.d)*10000+Number(m.st.time.replace(":","")):1e9};
-}).sort((a,b)=>a.order-b.order);
-function viewEat(){const cur=currentSub(EAT_GROUPS);return{pills:pillsHTML(EAT_GROUPS,cur),body:groupCard(EAT_GROUPS.find(g=>g.key===cur))}}
 
 /* ---------- 체크: 체크리스트(배지는 체크한 수/전체) + 여행 정보 ---------- */
 function checkRowHTML(it){const on=!!checks[it[0]];return `<label class="check-row${on?" done":""}"><input type="checkbox" data-check="${esc(it[0])}"${on?" checked":""}><span class="check-box" aria-hidden="true"></span><span class="check-text">${rich(it[1])}${it[2]?`<span class="check-note">${esc(it[2])}</span>`:""}</span></label>`}
 const INFO_ITEMS=[prepHotel,prepSun,prepWear,moveTrain,moveCar,moveTaxi];
 function viewCheck(){
-  return{body:CHECK.map(g=>{const done=g.i.filter(it=>checks[it[0]]).length;return cardHTML(`${g.n} · ${g.w.replace(/(\d+)\/(\d+)/g,"$1.$2")}`,`${done}/${g.i.length}`,null,g.i.map(checkRowHTML).join(""))}).join("")+cardHTML("여행 정보",INFO_ITEMS.length+"가지",null,INFO_ITEMS.map(e=>rowHTML(e,{date:""})).join(""))};
+  return CHECK.map(g=>{const done=g.i.filter(it=>checks[it[0]]).length;return cardHTML(`${g.n} · ${g.w.replace(/(\d+)\/(\d+)/g,"$1.$2")}`,`${done}/${g.i.length}`,null,g.i.map(checkRowHTML).join(""))}).join("")+cardHTML("여행 정보",INFO_ITEMS.length+"가지",null,INFO_ITEMS.map(e=>rowHTML(e,{at:"info:"})).join(""));
 }
 
 /* ---------- 일정: 첫째날 · 둘째날 탭 ---------- */
-const LINK_KINDS=[["장소","장소 정보",INFO_ICON],["맛집","식당 정보",FOOD_ICON]];
-function stopHTML(st,si){
+function stopHTML(st,si,dayId){
   const stay=st.stay&&/\d/.test(st.stay)?st.stay:"";
   const ph=photoBlock(st.img,st.title);
-  const ids=[...new Set(st.rel||[])].filter(id=>BY[id]);
-  const links=LINK_KINDS.map(([kind,label,icon])=>({kind,label,icon,ids:ids.filter(id=>BY[id].tab===kind)})).filter(x=>x.ids.length);
-  const icons=links.map(l=>l.ids.length===1?`<button type="button" class="icon-btn" data-go="${esc(l.ids[0])}" aria-label="${esc(l.label)}: ${esc(BY[l.ids[0]].title)}" title="${esc(l.label)}">${l.icon}</button>`:`<button type="button" class="icon-btn" data-choose="${si}-${l.kind}" aria-expanded="false" aria-label="${esc(l.label)} ${l.ids.length}곳" title="${esc(l.label)}">${l.icon}</button>`);
+  const icons=[];
   if(st.t&&tmap(st.t))icons.push(navBtn(tmap(st.t)));
   if(st.n)icons.push(mapBtn(naver(st.n)));
-  const choosers=links.filter(l=>l.ids.length>1).map(l=>`<div class="stop-choose" data-choose-list="${si}-${l.kind}" hidden>${l.ids.map(id=>`<button type="button" class="stop-link" data-go="${esc(id)}"><strong>${esc(BY[id].title)}</strong><span>${esc(l.label)} ›</span></button>`).join("")}</div>`).join("");
-  /* 이 카드와 이어지는 이동 정보·숙소는 카드 맨 아래 ＋ 줄로 붙인다 */
-  const more=ids.map(id=>BY[id]).filter(e=>e.tab==="이동"||e.tab==="준비");
+  /* 이 카드의 장소 정보 · 후보 식당 · 이동 · 숙소는 카드 맨 아래 ＋ 줄로 붙인다 */
+  const more=[...new Set(st.rel||[])].map(id=>BY[id]).filter(Boolean);
+  const own=e=>!!(st.n&&e.map&&e.map===naver(st.n));
   const foot=stay||icons.length?`<div class="stop-foot"><span class="stay">${stay?"체류 "+esc(stay):""}</span>${icons.length?`<span class="stop-actions">${icons.join("")}</span>`:""}</div>`:"";
-  return `<article class="stop"><div class="hd"><time class="tm">${esc(st.time)}</time><h3${st.chg?' class="chg-title"':""}>${rich(st.title)}</h3></div>${st.key?`<p class="stop-key">${rich(st.key)}</p>`:""}${ph?`<div class="stop-media one"><img class="stop-photo" src="${esc(ph.src)}" alt="${esc(st.title)}" loading="lazy"></div>`:""}${foot}${choosers}${more.length?`<div class="stop-more fold-list">${more.map(e=>rowHTML(e,{date:""})).join("")}</div>`:""}</article>`;
+  return `<article class="stop"><div class="hd"><time class="tm">${esc(st.time)}</time><h3${st.chg?' class="chg-title"':""}>${rich(st.title)}</h3></div>${st.key?`<p class="stop-key">${rich(st.key)}</p>`:""}${ph?`<div class="stop-media one"><img class="stop-photo" src="${esc(ph.src)}" alt="${esc(st.title)}" loading="lazy"></div>`:""}${foot}${more.length?`<div class="stop-more fold-list">${more.map(e=>rowHTML(e,{at:`${dayId}-${si}:`,own:own(e)})).join("")}</div>`:""}</article>`;
 }
 /* 이동 글: 첫 줄 출발 시각(굵게), 둘째 줄부터 회색 설명 */
 function journey(st){if(!st.move)return "";const m=String(st.move).match(/^(.*?출발)\s*·\s*(.*)$/);return `<div class="journey"><p>${m?`<strong>${rich(m[1])}</strong>${rich(m[2])}`:rich(st.move)}</p></div>`}
 /* 하루는 항상 카드로 시작한다. 첫 카드 위에는 이동 글을 두지 않는다 */
 function viewSchedule(dayId){
   const e=BY[dayId],i=DAYS.indexOf(e),prev=DAYS[i-1],next=DAYS[i+1];
-  return{body:`<div class="dayhead"><p class="day-date">${+e.date.ym.slice(5)}월 ${+e.date.d}일 ${esc(e.date.w)} · ${esc(e.pl)}</p><p class="day-title">${esc(e.title)}</p></div>`+
-    `<div class="tl">${e.stops.map((st,si)=>`${si?journey(st):""}${stopHTML(st,si)}`).join("")}</div>`+
+  return `<div class="dayhead"><p class="day-date">${+e.date.ym.slice(5)}월 ${+e.date.d}일 ${esc(e.date.w)} · ${esc(e.pl)}</p><p class="day-title">${esc(e.title)}</p></div>`+
+    `<div class="tl">${e.stops.map((st,si)=>`${si?journey(st):""}${stopHTML(st,si,dayId)}`).join("")}</div>`+
     (e.notes.length?`<div class="day-extra">${cardHTML("알아둘 것","",null,e.notes.map(x=>`<div class="note-row">${rich(x)}</div>`).join(""))}</div>`:"")+
-    `<div class="pn">${prev?`<button type="button" data-day="${prev.id}">‹ ${esc(dotDate(md(prev)))}</button>`:"<span></span>"}${next?`<button type="button" data-day="${next.id}">${esc(dotDate(md(next)))} ›</button>`:"<span></span>"}</div>`};
+    `<div class="pn">${prev?`<button type="button" data-day="${prev.id}">‹ ${esc(dotDate(md(prev)))}</button>`:"<span></span>"}${next?`<button type="button" data-day="${next.id}">${esc(dotDate(md(next)))} ›</button>`:"<span></span>"}</div>`;
 }
 
 /* ---------- 그리기 ---------- */
-const VIEWS={"첫째날":()=>viewSchedule("d1107"),"둘째날":()=>viewSchedule("d1108"),"장소":viewPlaces,"맛집":viewEat,"체크":viewCheck};
-const SUB_GROUPS={"장소":PLACE_GROUPS,"맛집":EAT_GROUPS};
-function viewKey(){return SUB_GROUPS[tab]?tab+":"+currentSub(SUB_GROUPS[tab]):tab}
+const VIEWS={"첫째날":()=>viewSchedule("d1107"),"둘째날":()=>viewSchedule("d1108"),"체크":viewCheck};
 /* 안쪽 펼친 제목은 바깥 제목 줄 높이만큼 아래에 붙는다 */
 function measureRow(box){const head=box.querySelector(":scope > .row-head");if(head)box.style.setProperty("--row-h",head.offsetHeight+"px")}
 function setStick(){main.querySelectorAll(".fold.open").forEach(measureRow)}
 function render(restore=true,storeScroll=true){
-  if(storeScroll)scrollByView[viewKey()]=window.scrollY;
-  const v=VIEWS[tab]();
-  main.innerHTML=`<header class="brand"><h1>해남</h1></header>${v.pills||""}<div id="view-body">${v.body}</div>`;
+  if(storeScroll)scrollByView[tab]=window.scrollY;
+  main.innerHTML=`<header class="brand"><h1>해남</h1></header><div id="view-body">${VIEWS[tab]()}</div>`;
   setStick();
   nav.innerHTML=TABS.map(t=>`<button type="button" data-tab="${t.k}" class="${t.k===tab?"on":""}" aria-current="${t.k===tab?"page":"false"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${t.svg}</svg><span>${t.k}</span></button>`).join("");
   store.set(TAB_KEY,tab);
-  if(restore)requestAnimationFrame(()=>window.scrollTo(0,scrollByView[viewKey()]||0));
+  if(restore)requestAnimationFrame(()=>window.scrollTo(0,scrollByView[tab]||0));
 }
-function renderBody(){const body=document.getElementById("view-body");if(body)body.innerHTML=VIEWS[tab]().body;setStick()}
+function renderBody(){const body=document.getElementById("view-body");if(body)body.innerHTML=VIEWS[tab]();setStick()}
 function stickTop(el){return parseFloat(getComputedStyle(el).top)||0}
 /* 펼친 제목을 눌러 접으면 화면이 제목 자리로 돌아온다 */
 function backToRow(box,head){const top=box.getBoundingClientRect().top,stick=stickTop(head);if(top<stick)window.scrollTo(0,top+window.scrollY-stick)}
 function toggleRow(button){
-  const box=button.closest(".fold"),body=box.querySelector(":scope > .fold-body"),id=button.dataset.row,opening=!box.classList.contains("open");
-  if(opening){body.innerHTML=entryBody(BY[id]);body.hidden=false;openRows.add(id);box.classList.add("open");measureRow(box)}
-  else{backToRow(box,button);body.hidden=true;body.innerHTML="";openRows.delete(id);[...openInner].forEach(k=>{if(k.startsWith(id+"::"))openInner.delete(k)});box.classList.remove("open")}
+  const box=button.closest(".fold"),body=box.querySelector(":scope > .fold-body"),id=button.dataset.row,key=box.dataset.fold,opening=!box.classList.contains("open");
+  if(opening){body.innerHTML=entryBody(BY[id],box.dataset.own==="1");body.hidden=false;openRows.add(key);box.classList.add("open");measureRow(box)}
+  else{backToRow(box,button);body.hidden=true;body.innerHTML="";openRows.delete(key);[...openInner].forEach(k=>{if(k.startsWith(id+"::"))openInner.delete(k)});box.classList.remove("open")}
   button.setAttribute("aria-expanded",String(opening));
 }
 function toggleInner(button){
@@ -614,25 +582,14 @@ function toggleInner(button){
   else{backToRow(box,button);body.hidden=true;body.innerHTML="";openInner.delete(key);box.classList.remove("open")}
   button.setAttribute("aria-expanded",String(opening));
 }
-/* 일정의 아이콘에서 항목으로 가면 그 탭과 서브 탭으로 바꾸고 그 줄을 펼친다 */
-function goTo(id){
-  const e=BY[id];if(!e||(e.tab!=="장소"&&e.tab!=="맛집"))return;
-  scrollByView[viewKey()]=window.scrollY;
-  tab=e.tab;subByTab[tab]=e.group;store.set(SUB_KEY,subByTab);openRows.add(id);
-  render(false,false);
-  requestAnimationFrame(()=>{const box=main.querySelector(`[data-fold="${CSS.escape(id)}"]`);if(box)window.scrollTo(0,box.getBoundingClientRect().top+window.scrollY)});
-}
 document.addEventListener("click",ev=>{
   const row=ev.target.closest("[data-row]");if(row){toggleRow(row);return}
   const inner=ev.target.closest("[data-inner]");if(inner){toggleInner(inner);return}
-  const go=ev.target.closest("[data-go]");if(go){goTo(go.dataset.go);return}
-  const choose=ev.target.closest("[data-choose]");if(choose){const art=choose.closest(".stop"),list=art.querySelector(`[data-choose-list="${choose.dataset.choose}"]`),opening=list.hidden;art.querySelectorAll("[data-choose-list]").forEach(x=>x.hidden=true);art.querySelectorAll("[data-choose]").forEach(x=>{x.classList.remove("on");x.setAttribute("aria-expanded","false")});list.hidden=!opening;choose.classList.toggle("on",opening);choose.setAttribute("aria-expanded",String(opening));return}
-  const sub=ev.target.closest("[data-sub]");if(sub){scrollByView[viewKey()]=window.scrollY;subByTab[tab]=sub.dataset.sub;store.set(SUB_KEY,subByTab);render(true,false);sub.blur();return}
-  const day=ev.target.closest("[data-day]");if(day){ev.preventDefault();scrollByView[viewKey()]=window.scrollY;tab=DAY_TAB[day.dataset.day];render(true,false);return}
-  const t=ev.target.closest("[data-tab]");if(t){scrollByView[viewKey()]=window.scrollY;tab=t.dataset.tab;render(true,false)}
+  const day=ev.target.closest("[data-day]");if(day){ev.preventDefault();scrollByView[tab]=window.scrollY;tab=DAY_TAB[day.dataset.day];render(true,false);return}
+  const t=ev.target.closest("[data-tab]");if(t){scrollByView[tab]=window.scrollY;tab=t.dataset.tab;render(true,false)}
 });
 document.addEventListener("change",ev=>{const c=ev.target.closest("input[data-check]");if(!c)return;if(c.checked)checks[c.dataset.check]=true;else delete checks[c.dataset.check];store.set(CHECKS_KEY,checks);renderBody()});
-window.addEventListener("scroll",()=>{scrollByView[viewKey()]=window.scrollY},{passive:true});
+window.addEventListener("scroll",()=>{scrollByView[tab]=window.scrollY},{passive:true});
 window.addEventListener("resize",setStick);
 render(false);
 </script>
