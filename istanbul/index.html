@@ -1333,6 +1333,8 @@ function groupCard(g){
 }
 function pillsHTML(groups,cur){return `<div class="chip-tabs" role="tablist">${groups.map(g=>`<button type="button" role="tab" class="chip-tab${g.key===cur?" on":""}" data-sub="${esc(g.key)}" aria-selected="${g.key===cur}">${esc(g.label)}</button>`).join("")}</div>`}
 function currentSub(groups){const k=subByTab[tab];return groups.some(g=>g.key===k)?k:groups[0].key}
+/* 장소 · 맛집 · 정보 탭의 검색창은 모두 통합 검색이다: 일정 · 장소 · 맛집 · 음식 · 정보 · 준비를 한 번에 찾는다 */
+const ALL_SEARCH="일정, 장소, 맛집, 정보 통합 검색";
 const matches=(e,terms)=>terms.every(t=>e.search.includes(t));
 const termsOf=q=>q.trim().toLowerCase().split(/\s+/).filter(Boolean);
 
@@ -1341,8 +1343,7 @@ const PLACE_ITEMS=ENTRIES.filter(e=>e.tab==="장소");
 const PLACE_GROUPS=[...new Set(PLACE_ITEMS.map(e=>e.group))].map(name=>({key:name,label:name,unit:"곳",items:PLACE_ITEMS.filter(e=>e.group===name)}));
 function viewPlaces(){
   const cur=currentSub(PLACE_GROUPS),terms=termsOf(queries["장소"]);
-  if(terms.length){const found=PLACE_ITEMS.filter(e=>matches(e,terms));return{search:"장소 검색",pills:pillsHTML(PLACE_GROUPS,cur),body:found.length?groupCard({label:"검색 결과",unit:"곳",items:found}):cardHTML("검색 결과","",null,'<p class="empty">찾는 장소가 없습니다</p>')}}
-  return{search:"장소 검색",pills:pillsHTML(PLACE_GROUPS,cur),body:groupCard(PLACE_GROUPS.find(g=>g.key===cur))};
+  return{search:ALL_SEARCH,pills:pillsHTML(PLACE_GROUPS,cur),body:terms.length?searchAll(terms):groupCard(PLACE_GROUPS.find(g=>g.key===cur))};
 }
 
 /* ---------- 맛집: 동네별 식당 ---------- */
@@ -1351,8 +1352,7 @@ const EAT_ITEMS=ENTRIES.filter(e=>e.tab==="맛집");
 const EAT_GROUPS=RESTAURANT_REGION_GROUPS.map(g=>({key:g.name,label:g.name,note:g.note,unit:"곳",items:EAT_ITEMS.filter(e=>e.group===g.name)})).filter(g=>g.items.length);
 function viewEat(){
   const cur=currentSub(EAT_GROUPS),terms=termsOf(queries["맛집"]);
-  if(terms.length){const found=EAT_ITEMS.filter(e=>matches(e,terms));return{search:"맛집 검색",pills:pillsHTML(EAT_GROUPS,cur),body:found.length?groupCard({label:"검색 결과",unit:"곳",items:found}):cardHTML("검색 결과","",null,'<p class="empty">찾는 맛집이 없습니다</p>')}}
-  return{search:"맛집 검색",pills:pillsHTML(EAT_GROUPS,cur),body:groupCard(EAT_GROUPS.find(g=>g.key===cur))};
+  return{search:ALL_SEARCH,pills:pillsHTML(EAT_GROUPS,cur),body:terms.length?searchAll(terms):groupCard(EAT_GROUPS.find(g=>g.key===cur))};
 }
 
 /* ---------- 정보: 여행 정보 · 여행 팁 · 음식 종류, 맨 위 검색은 전체를 찾는다 ---------- */
@@ -1384,7 +1384,7 @@ function searchAll(terms){
 }
 function viewInfo(){
   const cur=currentSub(INFO_GROUPS),terms=termsOf(queries["정보"]);
-  return{search:"일정, 장소, 맛집, 정보 검색",pills:pillsHTML(INFO_GROUPS,cur),body:terms.length?searchAll(terms):groupCard(INFO_GROUPS.find(g=>g.key===cur))};
+  return{search:ALL_SEARCH,pills:pillsHTML(INFO_GROUPS,cur),body:terms.length?searchAll(terms):groupCard(INFO_GROUPS.find(g=>g.key===cur))};
 }
 
 /* ---------- 준비: 사람별 체크리스트, 배지는 체크한 수/전체 ---------- */
