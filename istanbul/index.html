@@ -1307,11 +1307,11 @@ function blockBodyHTML(b){
 }
 /* 그날 일정에서 이 항목이 붙은 카드 순서 */
 const stopIndexOf=(day,id)=>{const d=BY[day];return d?d.blocks[0].i.findIndex(st=>st.placeId===id||(st.rel||[]).includes(id)):-1};
-/* ctx: 일정 카드 안(s)이면 지금 보는 날 버튼을 빼고, 카드에 이미 있는 사진(p)·지도(m)는 다시 넣지 않는다 */
+/* ctx: 일정 카드 안(s)이면 일정 날짜 버튼을 모두 빼고(정보가 이미 일정 아래 붙어 있다), 카드에 이미 있는 사진(p)·지도(m)는 다시 넣지 않는다 */
 function actionsHTML(e,ctx=""){
   const items=[];
   if(e.tel)items.push(`<a class="icon-btn" href="${esc(e.tel)}" aria-label="전화 걸기" title="전화 걸기">${PHONE_ICON}</a>`);
-  dateList(e.scheduleDates).forEach(md=>{const id=DAY_BY_MD[md];if(!id||(ctx.includes("s")&&id===dayId))return;const st=stopIndexOf(id,e.id);items.push(`<button type="button" class="date-btn" data-day="${id}"${st>=0?` data-st="${st}"`:""} aria-label="${esc(dotDate(md))} 일정으로">${CAL_ICON}${esc(dotDate(md))}</button>`)});
+  dateList(e.scheduleDates).forEach(md=>{const id=DAY_BY_MD[md];if(!id||ctx.includes("s"))return;const st=stopIndexOf(id,e.id);items.push(`<button type="button" class="date-btn" data-day="${id}"${st>=0?` data-st="${st}"`:""} aria-label="${esc(dotDate(md))} 일정으로">${CAL_ICON}${esc(dotDate(md))}</button>`)});
   if(e.map&&!ctx.includes("m"))items.push(`<a class="icon-btn" href="${esc(e.map)}" target="_blank" rel="noopener noreferrer" aria-label="지도" title="지도">${MAP_ICON}</a>`);
   return items.length?`<div class="act-row end">${items.join("")}</div>`:"";
 }
