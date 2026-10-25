@@ -1275,7 +1275,14 @@ function loadJSON(key,fallback){try{const raw=localStorage.getItem(key);return r
 function saveJSON(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(_){}}
 let tab=loadJSON(TAB_KEY,"일정");if(!TABS.some(t=>t.k===tab))tab="일정";
 let subByTab=loadJSON(SUB_KEY,{});if(!subByTab||typeof subByTab!=="object"||Array.isArray(subByTab))subByTab={};
-let dayId="d1024";
+/* 일정은 열 때마다 이 기기의 오늘 날짜를 연다. 여행 전이면 첫날, 여행이 끝났으면 마지막 날 */
+function todayDayId(){
+  const now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime();
+  const dateOf=d=>{const [y,m]=d.date.ym.split(".").map(Number);return new Date(y,m-1,Number(d.date.d)).getTime()};
+  const hit=DAYS.find(d=>dateOf(d)===today);
+  return hit?hit.id:(today>dateOf(DAYS[DAYS.length-1])?DAYS[DAYS.length-1].id:DAYS[0].id);
+}
+let dayId=todayDayId();
 const queries={"장소":"","맛집":"","정보":""},scrollByView={},openRows=new Set();
 
 /* ---------- 아이콘 ---------- */
