@@ -68,6 +68,8 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 
 .row-copy{display:flex;flex:1 1 auto;align-items:baseline;gap:8px;min-width:0}
 .row-title{flex:0 1 auto;min-width:0;font-weight:700}
+.kind{display:inline-block;width:16px;height:16px;margin-right:6px;color:var(--accent);vertical-align:-3px}
+.kind svg{display:block;width:16px;height:16px}
 .row-sub{flex:1 1 0;min-width:0;overflow:hidden;color:var(--muted);font-size:var(--fs-s);font-weight:400;text-overflow:ellipsis;white-space:nowrap}
 .row-date{flex:none;color:var(--muted);font-size:var(--fs-s);font-variant-numeric:tabular-nums;white-space:nowrap}
 /* 첫 단계 ＋ 줄: 회색 요약은 잘리지 않게 둘째 줄, 날짜는 오른쪽 위, ＋(다른 화면으로 가는 줄은 ›)는 그 아래 가운데 */
@@ -278,8 +280,8 @@ day("d1026","2026.10","26","월요일","카디쾨이 먹거리 산책","10:55~11
   s("13:15","점심: Borsam Taşfırın",{move:"카디쾨이 시장 안 도보 5분 · Güneşlibahçe Sok. No:22",moveAt:"13:10",stay:"40분",key:"라흐마준과 아이란을 주문한다. Güneşlibahçe Sok. No:22의 차르슈 지점인지 확인한다.",photos:[{src:I[37],alt:"카디쾨이 시장의 초록색 간판이 달린 Borsam Taşfırın 매장 외관"}],q:"Borsam Taşfırın Güneşlibahçe Sok. No:22 Kadıköy İstanbul",rel:["f13","f10"]}),
   s("14:00","Kadıköy Midyecisi",{move:"Borsam에서 도보 4~5분 · 약 270m",moveAt:"13:55",stay:"30분",key:"미디예 돌마를 몇 개만 맛본다. Caferağa, Sarraf Ali Sk. No:22/B.",q:"Kadıköy Midyecisi Sarraf Ali Sk. No:22/B Kadıköy İstanbul",map:"https://www.google.com/maps/search/?api=1&query=Kad%C4%B1k%C3%B6y+Midyecisi+%C4%B0stanbul",rel:["wish-kadikoy-midye","f15"]}),
   s("14:40","Göreme Muhallebicisi",{move:"Midyecisi에서 도보 5분 · 약 350m",moveAt:"14:35",stay:"35분",key:"꿀과 카이막 또는 카이막을 곁들인 우유 디저트를 나눠 맛본다. Leylek Sok. No:20/A.",photos:[{src:I[38],alt:"괴레메 무할레비지시의 흰색 간판과 유리문이 보이는 매장 외관"}],q:"Göreme Muhallebicisi Leylek Sok. No:20/A Kadıköy İstanbul",rel:["f17","f19"]}),
-  s("15:25","Fazıl Bey'in Türk Kahvesi",{move:"Göreme에서 도보 8분 · 약 650m",moveAt:"15:17",stay:"55분",key:"전통 튀르키예 커피를 로쿰·물과 함께 마신다. Serasker Cd. No:1/A의 차르슈 지점인지 확인한다.",photos:[{src:I[39],alt:"파즐 베이의 튀르키예 커피 매장 입구와 전통 커피 잔"}],q:"Fazıl Bey'in Türk Kahvesi Serasker Cd. No:1/A Kadıköy İstanbul",rel:["f20"]}),
-  s("16:25","황소 동상",{move:"Fazıl Bey에서 알트올 교차로까지 도보 4분 · 약 230m",moveAt:"16:20",stay:"10분",key:"카디쾨이 사람들이 약속 장소로 쓴다고 알려진 청동 황소다. 모다로 가는 길목이라 사진 한 장 찍고 지나간다.",q:"Kadıköy Boğa Heykeli Altıyol",rel:["bo1"]}),
+  s("15:25","Fazıl Bey'in Türk Kahvesi",{move:"Göreme에서 도보 8분 · 약 650m",moveAt:"15:17",stay:"55분",key:"전통 튀르키예 커피를 로쿰·물과 함께 마신다. Serasker Cd. No:1/A의 차르슈 지점인지 확인한다.",photos:[{src:I[39],alt:"파즐 베이의 튀르키예 커피 매장 입구와 전통 커피 잔"}],q:"Fazıl Bey'in Türk Kahvesi Serasker Cd. No:1/A Kadıköy İstanbul",map:"https://www.google.com/maps/search/?api=1&query=40.9903913%2C29.024756",rel:["f20"]}),
+  s("16:25","황소 동상",{move:"Fazıl Bey에서 알트올 교차로까지 도보 5분 · 약 350m",moveAt:"16:20",stay:"10분",key:"카디쾨이 사람들이 약속 장소로 쓴다고 알려진 청동 황소다. 모다로 가는 길목이라 사진 한 장 찍고 지나간다.",q:"Kadıköy Boğa Heykeli Altıyol",rel:["bo1"]}),
   s("16:55","모다 해안 산책",{move:"황소 동상에서 모다 거리를 따라 도보 15~20분 · 약 1.2km",moveAt:"16:35",stay:"1시간 15분",key:"19세기에 여러 나라 사람이 살던 부유한 동네의 바닷가 산책로다. 해안을 걷고 Ali Usta에서 돈두르마를 나눠 먹는다. 18:05~18:10 무렵 해 지는 모습을 보고 돌아간다. 비가 오거나 길이 젖어 있으면 카페에서 쉬다가 일찍 돌아간다.",q:"Moda Sahili",placeId:"p5",rel:["p5","wish-dondurmaci-ali","f33"]}),
   s("19:10","카라쾨이 선착장",{move:"모다 해안→카디쾨이 선착장 도보 15~20분 → 페리 25~33분 · 대기 포함 총 45~70분",moveAt:"18:15",stay:"5분",q:"Karaköy İskelesi",rel:["s9"]}),
   s("20:05","호텔 도착",{move:"선착장→시슈하네 오르막 도보 12분 → M2 탁심 3분 → 호텔까지 도보 15~20분 · 대기 포함 35~50분 (택시 15분)",moveAt:"19:15"})
@@ -695,7 +697,7 @@ place({id:"s5",g:"거리·동네",t:"카디쾨이",s:"아시아 쪽",star:5,
 place({id:"bo1",g:"거리·동네",t:"카디쾨이 황소 동상",s:"Boğa Heykeli · 알트올",star:3,
   intro:"카디쾨이 사람들이 약속 장소로 쓴다고 알려진 청동 황소 동상이다.",
   about:["여섯 길이 만나는 알트올(Altıyol) 교차로에 서 있다. 알트올은 ‘여섯 길’이라는 뜻이다.","술탄 압뒬아지즈가 1864년 파리에서 주문한 작품이고, 처음 이름은 ‘싸우는 황소’였다고 한다. 프랑스 동물 조각가 쥘 보뇌르의 작품으로 알려져 있고 받침에 서명이 있다고 한다. 자료마다 조각가 이름이 달라 확실하지 않다.","이스탄불 여러 곳을 옮겨 다니다 1987년에 지금 자리에 놓였고, 지금은 카디쾨이의 상징이다."],
-  memo:["선착장 앞이 아니라 시장에서 걸어서 가는 교차로다. 파즐 베이 커피집에서 4분 거리이고 모다로 가는 길목이다.","모다까지 걷기 힘들면 추억의 트램(T3)을 탄다. 카디쾨이 광장에서 바하리예 거리와 모다 거리를 도는 순환선으로, 한 바퀴 약 2.6km에 20분쯤 걸리고 이스탄불카드로 탄다. 운행 시간은 약 07:00~21:00로 안내되지만 자료마다 달라 현장에서 확인한다."],
+  memo:["선착장 앞이 아니라 시장에서 걸어서 가는 교차로다. 파즐 베이 커피집에서 5분 거리이고 모다로 가는 길목이다.","모다까지 걷기 힘들면 추억의 트램(T3)을 탄다. 카디쾨이 광장에서 바하리예 거리와 모다 거리를 도는 순환선으로, 한 바퀴 약 2.6km에 20분쯤 걸리고 이스탄불카드로 탄다. 운행 시간은 약 07:00~21:00로 안내되지만 자료마다 달라 현장에서 확인한다."],
   how:"시장에서 걸어서 약 5분",stay:"약 10분",
   rows:[["요금","무료"]],
   caution:["교차로 한가운데라 차가 많다. 사진 찍을 때 차도 가까이 서지 않는다."],
@@ -1367,6 +1369,17 @@ const queries={"장소":"","맛집":"","정보":""},scrollByView={},openRows=new
 const svgIcon=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
 const MAP_ICON=svgIcon('<path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>');
 const CAL_ICON=svgIcon('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>');
+const KIND_ICONS={
+  "맛집":svgIcon('<path d="M6 3v7a2 2 0 0 0 4 0V3M8 3v18M18 21V3c-2.4 1.3-3.5 3.7-3.5 7V14H18"/>'),
+  "음식":svgIcon('<path d="M3 11h18a9 9 0 0 1-18 0zM8 7c0-1.5 1-2 1-3.5M13 7c0-1.5 1-2 1-3.5"/>'),
+  "명소":svgIcon('<path d="M3 21h18M5 21V10M19 21V10M9 21v-8M15 21v-8M12 3l9 5H3z"/>'),
+  "쇼핑":svgIcon('<path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/>'),
+  "이동":svgIcon('<rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 10h16M7 21l1-4M17 21l-1-4"/>'),
+  "정보":svgIcon('<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.7.5 1 1.2 1 2.1h5c0-.9.3-1.6 1-2.1A6 6 0 0 0 12 3z"/>')
+};
+/* 카드 아래 ＋ 줄 제목 앞에 종류 아이콘: 맛집 · 음식 · 명소 · 쇼핑 · 이동 · 정보 */
+const kindOf=e=>e.tab==="장소"?(e.group==="쇼핑"?"쇼핑":"명소"):e.tab==="팁"||e.tab==="준비"?"정보":e.tab;
+const kindHTML=e=>{const k=kindOf(e);return KIND_ICONS[k]?`<span class="kind" role="img" aria-label="${k}" title="${k}">${KIND_ICONS[k]}</span>`:""};
 const SEARCH_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>';
 
 /* ---------- 날짜: 연도와 요일은 빼고 10.25처럼 (월.일) ---------- */
@@ -1407,7 +1420,7 @@ function entryBody(e,ctx=""){
 function rowHTML(e,o={}){
   /* 날짜가 여럿이면 한 줄에 하나씩 쌓는다 */
   const key=(o.at||"")+e.id,open=openRows.has(key),sub=o.sub!==undefined?o.sub:e.sub,dates=o.date!==undefined?[o.date].filter(Boolean):dateList(e.scheduleDates).map(dotDate);
-  return `<div class="fold${open?" open":""}" data-fold="${esc(key)}"${o.ctx?` data-ctx="${o.ctx}"`:""}><button type="button" class="row-head two" data-row="${esc(e.id)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${rich(e.title)}</span>${sub?`<span class="row-sub">${esc(sub)}</span>`:""}</span><span class="row-side">${dates.length?`<span class="row-date">${dates.map(esc).join("<br>")}</span>`:""}<span class="plus" aria-hidden="true"></span></span></button><div class="fold-body"${open?"":" hidden"}>${open?entryBody(e,o.ctx):""}</div></div>`;
+  return `<div class="fold${open?" open":""}" data-fold="${esc(key)}"${o.ctx?` data-ctx="${o.ctx}"`:""}><button type="button" class="row-head two" data-row="${esc(e.id)}" aria-expanded="${open}"><span class="row-copy"><span class="row-title">${o.kind?kindHTML(e):""}${rich(e.title)}</span>${sub?`<span class="row-sub">${esc(sub)}</span>`:""}</span><span class="row-side">${dates.length?`<span class="row-date">${dates.map(esc).join("<br>")}</span>`:""}<span class="plus" aria-hidden="true"></span></span></button><div class="fold-body"${open?"":" hidden"}>${open?entryBody(e,o.ctx):""}</div></div>`;
 }
 function cardHTML(title,badge,summary,rows){return `<section class="fold-card"><div class="fold-head"><div class="fold-title"><h2>${esc(title)}</h2>${badge?`<span class="card-badge">${esc(badge)}</span>`:""}</div>${summary?`<p>${rich(summary)}</p>`:""}</div>${rows}</section>`}
 function groupCard(g){
@@ -1494,7 +1507,7 @@ function stopHTML(stop,si){
   const more=[...new Set([...(ownId?[ownId]:[]),...(stop.placeId?[stop.placeId]:[]),...(stop.rel||[])])].map(id=>BY[id]).filter(Boolean);
   const ctxOf=e=>"s"+(e.blocks.some(b=>b.t==="photo"&&shown.has(b.src))?"p":"")+(e.id===ownId?"m":"");
   const foot=stay||icons.length?`<div class="stop-foot"><span class="stay">${stay?"체류 "+esc(stay):""}</span>${icons.length?`<span class="stop-actions">${icons.join("")}</span>`:""}</div>`:"";
-  return `<article class="stop"><div class="hd"><time class="tm">${esc(shortTime(stop.time))}</time><h3>${rich(stop.title)}</h3></div>${stop.key?`<p class="stop-key">${rich(stop.key)}</p>`:""}${stop.route?`<p class="stop-route">가는 길 · ${rich(stop.route)}</p>`:""}${media}${foot}${more.length?`<div class="stop-more fold-list">${more.map(e=>rowHTML(e,{date:"",at:`${dayId}-${si}:`,ctx:ctxOf(e)})).join("")}</div>`:""}</article>`;
+  return `<article class="stop"><div class="hd"><time class="tm">${esc(shortTime(stop.time))}</time><h3>${rich(stop.title)}</h3></div>${stop.key?`<p class="stop-key">${rich(stop.key)}</p>`:""}${stop.route?`<p class="stop-route">가는 길 · ${rich(stop.route)}</p>`:""}${media}${foot}${more.length?`<div class="stop-more fold-list">${more.map(e=>rowHTML(e,{date:"",at:`${dayId}-${si}:`,ctx:ctxOf(e),kind:true})).join("")}</div>`:""}</article>`;
 }
 const journeyHTML=html=>`<div class="journey"><p>${html}</p></div>`;
 function journey(stop){if(!stop.move)return "";if(stop.moveOnly)return journeyHTML(rich(stop.move));const at=String(stop.moveAt||"").replace(/\s*출발.*$/,"");return journeyHTML(`${at?`<strong>${esc(at)} 출발</strong>`:""}${rich(stop.move)}`)}
