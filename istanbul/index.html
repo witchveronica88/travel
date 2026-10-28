@@ -296,8 +296,7 @@ day("d1027","2026.10","27","화요일","유럽에서 아시아로","11:30 시르
 ],"페리 요금과 점심·카페 비용");
 
 day("d1028","2026.10","28","수요일","램프 워크숍, 이집션 바자르, 발랏","11:00 모자이크 램프 워크숍 · 13:10 이집션 바자르 · 14:30 에위프 점심 · 15:50 피에르 로티 · 17:00 발랏",[
-  s("09:00","호텔 아침",{stay:"50분"}),
-  s("11:00","모자이크 램프 워크숍: Istanbul Experiences Workshops",{move:"대중교통(버스) 약 25~30분(구글 지도 기준) · 대기 포함 총 35~45분",moveAt:"10:15",stay:"2시간",key:"400년 된 오스만 시대 여관(한)에서 하는 2시간짜리 영어 워크숍이다. 색유리 조각을 붙여 모자이크 램프를 직접 만든다. 2인 56.42달러(예약 화면 기준)다. 구글 평점 4.9(리뷰 428개), 18:00까지 영업한다.",q:"Istanbul Experiences Workshops",map:"https://www.google.com/maps/dir/?api=1&destination=Istanbul%20Experiences%20Workshops&travelmode=transit",rel:["r2"]}),
+  s("11:00","모자이크 램프 워크숍: Istanbul Experiences Workshops",{route:"10:15 호텔 출발 · 대중교통(버스) 약 25~30분(구글 지도 기준) · 대기 포함 총 35~45분",stay:"2시간",key:"400년 된 오스만 시대 여관(한)에서 하는 2시간짜리 영어 워크숍이다. 색유리 조각을 붙여 모자이크 램프를 직접 만든다. 2인 56.42달러(예약 화면 기준)다. 구글 평점 4.9(리뷰 428개), 18:00까지 영업한다.",q:"Istanbul Experiences Workshops",map:"https://www.google.com/maps/dir/?api=1&destination=Istanbul%20Experiences%20Workshops&travelmode=transit",rel:["r2"]}),
   s("13:10","이집션 바자르(향신료 시장)",{move:"워크숍 장소에서 도보 약 10분 · 약 700m",moveAt:"13:00",stay:"40분",key:"1660년대에 새 모스크의 운영비를 대려고 지은 향신료 시장이다. 워크숍 장소와 가까워 끝나고 들른다. 그릇은 75번 가게가 싸고 종류가 많다는 리뷰가 있다. 부탁받은 비누는 Arifoğlu 매장(31호)에서 산다. 오늘은 공화국의 날 전날이라 오후가 반일 공휴일이다. 일부 가게는 일찍 닫을 수 있어 비누부터 산다.",q:"Mısır Çarşısı",map:"https://www.google.com/maps/dir/?api=1&destination=M%C4%B1s%C4%B1r%20%C3%87ar%C5%9F%C4%B1s%C4%B1&travelmode=walking",rel:["m4","e1","shop3"]}),
   s("14:30","점심: Tarihi Meşhur Eyüp Sultan Güveççisi",{move:"대중교통(버스) 약 20~25분(구글 지도 기준) · 대기 포함 총 30~40분",moveAt:"13:50",stay:"1시간",key:"1960년부터 이어온 귀베치·피데 전문점. 수요일 점심 영업 확인.",photos:[{src:I[47],alt:"Tarihi Meşhur Eyüp Sultan Güveççisi의 간판과 매장 입구"}],q:"Tarihi Meşhur Eyüp Sultan Güveççisi, Fahri Korutürk Cd. No:10, Eyüpsultan",map:"https://www.google.com/maps/dir/?api=1&destination=Tarihi%20Me%C5%9Fhur%20Ey%C3%BCp%20Sultan%20G%C3%BCve%C3%A7%C3%A7isi%2C%20Fahri%20Korut%C3%BCrk%20Cd.%20No%3A10%2C%20Ey%C3%BCpsultan&travelmode=walking",placeId:"wish-eyup-guvec",rel:["wish-eyup-guvec"]}),
   s("15:50","피에르 로티 언덕",{move:"승강장까지 도보 10분 + 케이블카 3분 · 대기 포함 15~25분 (걸어 오르면 오르막 약 60m, 가파른 곳 16%라 힘들다. 케이블카를 탄다)",moveAt:"15:30",stay:"45분",key:"프랑스 소설가 피에르 로티가 사랑한 언덕이다. 골든혼이 한눈에 보이는 전망을 천천히 보며 차를 마신다. 비가 세면 빼고 곧바로 발랏으로 간다. 약하면 언덕 찻집 실내 자리에서 짧게 본다.",q:"Pierre Loti Tepesi",map:"https://www.google.com/maps/dir/?api=1&destination=Pierre%20Loti%20Tepesi&travelmode=transit",rel:["p6","s10"]}),
@@ -366,7 +365,7 @@ const DEPARTURES = {
   d1025:["호텔","탁심·이스티클랄 거리","세인트 안투안 성당","갈라타 탑","갈라타 다리","에미뇌뉘","쥐쿠르주마","호텔"],
   d1026:["호텔","카디쾨이 선착장","벽화 거리","Wizards Coffee House","Borsam Taşfırın","카디쾨이 시장","Kokoreççiler Kralı Hasan Usta","카라쾨이 선착장","호텔"],
   d1027:["호텔","시르케지","Fabrikafa","카나아트","쿠즈군죽","위스퀴다르 바닷가","카라쾨이 선착장","귈뤼오울루","호텔"],
-  d1028:["호텔","Istanbul Experiences Workshops","이집션 바자르","Eyüp Sultan Güveççisi","피에르 로티 언덕","발랏","Old Balat Cafe","호텔"],
+  d1028:["Istanbul Experiences Workshops","이집션 바자르","Eyüp Sultan Güveççisi","피에르 로티 언덕","발랏","Old Balat Cafe","호텔"],
   d1029:["호텔","크즈타쉬 무할레비지시","그랜드 바자르","Lezzet-i Şark","호텔"],
   d1030:["호텔","라미 도서관","탁심 근처 식당","호텔","호텔"],
   d1031:["카파도키아"],
