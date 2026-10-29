@@ -307,8 +307,8 @@ day("d1029","2026.10","29","목요일","공화국의 날 · 그랜드 바자르�
   s("오전","그랜드 바자르(큰 지붕 시장) 근처",{route:"호텔 셔틀 → 탁심 → F1 푸니쿨라 → T1 트램 베야즈트-카팔르차르쉬",stay:"바깥 구경",key:"15세기 중반에 시작된 거대한 지붕 시장이다. 공화국의 날이라 문을 닫아 안에는 못 들어가고 근처만 구경했다.",q:"Kapalıçarşı",map:"https://www.google.com/maps/dir/?api=1&destination=Kapal%C4%B1%C3%A7ar%C5%9F%C4%B1&travelmode=transit",rel:["m3","r3"]}),
   s("구경 후","İstanbul Cevahir 쇼핑몰",{moveOnly:true,move:"그랜드 바자르에서 쇼핑몰로 이동",stay:"구경",key:"시슬리 큰길에 있는 6층 쇼핑몰이다. 바자르가 닫아서 이곳으로 와 구경했다.",q:"Istanbul Cevahir Shopping Mall",map:"https://www.google.com/maps/dir/?api=1&destination=Istanbul%20Cevahir%20Shopping%20Mall&travelmode=transit",placeId:"shop10",rel:["shop10"]}),
   s("점심","Günaydın Köfte & Döner Cevahir",{moveOnly:true,move:"쇼핑몰 안에서 이동",key:"쾨프테(양념한 다진 고기 구이)와 되네르(꼬치에 돌려 구운 고기)를 내는 체인 식당이다. 쇼핑몰 안에서 점심으로 먹었다.",q:"Günaydın Köfte & Döner Cevahir İstanbul",placeId:"wish-gunaydin-cevahir",rel:["wish-gunaydin-cevahir"]}),
-  s("간식","MADO",{key:"튀르키예의 대표 디저트·아이스크림 체인에서 간식을 먹었다.",q:"MADO Istanbul",placeId:"wish-mado",rel:["wish-mado"]}),
-  s("간식 후","호텔 도착",{q:"Sheraton Istanbul City Center",map:"https://www.google.com/maps/dir/?api=1&destination=Sheraton%20Istanbul%20City%20Center&travelmode=transit",key:"돌아와서 호텔에서 수영한다."})
+  s("간식","MADO",{moveOnly:true,move:"점심 뒤 간식 가게로 이동",key:"튀르키예의 대표 디저트·아이스크림 체인에서 간식을 먹었다.",q:"MADO Istanbul",placeId:"wish-mado",rel:["wish-mado"]}),
+  s("간식 후","호텔 도착",{q:"Sheraton Istanbul City Center",map:"https://www.google.com/maps/dir/?api=1&destination=Sheraton%20Istanbul%20City%20Center&travelmode=transit",moveOnly:true,move:"간식 가게에서 호텔로 이동",key:"돌아와서 호텔에서 수영한다."})
 ],"교통비와 점심·간식 비용");
 
 day("d1030","2026.10","30","금요일","라미 도서관 · 카파도키아 출발","11:10 라미 도서관(선택) · 13:30 점심 · 저녁 카파도키아 출발",[
@@ -316,7 +316,7 @@ day("d1030","2026.10","30","금요일","라미 도서관 · 카파도키아 출�
   s("11:10","라미 도서관 (선택)",{move:"대중교통(버스) 약 40~45분(구글 지도 기준, 환승 1번 · 요금 2번) · 대기 포함 총 45~60분",moveAt:"10:10",stay:"1시간",key:"군인이 있던 옛 막사를 튀르키예에서 가장 큰 도서관으로 바꾼 건물이다. 책을 읽으러 가는 곳이 아니라 넓은 안뜰과 긴 건물을 구경하러 간다. 열람실은 24시간 열고 입장 조건은 입구에서 확인한다. 가지 않으면 호텔에서 쉰다.",photos:[],q:"Rami Kütüphanesi",map:"https://www.google.com/maps/dir/?api=1&destination=Rami%20K%C3%BCt%C3%BCphanesi&travelmode=transit",placeId:"l3",rel:["l3"]}),
   s("13:30","점심 예정",{move:"라미에서 탁심까지 대중교통 약 30~40분(구글 지도 기준) · 대기 포함 35~50분 · 도서관에 안 가면 호텔에서 쉬다가 먹는다",moveAt:"12:20",stay:"1시간",key:"탁심 근처 로칸타에서 먹는다. 아직 식당을 정하지 않았다."}),
   s("15:00","호텔 도착·짐 싸기",{q:"Sheraton Istanbul City Center",map:"https://www.google.com/maps/dir/?api=1&destination=Sheraton%20Istanbul%20City%20Center&travelmode=transit",move:"탁심에서 호텔까지 도보 15~20분 (셔틀 매시 30분)",moveAt:"14:40",stay:"짐 싸기와 휴식",key:"카파도키아에 가져갈 짐을 싸고 쉰다."}),
-  s("저녁","카파도키아로 출발",{key:"렌터카로 간다. 이스탄불에서 카파도키아까지 차로 약 7~8시간(730km 안팎)이라 밤늦게 도착한다. 출발 시각과 길은 따로 정한다."})
+  s("저녁","카파도키아로 출발",{moveOnly:true,move:"호텔에서 쉬다가 저녁에 출발",key:"렌터카로 간다. 이스탄불에서 카파도키아까지 차로 약 7~8시간(730km 안팎)이라 밤늦게 도착한다. 출발 시각과 길은 따로 정한다."})
 ],"교통비와 점심 비용");
 
 day("d1031","2026.10","31","토요일","카파도키아","렌터카 여행",[
@@ -832,9 +832,9 @@ place({id:"m7",g:"모스크·시장",t:"술탄 아흐메트 1세 묘당",s:"Sult
 place({id:"m3",g:"모스크·시장",t:"그랜드 바자르",s:"바예지트",star:5,
   intro:"15세기 중반부터 이어진 세계에서 가장 오래되고 큰 지붕 시장 가운데 하나다.",
   about:["오스만이 이스탄불을 차지한 직후인 1455년쯤 메흐메트 2세가 시장 중심 건물을 짓기 시작했다. 이후 시장이 커져 지금은 거리 61개에 가게 4,000개 이상이 지붕 아래 이어진다.", "금·은 장신구, 가죽, 도자기, 카펫, 기념품 가게가 몰려 있다. 같은 물건을 파는 가게끼리 같은 거리에 모여 있는 것이 옛 시장의 방식이다.", "화재와 지진을 여러 번 겪으며 다시 지었다. 가게 주인과 값을 흥정하는 문화가 있다."],
-  memo:["구글 리뷰: 84번·82번 가게가 정말 싸다. 팔찌가 800원대다.", "입구가 여러 곳이라 나올 때 다른 문으로 나올 수 있다. 들어온 문 이름을 사진으로 찍어 둔다.", "일요일은 문을 닫는다. 2026년 공화국의 날(10.29)에도 닫아서 안에 들어가지 못했다."],
+  memo:["구글 리뷰: 84번·82번 가게가 정말 싸다. 팔찌가 800원대다.", "입구가 여러 곳이라 나올 때 다른 문으로 나올 수 있다. 들어온 문 이름을 사진으로 찍어 둔다.", "일요일은 문을 닫는다. 올해 공화국의 날(10.29)에도 닫아서 안에 들어가지 못했다."],
   how:"T1 트램 베야즈트-카팔르차르쉬 정류장",stay:"약 1~2시간",
-  rows:[["휴무","일요일 · 2026년 공화국의 날"],["입장","무료"]],
+  rows:[["휴무","일요일 · 공화국의 날(10.29)"],["입장","무료"]],
   caution:["엄마와 만날 장소를 먼저 정한다. 길이 복잡하기 때문이다.","최종 가격과 화폐를 확인한다. 흥정 뒤 값이 달라질 수 있기 때문이다."]});
 place({id:"m4",g:"모스크·시장",t:"이집션 바자르",s:"에미뇌뉘",star:4,
   intro:"향신료와 차, 로쿰(젤리 과자) 가게가 늘어선 1660년대의 시장이다. 향기를 맡으며 걷는다.",
