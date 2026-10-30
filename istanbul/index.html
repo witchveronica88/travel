@@ -330,14 +330,14 @@ day("d1030","2026.10","30","금요일","카파도키아로 출발","16:30 렌터
 ],"렌터카·통행료·주유·식사 비용 별도");
 
 day("d1031","2026.10","31","토요일","카파도키아 첫날","05:30 열기구 통보 · 06:30 일출(선택) · 08:30 데린쿠유 · 12:00 우치사르 · 13:00 파샤바 · 16:00 일몰(선택) · 18:45 저녁(선택)",[
-  s("05:30","열기구 통보 확인",{key:["04:00쯤 호텔(열기구 픽업 장소)에 도착해 차에서 쉰다.", "예보가 아니라 05:00~05:30에 오는 업체 연락으로 뜨는지 정한다.", "뜨면 비행 뒤 09:00쯤 돌아와 조식을 먹고, 데린쿠유는 10:30으로 늦춘다.", "시간이 모자라면 파샤바를 먼저 빼고 우치사르만 짧게 본다.", "취소되면 11.1로 옮겨 달라고 요청하고, 일출(선택)을 보러 06:30에 나선다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-balloon","cap-hotel"]}),
+  s("05:30","열기구 통보 확인",{key:["04:00쯤 호텔(열기구 픽업 장소)에 도착해 차에서 쉰다.", "05:00~05:30에 오는 업체 연락으로 열기구 취소를 확인한다.", "11.1로 옮겨 달라고 요청하고, 일출(선택)을 보러 06:30에 나선다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-balloon","cap-hotel"]}),
   s("06:30","(선택) 일출",{moveOnly:true,move:"고른 전망대로 차로 이동",stay:"약 1시간 20분",key:["일출은 07:06이다.", "새벽엔 카페가 열지 않아 보온병과 간식을 챙긴다."],photos:[{src:CAP.rose,alt:"로즈 밸리 전망대에서 본 카파도키아 계곡"}],q:"Love Valley Viewpoint Cappadocia",map:gmap("Love Valley Viewpoint Cappadocia"),rel:["cap-love","cap-rose","cap-about"]}),
   s("08:30","데린쿠유 지하도시",{move:"차로 약 40분",moveAt:"07:50",stay:"약 2시간",key:["땅속 깊이 파 내려간 옛 지하도시다.", "입장료 1인 €13(6명 €78). 통로가 좁고 낮다."],q:"Derinkuyu Underground City",map:gmap("Derinkuyu Underground City"),rel:["cap-derinkuyu"]}),
   s("11:00","(선택) 카페",{move:"괴레메까지 차로 약 35분",moveAt:"10:25",stay:"약 50분",key:["괴레메 시내에서 한 시간 가까이 쉬며 먹는다."],q:"Cafe Safak Goreme",map:gmap("Cafe Safak Goreme"),rel:["wish-cap-safak","wish-cap-kings"]}),
   s("12:00","우치사르 성채",{move:"우치사르까지 차로 약 10분",moveAt:"11:50",stay:"약 40분",key:["카파도키아에서 가장 높은 바위 요새다. 꼭대기에서 일대가 한눈에 보인다.", "입장 400리라 + 주차 50리라. 현금 리라를 챙긴다."],q:"Uchisar Castle",map:gmap("Uchisar Castle"),rel:["cap-uchisar"]}),
-  s("13:00","파샤바 계곡",{move:"차로 약 20분",moveAt:"12:40",key:["버섯 모양 바위가 모인 계곡이다. 입장은 무료다.", "낮에는 단체 관광객이 많다."],q:"Pasabag Monks Valley Cappadocia",map:gmap("Pasabag Monks Valley Cappadocia"),rel:["cap-pasabag"]}),
+  s("13:00","파샤바 계곡",{move:"차로 약 20분",moveAt:"12:40",key:["버섯 모양 바위가 모인 계곡이다. 입장은 무료다.", "낮에는 단체 관광객이 많다."],q:"Pasabag Monks Valley Cappadocia",map:gmap("Pasabag Monks Valley Cappadocia"),rel:["cap-pasabag","cap-zelve","cap-avanos"]}),
   s("14:00","숙소 체크인 후 휴식",{moveOnly:true,move:"숙소로 이동",stay:"약 1시간",key:"샤워하고 낮잠을 잔다.",q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-hotel","cap-hamam"]}),
-  s("16:00","(선택) 일몰",{moveOnly:true,move:"승마는 숙소 픽업(상품에 포함) · 전망대는 차로 약 10분",stay:"약 2시간 30분",key:["일몰은 17:41이다.", "승마 투어: 16:00에 숙소에서 픽업해 계곡에서 일몰을 본다. 예약 전에 픽업·복귀 시각이 일몰에 맞는지 확인한다.", "레드 밸리 전망대: 17:10에 도착해 일몰을 본다."],rel:["cap-horse","cap-redvalley"]}),
+  s("16:00","(선택) 일몰",{moveOnly:true,move:"승마는 숙소 픽업(상품에 포함) · 전망대는 차로 약 10분",stay:"약 2시간 30분",key:["일몰은 17:41이다.", "승마 투어: 16:00에 숙소에서 픽업해 계곡에서 일몰을 본다. 예약 전에 픽업·복귀 시각이 일몰에 맞는지 확인한다.", "레드 밸리 전망대: 17:10에 도착해 일몰을 본다.", "러브·로즈 밸리 전망대: 해 질 녘 바위 색이 가장 예쁜 시간에 맞춰 간다."],rel:["cap-horse","cap-redvalley","cap-love","cap-rose"]}),
   s("18:45","(선택) 저녁",{move:"숙소를 거쳐 괴레메 시내까지 차로 약 10분",moveAt:"18:30",stay:"약 1시간",key:["Seten은 12:30~22:30 영업이고 예약이 안 돼 일찍 간다."],q:"Seten Restaurant Goreme",map:gmap("Seten Restaurant Goreme"),placeId:"wish-cap-seten",rel:["wish-cap-seten","wish-cap-han","wish-cap-woodfire","f36"]}),
   s("20:00","숙소 복귀·취침",{move:"숙소까지 차로 약 10분",moveAt:"19:45",key:"열기구가 11.1로 옮겨졌다면 일찍 잔다."})
 ],"데린쿠유 1인 €13 · 우치사르 400리라 + 주차 50리라(현장 현금) · 파샤바 무료 · 승마·저녁은 별도");
@@ -566,7 +566,7 @@ const PLACE_SCHEDULE_DATES = {
   p1:"",p2:"",p4:"",p6:"10/28",
   s1:"10/25",s2:"10/25",s8:"10/25",m6:"10/25",c1:"10/25",cu1:"10/25",s3:"11/4",s4:"10/27",s5:"10/26",s7:"",s9:"10/26·10/27",s10:"10/28",s11:"10/27",shop3:"10/28",s12:"",s13:"10/27",s14:"",
   m2:"11/4",m3:"10/29·11/2",s6:"11/2","wish-old-balat":"11/2",m4:"10/28",m7:"11/4",shop5:"11/3",dine5:"11/2",
-  x1:"11/4",x2:"11/4",x3:"11/4",x4:"11/4",x5:"",x6:"11/3",shop6:"10/27",shop7:"10/26",shop8:"",shop9:"11/3",dine1:"10/28","wish-sultanahmet-kofte":"11/3","wish-dinner8":"","wish-midyeci-memet":"","wish-mado":"10/29","wish-kanaat":"10/27","wish-boris":"11/3","wish-colakoglu":"11/3",shop10:"10/29","cap-love":"10/31","cap-rose":"10/31","cap-derinkuyu":"10/31","cap-uchisar":"10/31","cap-pasabag":"10/31","cap-horse":"10/31","cap-balloon":"10/31","cap-about":"10/31","cap-hamam":"10/31","cap-hotel":"10/31·11/1","cap-rental":"10/30","tour-yenheo":"11/4","cap-redvalley":"10/31","cap-goreme":"11/1","cap-zelve":"11/1","cap-tuzgolu":"11/1","wish-rec1":"","wish-mangerie":"","wish-cup-joy":"","wish-wizards":"10/26","wish-hasan-kokorec":"10/26"
+  x1:"11/4",x2:"11/4",x3:"11/4",x4:"11/4",x5:"",x6:"11/3",shop6:"10/27",shop7:"10/26",shop8:"",shop9:"11/3",dine1:"10/28","wish-sultanahmet-kofte":"11/3","wish-dinner8":"","wish-midyeci-memet":"","wish-mado":"10/29","wish-kanaat":"10/27","wish-boris":"11/3","wish-colakoglu":"11/3",shop10:"10/29","cap-love":"10/31","cap-rose":"10/31","cap-derinkuyu":"10/31","cap-uchisar":"10/31","cap-pasabag":"10/31","cap-horse":"10/31","cap-balloon":"10/31","cap-about":"10/31","cap-hamam":"10/31","cap-hotel":"10/31·11/1","cap-rental":"10/30","tour-yenheo":"11/4","cap-redvalley":"10/31","cap-goreme":"11/1","cap-zelve":"10/31·11/1","cap-avanos":"10/31","cap-tuzgolu":"11/1","wish-rec1":"","wish-mangerie":"","wish-cup-joy":"","wish-wizards":"10/26","wish-hasan-kokorec":"10/26"
 };
 /* 구글 지도에서 직접 열어 확인한 검색어: 이름 그대로 찾으면 엉뚱한 곳이 나오는 장소 */
 const MAP_FIX={s9:"Bosphorus Strait Istanbul",s10:"Golden Horn Istanbul",s14:"Bebek, Beşiktaş, Istanbul",shop3:"Arifoglu Spice Egyptian Bazaar Istanbul"};
@@ -952,14 +952,14 @@ place({id:"shop8",g:"쇼핑",t:"멕툽 문구점",s:"Mektup Kırtasiye · 갈라
 place({id:"cap-love",g:"카파도키아",t:"러브 밸리 전망대",s:"Love Valley Viewpoint · 일출",
   intro:"길쭉한 바위 기둥이 줄지어 선 계곡을 내려다보며 일출을 보는 전망대다.",
   about:["러브 밸리는 괴레메 가까이에 있는 계곡이다. 길쭉한 바위 기둥이 모여 있는 모양 때문에 붙은 별명이라고 알려져 있고, 공식 이름은 바을르데레(Bağlıdere) 계곡이라는 자료가 많다.","전망대는 계곡 위쪽 능선에 있다. 해가 뜰 때 바위 기둥 사이로 빛이 번지는 모습을 보고 사진을 찍는다. 열기구가 뜨는 날에는 해 뜰 무렵 계곡 위로 열기구가 떠 있는 풍경도 보인다.","계곡 바닥으로 걸어 내려가는 길은 따로 있다. 이번에는 전망대에서만 본다."],
-  memo:["10.31 해 뜨는 시각은 07:06이다.","로즈 밸리 전망대와 둘 중 한 곳만 간다. 러브 밸리는 바위 기둥 모양, 로즈 밸리는 분홍빛으로 물드는 바위가 볼거리다.","새벽엔 근처 카페가 열지 않아 보온병과 간식을 챙겨 간다."],
+  memo:["10.31 해 뜨는 시각은 07:06, 해 지는 시각은 17:41이다.","해 질 녘에는 바위 색이 가장 예쁘다는 안내가 있어 일몰 선택지로도 쓴다.","로즈 밸리 전망대와 둘 중 한 곳만 간다. 러브 밸리는 바위 기둥 모양, 로즈 밸리는 분홍빛으로 물드는 바위가 볼거리다.","새벽엔 근처 카페가 열지 않아 보온병과 간식을 챙겨 간다."],
   how:"괴레메 쪽에서 차로 이동 · 차 안에서 해 뜨기를 기다린다",
   rows:[],
   map:gmap("Love Valley Viewpoint Cappadocia")});
 place({id:"cap-rose",g:"카파도키아",t:"로즈 밸리 전망대",s:"Rose Valley Viewpoint · 일출",
   intro:"분홍빛으로 물드는 바위 계곡을 내려다보며 일출을 보는 전망대다.",
   about:["로즈 밸리(튀르키예어로 Güllüdere)는 괴레메 북쪽에 있는 계곡이다. 해가 뜨거나 질 때 바위가 분홍빛으로 물들어 붙은 이름이라고 알려져 있다.","계곡 절벽에는 바위를 파서 만든 옛 동굴 교회가 군데군데 남아 있다. 옆의 레드 밸리와 이어져 걷기 좋은 길로도 유명하다.","전망대에서는 이 계곡 위로 해가 떠오르는 모습을 본다. 이번에는 걷지 않고 전망대에서만 본다."],
-  memo:["10.31 해 뜨는 시각은 07:06이다.","러브 밸리 전망대와 둘 중 한 곳만 간다. 러브 밸리는 바위 기둥 모양, 로즈 밸리는 분홍빛으로 물드는 바위가 볼거리다.","새벽엔 근처 카페가 열지 않아 보온병과 간식을 챙겨 간다."],
+  memo:["10.31 해 뜨는 시각은 07:06, 해 지는 시각은 17:41이다.","해 질 녘에는 바위 색이 가장 예쁘다는 안내가 있어 일몰 선택지로도 쓴다.","러브 밸리 전망대와 둘 중 한 곳만 간다. 러브 밸리는 바위 기둥 모양, 로즈 밸리는 분홍빛으로 물드는 바위가 볼거리다.","새벽엔 근처 카페가 열지 않아 보온병과 간식을 챙겨 간다."],
   how:"괴레메 쪽에서 차로 이동 · 차 안에서 해 뜨기를 기다린다",
   rows:[],
   map:gmap("Rose Valley Viewpoint Cappadocia")});
@@ -995,7 +995,7 @@ place({id:"cap-horse",g:"카파도키아",t:"일몰 승마 투어",s:"GetYourGui
 place({id:"cap-zelve",g:"카파도키아",t:"젤베 야외박물관",s:"Zelve Open Air Museum · 파샤바 근처",
   intro:"바위를 파서 살던 마을이 그대로 남아 있는 야외박물관이다.",
   about:["9~13세기쯤에는 수도사들이 지내던 곳이었다가 나중에 사람들이 사는 마을이 됐다. 바위가 무너질 위험 때문에 1950년대 초(1952년으로 알려져 있다) 주민이 가까운 새 마을로 옮겨 가면서 비게 됐다.","집과 교회, 모스크, 곡식 창고, 부엌이 바위 속에 파여 있다. 바위 사이 길을 걸으며 동굴 안을 들여다본다.","괴레메 야외박물관보다 사람이 적어 조용하다는 평이 많다."],
-  memo:["11.1 괴레메 야외박물관이 열리지 않을 때 대신 가는 곳이다.","파샤바 계곡 가까이에 있다.","걸어서 둘러보는 길은 약 2km로 안내된다."],
+  memo:["10.31 시간이 남으면 파샤바 계곡에 이어서 볼 수 있다.","11.1 괴레메 야외박물관이 열리지 않을 때도 대신 가는 곳이다.","파샤바 계곡 가까이에 있다.","걸어서 둘러보는 길은 약 2km로 안내된다."],
   how:"괴레메에서 차로 이동 · 파샤바 계곡 근처",
   rows:[["운영","08:00 개장 · 닫는 시간은 자료마다 17:00~19:00"],["요금","1인 €12 (변동 가능)"]],
   caution:["무너질 위험으로 막아 둔 곳은 들어가지 않는다."],
@@ -1024,7 +1024,7 @@ place({id:"cap-tuzgolu",g:"카파도키아",t:"소금호수(Tuz Gölü)",s:"Tuz 
 place({id:"cap-balloon",g:"카파도키아",t:"열기구 (10.31 새벽)",s:"업체 연락 05:00~05:30",
   intro:"열기구가 뜨는지는 업체의 새벽 연락으로 정해진다.",
   about:["해 뜰 무렵 열기구를 타고 카파도키아의 계곡과 바위 마을 위를 떠다니는 체험이다.","바람과 날씨가 맞아야 뜰 수 있다. 그래서 당일 새벽에 업체가 비행 여부를 알려 준다."],
-  memo:["10.31 예보는 흐림, 비 10%, 남풍 약 8km/h이고 열기구 비행 가능성은 75%다. 예보가 아니라 업체 연락으로 정한다.","새벽 6°C 안팎(10.30 예보) · 일출 07:06 · 일몰 17:41","가이드 일정은 06:00 호텔 픽업이다. 픽업 전에 로비에서 기다린다.","뜨면: 업체 픽업에 맞춰 비행하고 09:00쯤 돌아와 조식을 먹는다. 데린쿠유는 10:30으로 늦추고, 시간이 모자라면 파샤바를 먼저 빼고 우치사르만 짧게 본다.","취소되면: 그 자리에서 11.1로 옮겨 달라고 요청한다. 일출 비행인지 2차 비행인지 업체에 확인한다(사이트상 일요일 일출은 매진). 2차 비행이면 09:30~10:00에 돌아온다."],
+  memo:["10.31 예보는 흐림, 비 10%, 남풍 약 8km/h이고 열기구 비행 가능성은 75%다. 예보가 아니라 업체 연락으로 정한다.","새벽 6°C 안팎(10.30 예보) · 일출 07:06 · 일몰 17:41","가이드 일정은 06:00 호텔 픽업이다. 픽업 전에 로비에서 기다린다.","혹시 뜨면: 업체 픽업에 맞춰 비행하고 09:00쯤 돌아와 조식을 먹는다. 일정이 2시간쯤 밀리니 데린쿠유는 10:30으로 늦추고, 시간이 모자라면 파샤바를 먼저 빼고 우치사르만 짧게 본다.","취소되면: 그 자리에서 11.1로 옮겨 달라고 요청한다. 일출 비행인지 2차 비행인지 업체에 확인한다(사이트상 일요일 일출은 매진). 2차 비행이면 09:30~10:00에 돌아온다."],
   how:"호텔(Cappadocia Cave Suites)에서 업체 픽업",
   extra:[{t:"links", i:[["비행 가능 여부 확인 (Kapadokya SHM)","https://shmkapadokya.kapadokya.edu.tr/en/"]]}],
   map:gmap("Cappadocia hot air balloon Goreme")});
@@ -1047,14 +1047,15 @@ place({id:"cap-about",g:"카파도키아",t:"카파도키아·괴레메",s:"Gör
 place({id:"cap-avanos",g:"카파도키아",t:"아바노스 마을",s:"Avanos · 도자기 마을",
   intro:"붉은 강(Kızılırmak) 옆의 도자기 마을이다.",
   about:["공방에서 도자기를 직접 만들어 볼 수 있다. 무료 주차장에 차를 세우고 걸어서 마을을 둘러본다."],
-  memo:["걷다가 피스타치오 커피를 마셔 본다.","괴레메에서 차로 약 20분, 젤베에서 차로 약 20분이다."],
+  memo:["10.31 파샤바·젤베를 본 뒤 시간이 남으면 점심과 함께 들르는 선택지다.","무료 주차장에 차를 세우고 마을 식당에서 점심을 먹는다.","걷다가 피스타치오 커피를 마셔 본다.","괴레메에서 차로 약 20분, 젤베에서 차로 약 20분이다."],
+  caution:["가면 14:00 숙소 휴식이 짧아진다."],
   rows:[["주차","무료 주차장 · Orta, 207. Sk., 50530 Aktepe/Avanos/Nevşehir"]],
-  extra:[{t:"links", i:[["피스타치오 커피 카페 위치","https://maps.app.goo.gl/g6ohFWWhthtbwg9p6"]]}],
+  extra:[{t:"links", i:[["마을 점심 식당 위치","https://maps.app.goo.gl/bcv1xbmnNyh4baz78"],["피스타치오 커피 카페 위치","https://maps.app.goo.gl/g6ohFWWhthtbwg9p6"]]}],
   map:"https://maps.app.goo.gl/GUPfaS6aMQAxSzAX7"});
 place({id:"cap-hamam",g:"카파도키아",t:"하맘 (선택)",s:"터키식 목욕 · GetYourGuide",
   intro:"터키식 전통 목욕(하맘)이다. 씻고 쉬고 싶을 때 고르는 선택지다.",
   about:["예약할 수 있는 상품이 두 가지 있다. 하맘에 오일 마사지를 더한 상품과 따로 쓰는 프라이빗 하맘이다."],
-  memo:["하맘 + 오일 마사지: 오전 10시부터 이용할 수 있다. 클래식 코스 45분, 시그니처 코스 1시간.","프라이빗 하맘: 오전 9시부터 이용할 수 있다. 1시간.","플랫폼마다 운영 시간이 달라 업체에 직접 시간과 취소 조건을 확인한다."],
+  memo:["10.31 열기구가 취소돼 낮에 쉴 때 14:00 낮잠 대신 고르는 선택지다.","하맘 + 오일 마사지: 오전 10시부터 이용할 수 있다. 클래식 코스 45분, 시그니처 코스 1시간.","프라이빗 하맘: 오전 9시부터 이용할 수 있다. 1시간.","플랫폼마다 운영 시간이 달라 업체에 직접 시간과 취소 조건을 확인한다."],
   rows:[["요금","클래식 45분 €38.52 · 시그니처 1시간 €57.98 · 프라이빗 1시간 €40.86 (10.31 예약 화면 기준)"]],
   extra:[{t:"links", i:[["하맘 + 오일 마사지 예약 (GetYourGuide)","https://www.getyourguide.com/cappadocia-l1400/cappadocia-turkish-bathhamam-massage-t752633"],["프라이빗 하맘 예약 (GetYourGuide)","https://www.getyourguide.com/ko-kr/goreme-l984/cappadocia-private-turkish-bath-spa-experience-t1367377/"]]}],
   map:null});
