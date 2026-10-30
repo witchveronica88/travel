@@ -34,7 +34,7 @@ description: 새 여행 페이지(여행지/index.html)를 만들거나 기존 �
 ```
 
 - 폴더 이름은 영문 소문자 (`istanbul`, `haenam`, `jeju`, `kyoto` …).
-- 사진은 **base64로 HTML 안에 넣되, 문서 맨 끝의 두 번째 `<script>`(`__setImgs([...])`)에 몰아 둔다**. 앱 스크립트에는 `data:,번호` 임시 주소만 쓰고 `hydrateImgs`가 사진이 도착하면 바꿔 끼운다. 그래야 느린 통신에서도 일정이 먼저 뜬다. 사진은 너비 400px 안팎의 WebP로 줄인다.
+- 사진은 **base64로 HTML 안에 넣되, 문서 맨 끝의 두 번째 `<script>`(`__setImgs([...])`)에 몰아 둔다**. 앱 스크립트에는 `data:,번호` 임시 주소만 쓰고 `hydrateImgs`가 사진이 도착하면 바꿔 끼운다. 그래야 느린 통신에서도 일정이 먼저 뜬다. 사진은 너비 400px 안팎의 WebP로 줄인다. 사진을 넣는 자세한 절차는 같은 폴더의 `PHOTOS.md`(사진 없는 카드 찾기 `photos.js` · 사진 넣기 `addphoto.py`)를 따른다.
 - 외부 스크립트나 폰트에 의존하지 않는다. 오프라인에서도 전부 동작해야 한다.
 - `<title>`은 여행지 이름. `icon.svg`를 `rel="icon"`과 `rel="apple-touch-icon"` 둘 다에 연결해 홈 화면 추가가 되게 한다.
 
