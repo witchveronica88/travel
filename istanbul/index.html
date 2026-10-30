@@ -97,8 +97,8 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 /* 펼친 표시는 어느 화면에서든 같다. 첫 단계: 제목 줄 배경 + 왼쪽 끝 강조색 막대 */
 .fold.open{box-shadow:inset 3px 0 0 var(--accent)}
 .fold.open>.row-head{position:sticky;top:var(--stick);z-index:3;background:var(--disclosure-bg);box-shadow:inset 3px 0 0 var(--accent),0 1px 0 var(--line)}
-.fold-body{padding:16px var(--pad) 0}
-.fold-body>:last-child{margin-bottom:16px}
+.fold-body{padding:16px var(--pad)}
+.fold-body>:last-child{margin-bottom:0}
 /* 펼친 내용 */
 .fold-body p.x{margin:0}
 p.x+p.x{margin-top:8px}
