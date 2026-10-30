@@ -6,7 +6,8 @@
    5) 카드 설명(`key`)이 두 문장 이상인데 문자열로 이어 써 있지 않은지 — 불렛(배열)으로 쓴다
    6) 카드 설명(`key`)이 불렛 5개를 넘지 않는지 — 핵심만 쓰고 자세한 내용은 연결한 장소 카드로
    7) 날짜가 월.일인지(11/4 ✗) · key에 A. B. 기호가 없는지 · 이동 글에 주소가 없는지
-   8) 가로 스크롤이 없는지(360px) · 스크립트 오류가 없는지
+   8) 장소·맛집·음식 카드 서식: `머무는 시간`·`영업 상태` 줄 금지, 주소는 현지어(한글 없이), 장소 탭은 `운영`·맛집 탭은 `영업시간` 라벨, 일정 카드가 가리키는 id가 실제로 있는지, 같은 id가 겹치지 않는지, 맛집 카드에 동네(region)가 있는지. 맛집 카드에 주소·영업시간이 비어 있으면 '채울 것'으로 따로 보여 준다(경고 수에는 넣지 않는다)
+   9) 가로 스크롤이 없는지(360px) · 스크립트 오류가 없는지
    두 번째 인자로 날 id(예: d1028)를 주면 그날부터만 본다. 첫 카드(아침 자유시간)와 날짜가 넘어가는 칸은 건너뛴다(날 id를 주면 장소 날짜 대조는 생략).
    경고가 나오면 그 날을 처음부터 다시 읽고 고친다. 경고가 없어도 글 속 날짜·동행·준비물은 직접 읽어 본다. */
 const { chromium } = require('playwright');
@@ -48,10 +49,33 @@ const { chromium } = require('playwright');
     });
     return out;
   }, fromDay);
+  const fmt = fromDay ? { warn: [], todo: [] } : await page.evaluate(() => {
+    const warn = [], todo = [], seen = {};
+    ENTRIES.forEach(e => {
+      if (seen[e.id]) warn.push(`${e.id}: id가 겹친다`); seen[e.id] = 1;
+      const info = (e.blocks.find(b => b.h === '정보') || {}).i || [], L = info.map(x => x[0]);
+      if (e.tab === '장소' || e.tab === '맛집') {
+        L.filter(l => /머무는 시간|영업 상태/.test(l)).forEach(l => warn.push(`${e.id} ${e.title}: 정보 칸에 '${l}' 줄을 두지 않는다`));
+        info.filter(([l, v]) => l === '주소' && /[가-힣]/.test(v)).forEach(([l, v]) => warn.push(`${e.id} ${e.title}: 주소는 현지어로만 쓴다 → ${v}`));
+        if (e.tab === '장소' && L.includes('영업시간')) warn.push(`${e.id} ${e.title}: 장소 탭은 '영업시간'이 아니라 '운영' 라벨을 쓴다`);
+        if (e.tab === '맛집' && L.includes('운영')) warn.push(`${e.id} ${e.title}: 맛집 탭은 '운영'이 아니라 '영업시간' 라벨을 쓴다`);
+      }
+      if (e.restaurant) {
+        if (!e.sub) warn.push(`${e.id} ${e.title}: 동네(region)가 비어 있다`);
+        const miss = ['주소', '영업시간'].filter(l => !L.includes(l));
+        if (miss.length) todo.push(`${e.id} ${e.title}: ${miss.join('·')} 없음`);
+      }
+      if (!e.map && (e.tab === '장소' || e.tab === '맛집')) todo.push(`${e.id} ${e.title}: 지도 아이콘 없음(확인된 지도 주소를 넣는다)`);
+    });
+    DAYS.forEach(d => d.blocks[0].i.forEach(s => [...(s.rel || []), ...(s.placeId ? [s.placeId] : [])].forEach(id => { if (!BY[id]) warn.push(`${d.id} "${s.title}": 연결한 id가 없다 → ${id}`); })));
+    return { warn, todo };
+  });
+  warn.push(...fmt.warn);
   const w = await page.evaluate(() => document.documentElement.scrollWidth);
   warn.forEach(x => console.log('경고', x));
   if (w > 360) console.log('경고 가로 스크롤', w);
   if (errs.length) console.log('경고 스크립트 오류', errs.join(' | '));
   console.log(warn.length || errs.length || w > 360 ? '' : '점검 통과', `(경고 ${warn.length}개)`);
+  if (fmt.todo.length) { console.log(`채울 것 ${fmt.todo.length}곳 (지도가 열리는 환경에서 확인해 넣는다):`); fmt.todo.forEach(x => console.log('  -', x)); }
   await browser.close();
 })();
