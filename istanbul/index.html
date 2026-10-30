@@ -311,11 +311,10 @@ day("d1029","2026.10","29","목요일","공화국의 날 · 그랜드 바자르�
   s("간식 후","호텔 도착",{q:"Sheraton Istanbul City Center",map:"https://www.google.com/maps/dir/?api=1&destination=Sheraton%20Istanbul%20City%20Center&travelmode=transit",moveOnly:true,move:"간식 가게에서 호텔로 이동",key:"돌아와서 호텔에서 수영한다."})
 ],"교통비와 점심·간식 비용");
 
-day("d1030","2026.10","30","금요일","라미 도서관 · 카파도키아 출발","11:10 라미 도서관(선택) · 13:30 점심 · 저녁 카파도키아 출발",[
-  s("09:00","호텔 아침",{stay:"50분",key:"오후 4시쯤까지 비 예보다."}),
-  s("11:10","라미 도서관 (선택)",{move:"대중교통(버스) 약 40~45분(구글 지도 기준, 환승 1번 · 요금 2번) · 대기 포함 총 45~60분",moveAt:"10:10",stay:"1시간",key:"군인이 있던 옛 막사를 튀르키예에서 가장 큰 도서관으로 바꾼 건물이다. 책을 읽으러 가는 곳이 아니라 넓은 안뜰과 긴 건물을 구경하러 간다. 열람실은 24시간 열고 입장 조건은 입구에서 확인한다. 가지 않으면 호텔에서 쉰다.",photos:[],q:"Rami Kütüphanesi",map:"https://www.google.com/maps/dir/?api=1&destination=Rami%20K%C3%BCt%C3%BCphanesi&travelmode=transit",placeId:"l3",rel:["l3"]}),
-  s("13:30","점심 예정",{move:"라미에서 탁심까지 대중교통 약 30~40분(구글 지도 기준) · 대기 포함 35~50분 · 도서관에 안 가면 호텔에서 쉬다가 먹는다",moveAt:"12:20",stay:"1시간",key:"탁심 근처 로칸타에서 먹는다. 아직 식당을 정하지 않았다."}),
-  s("15:00","호텔 도착·짐 싸기",{q:"Sheraton Istanbul City Center",map:"https://www.google.com/maps/dir/?api=1&destination=Sheraton%20Istanbul%20City%20Center&travelmode=transit",move:"탁심에서 호텔까지 도보 15~20분 (셔틀 매시 30분)",moveAt:"14:40",stay:"짐 싸기와 휴식",key:"카파도키아에 가져갈 짐을 싸고 쉰다."}),
+day("d1030","2026.10","30","금요일","그랜드 바자르 · 카파도키아 출발","12:00 그랜드 바자르 · 14:15 점심 · 저녁 카파도키아 출발",[
+  s("12:00","그랜드 바자르(큰 지붕 시장)",{route:"11:00 호텔 셔틀 → 탁심 → F1 푸니쿨라 → T1 트램 베야즈트-카팔르차르쉬 · 대기 포함 50~65분 (비가 많이 오면 택시)",stay:"2시간",key:"15세기 중반에 시작된 거대한 지붕 시장이다. 거리 61개에 가게 4,000개가 넘고 값은 흥정이 기본이다. 어제는 공화국의 날이라 닫아서 못 들어갔다. 시장 중간에 쉰다. 팔찌는 84번·82번 가게가 싸다는 리뷰가 있다. 오후 4시쯤까지 비 예보다.",q:"Kapalıçarşı",map:"https://www.google.com/maps/dir/?api=1&destination=Kapal%C4%B1%C3%A7ar%C5%9F%C4%B1&travelmode=transit",rel:["m3","r3"]}),
+  s("14:15","점심: Lezzet-i Şark Antep Sofrası",{move:"그랜드 바자르에서 이집션 바자르 방향 내리막 도보 12~15분 · 약 1km · Hasırcılar Cd. No:38",moveAt:"14:00",stay:"1시간",key:"평점 4.4 · 베이란 수프·아다나 케밥·퀴네페. 10.29에 못 간 곳이다. 바자르 바로 옆 Dürümcü Mustafa도 후보다.",q:"Lezzet-i Şark Antep Sofrası, Hasırcılar Cd. No:38, Fatih",map:"https://www.google.com/maps/dir/?api=1&destination=Lezzet-i%20%C5%9Eark%20Antep%20Sofras%C4%B1%2C%20Has%C4%B1rc%C4%B1lar%20Cd.%20No%3A38%2C%20Fatih&travelmode=walking",placeId:"dine5",rel:["dine5","wish-durumcu-mustafa"]}),
+  s("16:05","호텔 도착·짐 싸기",{q:"Sheraton Istanbul City Center",map:"https://www.google.com/maps/dir/?api=1&destination=Sheraton%20Istanbul%20City%20Center&travelmode=transit",move:"에미뇌뉘 정류장에서 버스 약 20~30분(호텔 근처까지 바로, 구글 지도 기준) · 대기 포함 총 30~50분",moveAt:"15:15",stay:"짐 싸기와 휴식",key:"카파도키아에 가져갈 짐을 싸고 쉰다."}),
   s("저녁","카파도키아로 출발",{moveOnly:true,move:"호텔에서 쉬다가 저녁에 출발",key:"6명이 렌터카로 간다. 이스탄불에서 카파도키아까지 차로 약 7~8시간(730km 안팎)이다. 전날 숙소 없이 바로 출발해 10.31 새벽에 도착한다. 출발 시각과 길은 따로 정한다."})
 ],"교통비와 점심 비용");
 
@@ -371,7 +370,7 @@ const DEPARTURES = {
   d1027:["호텔","시르케지","Fabrikafa","카나아트","쿠즈군죽","위스퀴다르 바닷가","카라쾨이 선착장","귈뤼오울루","호텔"],
   d1028:["Istanbul Experiences Workshops","셰흐자데 자 케밥","이집션 바자르","피에르 로티 언덕","호텔"],
   d1029:["그랜드 바자르","Cevahir 쇼핑몰","Günaydın","MADO","호텔"],
-  d1030:["호텔","라미 도서관","탁심 근처 식당","호텔","호텔"],
+  d1030:["그랜드 바자르","Lezzet-i Şark","호텔","호텔"],
   d1031:["열기구 업체 연락","일출 전망대","데린쿠유 지하도시","괴레메 카페","우치사르 성채","파샤바 계곡","숙소"],
   d1101:["카파도키아"],
   d1102:["히포드롬 독일분수","블루 모스크","히포드롬 광장","아야소피아","톱카프 궁전","예레바탄 지하저수지","돌마바흐체 궁전","호텔"],
@@ -526,11 +525,11 @@ const placeCost = o => (o.rows||[]).find(isCostRow)?.[1]||"";
 const paidPlaceCost = o => {const x=placeCost(o);return /(?:리라|유로|요금|비용|별도|이스탄불카드|음식값|카페 이용료)/.test(x)?x:""};
 const placeInfo = o => [["현지 이름",LOCAL[o.id]],["가는 법",o.how],["머무는 시간",o.stay],...(o.rows || []).filter(r=>!isCostRow(r))];
 const PLACE_SCHEDULE_DATES = {
-  l3:"10/30",bo1:"10/26",ye1:"10/26",
+  l3:"",bo1:"10/26",ye1:"10/26",
   p1:"",p2:"11/4",p4:"",p6:"10/28",
   s1:"10/25",s2:"10/25",s8:"10/25",m6:"10/25",c1:"10/25",cu1:"10/25",s3:"11/2",s4:"10/27",s5:"10/26",s7:"",s9:"10/26·10/27",s10:"10/28",s11:"10/27",shop3:"10/28",s12:"",s13:"10/27",s14:"",
-  m2:"11/2",m3:"10/29",m4:"10/28",shop5:"11/3",
-  x1:"11/2",x2:"11/2·11/4",x3:"11/2",x4:"11/2·11/3",x5:"",x6:"11/3",shop6:"10/27",shop7:"10/26",shop8:"",shop9:"11/3",dine1:"10/28·11/3","wish-dinner8":"11/4","wish-midyeci-memet":"","wish-mado":"10/29","wish-kanaat":"10/27","wish-boris":"11/3","wish-colakoglu":"11/3",shop10:"10/29","cap-love":"10/31","cap-rose":"10/31","cap-derinkuyu":"10/31","cap-uchisar":"10/31","cap-pasabag":"10/31","wish-rec1":"","wish-mangerie":"","wish-cup-joy":"","wish-wizards":"10/26","wish-hasan-kokorec":"10/26"
+  m2:"11/2",m3:"10/29·10/30",m4:"10/28",shop5:"11/3",
+  x1:"11/2",x2:"11/2·11/4",x3:"11/2",x4:"11/2·11/3",x5:"",x6:"11/3",shop6:"10/27",shop7:"10/26",shop8:"",shop9:"11/3",dine1:"10/28·11/3","wish-dinner8":"11/4","wish-midyeci-memet":"","wish-mado":"10/29","wish-kanaat":"10/27","wish-boris":"11/3","wish-colakoglu":"11/3",shop10:"10/29",dine5:"10/30","wish-durumcu-mustafa":"10/30","cap-love":"10/31","cap-rose":"10/31","cap-derinkuyu":"10/31","cap-uchisar":"10/31","cap-pasabag":"10/31","wish-rec1":"","wish-mangerie":"","wish-cup-joy":"","wish-wizards":"10/26","wish-hasan-kokorec":"10/26"
 };
 /* 구글 지도에서 직접 열어 확인한 검색어: 이름 그대로 찾으면 엉뚱한 곳이 나오는 장소 */
 const MAP_FIX={s9:"Bosphorus Strait Istanbul",s10:"Golden Horn Istanbul",s14:"Bebek, Beşiktaş, Istanbul",shop3:"Arifoglu Spice Egyptian Bazaar Istanbul"};
@@ -569,7 +568,7 @@ place({id:"l2",g:"도서관",t:"바예지트 국립도서관",s:"복원 공사�
 place({id:"l3",g:"도서관",t:"라미 도서관",s:"에위프",star:5,
   intro:"책 200만 권이 넘고 하루 24시간 열려 있는 큰 도서관이다.",
   about:["옛 군대 막사(병영)였던 건물이다. 오스만 시대인 18세기에 지은 것으로 알려져 있다. 자료마다 연도가 달라서 정확한 해는 확실하지 않다.","군대가 쓰던 건물을 크게 고쳐서 2023년 1월에 도서관으로 문을 열었다. 튀르키예에서 가장 큰 도서관으로 소개된다.","넓은 안뜰을 긴 건물이 둘러싸고 있다. 군인들이 지내던 자리에 책장과 열람석이 들어섰다. 그래서 오래된 벽돌 건물과 새 시설이 함께 보이는 것이 볼거리다."],
-  memo:["10월 30일 오전에 선택으로 들른다. 탁심에서 M2(예니카프) → M1(Topkapı-Ulubatlı역 하차) → 걸어서 T4 트램 Vatan 정류장 → T4(라미) 순서로 간다. 바이람파샤역에는 T4가 서지 않으니 내리지 않는다. 돌아올 때는 반대로 간다.","건물과 안뜰을 천천히 걷는다. 긴 건물이라 한 바퀴 도는 데도 시간이 걸린다.","아인이에게 ‘군인이 있던 곳이 지금은 책 읽는 곳’이라고 이야기해 준다.","열람실 안은 공부하는 사람이 많다. 속삭이듯 말한다."],
+  memo:["탁심에서 M2(예니카프) → M1(Topkapı-Ulubatlı역 하차) → 걸어서 T4 트램 Vatan 정류장 → T4(라미) 순서로 간다. 바이람파샤역에는 T4가 서지 않으니 내리지 않는다. 돌아올 때는 반대로 간다.","건물과 안뜰을 천천히 걷는다. 긴 건물이라 한 바퀴 도는 데도 시간이 걸린다.","아인이에게 ‘군인이 있던 곳이 지금은 책 읽는 곳’이라고 이야기해 준다.","열람실 안은 공부하는 사람이 많다. 속삭이듯 말한다."],
   how:"탁심에서 M2 → M1 → T4 트램(약 50~70분) · 에위프에서는 50V 버스 → T4 트램(약 17분) · 걸으면 약 23분",stay:"약 50분~1시간",
   rows:[["주소","Rami Kışla Cd. No:98/1, Eyüpsultan"],["운영","7일 24시간 (열람실) · 일부 공간은 시간제"],["개관","2023년 1월"],["규모","책 200만 권 이상 · 약 4,200석 (보도 기준)"],["요금","무료"]],
   caution:["만날 곳을 먼저 정한다. 건물이 넓기 때문이다.","입구에서 입장 조건을 확인한다. 공간마다 규칙이 다를 수 있기 때문이다."],lk:["libs","libs2"]});
