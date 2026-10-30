@@ -551,16 +551,15 @@ const place = o => {
   return add({
     id:o.id, tab:o.tab||"장소", group:o.g, title:o.t, sub:o.s, scheduleDates:PLACE_SCHEDULE_DATES[o.id]||"", inSchedule:!!PLACE_SCHEDULE_DATES[o.id], restaurant:isRestaurant,
     map:o.map||gmap(MAP_FIX[o.id]||LOCAL[o.id]||o.t),
-    /* 펼치면: 한 줄 소개 → 사진 → 지도·전화·일정 아이콘 → 제목 붙은 덩어리(어떤 곳 · 메모 · 정보 · 주의할 점) */
+    /* 펼치면: 사진 → 제목 붙은 덩어리(어떤 곳 · 메모 · 정보 · 주의할 점) → 맨 아래 오른쪽에 지도·전화·일정 아이콘. 한 줄 소개(intro)는 따로 두지 않고 어떤 곳 첫 문단(lead)으로 쓴다 */
     blocks:[
-      ...(o.intro ? [{t:"p", x:o.intro}] : []),
       ...(PHOTOS[o.id] ? [{t:"photo", src:PHOTOS[o.id], alt:PHOTO_ALTS[o.id]||`${o.t} ${isRestaurant?"사진":"전경"}`}] : []),
-      {t:"actions"},
-      ...(o.about ? [{h:"어떤 곳", t:"p", x:o.about}] : []),
+      ...(o.intro||o.about ? [{h:"어떤 곳", t:"p", x:[...(o.intro?[o.intro]:[]), ...[].concat(o.about||[])], lead:!!o.intro}] : []),
       ...(o.memo ? [Array.isArray(o.memo) ? {h:"메모", ...ul(o.memo)} : {h:"메모", t:"p", x:o.memo}] : []),
       ...(o.extra||[]),
       ...(info.length ? [{h:"정보", t:"rows", i:info}] : []),
-      ...(o.caution&&o.caution.length ? [{h:"주의할 점", ...ul(o.caution)}] : [])
+      ...(o.caution&&o.caution.length ? [{h:"주의할 점", ...ul(o.caution)}] : []),
+      {t:"actions"}
     ]
   });
 };
@@ -1110,8 +1109,8 @@ const wishlistRestaurant = o => {
     blocks:[
       ...((o.desc||o.feature)?[{t:"p",x:o.desc||o.feature}]:[]),
       ...(o.photo?[{t:"photo",src:o.photo.src,alt:o.photo.alt}]:[]),
-      {t:"actions"},
-      ...(info.length?[{h:"정보",t:"rows",i:info}]:[])
+      ...(info.length?[{h:"정보",t:"rows",i:info}]:[]),
+      {t:"actions"}
     ]
   });
 };
@@ -1535,7 +1534,12 @@ function actionsHTML(e,ctx=""){
 }
 /* 펼치면 안쪽 ＋ 줄 없이 한 번에 다 보인다. 제목 있는 덩어리(어떤 곳 · 메모 · 정보 · 주의할 점)는 작은 제목을 단다. 카드 자신의 장소는 카드에 이미 있는 사진·지도·한 줄 소개를 다시 넣지 않는다 */
 function entryBody(e,ctx=""){
-  return e.blocks.map((b,i)=>b.source||(b.t==="photo"&&ctx.includes("p"))||(i===0&&b.t==="p"&&!b.h&&ctx.includes("m"))?"":b.t==="actions"?actionsHTML(e,ctx):(b.h?`<h4 class="sec">${esc(b.h)}</h4>`:"")+blockBodyHTML(b)).join("");
+  return e.blocks.map((b,i)=>{
+    if(b.source||(b.t==="photo"&&ctx.includes("p"))||(i===0&&b.t==="p"&&!b.h&&ctx.includes("m")))return "";
+    if(b.t==="actions")return actionsHTML(e,ctx);
+    if(b.lead&&ctx.includes("m")){const rest=[].concat(b.x).slice(1);return rest.length?`<h4 class="sec">${esc(b.h)}</h4>`+blockBodyHTML({...b,x:rest}):""}
+    return (b.h?`<h4 class="sec">${esc(b.h)}</h4>`:"")+blockBodyHTML(b);
+  }).join("");
 }
 
 /* ---------- 카드 = 머리 + ＋ 줄 ---------- */
@@ -1626,8 +1630,8 @@ function stopHTML(stop,si){
   const icons=stop.q?[`<a class="icon-btn" href="${esc(stop.map||gmap(stop.q))}" target="_blank" rel="noopener noreferrer" aria-label="지도" title="지도">${MAP_ICON}</a>`]:[];
   /* 이 카드에 붙은 장소 · 맛집 · 음식 · 팁 · 이동 정보는 카드 맨 아래 ＋ 줄로 붙여 그 자리에서 펼친다 */
   const shown=new Set(photos.map(photo=>photo.src));
-  const more=[...new Set([...(ownId?[ownId]:[]),...(stop.placeId?[stop.placeId]:[]),...(stop.rel||[])])].map(id=>BY[id]).filter(Boolean);
   const ctxOf=e=>"s"+(e.blocks.some(b=>b.t==="photo"&&shown.has(b.src))?"p":"")+(e.id===ownId?"m":"");
+  const more=[...new Set([...(ownId?[ownId]:[]),...(stop.placeId?[stop.placeId]:[]),...(stop.rel||[])])].map(id=>BY[id]).filter(e=>e&&entryBody(e,ctxOf(e)));
   const foot=stay||icons.length?`<div class="stop-foot"><span class="stay">${stay?"체류 "+esc(stay):""}</span>${icons.length?`<span class="stop-actions">${icons.join("")}</span>`:""}</div>`:"";
   return `<article class="stop"><div class="hd"><time class="tm">${esc(shortTime(stop.time))}</time><h3>${rich(stop.title)}</h3></div>${stop.key?(Array.isArray(stop.key)?`<ul class="b stop-key">${stop.key.map(x=>`<li>${rich(x)}</li>`).join("")}</ul>`:`<p class="stop-key">${rich(stop.key)}</p>`):""}${stop.links&&stop.links.length?linksHTML(stop.links):""}${media}${foot}${more.length?`<div class="stop-more fold-list">${more.map(e=>rowHTML(e,{date:"",at:`${dayId}-${si}:`,ctx:ctxOf(e),kind:true})).join("")}</div>`:""}</article>`;
 }
