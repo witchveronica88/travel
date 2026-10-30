@@ -4,7 +4,8 @@
    3) 카드와 카드 사이에 이동 글(`move`)이 있는지 — 없으면 카드끼리 붙어 보인다(첫 카드는 예외)
    4) 이동 글에 노선·번호·환승·정류장·거리·오르막 같은 세부가 없는지, `route`(가는 길) 줄이 없는지 — 형식은 `대중교통 약 N분 · 택시 약 N분`뿐
    5) 카드 설명(`key`)이 두 문장 이상인데 문자열로 이어 써 있지 않은지 — 불렛(배열)으로 쓴다
-   6) 가로 스크롤이 없는지(360px) · 스크립트 오류가 없는지
+   6) 카드 설명(`key`)이 불렛 5개를 넘지 않는지 — 핵심만 쓰고 자세한 내용은 연결한 장소 카드로
+   7) 가로 스크롤이 없는지(360px) · 스크립트 오류가 없는지
    두 번째 인자로 날 id(예: d1028)를 주면 그날부터만 본다. 첫 카드(아침 자유시간)와 날짜가 넘어가는 칸은 건너뛴다(날 id를 주면 장소 날짜 대조는 생략).
    경고가 나오면 그 날을 처음부터 다시 읽고 고친다. 경고가 없어도 글 속 날짜·동행·준비물은 직접 읽어 본다. */
 const { chromium } = require('playwright');
@@ -26,6 +27,7 @@ const { chromium } = require('playwright');
       st.forEach((s, i) => {
         new Set([...(s.rel || []), ...(s.placeId ? [s.placeId] : [])]).forEach(id => (actual[id] = actual[id] || new Set()).add(md));
         if (typeof s.key === 'string' && s.key.split(/(?<=[가-힣)\]])\.\s+/).length >= 2) out.push(`${d.id} "${s.title}": key가 여러 문장 문단임 → 불렛(배열)로 나눈다`);
+        if (Array.isArray(s.key) && s.key.length > 5) out.push(`${d.id} "${s.title}": key 불렛이 ${s.key.length}개 — 핵심만 남기고 나머지는 장소 카드로`);
         if (s.route) out.push(`${d.id} "${s.title}": route(가는 길) 줄은 쓰지 않는다`);
         if (/→|정류장|\d\s?km|\d\s?m(?![a-z가-힣])|환승|오르막|내리막|가파른|푸니쿨라|트램|케이블카|\b[MTF]\d\b|\d+\s?번 버스/.test(s.move || '')) out.push(`${d.id} "${s.title}": 이동 글에 노선·거리 같은 세부가 있음 → ${s.move}`);
         if (i > 0 && !s.move && !st[i - 1].afterMove) out.push(`${d.id} "${s.title}": 앞 카드와 사이에 이동 글이 없어 카드가 붙어 보임`);
