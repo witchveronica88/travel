@@ -1141,16 +1141,15 @@ place({id:"x6",g:"유료 명소",t:"터키 이슬람 미술관",s:"Türk ve İsl
 
 /* ---------- 음식 ---------- */
 const food = o => add({
-  id:o.id, tab:"음식", group:o.group, title:o.title, local:o.local||"", sub:o.local||o.price||o.where, food:true, photo:o.photo||null, map:o.map||"",
-  /* 펼치면: 어떤 음식 → 사진 → 주문할 때 보여주기 → 제목 붙은 덩어리 → 지도(먹는 곳의 첫 식당) */
+  id:o.id, tab:"음식", group:o.group, title:o.title, local:o.local||"", sub:o.local||o.price||o.where, food:true, photo:o.photo||null,
+  /* 펼치면: 어떤 음식 → 사진 → 주문할 때 보여주기 → 제목 붙은 덩어리 */
   blocks:[
     {t:"p",x:o.desc},
     ...(o.photo?[{t:"photo",src:o.photo.src,alt:o.photo.alt}]:[]),
     ...(o.local?[{t:"order",x:o.local}]:[]),
     {h:"먹는 곳",t:"p",x:o.where},
     ...(o.note?[{h:"아인이 참고",t:"p",x:o.note}]:[]),
-    ...(o.price?[{h:"가격",t:"p",x:o.price}]:[]),
-    ...(o.map?[{t:"actions"}]:[])
+    ...(o.price?[{h:"가격",t:"p",x:o.price}]:[])
   ]
 });
 const wishlistRestaurant = o => {
@@ -1283,11 +1282,11 @@ food({id:"f20",group:"마실 것",title:"튀르키예 커피",local:"Türk kahve
 food({id:"f10",group:"마실 것",title:"아이란",local:"Ayran",desc:"요거트에 물과 소금을 넣은 짭짤한 음료다. 케밥이나 라흐마준과 함께 마신다.",where:"식당과 케밥집, 마트 등 곳곳",note:"단맛이 아니라 짠맛이다.",photo:{src:I[139],alt:"투명한 잔에 거품과 함께 담긴 하얀 아이란"}});
 food({id:"f34",group:"마실 것",title:"에페스",local:"Efes Pilsen",desc:"튀르키예에서 널리 마시는 깔끔한 라거 맥주다.",where:"주류를 파는 식당, 바, 마트",note:"주류를 취급하지 않는 식당도 있어 메뉴에서 먼저 확인한다.",photo:{src:I[140],alt:"잔에 따른 에페스 필스너 맥주와 파란 라벨의 병"}});
 food({id:"f35",group:"마실 것",title:"라크",local:"Rakı",desc:"도수 약 45도의 아니스 향 증류주다. 물을 타면 투명한 술이 우윳빛으로 변한다.",where:"메이하네와 주류를 파는 식당",note:"도수가 높아 물을 섞고 메제와 함께 천천히 마신다.",photo:{src:I[141],alt:"물과 얼음을 곁들인 투명한 튀르키예 증류주 라크"}});
-food({id:"f36",group:"식사",title:"테스티 케밥",local:"Testi kebabı",desc:"점토 항아리에 고기와 채소를 넣고 밀봉해 오래 익힌 요리다. 식당에서 항아리를 테이블 앞에서 깨서 내준다.",where:"카파도키아 식당(Seten, Inci Cave Restaurant, Nazar Börek & Cafe 등)",map:gmap("Seten Restaurant Goreme")});
-food({id:"f37",group:"식사",title:"뵈렉",local:"Börek",desc:"얇은 반죽을 겹겹이 말아 치즈나 고기를 넣고 구운 페이스트리다. 아침 식사로도 많이 먹는다.",where:"뵈렉 가게와 카페(Nazar Börek & Cafe 등)",map:"https://www.google.com/maps/search/?api=1&query=Nazar%20Borek%20%26%20Cafe&query_place_id=ChIJuYu0wHdoKhURSmAFEge3eEw"});
+food({id:"f36",group:"식사",title:"테스티 케밥",local:"Testi kebabı",desc:"점토 항아리에 고기와 채소를 넣고 밀봉해 오래 익힌 요리다. 식당에서 항아리를 테이블 앞에서 깨서 내준다.",where:"카파도키아 식당(Seten, Inci Cave Restaurant, Nazar Börek & Cafe 등)"});
+food({id:"f37",group:"식사",title:"뵈렉",local:"Börek",desc:"얇은 반죽을 겹겹이 말아 치즈나 고기를 넣고 구운 페이스트리다. 아침 식사로도 많이 먹는다.",where:"뵈렉 가게와 카페(Nazar Börek & Cafe 등)"});
 food({id:"f38",group:"식사",title:"쿠루파술리에",local:"Kuru fasulye",desc:"흰 강낭콩을 오래 끓인 스튜다. 보통 밥과 함께 나온다.",where:"로칸타와 가정식 식당"});
-food({id:"f40",group:"식사",title:"양갈비",local:"Kuzu pirzola",desc:"양 갈비를 숯불에 구운 요리다.",where:"숯불 식당(Bolu Et Mangal 등 주차가 편한 곳)",map:"https://www.google.com/maps/search/?api=1&query=Bolu%20Et%20Mangal&query_place_id=ChIJvVsd2URuKhURYrNFBvmsOe0"});
-food({id:"f39",group:"마실 것",title:"호사프",local:"Hoşaf",desc:"말린 과일을 우려낸 달콤한 음료다. 만두집에서 함께 주문하는 경우가 많다.",where:"만트 가게와 식당(Yorem Manti 등)",map:"https://www.google.com/maps/search/?api=1&query=Yorem%20Manti%20Unlu%20Mamuller&query_place_id=ChIJHZjaPWw_nUARTtvKpfp7MYI"});
+food({id:"f40",group:"식사",title:"양갈비",local:"Kuzu pirzola",desc:"양 갈비를 숯불에 구운 요리다.",where:"숯불 식당(Bolu Et Mangal 등 주차가 편한 곳)"});
+food({id:"f39",group:"마실 것",title:"호사프",local:"Hoşaf",desc:"말린 과일을 우려낸 달콤한 음료다. 만두집에서 함께 주문하는 경우가 많다.",where:"만트 가게와 식당(Yorem Manti 등)"});
 food({id:"f21",group:"달콤한 것",title:"제철 과일",local:"Mevsim meyvesi",desc:"재래시장에서 파는 튀르키예의 제철 과일이다. 시장을 걸으며 그날 잘 익은 종류를 고른다.",where:"카디쾨이 재래시장",note:"시식할 때는 먹어도 되는지 먼저 묻는다.",photo:{src:I[142],alt:"카디쾨이 시장 가판대에 진열된 여러 제철 과일"}});
 
 /* ---------- 이동 ---------- */
