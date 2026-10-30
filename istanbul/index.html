@@ -331,14 +331,14 @@ day("d1030","2026.10","30","금요일","카파도키아로 출발","16:30 렌터
 
 day("d1031","2026.10","31","토요일","카파도키아 첫날","05:30 열기구 통보 · 06:30 일출(선택) · 08:30 데린쿠유 · 12:00 우치사르 · 13:00 파샤바 · 16:00 일몰(선택) · 18:45 저녁(선택)",[
   s("05:30","열기구 통보 확인",{key:["04:00쯤 호텔(열기구 픽업 장소)에 도착해 차에서 쉰다.", "예보가 아니라 05:00~05:30에 오는 업체 연락으로 뜨는지 정한다.", "뜨면 비행 뒤 09:00쯤 돌아와 조식을 먹고, 데린쿠유는 10:30으로 늦춘다.", "시간이 모자라면 파샤바를 먼저 빼고 우치사르만 짧게 본다.", "취소되면 11.1로 옮겨 달라고 요청하고, 일출(선택)을 보러 06:30에 나선다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-balloon","cap-hotel"]}),
-  s("06:30","(선택) 일출",{moveOnly:true,move:"고른 전망대로 차로 이동",stay:"약 1시간 20분",key:["일출은 07:06이다.", "새벽엔 카페가 열지 않아 보온병과 간식을 챙긴다."],photos:[{src:CAP.rose,alt:"로즈 밸리 전망대에서 본 카파도키아 계곡"}],q:"Love Valley Viewpoint Cappadocia",map:gmap("Love Valley Viewpoint Cappadocia"),rel:["cap-love","cap-rose"]}),
+  s("06:30","(선택) 일출",{moveOnly:true,move:"고른 전망대로 차로 이동",stay:"약 1시간 20분",key:["일출은 07:06이다.", "새벽엔 카페가 열지 않아 보온병과 간식을 챙긴다."],photos:[{src:CAP.rose,alt:"로즈 밸리 전망대에서 본 카파도키아 계곡"}],q:"Love Valley Viewpoint Cappadocia",map:gmap("Love Valley Viewpoint Cappadocia"),rel:["cap-love","cap-rose","cap-about"]}),
   s("08:30","데린쿠유 지하도시",{move:"차로 약 40분",moveAt:"07:50",stay:"약 2시간",key:["땅속 깊이 파 내려간 옛 지하도시다.", "입장료 1인 €13(6명 €78). 통로가 좁고 낮다."],q:"Derinkuyu Underground City",map:gmap("Derinkuyu Underground City"),rel:["cap-derinkuyu"]}),
   s("11:00","(선택) 카페",{move:"괴레메까지 차로 약 35분",moveAt:"10:25",stay:"약 50분",key:["괴레메 시내에서 한 시간 가까이 쉬며 먹는다."],q:"Cafe Safak Goreme",map:gmap("Cafe Safak Goreme"),rel:["wish-cap-safak","wish-cap-kings"]}),
   s("12:00","우치사르 성채",{move:"우치사르까지 차로 약 10분",moveAt:"11:50",stay:"약 40분",key:["카파도키아에서 가장 높은 바위 요새다. 꼭대기에서 일대가 한눈에 보인다.", "입장 400리라 + 주차 50리라. 현금 리라를 챙긴다."],q:"Uchisar Castle",map:gmap("Uchisar Castle"),rel:["cap-uchisar"]}),
   s("13:00","파샤바 계곡",{move:"차로 약 20분",moveAt:"12:40",key:["버섯 모양 바위가 모인 계곡이다. 입장은 무료다.", "낮에는 단체 관광객이 많다."],q:"Pasabag Monks Valley Cappadocia",map:gmap("Pasabag Monks Valley Cappadocia"),rel:["cap-pasabag"]}),
-  s("14:00","숙소 체크인 후 휴식",{moveOnly:true,move:"숙소로 이동",stay:"약 1시간",key:"샤워하고 낮잠을 잔다.",q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-hotel"]}),
+  s("14:00","숙소 체크인 후 휴식",{moveOnly:true,move:"숙소로 이동",stay:"약 1시간",key:"샤워하고 낮잠을 잔다.",q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-hotel","cap-hamam"]}),
   s("16:00","(선택) 일몰",{moveOnly:true,move:"승마는 숙소 픽업(상품에 포함) · 전망대는 차로 약 10분",stay:"약 2시간 30분",key:["일몰은 17:41이다.", "승마 투어: 16:00에 숙소에서 픽업해 계곡에서 일몰을 본다. 예약 전에 픽업·복귀 시각이 일몰에 맞는지 확인한다.", "레드 밸리 전망대: 17:10에 도착해 일몰을 본다."],rel:["cap-horse","cap-redvalley"]}),
-  s("18:45","(선택) 저녁",{move:"숙소를 거쳐 괴레메 시내까지 차로 약 10분",moveAt:"18:30",stay:"약 1시간",key:["Seten은 12:30~22:30 영업이고 예약이 안 돼 일찍 간다."],q:"Seten Restaurant Goreme",map:gmap("Seten Restaurant Goreme"),placeId:"wish-cap-seten",rel:["wish-cap-seten","wish-cap-han","wish-cap-woodfire"]}),
+  s("18:45","(선택) 저녁",{move:"숙소를 거쳐 괴레메 시내까지 차로 약 10분",moveAt:"18:30",stay:"약 1시간",key:["Seten은 12:30~22:30 영업이고 예약이 안 돼 일찍 간다."],q:"Seten Restaurant Goreme",map:gmap("Seten Restaurant Goreme"),placeId:"wish-cap-seten",rel:["wish-cap-seten","wish-cap-han","wish-cap-woodfire","f36"]}),
   s("20:00","숙소 복귀·취침",{move:"숙소까지 차로 약 10분",moveAt:"19:45",key:"열기구가 11.1로 옮겨졌다면 일찍 잔다."})
 ],"데린쿠유 1인 €13 · 우치사르 400리라 + 주차 50리라(현장 현금) · 파샤바 무료 · 승마·저녁은 별도");
 
@@ -566,7 +566,7 @@ const PLACE_SCHEDULE_DATES = {
   p1:"",p2:"",p4:"",p6:"10/28",
   s1:"10/25",s2:"10/25",s8:"10/25",m6:"10/25",c1:"10/25",cu1:"10/25",s3:"11/4",s4:"10/27",s5:"10/26",s7:"",s9:"10/26·10/27",s10:"10/28",s11:"10/27",shop3:"10/28",s12:"",s13:"10/27",s14:"",
   m2:"11/4",m3:"10/29·11/2",s6:"11/2","wish-old-balat":"11/2",m4:"10/28",m7:"11/4",shop5:"11/3",dine5:"11/2",
-  x1:"11/4",x2:"11/4",x3:"11/4",x4:"11/4",x5:"",x6:"11/3",shop6:"10/27",shop7:"10/26",shop8:"",shop9:"11/3",dine1:"10/28","wish-sultanahmet-kofte":"11/3","wish-dinner8":"","wish-midyeci-memet":"","wish-mado":"10/29","wish-kanaat":"10/27","wish-boris":"11/3","wish-colakoglu":"11/3",shop10:"10/29","cap-love":"10/31","cap-rose":"10/31","cap-derinkuyu":"10/31","cap-uchisar":"10/31","cap-pasabag":"10/31","cap-horse":"10/31","cap-balloon":"10/31","cap-hotel":"10/31·11/1","cap-rental":"10/30","tour-yenheo":"11/4","cap-redvalley":"10/31","cap-goreme":"11/1","cap-zelve":"11/1","cap-tuzgolu":"11/1","wish-rec1":"","wish-mangerie":"","wish-cup-joy":"","wish-wizards":"10/26","wish-hasan-kokorec":"10/26"
+  x1:"11/4",x2:"11/4",x3:"11/4",x4:"11/4",x5:"",x6:"11/3",shop6:"10/27",shop7:"10/26",shop8:"",shop9:"11/3",dine1:"10/28","wish-sultanahmet-kofte":"11/3","wish-dinner8":"","wish-midyeci-memet":"","wish-mado":"10/29","wish-kanaat":"10/27","wish-boris":"11/3","wish-colakoglu":"11/3",shop10:"10/29","cap-love":"10/31","cap-rose":"10/31","cap-derinkuyu":"10/31","cap-uchisar":"10/31","cap-pasabag":"10/31","cap-horse":"10/31","cap-balloon":"10/31","cap-about":"10/31","cap-hamam":"10/31","cap-hotel":"10/31·11/1","cap-rental":"10/30","tour-yenheo":"11/4","cap-redvalley":"10/31","cap-goreme":"11/1","cap-zelve":"11/1","cap-tuzgolu":"11/1","wish-rec1":"","wish-mangerie":"","wish-cup-joy":"","wish-wizards":"10/26","wish-hasan-kokorec":"10/26"
 };
 /* 구글 지도에서 직접 열어 확인한 검색어: 이름 그대로 찾으면 엉뚱한 곳이 나오는 장소 */
 const MAP_FIX={s9:"Bosphorus Strait Istanbul",s10:"Golden Horn Istanbul",s14:"Bebek, Beşiktaş, Istanbul",shop3:"Arifoglu Spice Egyptian Bazaar Istanbul"};
@@ -575,7 +575,7 @@ const place = o => {
   const info=[...placeInfo(o),...(o.rows||[]).filter(isCostRow)].filter(r=>r[1]);
   return add({
     id:o.id, tab:o.tab||"장소", group:o.g, title:o.t, sub:o.s, scheduleDates:PLACE_SCHEDULE_DATES[o.id]||"", inSchedule:!!PLACE_SCHEDULE_DATES[o.id], restaurant:isRestaurant,
-    map:o.map||gmap(MAP_FIX[o.id]||LOCAL[o.id]||o.t),
+    map:o.map===null?"":(o.map||gmap(MAP_FIX[o.id]||LOCAL[o.id]||o.t)),
     /* 펼치면: 사진 → 제목 붙은 덩어리(어떤 곳 · 메모 · 정보 · 주의할 점) → 맨 아래 오른쪽에 지도·전화·일정 아이콘. 한 줄 소개(intro)는 따로 두지 않고 어떤 곳 첫 문단(lead)으로 쓴다 */
     blocks:[
       ...(PHOTOS[o.id] ? [{t:"photo", src:PHOTOS[o.id], alt:PHOTO_ALTS[o.id]||`${o.t} ${isRestaurant?"사진":"전경"}`}] : []),
@@ -1003,40 +1003,61 @@ place({id:"cap-zelve",g:"카파도키아",t:"젤베 야외박물관",s:"Zelve Op
 place({id:"cap-redvalley",g:"카파도키아",t:"레드 밸리 일몰 전망대",s:"Red Valley Panorama · 괴레메 근처",
   intro:"붉은빛 바위 계곡 너머로 해 지는 걸 보는 전망 지점이다.",
   about:["붉은빛을 띤 바위 계곡이다. 해 질 무렵 바위 색이 짙어져 일몰 명소로 알려져 있다.","괴레메 북쪽에서 로즈 밸리와 이어져 있다.","전망대에서 계곡 전체와 해 지는 모습을 내려다본다. 승마 투어를 하지 않을 때 일몰을 보러 오는 곳이다."],
-  memo:["10.31 해 지는 시각은 17:41이다.","차 안에서 보거나 전망대에서 짧게 본다."],
+  memo:["10.31 해 지는 시각은 17:41이다.","해 지기 30분쯤 전에 도착하면 자리를 잡기 좋다.","차 안에서 보거나 전망대에서 짧게 본다."],
   how:"숙소에서 차로 약 10분",
   rows:[],
   map:gmap("Red Valley Panorama Cappadocia")});
 place({id:"cap-goreme",g:"카파도키아",t:"괴레메 야외박물관",s:"Göreme Open Air Museum · 괴레메",star:5,
   intro:"바위를 파서 만든 비잔틴 시대 수도원과 교회가 모인 카파도키아의 대표 명소다.",
   about:["수도사들이 바위 속에 교회와 방, 식당을 파고 살던 수도원 마을이다. 교회 안에 옛 벽화가 남아 있다.","카파도키아의 대표 명소로 유네스코 세계유산에 올라 있다고 알려져 있다."],
-  memo:["다크 처치(Dark Church)는 입장료가 따로 든다.","10.29 폭우 뒤 바위 기둥이 무너지는 사고로 사상자가 나 일대가 폐쇄됐다. 재개장 소식은 못 찾았으니 10.31에 호텔·박물관에 직접 확인하고 간다. 비 온 뒤에는 바위 기둥 바로 아래, 특히 주차장 근처에 오래 서 있지 않는다."],
+  memo:["주말 오전은 붐비니 일찍 도착한다.","다크 처치(Dark Church)는 입장료가 따로 든다.","10.29 폭우 뒤 바위 기둥이 무너지는 사고로 사상자가 나 일대가 폐쇄됐다. 재개장 소식은 못 찾았으니 10.31에 호텔·박물관에 직접 확인하고 간다. 비 온 뒤에는 바위 기둥 바로 아래, 특히 주차장 근처에 오래 서 있지 않는다."],
   how:"숙소에서 차로 약 5분",
   rows:[["운영","11.1부터 동계 시간 08:00~17:00 · 마지막 입장 16:15쯤"],["요금","1인 €20 · 6명 €120 · 다크 처치 +€6"]],
   map:gmap("Goreme Open Air Museum")});
 place({id:"cap-tuzgolu",g:"카파도키아",t:"소금호수(Tuz Gölü)",s:"Tuz Gölü Tesisleri · 앙카라 남쪽",
   intro:"튀르키예에서 두 번째로 큰 호수이자, 나라 소금의 큰 몫을 내는 얕은 소금 호수다.",
   about:["넓이는 약 1,600km²(1,665km²로 적은 자료도 있다)인데 평균 깊이는 0.5m쯤으로 아주 얕다. 겨울 비로 물이 차고 여름에 마르면서 하얀 소금층이 드러난다.","옛 이름은 타타(Tatta)다. 고대 그리스·로마 학자들이 호숫물이 너무 짜서 담근 물건에 소금이 엉겨 붙는다고 적었다. 이 일대에서는 아주 오래전부터 소금을 캐고 거래했다고 알려져 있고, 지금도 튀르키예 소금의 큰 몫(자료마다 40~67%)이 여기서 나온다.","소금물에서도 사는 플라밍고가 이곳에서 번식한다. 튀르키예 큰 플라밍고의 주요 번식지가 호수 남쪽 섬들이고, 2000년대 초 특별 보호 지역으로 지정됐다.","가뭄으로 줄어드는 호수다. 2021년 10월에는 한때 완전히 말랐고, 90년 사이 넓이가 85% 줄었다는 보도가 있다. 반대로 2026년 6월에는 기록적인 비로 수위가 45% 올랐다는 보도가 나왔다."],
-  memo:["역사 유적을 보는 곳이 아니라 하얀 소금 평원을 보는 곳이다.","낮에 약 40분 머문다.","11월 초에 물이 차 있을지는 확인 못 했다. 여름에 마르는 호수라 하얀 바닥만 보일 수도 있다."],
+  memo:["역사 유적을 보는 곳이 아니라 하얀 소금 평원을 보는 곳이다.","낮에 약 40분 머문다.","도로변 휴게소 쪽 과일 가판대 옆으로 걸어 들어가면 덜 붐빈다는 안내가 있다.","소금이 묻으니 발 씻을 물과 신어도 아깝지 않은 신발을 챙긴다.","11월 초에 물이 차 있을지는 확인 못 했다. 여름에 마르는 호수라 하얀 바닥만 보일 수도 있다."],
   how:"괴레메에서 차로 약 2시간 25분 · 이스탄불까지 차로 약 5시간 45분",
   rows:[["운영","시설 22:00까지"]],
   map:gmap("Tuz Gölü Ziyaret Alanı Tuz Gölü Giriş")});
 place({id:"cap-balloon",g:"카파도키아",t:"열기구 (10.31 새벽)",s:"업체 연락 05:00~05:30",
   intro:"열기구가 뜨는지는 업체의 새벽 연락으로 정해진다.",
   about:["해 뜰 무렵 열기구를 타고 카파도키아의 계곡과 바위 마을 위를 떠다니는 체험이다.","바람과 날씨가 맞아야 뜰 수 있다. 그래서 당일 새벽에 업체가 비행 여부를 알려 준다."],
-  memo:["10.31 예보는 흐림, 비 10%, 남풍 약 8km/h이고 열기구 비행 가능성은 75%다. 예보가 아니라 업체 연락으로 정한다.","새벽 6°C 안팎(10.30 예보) · 일출 07:06 · 일몰 17:41","뜨면: 업체 픽업에 맞춰 비행하고 09:00쯤 돌아와 조식을 먹는다. 데린쿠유는 10:30으로 늦추고, 시간이 모자라면 파샤바를 먼저 빼고 우치사르만 짧게 본다.","취소되면: 그 자리에서 11.1로 옮겨 달라고 요청한다. 일출 비행인지 2차 비행인지 업체에 확인한다(사이트상 일요일 일출은 매진). 2차 비행이면 09:30~10:00에 돌아온다."],
+  memo:["10.31 예보는 흐림, 비 10%, 남풍 약 8km/h이고 열기구 비행 가능성은 75%다. 예보가 아니라 업체 연락으로 정한다.","새벽 6°C 안팎(10.30 예보) · 일출 07:06 · 일몰 17:41","가이드 일정은 06:00 호텔 픽업이다. 픽업 전에 로비에서 기다린다.","뜨면: 업체 픽업에 맞춰 비행하고 09:00쯤 돌아와 조식을 먹는다. 데린쿠유는 10:30으로 늦추고, 시간이 모자라면 파샤바를 먼저 빼고 우치사르만 짧게 본다.","취소되면: 그 자리에서 11.1로 옮겨 달라고 요청한다. 일출 비행인지 2차 비행인지 업체에 확인한다(사이트상 일요일 일출은 매진). 2차 비행이면 09:30~10:00에 돌아온다."],
   how:"호텔(Cappadocia Cave Suites)에서 업체 픽업",
+  extra:[{t:"links", i:[["비행 가능 여부 확인 (Kapadokya SHM)","https://shmkapadokya.kapadokya.edu.tr/en/"]]}],
   map:gmap("Cappadocia hot air balloon Goreme")});
 place({id:"cap-hotel",g:"카파도키아",t:"숙소: Cappadocia Cave Suites",s:"10.31~11.1 · 괴레메",
   intro:"카파도키아에서 묵는 호텔이다. 열기구 업체가 새벽에 이 호텔로 픽업하러 온다.",
   memo:["10.31 새벽 04:00쯤 도착해 차에서 쉰다. 금요일 밤 숙박은 없다.","체크인 전까지 짐은 트렁크에 넣어 밖에서 안 보이게 한다.","도착 전에 호텔에 주차할 곳을 물어본다."],
-  rows:[["주소","Gafferli Mahallesi, Ünlü Sk. No:19, 50180 Göreme/Nevşehir"]],
+  rows:[["주소","Gafferli Mahallesi, Ünlü Sk. No:19, 50180 Göreme/Nevşehir"],["체크인","10.31 14:00"],["체크아웃","11.1 11:00"]],
   map:gmap("Cappadocia Cave Suites Goreme")});
 place({id:"cap-rental",g:"카파도키아",t:"렌터카 수령: Enterprise 탁심 지점",s:"10.30 16:30 · 6명",
   intro:"6명이 탈 렌터카를 받아 바로 카파도키아로 출발한다.",
-  memo:["운전할 사람마다 한국 면허증, 국제운전면허증, 여권, 본인 이름의 신용카드를 챙긴다.","보증금은 신용카드로만 받고 체크카드·현금은 안 받는다고 한다. 국제운전면허증이 필요한지는 지점에 전화로 먼저 확인한다.","차 바깥 상태를 사진으로 남긴다.","6명과 짐이 다 타는 승합차급인지 확인한다.","고속도로 톨게이트는 현금을 받지 않고 카메라로 처리한다. 통행료(HGS)가 포함돼 있는지 확인한다.","밤 운전 교대 순서와 차에서 쉬는 방법, 보온을 먼저 정한다."],
+  memo:["운전할 사람마다 한국 면허증, 국제운전면허증, 여권, 본인 이름의 신용카드를 챙긴다.","보증금은 신용카드로만 받고 체크카드·현금은 안 받는다고 한다. 국제운전면허증이 필요한지는 지점에 전화로 먼저 확인한다.","차 바깥 상태를 사진으로 남긴다.","6명과 짐이 다 타는 승합차급인지 확인한다.","통행료는 HGS 전용이라 현금을 받지 않는다. 렌터카에 보통 달려 있고, HGS 없이 지나가면 과태료가 붙을 수 있다.","반납 때 통행료에 하루 수수료가 더해져 정산되는 경우가 많다. 정산 방식과 수수료를 출발 전에 서면으로 받아 둔다.","제한속도는 도심 50km/h, 일반도로 90km/h, 고속도로 120~130km/h다. 표지판이 우선이고, 고속도로와 대도시 근처는 과속 카메라와 이동식 단속이 잦다.","밤 시골길은 가로등이 거의 없고 가축과 농기계가 나올 수 있다. 괴레메로 들어가는 밤길은 좁을 수 있어 천천히 간다.","주차는 구역마다 유료·무료 규정이 달라 표지판을 확인한다.","밤 운전 교대 순서와 차에서 쉬는 방법, 보온을 먼저 정한다."],
   rows:[["주소","Intercontinental Otel, Gümüşsuyu, Asker Ocağı Cd. No:1, 34437 Beyoğlu/İstanbul"],["영업시간","구글 지도에서 10.30 20:00까지 영업으로 표시 · 방문 당일 확인"],["전화","+90 212 254 77 19"],["평점","4.3 · 후기 약 1,100개"]],
   map:gmap("Enterprise Rent-A-Car İstanbul Taksim Araç Kiralama")});
+place({id:"cap-about",g:"카파도키아",t:"카파도키아·괴레메",s:"Göreme · 어떤 지역인가",
+  intro:"바위를 파서 만든 교회와 집, 버섯 모양 바위가 모인 튀르키예 중부의 지역이다.",
+  about:["2세기 무렵부터 은둔 수도사들이 작은 동굴에서 살기 시작했다는 기록이 있다. 4세기 이후에는 바위를 파서 교회와 예배당, 식당, 수도 공간을 만들며 종교의 중심지가 됐다.","비잔틴 시대에 지금의 괴레메는 이웃한 두 마을이었다. 지금 이름은 국립공원으로 지정된 뒤에 쓰이기 시작했다.","수백만~천만 년 전 화산이 터져 쌓인 부드러운 응회암이 바탕이다. 바람과 물에 깎이고 위쪽의 단단한 바위 덮개만 남아 버섯 모양의 ‘요정의 굴뚝’(fairy chimneys)이 생겼다. 계곡과 기암이 이어진 모습이 달 풍경에 비유되기도 한다.","1985년 ‘괴레메 국립공원과 카파도키아 암석 유적지’로 유네스코 세계유산에 올랐다. 성상 파괴 운동 이후 비잔틴 후기 미술을 보여 주는 바위 교회와 벽화가 남아 있고, 지금은 세계적인 열기구 관광지다."],
+  memo:["레드 코스(북쪽): 괴레메 야외박물관, 우치사르 성, 젤베, 아바노스 도자기 마을, 러브·로즈 밸리. 걷는 거리가 짧고 차로 이동하는 시간이 많으며 일몰 명소가 많다.","그린 코스(남쪽): 데린쿠유 지하도시, 일라라 계곡, 셀리메 수도원. 일라라에서 걷는 시간이 길어 체력이 조금 필요하다.","이번에는 렌터카로 두 코스를 섞어 간다. 주차와 길찾기는 직접 챙긴다."],
+  caution:["역사와 지질 시기는 자료마다 설명이 달라 대략 정리했다."],
+  map:null});
+place({id:"cap-avanos",g:"카파도키아",t:"아바노스 마을",s:"Avanos · 도자기 마을",
+  intro:"붉은 강(Kızılırmak) 옆의 도자기 마을이다.",
+  about:["공방에서 도자기를 직접 만들어 볼 수 있다. 무료 주차장에 차를 세우고 걸어서 마을을 둘러본다."],
+  memo:["걷다가 피스타치오 커피를 마셔 본다.","괴레메에서 차로 약 20분, 젤베에서 차로 약 20분이다."],
+  rows:[["주차","무료 주차장 · Orta, 207. Sk., 50530 Aktepe/Avanos/Nevşehir"]],
+  extra:[{t:"links", i:[["피스타치오 커피 카페 위치","https://maps.app.goo.gl/g6ohFWWhthtbwg9p6"]]}],
+  map:"https://maps.app.goo.gl/GUPfaS6aMQAxSzAX7"});
+place({id:"cap-hamam",g:"카파도키아",t:"하맘 (선택)",s:"터키식 목욕 · GetYourGuide",
+  intro:"터키식 전통 목욕(하맘)이다. 씻고 쉬고 싶을 때 고르는 선택지다.",
+  about:["예약할 수 있는 상품이 두 가지 있다. 하맘에 오일 마사지를 더한 상품과 따로 쓰는 프라이빗 하맘이다."],
+  memo:["하맘 + 오일 마사지: 오전 10시부터 이용할 수 있다. 클래식 코스 45분, 시그니처 코스 1시간.","프라이빗 하맘: 오전 9시부터 이용할 수 있다. 1시간.","플랫폼마다 운영 시간이 달라 업체에 직접 시간과 취소 조건을 확인한다."],
+  rows:[["요금","클래식 45분 €38.52 · 시그니처 1시간 €57.98 · 프라이빗 1시간 €40.86 (10.31 예약 화면 기준)"]],
+  extra:[{t:"links", i:[["하맘 + 오일 마사지 예약 (GetYourGuide)","https://www.getyourguide.com/cappadocia-l1400/cappadocia-turkish-bathhamam-massage-t752633"],["프라이빗 하맘 예약 (GetYourGuide)","https://www.getyourguide.com/ko-kr/goreme-l984/cappadocia-private-turkish-bath-spa-experience-t1367377/"]]}],
+  map:null});
 place({id:"tour-yenheo",g:"유료 명소",t:"이스탄불 하루 투어",s:"YENHEO TOUR · 11.4 · 한국어 가이드",
   intro:"공인 가이드와 8시간 걸으며 구시가지 핵심을 하루에 도는 한국어 투어다.",
   memo:["상품: ‘한국어 천재 현지인이 들려주는 찐 터키! 하루만에 보는 이스탄불! #공인가이드#’ (YENHEO TOUR&엘베다 이렘). 평점 5.0 · 후기 1,256개(예약 화면 기준).","집합 08:50 돌마바흐체 궁전 시계탑. 정문을 지나 가방 검색대를 통과한 뒤 오른쪽이다.","코스: 돌마바흐체 궁전 → 블루 모스크 → 히포드롬 광장 → 술탄 아흐메트 1세 묘당 → 예레바탄 지하저수지 → 아야소피아(밖에서 해설만) → 톱카프 궁전 → 하렘. 순서와 교통수단은 현지 상황에 따라 바뀔 수 있다.","돌마바흐체·예레바탄·톱카프는 FAST TRACK으로 줄 서지 않고 들어간다. 공인 가이드 해설과 무선 수신기, 이어폰(3.5mm) 대여가 들어 있다.","입장료·점심·트램 1회는 투어비에 없다. 입장료는 현금(리라)만 받고 카드·달러·유로는 안 된다. 트램은 이스탄불카드로 내며 카드 한 장으로 여러 명이 탈 수 있다."],
@@ -1129,7 +1150,7 @@ const wishlistRestaurant = o => {
   ];
   return add({
     id:o.id, tab:"맛집", group:o.group||o.g||"가정식·로칸타", title:o.title||o.t, sub:[o.area||o.region,o.price].filter(Boolean).join(" · "), scheduleDates:o.visit?o.visit.split(" ")[0]:(PLACE_SCHEDULE_DATES[o.id]||""), restaurant:true,
-    map:o.map||gmap((o.title||o.t)+" İstanbul"),
+    map:o.map===null?"":(o.map||gmap((o.title||o.t)+" İstanbul")),
     blocks:[
       ...((o.desc||o.feature)?[{t:"p",x:o.desc||o.feature}]:[]),
       ...(o.photo?[{t:"photo",src:o.photo.src,alt:o.photo.alt}]:[]),
@@ -1195,9 +1216,22 @@ wishlistRestaurant({id:"wish-road-konakoglu",g:"가정식·로칸타",t:"Konako�
 wishlistRestaurant({id:"wish-road-agacli",g:"가정식·로칸타",t:"Ağaçlı Tesisleri",region:"악사라이",address:"E-90 Nevşehir kavşağı, Aksaray",hours:"24시간",phone:"+90 382 215 24 00",feature:"E-90 네브셰히르 갈림길에 있는 24시간 휴게소다. 괴레메에서 차로 약 1시간 15분이다. 토마토 수프가 유명하지만 비싸다는 평이 있다. 화장실은 유료다. 안의 쾨프테지 Yusuf 지점은 2026년 5월 화장실·음식 불만이 있어 수프나 맥도날드(3.6점)처럼 가볍게 먹는다. 악사라이의 Tapan 식당(구글 2.7점)과 옆 Shell 주유소(새벽 2~3시에 화장실을 닫는다는 불만이 반복)는 피한다.",visit:"10/30·11/1 밤·점심",map:gmap("Ağaçlı Restaurant Aksaray")});
 wishlistRestaurant({id:"wish-road-altinsoy",g:"가정식·로칸타",t:"Altınsoy Dinlenme Tesisleri",region:"악사라이",address:"Yavuz Sultan Selim Mah., Organize Sanayi Karşısı, 68200 Aksaray Merkez/Aksaray",hours:"24시간",phone:"+90 382 266 22 21",feature:"악사라이 시내 쪽에 있는 24시간 휴게소 식당이다. 카부르마(볶은 고기 요리)와 렌틸콩 수프, 쌀푸딩 후기가 있다. 괴레메에서 차로 약 1시간 20분이고 구글 4.0점(후기 약 680개)이다. 오래된 후기가 많아 가서 상태를 본다.",visit:"",map:gmap("Altınsoy Dinlenme Tesisleri Aksaray")});
 wishlistRestaurant({id:"wish-road-tuzgolu",g:"케밥·고기",t:"Tuzgölü Restoran",region:"셰레플리코치사르",address:"Emek, E90 Süleyman Küçük Apt, 06950 Şereflikoçhisar/Ankara",hours:"구글 지도에서 23:00까지 영업으로 표시 · 방문 당일 확인",phone:"+90 533 722 45 20",feature:"소금호수로 가는 E90 길에 있는 고기 구이 식당이다. 후기는 31개로 적지만 4.7점이다. 괴레메에서 차로 약 2시간 5분이고 소금호수까지는 20분쯤 더 간다.",visit:"",map:gmap("Tuzgölü Restoran Şereflikoçhisar Ankara")});
-wishlistRestaurant({id:"wish-cap-seten",g:"가정식·로칸타",t:"Seten",region:"괴레메",address:"Göreme merkez, Nevşehir",hours:"12:30~22:30",feature:"예약이 안 되고 현장에서 기다려야 한다. 6명이라 일찍 가는 게 안전하다. 대안은 괴레메 시내에서 23:00까지 하는 식당이다. 일정이 늦어지면 22:30까지 늦춰도 된다.",visit:"10/31 저녁",map:gmap("Seten Restaurant Goreme")});
+wishlistRestaurant({id:"wish-cap-seten",g:"가정식·로칸타",t:"Seten",region:"괴레메",address:"Göreme merkez, Nevşehir",hours:"12:30~22:30",feature:"2010년부터 운영해 온 식당이다. 테스티 케밥(항아리 케밥)은 예약해 두면 준비해 준다는 안내가 있다. 자리는 예약이 안 되고 현장에서 기다려야 한다는 자료가 있어 6명이라 일찍 가는 게 안전하다. 대안은 괴레메 시내에서 23:00까지 하는 식당이다. 일정이 늦어지면 22:30까지 늦춰도 된다.",visit:"10/31 저녁",map:gmap("Seten Restaurant Goreme")});
 wishlistRestaurant({id:"wish-cap-han",g:"가정식·로칸타",t:"Göreme Han Restaurant",region:"괴레메",address:"İsali - Gaferli - Avcılar, Bilal Eroğlu Cd. No:29, 50180 Göreme/Nevşehir",hours:"구글 지도에서 22:00까지 영업으로 표시 · 방문 당일 확인",phone:"+90 552 230 36 68",feature:"항아리에 담아 익힌 케밥(테스티 케밥), 만트(작은 튀르키예식 만두), 아다나 케밥이 알려진 가족 식당이다. 구글 4.7점(후기 약 3천 개).",visit:"10/31 저녁",map:gmap("Göreme Han Restaurant")});
 wishlistRestaurant({id:"wish-cap-woodfire",g:"케밥·고기",t:"WOOD FIRE BARBEQUE",region:"괴레메",address:"Aydınlı - Orta, Adnan Menderes Cd. No:3, 50180 Göreme/Nevşehir",hours:"구글 지도에서 23:00까지 영업으로 표시 · 방문 당일 확인",phone:"+90 542 744 59 63",feature:"장작불에 구운 티본 스테이크·믹스 그릴과 항아리 케밥이 알려진 식당이다. 구글 4.8점(후기 약 5천 개).",visit:"10/31 저녁",map:gmap("WOOD FIRE BARBEQUE Göreme")});
+wishlistRestaurant({id:"wish-cap-inci",g:"가정식·로칸타",t:"Inci Cave Restaurant",region:"괴레메",feature:"동굴 식당이다. 뜨거운 항아리를 직접 깨 보는 항아리 케밥(테스티 케밥) 쇼가 유명하다.",map:null});
+wishlistRestaurant({id:"wish-cap-nazar",g:"가정식·로칸타",t:"Nazar Börek & Cafe",region:"괴레메",feature:"뵈렉과 테스티 케밥이 인기다. 수제 만트와 쿠루파술리에도 평이 좋다.",map:null});
+wishlistRestaurant({id:"wish-cap-topdeck",g:"가정식·로칸타",t:"Topdeck Cave Restaurant",region:"괴레메",feature:"동굴 안에서 먹는 든든한 터키 가정식이다. 저녁으로 많이 찾는다.",map:null});
+wishlistRestaurant({id:"wish-cap-firin",g:"케밥·고기",t:"Fırın Express",region:"괴레메",feature:"나무 화덕에서 구운 피데로, 괴레메 피데 맛집으로 자주 언급된다.",map:null});
+wishlistRestaurant({id:"wish-cap-pumpkin",g:"디저트·카페",t:"Pumpkin Göreme",region:"괴레메",feature:"괴즐레메(얇은 반죽에 치즈·감자·시금치를 넣어 구운 전)와 가벼운 카페 메뉴를 낸다. 낮 간식으로 좋다.",map:null});
+wishlistRestaurant({id:"wish-cap-redred",g:"디저트·카페",t:"Red Red Wine House",region:"괴레메",feature:"와인 리스트가 있는 터키 식당이다. 와인 한 잔과 식사를 함께 하기 좋다.",map:null});
+wishlistRestaurant({id:"wish-cap-turasan",g:"디저트·카페",t:"Turasan Winery",region:"우르구프",feature:"우르구프의 대표 와이너리다. 바가 아니라 투어와 시음 위주라 낮 일정에 맞는다.",map:null});
+wishlistRestaurant({id:"wish-road-mery",g:"가정식·로칸타",t:"Mer'y Food",region:"볼루",feature:"볼루의 한식당이다. 김밥, 떡볶이, 라면, 치킨, 돈까스 같은 분식집 메뉴를 합리적인 가격에 낸다. 김밥이 225리라쯤이라는 안내가 있다. 10.30 일정에는 없는 후보다. 볼루에 21:45에 닿아 저녁으로 먹으려면 시각을 앞당겨야 한다.",map:"https://maps.app.goo.gl/hFHCpELaHKWC6NJm6"});
+wishlistRestaurant({id:"wish-road-yorem",g:"가정식·로칸타",t:"Yorem Manti Unlu Mamuller",region:"볼루",feature:"수제 만트(터키식 만두) 중심의 식당이다. 바삭한 만두 변형, 사르마(포도잎 말이), 아침 메뉴가 있다. 만트 한 그릇과 호사프(말린 과일 음료)를 시키면 약 250TL(당시 약 $18)이라는 안내가 있다. 구글 평점 약 4.9(후기 수천 건)이고, 직원이 친절하고 차를 무료로 준다는 평이 있다. 같은 건물 주차가 2시간 무료다. 10.30 일정에는 없는 후보다. 볼루에 21:45에 닿아 저녁으로 먹으려면 시각을 앞당겨야 한다.",map:"https://maps.app.goo.gl/tKuPWMRUqRSJrUT6A"});
+wishlistRestaurant({id:"wish-road-boluet",g:"케밥·고기",t:"Bolu Et Mangal",region:"볼루",feature:"주차가 편하고 양갈비가 맛있다는 곳이다. 10.30 일정에는 없는 후보다. 볼루에 21:45에 닿아 저녁으로 먹으려면 시각을 앞당겨야 한다.",map:"https://maps.app.goo.gl/i9vbuAtGAKA89aAS8"});
+wishlistRestaurant({id:"wish-cap-meihua",g:"가정식·로칸타",t:"Meihua",region:"위치 확인 필요",feature:"엄청 맵다는 중식당이다. 매운 음식을 좋아하면 추천한다.",map:"https://maps.app.goo.gl/DhSUSB491XDFnwCi6"});
+wishlistRestaurant({id:"wish-cap-momo",g:"가정식·로칸타",t:"MoMo Handmade Noodles",region:"위치 확인 필요",feature:"수제 면 요리 식당이다.",map:"https://maps.app.goo.gl/Mg8MRxs9AzWYdfZq8"});
+wishlistRestaurant({id:"wish-cap-kosebasi",g:"케밥·고기",t:"Köşebaşı Kapadokya",region:"위치 확인 필요",feature:"대표 메뉴는 게브레크 케밥(gevrek kebap)이다.",map:"https://maps.app.goo.gl/DgkepYPRB6aUbvwf8"});
 wishlistRestaurant({id:"wish-cap-aryatus",g:"디저트·카페",t:"Aryatus Şarap Evi | Wine House",region:"아바노스",address:"Yukarı, Edip Akbayram Sk. no:35, Avanos, Nevşehir",hours:"확인 못 함 · 가기 전에 구글 지도에서 확인",feature:"현지 와인을 시음하는 와인 하우스다. 후기에 현지 와인(칼레직 카라스 Kalecik Karası 추천)과 친절한 주인이 좋다는 평이 있다. 같은 거리 No:60의 Salkım Şarap Evi와 이름이 섞이는 자료가 있어 주소를 확인한다. 운전하는 사람은 시음을 건너뛴다.",visit:"",map:gmap("Aryatus Şarap Evi Wine House Avanos")});
 wishlistRestaurant({id:"wish-mado",g:"디저트·카페",t:"MADO",region:"이스티클랄 · 시내 곳곳",feature:"이스탄불 어디에나 있는 디저트 체인이다. 돈두르마(쫀득한 아이스크림)와 바클라바 세트가 무난하고 식사 메뉴도 있다. 테이블의 QR을 찍으면 영어 메뉴가 나온다.",map:gmap("MADO Beyoğlu Galatasaray"),photo:{src:I[134],alt:"돈두르마(쫀득한 튀르키예식 아이스크림, 대표 음식 예시 사진)"}});
 wishlistRestaurant({id:"wish-kiztasi",g:"디저트·카페",t:"Kıztaşı Muhallebicisi",region:"파티흐 · 구글 평점 4.1",address:"İskenderpaşa, Sofular Cad. No:51/A, Fatih",hours:"매일 07:00~22:30 · 일 ~21:30 (출처마다 조금 다름)",phone:"+90 212 533 00 62",feature:"물소 젖으로 만든 우유 디저트(무할레비)와 카이막으로 이름난 집이다. 카잔디비(바닥을 살짝 태운 우유 푸딩)와 타북 괴쉬(닭가슴살을 넣은 우유 푸딩)를 꼭 먹어 볼 메뉴로 꼽고, 무화과 푸딩과 바클라바도 있다. 단맛이 덜한 편이다. 저녁이면 인기 메뉴가 떨어져 일찍 가는 게 좋다.",map:"https://maps.app.goo.gl/RYJRxm9qMR4RPuzK7",photo:{src:I[135],alt:"꿀과 빵을 곁들인 카이막(대표 음식 예시 사진)"}});
@@ -1235,6 +1269,11 @@ food({id:"f20",group:"마실 것",title:"튀르키예 커피",local:"Türk kahve
 food({id:"f10",group:"마실 것",title:"아이란",local:"Ayran",desc:"요거트에 물과 소금을 넣은 짭짤한 음료다. 케밥이나 라흐마준과 함께 마신다.",where:"식당과 케밥집, 마트 등 곳곳",note:"단맛이 아니라 짠맛이다.",photo:{src:I[139],alt:"투명한 잔에 거품과 함께 담긴 하얀 아이란"}});
 food({id:"f34",group:"마실 것",title:"에페스",local:"Efes Pilsen",desc:"튀르키예에서 널리 마시는 깔끔한 라거 맥주다.",where:"주류를 파는 식당, 바, 마트",note:"주류를 취급하지 않는 식당도 있어 메뉴에서 먼저 확인한다.",photo:{src:I[140],alt:"잔에 따른 에페스 필스너 맥주와 파란 라벨의 병"}});
 food({id:"f35",group:"마실 것",title:"라크",local:"Rakı",desc:"도수 약 45도의 아니스 향 증류주다. 물을 타면 투명한 술이 우윳빛으로 변한다.",where:"메이하네와 주류를 파는 식당",note:"도수가 높아 물을 섞고 메제와 함께 천천히 마신다.",photo:{src:I[141],alt:"물과 얼음을 곁들인 투명한 튀르키예 증류주 라크"}});
+food({id:"f36",group:"식사",title:"테스티 케밥",local:"Testi kebabı",desc:"점토 항아리에 고기와 채소를 넣고 밀봉해 오래 익힌 요리다. 식당에서 항아리를 테이블 앞에서 깨서 내준다.",where:"카파도키아 식당(Seten, Inci Cave Restaurant, Nazar Börek & Cafe 등)"});
+food({id:"f37",group:"식사",title:"뵈렉",local:"Börek",desc:"얇은 반죽을 겹겹이 말아 치즈나 고기를 넣고 구운 페이스트리다. 아침 식사로도 많이 먹는다.",where:"뵈렉 가게와 카페(Nazar Börek & Cafe 등)"});
+food({id:"f38",group:"식사",title:"쿠루파술리에",local:"Kuru fasulye",desc:"흰 강낭콩을 오래 끓인 스튜다. 보통 밥과 함께 나온다.",where:"로칸타와 가정식 식당"});
+food({id:"f40",group:"식사",title:"양갈비",local:"Kuzu pirzola",desc:"양 갈비를 숯불에 구운 요리다.",where:"숯불 식당(Bolu Et Mangal 등 주차가 편한 곳)"});
+food({id:"f39",group:"마실 것",title:"호사프",local:"Hoşaf",desc:"말린 과일을 우려낸 달콤한 음료다. 만두집에서 함께 주문하는 경우가 많다.",where:"만트 가게와 식당(Yorem Manti 등)"});
 food({id:"f21",group:"달콤한 것",title:"제철 과일",local:"Mevsim meyvesi",desc:"재래시장에서 파는 튀르키예의 제철 과일이다. 시장을 걸으며 그날 잘 익은 종류를 고른다.",where:"카디쾨이 재래시장",note:"시식할 때는 먹어도 되는지 먼저 묻는다.",photo:{src:I[142],alt:"카디쾨이 시장 가판대에 진열된 여러 제철 과일"}});
 
 /* ---------- 이동 ---------- */
@@ -1469,9 +1508,11 @@ const RESTAURANT_REGION_GROUPS=[
   {name:"술탄아흐메트·구시가지",note:"모스크와 바자르가 모인 옛 시가지. 술탄아흐메트 · 시르케지 · 에미뇌뉘 · 쿰카프 · 파티흐",ids:["wish-kiztasi","wish-boris","wish-colakoglu","wish-durumcu-mustafa","dine1","dine5","wish-balik-ekmek","wish-sultanahmet-kofte","wish-lunch3","wish-lunch8","wish-lunch9","wish-lunch10","wish-lunch14","wish-dinner8"]},
   {name:"베이올루·탁심",note:"탁심 광장 주변 번화가. 이스티클랄 · 지한기르 · 페라 · 니샨타시",ids:["wish-ozsut","wish-midyeci-memet","wish-mado","dine2","dine4","wish-pide","wish-rec1","wish-iskender1867","wish-breakfast1","wish-breakfast4","wish-breakfast5","wish-lunch4","wish-lunch12","wish-lunch15","wish-dinner1","wish-dinner2","wish-dinner3"]},
   {name:"시슬리",note:"대형 쇼핑몰이 있는 동네. 시슬리 · 체바히르",ids:["wish-gunaydin-cevahir"]},
-  {name:"괴레메",note:"카파도키아 중심 마을. 괴레메 · 우치사르",ids:["wish-cap-safak","wish-cap-kings","wish-cap-seten","wish-cap-han","wish-cap-woodfire"]},
-  {name:"카파도키아 가는 길",note:"이스탄불과 카파도키아 사이 고속도로를 따라 쉬어 가는 곳. 사판자 · 카이나슐르 · 볼루 · 악사라이 · 셰레플리코치사르",ids:["wish-road-berceste","wish-road-tursan","wish-road-konakoglu","wish-road-agacli","wish-road-altinsoy","wish-road-tuzgolu"]},
+  {name:"괴레메",note:"카파도키아 중심 마을. 괴레메 · 우치사르",ids:["wish-cap-safak","wish-cap-kings","wish-cap-seten","wish-cap-han","wish-cap-woodfire","wish-cap-inci","wish-cap-nazar","wish-cap-topdeck","wish-cap-firin","wish-cap-pumpkin","wish-cap-redred"]},
+  {name:"카파도키아 가는 길",note:"이스탄불과 카파도키아 사이 고속도로를 따라 쉬어 가는 곳. 사판자 · 카이나슐르 · 볼루 · 악사라이 · 셰레플리코치사르",ids:["wish-road-berceste","wish-road-tursan","wish-road-konakoglu","wish-road-agacli","wish-road-altinsoy","wish-road-tuzgolu","wish-road-mery","wish-road-yorem","wish-road-boluet"]},
   {name:"아바노스",note:"도자기와 와인으로 알려진 카파도키아 북쪽 마을. 아바노스",ids:["wish-cap-aryatus"]},
+  {name:"우르구프",note:"와이너리가 있는 카파도키아의 마을. 우르구프",ids:["wish-cap-turasan"]},
+  {name:"위치 확인 필요",note:"이름과 지도 링크만 받은 곳. 지도에서 위치부터 확인한다",ids:["wish-cap-meihua","wish-cap-momo","wish-cap-kosebasi"]},
   {name:"갈라타·카라쾨이",note:"갈라타 탑 아래 골목과 카라쾨이 바닷가",ids:["dine3","wish-mehmet","wish-breakfast3","wish-lunch17","wish-dinner4","wish-dinner7"]},
   {name:"카디쾨이",note:"아시아 쪽 시장 골목과 모다 해안. 페리로 건너간다",ids:["wish-lunch11","wish-hasan-kokorec","wish-kadikoy-midye","wish-dondurmaci-ali","wish-wizards","wish-dinner5"]},
   {name:"위스퀴다르·쿠즈군죽",note:"아시아 쪽 보스포루스 해안 동네",ids:["wish-kanaat"]},
