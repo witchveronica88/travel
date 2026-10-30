@@ -314,7 +314,9 @@ day("d1030","2026.10","30","금요일","그랜드 바자르 · 카파도키아 �
   s("12:00","그랜드 바자르(큰 지붕 시장)",{stay:"2시간",key:"15세기 중반에 시작된 거대한 지붕 시장이다. 거리 61개에 가게 4,000개가 넘고 값은 흥정이 기본이다. 어제는 공화국의 날이라 닫아서 못 들어갔다. 시장 중간에 쉰다. 팔찌는 84번·82번 가게가 싸다는 리뷰가 있다. 오후 4시쯤까지 비 예보다. 11:00에 호텔을 나선다. 대중교통 약 50~65분 · 택시 약 25분.",q:"Kapalıçarşı",map:"https://www.google.com/maps/dir/?api=1&destination=Kapal%C4%B1%C3%A7ar%C5%9F%C4%B1&travelmode=transit",rel:["m3","r3"]}),
   s("14:15","점심: Lezzet-i Şark Antep Sofrası",{move:"도보 약 15분 · 택시 약 8분",moveAt:"14:00",stay:"1시간",key:"평점 4.4 · 베이란 수프·아다나 케밥·퀴네페. 10.29에 못 간 곳이다. 바자르 바로 옆 Dürümcü Mustafa도 후보다.",q:"Lezzet-i Şark Antep Sofrası, Hasırcılar Cd. No:38, Fatih",map:"https://www.google.com/maps/dir/?api=1&destination=Lezzet-i%20%C5%9Eark%20Antep%20Sofras%C4%B1%2C%20Has%C4%B1rc%C4%B1lar%20Cd.%20No%3A38%2C%20Fatih&travelmode=walking",placeId:"dine5",rel:["dine5","wish-durumcu-mustafa"]}),
   s("16:05","호텔 도착·짐 싸기",{q:"Sheraton Istanbul City Center",map:"https://www.google.com/maps/dir/?api=1&destination=Sheraton%20Istanbul%20City%20Center&travelmode=transit",move:"대중교통 약 30~50분 · 택시 약 20분",moveAt:"15:15",stay:"짐 싸기와 휴식",key:"카파도키아에 가져갈 짐을 싸고 쉰다."}),
-  s("저녁","카파도키아로 출발",{moveOnly:true,move:"호텔에서 쉬다가 저녁에 출발",key:"6명이 렌터카로 간다. 이스탄불에서 카파도키아까지 차로 약 7~8시간이다. 전날 숙소 없이 바로 출발해 10.31 새벽에 도착한다. 출발 시각과 길은 따로 정한다."})
+  s("저녁","카파도키아로 출발",{moveOnly:true,move:"호텔에서 쉬다가 저녁에 출발",key:"6명이 렌터카로 간다. 이스탄불에서 카파도키아까지 차로 약 7~8시간이다. 전날 숙소 없이 바로 출발해 10.31 새벽에 도착한다. 출발 시각은 정하지 않았다. 길은 구글 지도를 따라 간다."}),
+  s("출발 약 3시간 뒤","저녁: 볼루 쪽 휴게소",{move:"차로 약 3시간",key:"저녁을 먹으며 쉬어 가는 곳이다. 볼루 엘말르크의 Konakoğlu 휴게소가 후보이고, 더 일찍 쉬려면 사판자의 Berceste 휴게소가 있다. 밤 영업 여부는 구글 지도에서 확인한다.",rel:["wish-road-konakoglu","wish-road-berceste","wish-road-aytur"]}),
+  s("도착 약 1시간 반 전","악사라이에서 쉬기",{move:"차로 약 4시간",key:"카파도키아에 닿기 전 마지막으로 쉬어 가는 도시다. 지역 음식을 먹고 쉰다는 안내가 있다. 구체적인 가게는 정하지 않았다. 괴레메까지는 차로 약 1시간 30분이다."})
 ],"교통비와 점심 비용");
 
 day("d1031","2026.10","31","토요일","카파도키아 첫날","열기구가 취소되면 · 08:30 데린쿠유 · 11:00 괴레메 아침 · 12:00 우치사르 · 13:00 파샤바",[
@@ -369,7 +371,7 @@ const DEPARTURES = {
   d1027:["호텔","시르케지","Fabrikafa","카나아트","쿠즈군죽","위스퀴다르 바닷가","카라쾨이 선착장","귈뤼오울루","호텔"],
   d1028:["Istanbul Experiences Workshops","셰흐자데 자 케밥","이집션 바자르","피에르 로티 언덕","호텔"],
   d1029:["그랜드 바자르","Cevahir 쇼핑몰","Günaydın","MADO","호텔"],
-  d1030:["그랜드 바자르","Lezzet-i Şark","호텔","호텔"],
+  d1030:["그랜드 바자르","Lezzet-i Şark","호텔","호텔","볼루 휴게소","악사라이"],
   d1031:["열기구 업체 연락","일출 전망대","데린쿠유 지하도시","괴레메 카페","우치사르 성채","파샤바 계곡","숙소"],
   d1101:["카파도키아"],
   d1102:["히포드롬 독일분수","블루 모스크","히포드롬 광장","아야소피아","톱카프 궁전","예레바탄 지하저수지","돌마바흐체 궁전","호텔"],
@@ -1091,6 +1093,9 @@ wishlistRestaurant({id:"wish-midyeci-memet",g:"해산물",t:"Midyeci Memet",regi
 wishlistRestaurant({id:"wish-gunaydin-cevahir",g:"케밥·고기",t:"Günaydın Köfte & Döner Cevahir",region:"시슬리",address:"İstanbul Cevahir AVM 안, Büyükdere Cd. No:22, Şişli (층은 확인 못 함)",hours:"쇼핑몰 영업시간에 따름 · 매일 10:00~22:00로 알려짐",status:"구글 지도에서 확인 못 함",feature:"쾨프테(양념한 다진 고기 구이)와 되네르(꼬치에 돌려 구운 고기)를 내는 체인 식당이다. 쇼핑몰 안에서 점심으로 먹었다.",visit:"10/29 점심",map:gmap("Günaydın Köfte & Döner Cevahir İstanbul")});
 wishlistRestaurant({id:"wish-cap-safak",g:"가정식·로칸타",t:"Şafak Cafe",region:"괴레메",hours:"확인 못 함",status:"구글 지도에서 확인 못 함",feature:"가족이 운영하는 작은 카페다. 튀르키예식 아침을 낸다.",visit:"10/31 아침",map:gmap("Cafe Safak Goreme")});
 wishlistRestaurant({id:"wish-cap-kings",g:"디저트·카페",t:"King's Coffee",region:"괴레메",hours:"아침 06:30부터 영업 · 닫는 시간은 확인 못 함",status:"구글 지도에서 확인 못 함",feature:"피스타치오 커피와 케이크로 유명한 카페다.",visit:"10/31 아침",map:gmap("Kings Coffee Shop Goreme")});
+wishlistRestaurant({id:"wish-road-berceste",g:"가정식·로칸타",t:"Berceste 휴게소",region:"사판자",address:"Sapanca, Sakarya (볼루–뒤즈제 길)",hours:"확인 못 함 · 밤 영업은 구글 지도에서 확인",status:"구글 지도에서 확인 못 함",feature:"아침부터 저녁까지 식사를 내는 휴게소다. 깨끗하다는 평이 있다(2020년 자료).",visit:"10/30 저녁",map:gmap("Berceste Dinlenme Tesisleri Sapanca")});
+wishlistRestaurant({id:"wish-road-konakoglu",g:"가정식·로칸타",t:"Konakoğlu 휴게소",region:"볼루 엘말르크",address:"Elmalık, Bolu",hours:"확인 못 함 · 밤 영업은 구글 지도에서 확인",status:"구글 지도에서 확인 못 함",feature:"식당과 마트가 있는 휴게소다. 볼루에서 Berceste 다음으로 인기 있다고 소개된다(2020년 자료).",visit:"10/30 저녁",map:gmap("Konakoğlu Dinlenme Tesisleri Bolu")});
+wishlistRestaurant({id:"wish-road-aytur",g:"가정식·로칸타",t:"Aytur 휴게소",region:"게레데",address:"Gerede, Bolu",hours:"확인 못 함 · 밤 영업은 구글 지도에서 확인",status:"구글 지도에서 확인 못 함",feature:"식당과 마트가 있는 휴게소다. 깨끗하다는 평이 있다(2020년 자료). 자료에는 카라뷔크–삼순 길로 적혀 있어 고속도로에서 나가야 할 수 있다(확인 못 함).",visit:"10/30 저녁",map:gmap("Aytur Dinlenme Tesisleri Gerede")});
 wishlistRestaurant({id:"wish-mado",g:"디저트·카페",t:"MADO",region:"이스티클랄 · 시내 곳곳",feature:"이스탄불 어디에나 있는 디저트 체인이다. 돈두르마(쫀득한 아이스크림)와 바클라바 세트가 무난하고 식사 메뉴도 있다. 테이블의 QR을 찍으면 영어 메뉴가 나온다.",map:gmap("MADO Beyoğlu Galatasaray")});
 wishlistRestaurant({id:"wish-kiztasi",g:"디저트·카페",t:"Kıztaşı Muhallebicisi",region:"파티흐 · 구글 평점 4.1",address:"İskenderpaşa, Sofular Cad. No:51/A, Fatih",hours:"매일 07:00~22:30 · 일 ~21:30 (출처마다 조금 다름)",phone:"+90 212 533 00 62",feature:"물소 젖으로 만든 우유 디저트(무할레비)와 카이막으로 이름난 집이다. 카잔디비(바닥을 살짝 태운 우유 푸딩)와 타북 괴쉬(닭가슴살을 넣은 우유 푸딩)를 꼭 먹어 볼 메뉴로 꼽고, 무화과 푸딩과 바클라바도 있다. 단맛이 덜한 편이다. 저녁이면 인기 메뉴가 떨어져 일찍 가는 게 좋다.",map:"https://maps.app.goo.gl/RYJRxm9qMR4RPuzK7"});
 
@@ -1346,6 +1351,7 @@ const CHECK = [
     ["카파도키아 가기 전",[
       "열기구를 11.1로 옮길 때 일출 비행인지 2차 비행인지 업체에 확인 (사이트상 일요일 일출은 매진)",
       "렌터카가 6명과 짐이 다 타는 승합차급인지 확인",
+      "렌터카에 고속도로 통행료(HGS)가 포함돼 있는지 확인 (톨게이트에서 현금을 받지 않고 카메라로 처리한다)",
       "보온병과 간식 준비",
       "체크인 전까지 짐은 트렁크에 넣어 밖에서 안 보이게"]]
   ]}
@@ -1355,6 +1361,7 @@ const RESTAURANT_REGION_GROUPS=[
   {name:"베이올루·탁심",note:"탁심 광장 주변 번화가. 이스티클랄 · 지한기르 · 페라 · 니샨타시",ids:["wish-ozsut","wish-midyeci-memet","wish-mado","dine2","dine4","wish-pide","wish-rec1","wish-iskender1867","wish-breakfast1","wish-breakfast4","wish-breakfast5","wish-lunch4","wish-lunch12","wish-lunch15","wish-dinner1","wish-dinner2","wish-dinner3"]},
   {name:"시슬리",note:"대형 쇼핑몰이 있는 동네. 시슬리 · 체바히르",ids:["wish-gunaydin-cevahir"]},
   {name:"괴레메",note:"카파도키아 중심 마을. 괴레메 · 우치사르",ids:["wish-cap-safak","wish-cap-kings"]},
+  {name:"카파도키아 가는 길",note:"이스탄불에서 카파도키아까지 고속도로를 따라 쉬어 가는 곳. 사판자 · 볼루 · 게레데",ids:["wish-road-berceste","wish-road-konakoglu","wish-road-aytur"]},
   {name:"갈라타·카라쾨이",note:"갈라타 탑 아래 골목과 카라쾨이 바닷가",ids:["dine3","wish-mehmet","wish-breakfast3","wish-lunch17","wish-dinner4","wish-dinner7"]},
   {name:"카디쾨이",note:"아시아 쪽 시장 골목과 모다 해안. 페리로 건너간다",ids:["wish-lunch11","wish-hasan-kokorec","wish-kadikoy-midye","wish-dondurmaci-ali","wish-wizards","wish-dinner5"]},
   {name:"위스퀴다르·쿠즈군죽",note:"아시아 쪽 보스포루스 해안 동네",ids:["wish-kanaat"]},
