@@ -312,15 +312,16 @@ day("d1029","2026.10","29","목요일","공화국의 날 · 그랜드 바자르�
   s("간식 후","호텔 도착",{q:"Sheraton Istanbul City Center",map:gmap("Sheraton Istanbul City Center"),moveOnly:true,move:"간식 가게에서 호텔로 이동",key:"돌아와서 호텔에서 수영한다."})
 ],"교통비와 점심·간식 비용");
 
-day("d1030","2026.10","30","금요일","카파도키아로 출발","16:30 렌터카 수령 · 19:30 휴식 Berceste · 21:30 (선택) 저녁 볼루 · 02:00 악사라이",[
+day("d1030","2026.10","30","금요일","카파도키아로 출발","16:30 렌터카 수령 · 19:30 휴식 Berceste · 21:30 볼루 저녁 · 02:00 악사라이",[
   s("16:30","렌터카 수령: Enterprise 탁심 지점",{stay:"약 30분",key:["6명과 짐이 다 타는 승합차급인지 확인하고 받아 바로 출발한다.", "운전할 사람마다 면허증·국제운전면허증·여권·본인 이름의 신용카드를 챙긴다.", "10.31 새벽에 도착하도록 밤새 달린다.", "16:00에 호텔을 나선다. 대중교통 약 25분 · 택시 약 15분."],q:"Enterprise Rent-A-Car İstanbul Taksim Araç Kiralama",placeId:"cap-rental",rel:["cap-rental"]}),
   s("19:30 예상","휴식: Berceste 휴게소(사판자)",{move:"차로 약 2시간 30분 (금요일 저녁 정체 포함)",moveAt:"17:00",stay:"약 30분",key:["첫 휴식이다. 화장실·스트레칭 위주로 쉬고 간식을 먹는다.", "쉬기 어려우면 다음 구간의 Türsan Park(카이나슐르)가 백업이다."],rel:["wish-road-berceste","wish-road-tursan"]}),
-  s("21:30 예상","(선택) 저녁",{move:"차로 약 1시간 30분",moveAt:"20:00",stay:"약 30분",key:["볼루에서 저녁을 먹는다.", "Mer'y Food는 새벽 2시까지 열고, Yorem Manti는 21:00에 닫아 21:30에 닿으면 못 간다."],rel:["wish-road-mery","wish-road-yorem","wish-road-konakoglu"]}),
+  s("21:30 예상","볼루",{move:"차로 약 1시간 30분",moveAt:"20:00",stay:"약 30분",key:["가는 길 중간의 산간 도시에서 저녁을 먹는다.", "Mer'y Food는 새벽 2시까지 열고, Yorem Manti는 21:00에 닫아 21:30에 닿으면 못 간다."],q:"Bolu",map:"https://www.google.com/maps/search/?api=1&query=Bolu&query_place_id=ChIJ0QaE3BY_nUAR6YJLtTo2zIM",rel:["cap-bolu","wish-road-mery","wish-road-yorem","wish-road-konakoglu"]}),
   s("02:00 예상","악사라이에서 쉬기",{move:"차로 약 4시간",moveAt:"22:00",stay:"약 30분",key:["카파도키아에 닿기 전 마지막 휴식이다. Ağaçlı Tesisleri(24시간)에서 쉰다.", "수프나 맥도날드처럼 가볍게 먹는다.", "괴레메까지 차로 약 1시간 30분, 04:00쯤 도착한다."],rel:["wish-road-agacli"]})
 ],"렌터카·통행료·주유·식사 비용 별도");
 
-day("d1031","2026.10","31","토요일","카파도키아 첫날","05:30 열기구 통보 · 06:30 일출(선택) · 08:30 데린쿠유 · 12:00 우치사르 · 13:00 파샤바 · 16:00 일몰(선택) · 18:45 저녁(선택)",[
-  s("05:30","열기구 통보 확인",{key:["04:00쯤 호텔(열기구 픽업 장소)에 도착해 차에서 쉰다.", "05:00~05:30에 오는 업체 연락으로 열기구 취소를 확인한다.", "11.1로 옮겨 달라고 요청하고, 일출(선택)을 보러 06:30에 나선다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-about","cap-balloon","cap-hotel"]}),
+day("d1031","2026.10","31","토요일","카파도키아 첫날","04:00 괴레메 도착 · 05:30 열기구 통보 · 06:30 일출(선택) · 08:30 데린쿠유 · 12:00 우치사르 · 13:00 파샤바 · 16:00 일몰(선택) · 18:45 저녁(선택)",[
+  s("04:00 예상","괴레메",{stay:"약 1시간 30분",key:["카파도키아 여행의 중심 마을이다. 11.1 아침까지 이 마을 숙소에서 지낸다.", "숙소(열기구 픽업 장소) 앞에 도착해 차에서 쉰다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-about","cap-hotel"]}),
+  s("05:30","열기구 통보 확인",{moveOnly:true,move:"숙소 앞 차 안에서 기다린다",key:["05:00~05:30에 오는 업체 연락으로 열기구 취소를 확인한다.", "11.1로 옮겨 달라고 요청하고, 일출(선택)을 보러 06:30에 나선다."],rel:["cap-balloon"]}),
   s("06:30","(선택) 일출",{moveOnly:true,move:"고른 전망대로 차로 이동",stay:"약 1시간 20분",key:["일출은 07:06이다.", "새벽엔 카페가 열지 않아 보온병과 간식을 챙긴다."],photos:[{src:CAP.rose,alt:"로즈 밸리 전망대에서 본 카파도키아 계곡"}],q:"Love Valley Viewpoint Cappadocia",map:gmap("Love Valley Viewpoint Cappadocia"),rel:["cap-love","cap-rose","cap-sunsetview"]}),
   s("08:30","데린쿠유 지하도시",{move:"차로 약 40분",moveAt:"07:50",stay:"약 2시간",key:["땅속 깊이 파 내려간 옛 지하도시다.", "입장료 1인 €13(6명 €78). 통로가 좁고 낮다."],q:"Derinkuyu Underground City",map:gmap("Derinkuyu Underground City"),rel:["cap-derinkuyu"]}),
   s("11:00","(선택) 카페",{move:"괴레메까지 차로 약 35분",moveAt:"10:25",stay:"약 50분",key:["괴레메 시내에서 한 시간 가까이 쉬며 먹는다."],q:"Cafe Safak Goreme",map:gmap("Cafe Safak Goreme"),rel:["wish-cap-firin","wish-cap-safak","wish-cap-kings"]}),
@@ -385,7 +386,7 @@ const DEPARTURES = {
   d1028:["Istanbul Experiences Workshops","셰흐자데 자 케밥","이집션 바자르","피에르 로티 언덕","호텔"],
   d1029:["그랜드 바자르","Cevahir 쇼핑몰","Günaydın","MADO","호텔"],
   d1030:["탁심 렌터카","Berceste 휴게소","볼루","악사라이"],
-  d1031:["열기구 업체 연락","일출 전망대","데린쿠유 지하도시","괴레메 카페","우치사르 성채","파샤바 계곡","숙소","일몰","저녁","숙소"],
+  d1031:["괴레메 숙소","열기구 업체 연락","일출 전망대","데린쿠유 지하도시","괴레메 카페","우치사르 성채","파샤바 계곡","숙소","일몰","저녁","숙소"],
   d1101:["열기구 확인","호텔 조식","체크아웃","괴레메 야외박물관","점심","소금호수","호텔"],
   d1102:["호텔","그랜드 바자르","Lezzet-i Şark","발랏","Old Balat Cafe","호텔"],
   d1103:["호텔","Selim Usta 쾨프테","터키 이슬람 미술관","아라스타 바자르","호텔"],
@@ -556,7 +557,7 @@ const PLACE_SCHEDULE_DATES = {
   p1:"",p2:"",p4:"",p6:"10/28",
   s1:"10/25",s2:"10/25",s8:"10/25",m6:"10/25",c1:"10/25",cu1:"10/25",s3:"11/4",s4:"10/27",s5:"10/26",s7:"",s9:"10/26·10/27",s10:"10/28",s11:"10/27",shop3:"10/28",s12:"",s13:"10/27",s14:"",
   m2:"11/4",m3:"10/29·11/2",s6:"11/2","wish-old-balat":"11/2",m4:"10/28",m7:"11/4",shop5:"11/3",dine5:"11/2",
-  x1:"11/4",x2:"11/4",x3:"11/4",x4:"11/4",x5:"",x6:"11/3",shop6:"10/27",shop7:"10/26",shop8:"",shop9:"11/3",dine1:"10/28","wish-sultanahmet-kofte":"11/3","wish-dinner8":"","wish-midyeci-memet":"","wish-mado":"10/29","wish-kanaat":"10/27","wish-boris":"11/3","wish-colakoglu":"11/3",shop10:"10/29","cap-love":"10/31","cap-rose":"10/31","cap-derinkuyu":"10/31","cap-uchisar":"10/31","cap-pasabag":"10/31","cap-horse":"10/31","cap-balloon":"10/31","cap-about":"10/31","cap-sunsetview":"10/31","cap-hamam":"10/31","cap-hotel":"10/31·11/1","cap-rental":"10/30","tour-yenheo":"11/4","cap-redvalley":"10/31","cap-goreme":"11/1","cap-zelve":"10/31·11/1","cap-avanos":"10/31","cap-tuzgolu":"11/1","wish-rec1":"","wish-mangerie":"","wish-cup-joy":"","wish-wizards":"10/26","wish-hasan-kokorec":"10/26"
+  x1:"11/4",x2:"11/4",x3:"11/4",x4:"11/4",x5:"",x6:"11/3",shop6:"10/27",shop7:"10/26",shop8:"",shop9:"11/3",dine1:"10/28","wish-sultanahmet-kofte":"11/3","wish-dinner8":"","wish-midyeci-memet":"","wish-mado":"10/29","wish-kanaat":"10/27","wish-boris":"11/3","wish-colakoglu":"11/3",shop10:"10/29","cap-love":"10/31","cap-rose":"10/31","cap-derinkuyu":"10/31","cap-uchisar":"10/31","cap-pasabag":"10/31","cap-horse":"10/31","cap-balloon":"10/31","cap-about":"10/31","cap-bolu":"10/30","cap-sunsetview":"10/31","cap-hamam":"10/31","cap-hotel":"10/31·11/1","cap-rental":"10/30","tour-yenheo":"11/4","cap-redvalley":"10/31","cap-goreme":"11/1","cap-zelve":"10/31·11/1","cap-avanos":"10/31","cap-tuzgolu":"11/1","wish-rec1":"","wish-mangerie":"","wish-cup-joy":"","wish-wizards":"10/26","wish-hasan-kokorec":"10/26"
 };
 /* 구글 지도에서 직접 열어 확인한 검색어: 이름 그대로 찾으면 엉뚱한 곳이 나오는 장소 */
 const MAP_FIX={s9:"Bosphorus Strait Istanbul",s10:"Golden Horn Istanbul",s14:"Bebek, Beşiktaş, Istanbul",shop3:"Arifoglu Spice Egyptian Bazaar Istanbul"};
@@ -1036,6 +1037,11 @@ place({id:"cap-rental",g:"카파도키아",t:"렌터카 수령: Enterprise 탁�
   memo:["운전할 사람마다 한국 면허증, 국제운전면허증, 여권, 본인 이름의 신용카드를 챙긴다.","보증금은 신용카드로만 받고 체크카드·현금은 안 받는다고 한다. 국제운전면허증이 필요한지는 지점에 전화로 먼저 확인한다.","차 바깥 상태를 사진으로 남긴다.","6명과 짐이 다 타는 승합차급인지 확인한다.","통행료는 HGS 전용이라 현금을 받지 않는다. 렌터카에 보통 달려 있고, HGS 없이 지나가면 과태료가 붙을 수 있다.","반납 때 통행료에 하루 수수료가 더해져 정산되는 경우가 많다. 정산 방식과 수수료를 출발 전에 서면으로 받아 둔다.","제한속도는 도심 50km/h, 일반도로 90km/h, 고속도로 120~130km/h다. 표지판이 우선이고, 고속도로와 대도시 근처는 과속 카메라와 이동식 단속이 잦다.","밤 시골길은 가로등이 거의 없고 가축과 농기계가 나올 수 있다. 괴레메로 들어가는 밤길은 좁을 수 있어 천천히 간다.","주차는 구역마다 유료·무료 규정이 달라 표지판을 확인한다.","밤 운전 교대 순서와 차에서 쉬는 방법, 보온을 먼저 정한다.","거리가 멀어 추가요금이 붙을 수 있으니 수령 때 확인한다."],
   rows:[["주소","Intercontinental Otel, Gümüşsuyu, Asker Ocağı Cd. No:1, 34437 Beyoğlu/İstanbul"],["운영","구글 지도에서 10.30 20:00까지 영업으로 표시 · 방문 당일 확인"],["전화","+90 212 254 77 19"],["평점","4.3 · 후기 약 1,100개"]],
   map:gmap("Enterprise Rent-A-Car İstanbul Taksim Araç Kiralama")});
+place({id:"cap-bolu",g:"카파도키아 가는 길",t:"볼루",s:"Bolu · 이스탄불과 앙카라 사이",
+  intro:"이스탄불에서 카파도키아로 가는 고속도로 중간에 있는 산간 도시다.",
+  about:["흑해 지방 서쪽 내륙에 있고 숲과 호수가 많다. 시내에서 35km쯤 떨어진 아반트 호수와 45km쯤 떨어진 예디괼레르(Yedigöller, ‘일곱 호수’라는 뜻)가 단풍 명소로 알려져 있다.","요리사의 고장으로 불린다. 볼루의 멩겐(Mengen)에서 오스만 궁전 부엌의 요리사가 많이 나왔다고 전해진다.","호박을 넣은 괴즐레메(kabaklı gözleme) 같은 향토 음식이 있다."],
+  memo:["이번에는 밤에 지나가며 저녁만 먹는다."],
+  map:"https://www.google.com/maps/search/?api=1&query=Bolu&query_place_id=ChIJ0QaE3BY_nUAR6YJLtTo2zIM"});
 place({id:"cap-about",g:"카파도키아",t:"괴레메",s:"Göreme · 카파도키아의 중심 마을",
   intro:"카파도키아 여행의 중심 마을이다. 바위를 파서 만든 교회와 집, 버섯 모양 바위가 마을을 둘러싸고 있다.",
   about:["2세기 무렵부터 은둔 수도사들이 작은 동굴에서 살기 시작했다는 기록이 있다. 4세기 이후에는 바위를 파서 교회와 예배당, 식당, 수도 공간을 만들며 종교의 중심지가 됐다.","비잔틴 시대에 지금의 괴레메는 이웃한 두 마을이었다. 지금 이름은 국립공원으로 지정된 뒤에 쓰이기 시작했다.","수백만~천만 년 전 화산이 터져 쌓인 부드러운 응회암이 바탕이다. 바람과 물에 깎이고 위쪽의 단단한 바위 덮개만 남아 버섯 모양의 ‘요정의 굴뚝’(fairy chimneys)이 생겼다. 계곡과 기암이 이어진 모습이 달 풍경에 비유되기도 한다.","1985년 ‘괴레메 국립공원과 카파도키아 암석 유적지’로 유네스코 세계유산에 올랐다. 성상 파괴 운동 이후 비잔틴 후기 미술을 보여 주는 바위 교회와 벽화가 남아 있고, 지금은 세계적인 열기구 관광지다."],
