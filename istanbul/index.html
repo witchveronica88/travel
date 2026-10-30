@@ -316,15 +316,21 @@ day("d1030","2026.10","30","금요일","라미 도서관 · 카파도키아 출�
   s("11:10","라미 도서관 (선택)",{move:"대중교통(버스) 약 40~45분(구글 지도 기준, 환승 1번 · 요금 2번) · 대기 포함 총 45~60분",moveAt:"10:10",stay:"1시간",key:"군인이 있던 옛 막사를 튀르키예에서 가장 큰 도서관으로 바꾼 건물이다. 책을 읽으러 가는 곳이 아니라 넓은 안뜰과 긴 건물을 구경하러 간다. 열람실은 24시간 열고 입장 조건은 입구에서 확인한다. 가지 않으면 호텔에서 쉰다.",photos:[],q:"Rami Kütüphanesi",map:"https://www.google.com/maps/dir/?api=1&destination=Rami%20K%C3%BCt%C3%BCphanesi&travelmode=transit",placeId:"l3",rel:["l3"]}),
   s("13:30","점심 예정",{move:"라미에서 탁심까지 대중교통 약 30~40분(구글 지도 기준) · 대기 포함 35~50분 · 도서관에 안 가면 호텔에서 쉬다가 먹는다",moveAt:"12:20",stay:"1시간",key:"탁심 근처 로칸타에서 먹는다. 아직 식당을 정하지 않았다."}),
   s("15:00","호텔 도착·짐 싸기",{q:"Sheraton Istanbul City Center",map:"https://www.google.com/maps/dir/?api=1&destination=Sheraton%20Istanbul%20City%20Center&travelmode=transit",move:"탁심에서 호텔까지 도보 15~20분 (셔틀 매시 30분)",moveAt:"14:40",stay:"짐 싸기와 휴식",key:"카파도키아에 가져갈 짐을 싸고 쉰다."}),
-  s("저녁","카파도키아로 출발",{moveOnly:true,move:"호텔에서 쉬다가 저녁에 출발",key:"렌터카로 간다. 이스탄불에서 카파도키아까지 차로 약 7~8시간(730km 안팎)이라 밤늦게 도착한다. 출발 시각과 길은 따로 정한다."})
+  s("저녁","카파도키아로 출발",{moveOnly:true,move:"호텔에서 쉬다가 저녁에 출발",key:"6명이 렌터카로 간다. 이스탄불에서 카파도키아까지 차로 약 7~8시간(730km 안팎)이다. 전날 숙소 없이 바로 출발해 10.31 새벽에 도착한다. 출발 시각과 길은 따로 정한다."})
 ],"교통비와 점심 비용");
 
-day("d1031","2026.10","31","토요일","카파도키아","렌터카 여행",[
-  s("종일","카파도키아",{key:"렌터카로 카파도키아를 여행한다. 일정은 따로 정한다."})
-],"카파도키아 여행 비용 별도");
+day("d1031","2026.10","31","토요일","카파도키아 첫날","열기구가 취소되면 · 08:30 데린쿠유 · 11:00 괴레메 아침 · 12:00 우치사르 · 13:00 파샤바",[
+  s("05:30","열기구 취소 통보 확인",{key:"열기구가 취소되면 이 순서로 움직인다. 업체 연락은 당일 새벽에 온다. 취소되면 그 자리에서 11.1로 옮겨 달라고 요청한다. 10.30 오전 10시 예보로 새벽 6°C, 낮 16°C, 비 올 확률 15%다."}),
+  s("06:30","일출 전망대 (차 안에서)",{moveOnly:true,move:"일출 전망대로 이동",stay:"약 1시간 20분",key:"러브 밸리나 로즈 밸리 전망대 중 한 곳으로 간다. 해 뜨는 시각은 06:59다. 새벽엔 근처 카페가 열지 않아 보온병과 간식으로 해결한다.",q:"Love Valley Viewpoint Cappadocia",map:"https://www.google.com/maps/dir/?api=1&destination=Love%20Valley%20Viewpoint%20Cappadocia&travelmode=driving",rel:["cap-love","cap-rose"]}),
+  s("08:30","데린쿠유 지하도시",{move:"차로 약 40분",moveAt:"07:50",stay:"약 2시간",key:"땅속 깊이 파 내려간 옛 지하도시다. 8시에 문을 연다. 입장료는 1인 €13로 알려져 있다(6명 €78). 통로가 좁고 낮아 허리를 숙이는 구간이 많고, 계단에서 줄이 막히기도 한다. 안이 서늘하다. 입구 옆 무료 주차장은 단체 버스가 오면 금방 찬다.",q:"Derinkuyu Underground City",map:"https://www.google.com/maps/dir/?api=1&destination=Derinkuyu%20Underground%20City&travelmode=driving",rel:["cap-derinkuyu"]}),
+  s("11:00","괴레메 시내에서 아침",{move:"괴레메까지 차로 약 35분",moveAt:"10:25",stay:"약 50분",key:"새벽부터 움직였으니 한 시간 가까이 넉넉히 쉰다. Şafak Cafe 또는 King's Coffee 중 한 곳에서 먹는다.",q:"Cafe Safak Goreme",map:"https://www.google.com/maps/dir/?api=1&destination=Cafe%20Safak%20Goreme&travelmode=driving",rel:["wish-cap-safak","wish-cap-kings"]}),
+  s("12:00","우치사르 성채",{move:"우치사르까지 차로 약 10분",moveAt:"11:50",stay:"약 40분",key:"카파도키아에서 가장 높은 바위 요새다. 꼭대기에서 일대가 한눈에 보인다. 꼭대기까지 계단이라 짧지만 숨이 찬다. 입장료는 현장에서 따로 낸다.",q:"Uchisar Castle",map:"https://www.google.com/maps/dir/?api=1&destination=Uchisar%20Castle&travelmode=driving",rel:["cap-uchisar"]}),
+  s("13:00","파샤바 계곡",{move:"차로 약 20분",moveAt:"12:40",key:"버섯 모양 바위가 모인 곳이다. 길이 평탄해 걷기 편하고 가족사진 찍기 좋다. 8시에 문을 연다. 입장권 한 장(2025년 1인 €12)으로 근처 젤베 야외박물관도 들어간다. 낮에는 단체 관광객이 많다.",q:"Pasabag Monks Valley Cappadocia",map:"https://www.google.com/maps/dir/?api=1&destination=Pasabag%20Monks%20Valley%20Cappadocia&travelmode=driving",rel:["cap-pasabag"]}),
+  s("14:00","숙소 체크인",{moveOnly:true,move:"숙소로 이동",key:"짐을 풀고 쉰다."})
+],"데린쿠유 1인 €13 · 파샤바 1인 €12(2025년 자료) · 우치사르 입장료는 현장 결제");
 
 day("d1101","2026.11","01","일요일","카파도키아","렌터카 여행 · 밤에 이스탄불로",[
-  s("종일","카파도키아",{key:"렌터카로 카파도키아를 여행하고 밤에 이스탄불로 돌아온다. 차로 약 7~8시간(730km 안팎)이라 일요일 낮에 떠나야 밤에 도착한다. 다음 날 08:25 투어 집합이라 일찍 쉰다."})
+  s("종일","카파도키아",{key:"열기구가 10.31에 취소되면 이날로 옮겨 탄다. 렌터카로 카파도키아를 여행하고 밤에 이스탄불로 돌아온다. 차로 약 7~8시간(730km 안팎)이라 일요일 낮에 떠나야 밤에 도착한다. 다음 날 08:25 투어 집합이라 일찍 쉰다."})
 ],"카파도키아 여행 비용 별도");
 
 day("d1102","2026.11","02","월요일","이스탄불 클래식 투어","08:25 독일분수 집합 · 바우처 재확인",[
@@ -366,7 +372,7 @@ const DEPARTURES = {
   d1028:["Istanbul Experiences Workshops","셰흐자데 자 케밥","이집션 바자르","피에르 로티 언덕","호텔"],
   d1029:["그랜드 바자르","Cevahir 쇼핑몰","Günaydın","MADO","호텔"],
   d1030:["호텔","라미 도서관","탁심 근처 식당","호텔","호텔"],
-  d1031:["카파도키아"],
+  d1031:["열기구 업체 연락","일출 전망대","데린쿠유 지하도시","괴레메 카페","우치사르 성채","파샤바 계곡","숙소"],
   d1101:["카파도키아"],
   d1102:["히포드롬 독일분수","블루 모스크","히포드롬 광장","아야소피아","톱카프 궁전","예레바탄 지하저수지","돌마바흐체 궁전","호텔"],
   d1103:["호텔","돌마바흐체 궁전","셰흐자데 자 케밥","터키 이슬람 미술관","아라스타 바자르","호텔"],
@@ -524,7 +530,7 @@ const PLACE_SCHEDULE_DATES = {
   p1:"",p2:"11/4",p4:"",p6:"10/28",
   s1:"10/25",s2:"10/25",s8:"10/25",m6:"10/25",c1:"10/25",cu1:"10/25",s3:"11/2",s4:"10/27",s5:"10/26",s7:"",s9:"10/26·10/27",s10:"10/28",s11:"10/27",shop3:"10/28",s12:"",s13:"10/27",s14:"",
   m2:"11/2",m3:"10/29",m4:"10/28",shop5:"11/3",
-  x1:"11/2",x2:"11/2·11/4",x3:"11/2",x4:"11/2·11/3",x5:"",x6:"11/3",shop6:"10/27",shop7:"10/26",shop8:"",shop9:"11/3",dine1:"10/28·11/3","wish-dinner8":"11/4","wish-midyeci-memet":"","wish-mado":"10/29","wish-kanaat":"10/27","wish-boris":"11/3","wish-colakoglu":"11/3",shop10:"10/29","wish-rec1":"","wish-mangerie":"","wish-cup-joy":"","wish-wizards":"10/26","wish-hasan-kokorec":"10/26"
+  x1:"11/2",x2:"11/2·11/4",x3:"11/2",x4:"11/2·11/3",x5:"",x6:"11/3",shop6:"10/27",shop7:"10/26",shop8:"",shop9:"11/3",dine1:"10/28·11/3","wish-dinner8":"11/4","wish-midyeci-memet":"","wish-mado":"10/29","wish-kanaat":"10/27","wish-boris":"11/3","wish-colakoglu":"11/3",shop10:"10/29","cap-love":"10/31","cap-rose":"10/31","cap-derinkuyu":"10/31","cap-uchisar":"10/31","cap-pasabag":"10/31","wish-rec1":"","wish-mangerie":"","wish-cup-joy":"","wish-wizards":"10/26","wish-hasan-kokorec":"10/26"
 };
 /* 구글 지도에서 직접 열어 확인한 검색어: 이름 그대로 찾으면 엉뚱한 곳이 나오는 장소 */
 const MAP_FIX={s9:"Bosphorus Strait Istanbul",s10:"Golden Horn Istanbul",s14:"Bebek, Beşiktaş, Istanbul",shop3:"Arifoglu Spice Egyptian Bazaar Istanbul"};
@@ -909,6 +915,40 @@ place({id:"shop8",g:"쇼핑",t:"멕툽 문구점",s:"Mektup Kırtasiye · 갈라
   how:"이스티클랄 거리 갈라타사라이 광장에서 예니차르쉬 거리로 내려간다",stay:"약 20~30분",map:gmap("Mektup Kırtasiye Yeniçarşı Caddesi Beyoğlu"),
   rows:[["판매","편지지, 잉크 펜, 만년필, 수제 노트"],["주소","Yeniçarşı Cad. No:10/A, Beyoğlu"],["운영","월~토 09:30~20:00 · 일 휴무"]],
   caution:["영업시간은 가기 전에 구글 지도로 확인한다."]});
+place({id:"cap-love",g:"카파도키아",t:"러브 밸리 전망대",s:"Love Valley Viewpoint · 일출",
+  intro:"일출을 보러 가는 전망대 두 곳 가운데 하나다.",
+  memo:["10.31 해 뜨는 시각은 06:59다.","로즈 밸리 전망대와 둘 중 한 곳만 간다.","새벽엔 근처 카페가 열지 않아 보온병과 간식을 챙겨 간다."],
+  how:"괴레메 쪽에서 차로 이동 · 차 안에서 해 뜨기를 기다린다",stay:"약 1시간 20분",
+  rows:[["영업 상태","구글 지도에서 확인 못 함"]],
+  map:gmap("Love Valley Viewpoint Cappadocia")});
+place({id:"cap-rose",g:"카파도키아",t:"로즈 밸리 전망대",s:"Rose Valley Viewpoint · 일출",
+  intro:"일출을 보러 가는 전망대 두 곳 가운데 하나다.",
+  memo:["10.31 해 뜨는 시각은 06:59다.","러브 밸리 전망대와 둘 중 한 곳만 간다.","새벽엔 근처 카페가 열지 않아 보온병과 간식을 챙겨 간다."],
+  how:"괴레메 쪽에서 차로 이동 · 차 안에서 해 뜨기를 기다린다",stay:"약 1시간 20분",
+  rows:[["영업 상태","구글 지도에서 확인 못 함"]],
+  map:gmap("Rose Valley Viewpoint Cappadocia")});
+place({id:"cap-derinkuyu",g:"카파도키아",t:"데린쿠유 지하도시",s:"Derinkuyu · 네브셰히르",
+  intro:"땅속 깊이 파 내려간 옛 지하도시다.",
+  about:["발견된 지하도시 가운데 가장 깊은 곳으로 알려져 있다. 방문객이 들어가는 곳은 8층까지이고, 전체의 일부다.","아주 오래전부터 사람들이 바위를 파서 썼다. 처음 판 때는 자료마다 달라 정확하지 않다. 위험할 때 숨는 곳으로 쓰였고, 한창때는 2만 명이 살았다는 이야기가 있다."],
+  memo:["통로가 좁고 낮아 허리를 숙이는 구간이 많다.","계단에서 줄이 막히기도 한다.","안이 서늘하다.","입구 옆 무료 주차장은 단체 버스가 오면 금방 찬다."],
+  how:"일출 전망대에서 차로 약 40분",stay:"약 2시간",
+  rows:[["운영","08:00 개장 · 닫는 시간은 자료마다 17:00~19:00"],["요금","1인 €13로 알려져 있다 · 6명 €78 (2025년 자료, 변동 가능)"],["영업 상태","구글 지도에서 확인 못 함"]],
+  caution:["천장이 낮은 곳에서 머리를 부딪히지 않게 조심한다."],
+  map:gmap("Derinkuyu Underground City")});
+place({id:"cap-uchisar",g:"카파도키아",t:"우치사르 성채",s:"Uçhisar Kalesi · 우치사르",
+  intro:"카파도키아에서 가장 높은 곳 가운데 하나인 바위 요새다.",
+  about:["큰 바위산 자체를 요새처럼 쓴 곳이다. 옛날 감시와 방어에 쓰였다고 알려져 있고, 시기는 자료마다 다르다.","꼭대기에 오르면 일대 계곡과 마을이 한눈에 보인다."],
+  memo:["꼭대기까지 계단이라 짧지만 숨이 찬다."],
+  how:"괴레메에서 차로 약 10분",stay:"약 40분",
+  rows:[["요금","현장에서 따로 낸다 · 약 400리라로 알려져 있다 (2026년 자료, 변동 가능)"],["영업 상태","구글 지도에서 확인 못 함"]],
+  map:gmap("Uchisar Castle")});
+place({id:"cap-pasabag",g:"카파도키아",t:"파샤바 계곡",s:"Paşabağ · 수도사 계곡",
+  intro:"버섯 모양 바위가 모여 있는 계곡이다.",
+  about:["바람과 물에 깎인 바위 기둥이 버섯처럼 서 있다. 옛날 수도사들이 머물렀다고 해서 수도사 계곡(Monks Valley)이라고도 부른다.","길이 평탄해 걷기 편하고 가족사진을 찍기 좋다."],
+  memo:["입장권 한 장으로 근처 젤베 야외박물관도 들어간다.","낮에는 단체 관광객이 많다."],
+  how:"우치사르에서 차로 약 20분",
+  rows:[["운영","08:00 개장 · 닫는 시간은 자료마다 17:00~19:00"],["요금","젤베 야외박물관과 한 장 · 1인 €12 (2025년 자료, 변동 가능)"],["영업 상태","구글 지도에서 확인 못 함"]],
+  map:gmap("Pasabag Monks Valley Cappadocia")});
 place({id:"shop10",g:"쇼핑",t:"İstanbul Cevahir 쇼핑몰",s:"Cevahir AVM · 시슬리",
   intro:"시슬리 큰길에 있는 6층 쇼핑몰이다.",
   about:"뷔윅데레 거리(Büyükdere Caddesi)에 있는 쇼핑몰이다. 매장과 식당, 카페가 한곳에 모여 있어 비 오는 날 실내에서 시간을 보내기 좋다.",
@@ -1051,6 +1091,8 @@ wishlistRestaurant({id:"wish-colakoglu",g:"디저트·카페",t:"Çolakoğlu Sim
 wishlistRestaurant({id:"wish-durumcu-mustafa",g:"케밥·고기",t:"Dürümcü Mustafa",region:"그랜드 바자르 옆",price:"가성비",address:"Mollafenari, Vezirhane Cad. No:53, Fatih (누루오스마니예 모스크 근처)",hours:"월~토 11:30~19:30 · 일 휴무",feature:"숯불에 구운 고기를 얇은 빵에 말아 주는 뒤륌 집이다. 아다나 뒤륌 340리라, 시시 뒤륌 390리라(2026년 1월). 바깥 플라스틱 의자에 앉아 구운 고추와 함께 먹는다. 트윗에는 이집션 바자르 근처라고 했지만, 이 이름으로 이름난 곳은 그랜드 바자르 쪽 가게다.",map:gmap("Dürümcü Mustafa Vezirhane Caddesi 53 Fatih İstanbul")});
 wishlistRestaurant({id:"wish-midyeci-memet",g:"해산물",t:"Midyeci Memet",region:"베이올루 생선시장 골목 · 트립어드바이저 4.6",price:"가성비",address:"Hüseyinağa, Dudu Odaları Sok. No:22, Beyoğlu",hours:"늦게까지 영업 · 방문 전 확인",phone:"+90 532 465 88 03",feature:"홍합밥(미디예 돌마) 포장마차다. 몇 개만 먹어 보고 마음에 들면 접시로 산다. 레몬즙을 뿌려 먹고, 문어·오징어·새우를 넣은 홍합밥도 있다. 손 씻을 세면대가 있다.",map:gmap("Midyeci Memet Dudu Odaları Sokak 22 Beyoğlu İstanbul")});
 wishlistRestaurant({id:"wish-gunaydin-cevahir",g:"케밥·고기",t:"Günaydın Köfte & Döner Cevahir",region:"시슬리",address:"İstanbul Cevahir AVM 안, Büyükdere Cd. No:22, Şişli (층은 확인 못 함)",hours:"쇼핑몰 영업시간에 따름 · 매일 10:00~22:00로 알려짐",status:"구글 지도에서 확인 못 함",feature:"쾨프테(양념한 다진 고기 구이)와 되네르(꼬치에 돌려 구운 고기)를 내는 체인 식당이다. 쇼핑몰 안에서 점심으로 먹었다.",visit:"10/29 점심",map:gmap("Günaydın Köfte & Döner Cevahir İstanbul")});
+wishlistRestaurant({id:"wish-cap-safak",g:"가정식·로칸타",t:"Şafak Cafe",region:"괴레메",hours:"확인 못 함",status:"구글 지도에서 확인 못 함",feature:"가족이 운영하는 작은 카페다. 튀르키예식 아침을 낸다.",visit:"10/31 아침",map:gmap("Cafe Safak Goreme")});
+wishlistRestaurant({id:"wish-cap-kings",g:"디저트·카페",t:"King's Coffee",region:"괴레메",hours:"아침 06:30부터 영업 · 닫는 시간은 확인 못 함",status:"구글 지도에서 확인 못 함",feature:"피스타치오 커피와 케이크로 유명한 카페다.",visit:"10/31 아침",map:gmap("Kings Coffee Shop Goreme")});
 wishlistRestaurant({id:"wish-mado",g:"디저트·카페",t:"MADO",region:"이스티클랄 · 시내 곳곳",feature:"이스탄불 어디에나 있는 디저트 체인이다. 돈두르마(쫀득한 아이스크림)와 바클라바 세트가 무난하고 식사 메뉴도 있다. 테이블의 QR을 찍으면 영어 메뉴가 나온다.",map:gmap("MADO Beyoğlu Galatasaray")});
 wishlistRestaurant({id:"wish-kiztasi",g:"디저트·카페",t:"Kıztaşı Muhallebicisi",region:"파티흐 · 구글 평점 4.1",address:"İskenderpaşa, Sofular Cad. No:51/A, Fatih",hours:"매일 07:00~22:30 · 일 ~21:30 (출처마다 조금 다름)",phone:"+90 212 533 00 62",feature:"물소 젖으로 만든 우유 디저트(무할레비)와 카이막으로 이름난 집이다. 카잔디비(바닥을 살짝 태운 우유 푸딩)와 타북 괴쉬(닭가슴살을 넣은 우유 푸딩)를 꼭 먹어 볼 메뉴로 꼽고, 무화과 푸딩과 바클라바도 있다. 단맛이 덜한 편이다. 저녁이면 인기 메뉴가 떨어져 일찍 가는 게 좋다.",map:"https://maps.app.goo.gl/RYJRxm9qMR4RPuzK7"});
 
@@ -1302,13 +1344,19 @@ const CHECK = [
       "Tax Free 영수증·서류 모아 공항에서 출국 수속 전에 환급",
       "두 사람 짐 무게 확인, 남은 리라는 소액만 남기기",
       "11/4 17:00 호텔 셔틀 → 탁심 공항버스, 11/5 인천 → 수원 리무진 시간 확인",
-      "아인이 결과보고서 확인해서 학교에 제출"]]
+      "아인이 결과보고서 확인해서 학교에 제출"]],
+    ["카파도키아 가기 전",[
+      "열기구를 11.1로 옮길 때 일출 비행인지 2차 비행인지 업체에 확인 (사이트상 일요일 일출은 매진)",
+      "렌터카가 6명과 짐이 다 타는 승합차급인지 확인",
+      "보온병과 간식 준비",
+      "체크인 전까지 짐은 트렁크에 넣어 밖에서 안 보이게"]]
   ]}
 ];
 const RESTAURANT_REGION_GROUPS=[
   {name:"술탄아흐메트·구시가지",note:"모스크와 바자르가 모인 옛 시가지. 술탄아흐메트 · 시르케지 · 에미뇌뉘 · 쿰카프 · 파티흐",ids:["wish-kiztasi","wish-boris","wish-colakoglu","wish-durumcu-mustafa","dine1","dine5","wish-balik-ekmek","wish-sultanahmet-kofte","wish-lunch3","wish-lunch8","wish-lunch9","wish-lunch10","wish-lunch14","wish-dinner8"]},
   {name:"베이올루·탁심",note:"탁심 광장 주변 번화가. 이스티클랄 · 지한기르 · 페라 · 니샨타시",ids:["wish-ozsut","wish-midyeci-memet","wish-mado","dine2","dine4","wish-pide","wish-rec1","wish-iskender1867","wish-breakfast1","wish-breakfast4","wish-breakfast5","wish-lunch4","wish-lunch12","wish-lunch15","wish-dinner1","wish-dinner2","wish-dinner3"]},
   {name:"시슬리",note:"대형 쇼핑몰이 있는 동네. 시슬리 · 체바히르",ids:["wish-gunaydin-cevahir"]},
+  {name:"괴레메",note:"카파도키아 중심 마을. 괴레메 · 우치사르",ids:["wish-cap-safak","wish-cap-kings"]},
   {name:"갈라타·카라쾨이",note:"갈라타 탑 아래 골목과 카라쾨이 바닷가",ids:["dine3","wish-mehmet","wish-breakfast3","wish-lunch17","wish-dinner4","wish-dinner7"]},
   {name:"카디쾨이",note:"아시아 쪽 시장 골목과 모다 해안. 페리로 건너간다",ids:["wish-lunch11","wish-hasan-kokorec","wish-kadikoy-midye","wish-dondurmaci-ali","wish-wizards","wish-dinner5"]},
   {name:"위스퀴다르·쿠즈군죽",note:"아시아 쪽 보스포루스 해안 동네",ids:["wish-kanaat"]},
