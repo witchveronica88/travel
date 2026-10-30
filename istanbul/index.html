@@ -331,16 +331,15 @@ day("d1031","2026.10","31","토요일","카파도키아 첫날","05:30 열기구
   s("20:00","숙소 복귀·취침",{move:"숙소까지 차로 약 10분",moveAt:"19:45",key:"열기구가 11.1로 옮겨졌다면 일찍 잔다."})
 ],"데린쿠유 1인 €13 · 우치사르 400리라 + 주차 50리라(현장 현금) · 파샤바 무료 · 승마·저녁은 별도");
 
-day("d1101","2026.11","01","일요일","카파도키아 마지막 날 · 이스탄불로","08:30 호텔 조식 · 10:00 야외박물관 · 12:25 와인 하우스 · 17:00 소금호수 · 23:45 이스탄불 도착",[
+day("d1101","2026.11","01","일요일","카파도키아 마지막 날 · 이스탄불로","08:30 호텔 조식 · 10:00 야외박물관 · 12:00 출발 · 점심(가는 길) · 15:30 소금호수(선택) · 22:00 이스탄불 도착",[
   s("새벽","열기구 이전 여부 확인",{key:["열기구가 11.1로 옮겨졌다면 새벽에 비행하고 09:00쯤 돌아와 조식을 먹는다.", "이후 일정이 30분쯤 밀리면 점심을 짧게 먹는다.", "안 옮겨졌다면 바로 호텔 조식을 먹는다."]}),
   s("08:30","호텔 조식",{moveOnly:true,move:"숙소 안에서 이동",stay:"약 50분",key:"열기구를 탔다면 비행 뒤 돌아와서 먹는다."}),
   s("09:20","체크아웃",{moveOnly:true,move:"조식 뒤 프런트로 이동",stay:"약 30분"}),
   s("10:00","괴레메 야외박물관",{move:"숙소에서 차로 약 5분",moveAt:"09:50",stay:"약 2시간",key:["바위를 파서 만든 비잔틴 시대 수도원과 교회가 모인 곳이다.", "10.29 낙석 사고로 폐쇄됐으니 10.31에 열었는지 호텔이나 박물관에 직접 확인한다.", "열려 있지 않으면 젤베 야외박물관이나 계곡 전망으로 바꾼다."],q:"Goreme Open Air Museum",map:"https://www.google.com/maps/dir/?api=1&destination=Goreme%20Open%20Air%20Museum&travelmode=driving",rel:["cap-goreme","cap-zelve"]}),
-  s("12:25","와인 하우스: Aryatus",{move:"아바노스까지 차로 약 25분",moveAt:"12:00",stay:"약 40분",key:["아바노스에서 현지 와인을 잠깐 맛보고 간다.", "이후 긴 운전이 남아 있어 운전하는 사람은 시음을 건너뛴다."],q:"Aryatus Şarap Evi Wine House Avanos",map:"https://www.google.com/maps/dir/?api=1&destination=Aryatus%20Şarap%20Evi%20Wine%20House%20Avanos&travelmode=driving",placeId:"wish-cap-aryatus",rel:["wish-cap-aryatus"]}),
-  s("13:15","점심 (식당 미정)",{move:"아바노스 안에서 차로 약 10분",moveAt:"13:05",stay:"약 1시간 30분",key:["이후 긴 운전이 남아 있어 든든히 먹는다.", "식당은 아직 정하지 않았다."]}),
-  s("17:00","소금호수(Tuz Gölü)",{move:"아바노스에서 차로 약 2시간",moveAt:"15:00",stay:"약 1시간",key:["앙카라 남쪽의 큰 소금 호수에서 일몰(17:40)을 본다.", "일몰까지 보고 18:00에 출발하면 이스탄불에 23:45쯤 닿는다."],q:"Tuz Golu Tesisleri",map:"https://www.google.com/maps/dir/?api=1&destination=Tuz%20Golu%20Tesisleri&travelmode=driving",rel:["cap-tuzgolu"]}),
-  s("23:45 예상","호텔 도착 (이스탄불)",{move:"소금호수에서 차로 약 5시간 45분",moveAt:"18:00",q:"Sheraton Istanbul City Center",map:"https://www.google.com/maps/dir/?api=1&destination=Sheraton%20Istanbul%20City%20Center&travelmode=driving",key:["23:45는 휴식·정체를 뺀 계산이라 자정을 넘길 수 있다."]})
-],"야외박물관 1인 €20(6명 €120) · 다크 처치 +€6 · 와인 시음·통행료·주유 별도");
+  s("13:15~14:05","점심: 가는 길 휴게소·식당 (아래에서 고른다)",{move:"차로 약 1시간 15분~2시간",moveAt:"12:00",stay:"약 1시간",key:["악사라이의 Altınsoy·Ağaçlı는 1시간 15분, 셰레플리코치사르의 Tuzgölü Restoran은 2시간 걸린다.", "후보 중 한 곳에서 먹고 바로 이어서 간다."],rel:["wish-road-altinsoy","wish-road-agacli","wish-road-tuzgolu"]}),
+  s("15:30","(선택) 소금호수(Tuz Gölü)",{move:"점심 장소에서 차로 약 20분~1시간 15분",moveAt:"14:15~15:05",stay:"약 40분",key:["앙카라 남쪽의 큰 소금 호수를 낮에 본다.", "건너뛰면 이스탄불에 한 시간쯤 일찍 닿는다."],q:"Tuz Gölü Ziyaret Alanı Tuz Gölü Giriş",map:"https://www.google.com/maps/dir/?api=1&destination=Tuz%20G%C3%B6l%C3%BC%20Ziyaret%20Alan%C4%B1%20Tuz%20G%C3%B6l%C3%BC%20Giri%C5%9F&travelmode=driving",rel:["cap-tuzgolu"]}),
+  s("22:00 예상","호텔 도착 (이스탄불)",{move:"소금호수에서 차로 약 5시간 45분",moveAt:"16:10",q:"Sheraton Istanbul City Center",map:"https://www.google.com/maps/dir/?api=1&destination=Sheraton%20Istanbul%20City%20Center&travelmode=driving",key:["22:00은 휴식·정체를 뺀 계산이라 더 늦어질 수 있다.", "소금호수를 건너뛰면 21:00 전후에 닿는다."]})
+],"야외박물관 1인 €20(6명 €120) · 다크 처치 +€6 · 점심·통행료·주유 별도");
 
 day("d1102","2026.11","02","월요일","그랜드 바자르","10:00 그랜드 바자르 · 13:00 점심 Lezzet-i Şark",[
   s("08:30","호텔 아침",{stay:"40분"}),
@@ -384,7 +383,7 @@ const DEPARTURES = {
   d1029:["그랜드 바자르","Cevahir 쇼핑몰","Günaydın","MADO","호텔"],
   d1030:["탁심 렌터카","Berceste 휴게소","Konakoğlu 휴게소","악사라이"],
   d1031:["열기구 업체 연락","일출 전망대","데린쿠유 지하도시","괴레메 카페","우치사르 성채","파샤바 계곡","숙소","일몰","저녁","숙소"],
-  d1101:["열기구 확인","호텔 조식","체크아웃","괴레메 야외박물관","Aryatus 와인 하우스","점심","소금호수","호텔"],
+  d1101:["열기구 확인","호텔 조식","체크아웃","괴레메 야외박물관","점심","소금호수","호텔"],
   d1102:["호텔","그랜드 바자르","Lezzet-i Şark","호텔"],
   d1103:["호텔","셰흐자데 자 케밥","터키 이슬람 미술관","아라스타 바자르","호텔"],
   d1104:["호텔","돌마바흐체 궁전","블루 모스크","히포드롬 광장","술탄 아흐메트 묘당","점심","예레바탄 지하저수지","아야소피아","톱카프 궁전","하렘","호텔","이스탄불공항","인천공항","집"]
@@ -1006,10 +1005,10 @@ place({id:"cap-goreme",g:"카파도키아",t:"괴레메 야외박물관",s:"Gör
 place({id:"cap-tuzgolu",g:"카파도키아",t:"소금호수(Tuz Gölü)",s:"Tuz Gölü Tesisleri · 앙카라 남쪽",
   intro:"튀르키예에서 두 번째로 큰 호수이자, 나라 소금의 큰 몫을 내는 얕은 소금 호수다.",
   about:["넓이는 약 1,600km²(1,665km²로 적은 자료도 있다)인데 평균 깊이는 0.5m쯤으로 아주 얕다. 겨울 비로 물이 차고 여름에 마르면서 하얀 소금층이 드러난다.","옛 이름은 타타(Tatta)다. 고대 그리스·로마 학자들이 호숫물이 너무 짜서 담근 물건에 소금이 엉겨 붙는다고 적었다. 이 일대에서는 아주 오래전부터 소금을 캐고 거래했다고 알려져 있고, 지금도 튀르키예 소금의 큰 몫(자료마다 40~67%)이 여기서 나온다.","소금물에서도 사는 플라밍고가 이곳에서 번식한다. 튀르키예 큰 플라밍고의 주요 번식지가 호수 남쪽 섬들이고, 2000년대 초 특별 보호 지역으로 지정됐다.","가뭄으로 줄어드는 호수다. 2021년 10월에는 한때 완전히 말랐고, 90년 사이 넓이가 85% 줄었다는 보도가 있다. 반대로 2026년 6월에는 기록적인 비로 수위가 45% 올랐다는 보도가 나왔다."],
-  memo:["역사 유적을 보는 곳이 아니라 하얀 소금 평원과 일몰을 보는 곳이다.","11.1 해 지는 시각은 17:40이다. 일몰까지 약 45분 머물고 18:00에 출발한다.","11월 초에 물이 차 있을지는 확인 못 했다. 여름에 마르는 호수라 하얀 바닥만 보일 수도 있다."],
-  how:"아바노스에서 차로 약 2시간 · 이스탄불까지 차로 약 5시간 45분",
+  memo:["역사 유적을 보는 곳이 아니라 하얀 소금 평원을 보는 곳이다.","낮에 약 40분 머문다.","11월 초에 물이 차 있을지는 확인 못 했다. 여름에 마르는 호수라 하얀 바닥만 보일 수도 있다."],
+  how:"괴레메에서 차로 약 2시간 25분 · 이스탄불까지 차로 약 5시간 45분",
   rows:[["운영","시설 22:00까지"]],
-  map:gmap("Tuz Golu Tesisleri")});
+  map:gmap("Tuz Gölü Ziyaret Alanı Tuz Gölü Giriş")});
 place({id:"cap-balloon",g:"카파도키아",t:"열기구 (10.31 새벽)",s:"업체 연락 05:00~05:30",
   intro:"열기구가 뜨는지는 업체의 새벽 연락으로 정해진다.",
   about:["해 뜰 무렵 열기구를 타고 카파도키아의 계곡과 바위 마을 위를 떠다니는 체험이다.","바람과 날씨가 맞아야 뜰 수 있다. 그래서 당일 새벽에 업체가 비행 여부를 알려 준다."],
@@ -1176,11 +1175,13 @@ wishlistRestaurant({id:"wish-cap-kings",g:"디저트·카페",t:"King's Coffee",
 wishlistRestaurant({id:"wish-road-berceste",g:"가정식·로칸타",t:"Berceste 휴게소",region:"사판자",address:"TEM Ankara yönü, Uzunkum, Sapanca, Sakarya",hours:"안 매장 22:00까지 · 24시간으로 적힌 곳도 있음 · 출발 전 전화 확인",phone:"+90 264 582 00 04",feature:"TEM 고속도로 안카라 방향에 바로 붙은 휴게소다. 출발 전에 전화로 저녁 영업을 확인한다. 식당·마트·상점이 있고 저녁에도 문을 연다. 구글 3.9점(후기 약 2만 9천 개)으로 규모는 가장 크지만, 최근 불만 사이트 만족도는 25/100이고 3 지점 후기에 차가운 수프·마른 고기·굳은 빵 이야기가 있다. 간단히 먹는 게 안전하다.",visit:"10/30 저녁",map:gmap("Berceste 3 Dinlenme Tesisleri Sapanca"),photo:{src:I[143],alt:"TEM 안카라 방향 사판자 Berceste 휴게소 외관"}});
 wishlistRestaurant({id:"wish-road-tursan",g:"가정식·로칸타",t:"Türsan Park 휴게소",region:"카이나슐르",address:"Kaynaşlı, TEM Ankara yönü (Berceste'den sonra)",hours:"24시간 표기",feature:"24시간으로 적힌 휴게소다. 구글 3.5점(후기 약 3만 1천 개)이다. 2025년 10월 음식에서 머리카락이 나왔고 6,000리라를 결제한 뒤 구토했다는 후기가 있어 급할 때만 백업으로 쓴다.",visit:"10/30 저녁",map:gmap("Türsan Park Dinlenme Tesisleri Kaynaşlı")});
 wishlistRestaurant({id:"wish-road-konakoglu",g:"가정식·로칸타",t:"Konakoğlu 휴게소",region:"볼루 엘말르크",address:"Highway Outlet, Elmalık, Bolu",hours:"08:30–22:00",phone:"+90 374 250 13 00",feature:"Highway Outlet 안에 있는 휴게소다. 식당과 마트가 있다. 영업시간이 22:00까지라 밤늦게는 닫는다. 늦어지면 지나쳐 24시간 주유소로 간다.",visit:"10/30 저녁",map:gmap("Konakoğlu Dinlenme Tesisleri Bolu")});
-wishlistRestaurant({id:"wish-road-agacli",g:"가정식·로칸타",t:"Ağaçlı Tesisleri",region:"악사라이",address:"E-90 Nevşehir kavşağı, Aksaray",hours:"24시간",phone:"+90 382 215 24 00",feature:"E-90 네브셰히르 갈림길에 있는 24시간 휴게소다. 토마토 수프가 유명하지만 비싸다는 평이 있다. 화장실은 유료다. 안의 쾨프테지 Yusuf 지점은 2026년 5월 화장실·음식 불만이 있어 수프나 맥도날드(3.6점)처럼 가볍게 먹는다. 악사라이의 Tapan 식당(구글 2.7점)과 옆 Shell 주유소(새벽 2~3시에 화장실을 닫는다는 불만이 반복)는 피한다.",visit:"10/30 밤",map:gmap("Ağaçlı Dinlenme Tesisleri Aksaray")});
+wishlistRestaurant({id:"wish-road-agacli",g:"가정식·로칸타",t:"Ağaçlı Tesisleri",region:"악사라이",address:"E-90 Nevşehir kavşağı, Aksaray",hours:"24시간",phone:"+90 382 215 24 00",feature:"E-90 네브셰히르 갈림길에 있는 24시간 휴게소다. 괴레메에서 차로 약 1시간 15분이다. 토마토 수프가 유명하지만 비싸다는 평이 있다. 화장실은 유료다. 안의 쾨프테지 Yusuf 지점은 2026년 5월 화장실·음식 불만이 있어 수프나 맥도날드(3.6점)처럼 가볍게 먹는다. 악사라이의 Tapan 식당(구글 2.7점)과 옆 Shell 주유소(새벽 2~3시에 화장실을 닫는다는 불만이 반복)는 피한다.",visit:"10/30·11/1 밤·점심",map:gmap("Ağaçlı Restaurant Aksaray")});
+wishlistRestaurant({id:"wish-road-altinsoy",g:"가정식·로칸타",t:"Altınsoy Dinlenme Tesisleri",region:"악사라이",address:"Yavuz Sultan Selim Mah., Organize Sanayi Karşısı, 68200 Aksaray Merkez/Aksaray",hours:"24시간",phone:"+90 382 266 22 21",feature:"악사라이 시내 쪽에 있는 24시간 휴게소 식당이다. 카부르마(볶은 고기 요리)와 렌틸콩 수프, 쌀푸딩 후기가 있다. 괴레메에서 차로 약 1시간 20분이고 구글 4.0점(후기 약 680개)이다. 오래된 후기가 많아 가서 상태를 본다.",visit:"11/1 점심",map:gmap("Altınsoy Dinlenme Tesisleri Aksaray")});
+wishlistRestaurant({id:"wish-road-tuzgolu",g:"케밥·고기",t:"Tuzgölü Restoran",region:"셰레플리코치사르",address:"Emek, E90 Süleyman Küçük Apt, 06950 Şereflikoçhisar/Ankara",hours:"구글 지도에서 23:00까지 영업으로 표시 · 방문 당일 확인",phone:"+90 533 722 45 20",feature:"소금호수로 가는 E90 길에 있는 고기 구이 식당이다. 후기는 31개로 적지만 4.7점이다. 괴레메에서 차로 약 2시간 5분이고 소금호수까지는 20분쯤 더 간다.",visit:"11/1 점심",map:gmap("Tuzgölü Restoran Şereflikoçhisar Ankara")});
 wishlistRestaurant({id:"wish-cap-seten",g:"가정식·로칸타",t:"Seten",region:"괴레메",address:"Göreme merkez, Nevşehir",hours:"12:30~22:30",feature:"예약이 안 되고 현장에서 기다려야 한다. 6명이라 일찍 가는 게 안전하다. 대안은 괴레메 시내에서 23:00까지 하는 식당이다. 일정이 늦어지면 22:30까지 늦춰도 된다.",visit:"10/31 저녁",map:gmap("Seten Restaurant Goreme")});
 wishlistRestaurant({id:"wish-cap-han",g:"가정식·로칸타",t:"Göreme Han Restaurant",region:"괴레메",address:"İsali - Gaferli - Avcılar, Bilal Eroğlu Cd. No:29, 50180 Göreme/Nevşehir",hours:"구글 지도에서 22:00까지 영업으로 표시 · 방문 당일 확인",phone:"+90 552 230 36 68",feature:"항아리에 담아 익힌 케밥(테스티 케밥), 만트(작은 튀르키예식 만두), 아다나 케밥이 알려진 가족 식당이다. 구글 4.7점(후기 약 3천 개).",visit:"10/31 저녁",map:gmap("Göreme Han Restaurant")});
 wishlistRestaurant({id:"wish-cap-woodfire",g:"케밥·고기",t:"WOOD FIRE BARBEQUE",region:"괴레메",address:"Aydınlı - Orta, Adnan Menderes Cd. No:3, 50180 Göreme/Nevşehir",hours:"구글 지도에서 23:00까지 영업으로 표시 · 방문 당일 확인",phone:"+90 542 744 59 63",feature:"장작불에 구운 티본 스테이크·믹스 그릴과 항아리 케밥이 알려진 식당이다. 구글 4.8점(후기 약 5천 개).",visit:"10/31 저녁",map:gmap("WOOD FIRE BARBEQUE Göreme")});
-wishlistRestaurant({id:"wish-cap-aryatus",g:"디저트·카페",t:"Aryatus Şarap Evi | Wine House",region:"아바노스",address:"Yukarı, Edip Akbayram Sk. no:35, Avanos, Nevşehir",hours:"확인 못 함 · 가기 전에 구글 지도에서 확인",feature:"현지 와인을 시음하는 와인 하우스다. 후기에 현지 와인(칼레직 카라스 Kalecik Karası 추천)과 친절한 주인이 좋다는 평이 있다. 같은 거리 No:60의 Salkım Şarap Evi와 이름이 섞이는 자료가 있어 주소를 확인한다. 운전하는 사람은 시음을 건너뛴다.",visit:"11/1 낮",map:gmap("Aryatus Şarap Evi Wine House Avanos")});
+wishlistRestaurant({id:"wish-cap-aryatus",g:"디저트·카페",t:"Aryatus Şarap Evi | Wine House",region:"아바노스",address:"Yukarı, Edip Akbayram Sk. no:35, Avanos, Nevşehir",hours:"확인 못 함 · 가기 전에 구글 지도에서 확인",feature:"현지 와인을 시음하는 와인 하우스다. 후기에 현지 와인(칼레직 카라스 Kalecik Karası 추천)과 친절한 주인이 좋다는 평이 있다. 같은 거리 No:60의 Salkım Şarap Evi와 이름이 섞이는 자료가 있어 주소를 확인한다. 운전하는 사람은 시음을 건너뛴다.",visit:"",map:gmap("Aryatus Şarap Evi Wine House Avanos")});
 wishlistRestaurant({id:"wish-mado",g:"디저트·카페",t:"MADO",region:"이스티클랄 · 시내 곳곳",feature:"이스탄불 어디에나 있는 디저트 체인이다. 돈두르마(쫀득한 아이스크림)와 바클라바 세트가 무난하고 식사 메뉴도 있다. 테이블의 QR을 찍으면 영어 메뉴가 나온다.",map:gmap("MADO Beyoğlu Galatasaray"),photo:{src:I[134],alt:"돈두르마(쫀득한 튀르키예식 아이스크림, 대표 음식 예시 사진)"}});
 wishlistRestaurant({id:"wish-kiztasi",g:"디저트·카페",t:"Kıztaşı Muhallebicisi",region:"파티흐 · 구글 평점 4.1",address:"İskenderpaşa, Sofular Cad. No:51/A, Fatih",hours:"매일 07:00~22:30 · 일 ~21:30 (출처마다 조금 다름)",phone:"+90 212 533 00 62",feature:"물소 젖으로 만든 우유 디저트(무할레비)와 카이막으로 이름난 집이다. 카잔디비(바닥을 살짝 태운 우유 푸딩)와 타북 괴쉬(닭가슴살을 넣은 우유 푸딩)를 꼭 먹어 볼 메뉴로 꼽고, 무화과 푸딩과 바클라바도 있다. 단맛이 덜한 편이다. 저녁이면 인기 메뉴가 떨어져 일찍 가는 게 좋다.",map:"https://maps.app.goo.gl/RYJRxm9qMR4RPuzK7",photo:{src:I[135],alt:"꿀과 빵을 곁들인 카이막(대표 음식 예시 사진)"}});
 
@@ -1452,7 +1453,7 @@ const RESTAURANT_REGION_GROUPS=[
   {name:"베이올루·탁심",note:"탁심 광장 주변 번화가. 이스티클랄 · 지한기르 · 페라 · 니샨타시",ids:["wish-ozsut","wish-midyeci-memet","wish-mado","dine2","dine4","wish-pide","wish-rec1","wish-iskender1867","wish-breakfast1","wish-breakfast4","wish-breakfast5","wish-lunch4","wish-lunch12","wish-lunch15","wish-dinner1","wish-dinner2","wish-dinner3"]},
   {name:"시슬리",note:"대형 쇼핑몰이 있는 동네. 시슬리 · 체바히르",ids:["wish-gunaydin-cevahir"]},
   {name:"괴레메",note:"카파도키아 중심 마을. 괴레메 · 우치사르",ids:["wish-cap-safak","wish-cap-kings","wish-cap-seten","wish-cap-han","wish-cap-woodfire"]},
-  {name:"카파도키아 가는 길",note:"이스탄불에서 카파도키아까지 고속도로를 따라 쉬어 가는 곳. 사판자 · 카이나슐르 · 볼루 · 악사라이",ids:["wish-road-berceste","wish-road-tursan","wish-road-konakoglu","wish-road-agacli"]},
+  {name:"카파도키아 가는 길",note:"이스탄불과 카파도키아 사이 고속도로를 따라 쉬어 가는 곳. 사판자 · 카이나슐르 · 볼루 · 악사라이 · 셰레플리코치사르",ids:["wish-road-berceste","wish-road-tursan","wish-road-konakoglu","wish-road-agacli","wish-road-altinsoy","wish-road-tuzgolu"]},
   {name:"아바노스",note:"도자기와 와인으로 알려진 카파도키아 북쪽 마을. 아바노스",ids:["wish-cap-aryatus"]},
   {name:"갈라타·카라쾨이",note:"갈라타 탑 아래 골목과 카라쾨이 바닷가",ids:["dine3","wish-mehmet","wish-breakfast3","wish-lunch17","wish-dinner4","wish-dinner7"]},
   {name:"카디쾨이",note:"아시아 쪽 시장 골목과 모다 해안. 페리로 건너간다",ids:["wish-lunch11","wish-hasan-kokorec","wish-kadikoy-midye","wish-dondurmaci-ali","wish-wizards","wish-dinner5"]},
