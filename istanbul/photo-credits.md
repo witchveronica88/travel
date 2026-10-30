@@ -15,7 +15,6 @@
 | 젤베 야외박물관 | Zelve Cappadocia.JPG (Noumenon) | CC BY-SA 3.0 |
 | 레드 밸리 | Cappadocia Red Valley.jpg (Kaan Kosemen) | CC BY-SA 4.0 |
 | 괴레메 야외박물관 | Göreme Open Air Museum 01.jpg (Bernard Gagnon) | CC BY-SA 3.0 |
-| 일라라 계곡 | Ihlara valley canyon.jpg (Benh LIEU SONG) | CC BY-SA 2.0 |
 | 소금호수 | Tuz Gölü, Lake Tuz, Salt Lake (52397494360).jpg (Sonse) | CC BY 2.0 |
 | 열기구 | Hot air balloons over valleys near Göreme, Cappadocia at dawn.JPG (MusikAnimal) | CC BY-SA 4.0 |
 | 옐데이르메니 벽화 | Mural Inti Yeldegirmeni.jpg (Magurale) | CC BY-SA 4.0 |
