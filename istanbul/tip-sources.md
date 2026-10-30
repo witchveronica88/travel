@@ -14,5 +14,5 @@
 - 소금호수: https://blog.naver.com/00ding/224448039613 , https://blog.naver.com/amy_m_g/223925062616 , https://blog.naver.com/myong_log/224418327668
 
 ## 맛집 주소·전화·영업시간 출처 (10.30)
-- 구글 지도가 열리지 않는 환경이라 OpenStreetMap(nominatim.openstreetmap.org)과 웹 목록으로 확인했다. 지도 아이콘이 `openstreetmap.org/node/…`인 카드는 구글 지도 주소로 바꿀 수 있으면 바꾼다.
+- 구글 지도 검색 응답(`google.com/search?tbm=map`)에서 주소·영업시간·전화·평점·place_id를 읽어 넣었다(10.30 기준). 지도 아이콘은 `query_place_id`로 그 장소 화면을 연다.
 - 가이드가 준 `maps.app.goo.gl` 짧은 링크를 따라가 장소 이름·좌표를 확인했다(Mer'y Food, Yorem Manti, Bolu Et Mangal은 네브셰히르, Meihua·MoMo·Köşebaşı, 호텔, 선셋 뷰, 아바노스 점심·커피·주차장, 소금호수 두 지점).
