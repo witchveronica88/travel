@@ -65,7 +65,7 @@ const { chromium } = require('playwright');
         const miss = ['주소', '영업시간'].filter(l => !L.includes(l));
         if (miss.length) todo.push(`${e.id} ${e.title}: ${miss.join('·')} 없음`);
       }
-      if (!e.map && (e.tab === '장소' || e.tab === '맛집')) todo.push(`${e.id} ${e.title}: 지도 아이콘 없음(확인된 지도 주소를 넣는다)`);
+      if (!e.map && e.restaurant) todo.push(`${e.id} ${e.title}: 지도 아이콘 없음(확인된 지도 주소를 넣는다)`);
     });
     DAYS.forEach(d => d.blocks[0].i.forEach(s => [...(s.rel || []), ...(s.placeId ? [s.placeId] : [])].forEach(id => { if (!BY[id]) warn.push(`${d.id} "${s.title}": 연결한 id가 없다 → ${id}`); })));
     return { warn, todo };

@@ -12,3 +12,7 @@
 - 데린쿠유: https://blog.naver.com/songyi94/224443460099 , https://blog.naver.com/j6870709/224443051247
 - 일라라 계곡: https://blog.naver.com/smart6606/223972146979 , https://blog.naver.com/wlgml2131/224356365243
 - 소금호수: https://blog.naver.com/00ding/224448039613 , https://blog.naver.com/amy_m_g/223925062616 , https://blog.naver.com/myong_log/224418327668
+
+## 맛집 주소·전화·영업시간 출처 (10.30)
+- 구글 지도가 열리지 않는 환경이라 OpenStreetMap(nominatim.openstreetmap.org)과 웹 목록으로 확인했다. 지도 아이콘이 `openstreetmap.org/node/…`인 카드는 구글 지도 주소로 바꿀 수 있으면 바꾼다.
+- 가이드가 준 `maps.app.goo.gl` 짧은 링크를 따라가 장소 이름·좌표를 확인했다(Mer'y Food, Yorem Manti, Bolu Et Mangal은 네브셰히르, Meihua·MoMo·Köşebaşı, 호텔, 선셋 뷰, 아바노스 점심·커피·주차장, 소금호수 두 지점).
