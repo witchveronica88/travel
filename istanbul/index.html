@@ -316,24 +316,21 @@ day("d1030","2026.10","30","금요일","카파도키아로 출발","16:30 렌터
   s("02:00 예상","악사라이",{move:"차로 약 4시간",moveAt:"22:00",stay:"약 30분",key:["카파도키아에 닿기 전 마지막 휴식이다.", "02:00엔 식당이 닫혀 있어 24시간 여는 옆 맥도날드와 상점가를 쓴다.", "괴레메까지 차로 약 1시간 30분, 04:00쯤 도착한다."],q:"Ağaçlı Restaurant Aksaray",map:gmap("Ağaçlı Restaurant Aksaray"),rel:["wish-road-agacli"]})
 ],"렌터카·통행료·주유·식사 비용 별도");
 
-day("d1031","2026.10","31","토요일","카파도키아 첫날","04:00 괴레메 도착 · 06:30 일출 · 08:30 데린쿠유 · 11:00 점심식사 · 12:00 우치사르 · 13:00 파샤바 · 16:00 일몰 · 18:45 저녁식사",[
+day("d1031","2026.10","31","토요일","카파도키아 첫날","04:00 괴레메 도착 · 05:30 열기구 · 10:30 데린쿠유 · 13:05 점심식사 · 14:05 우치사르 · 16:00 일몰 · 18:45 저녁식사",[
   s("04:00 예상","괴레메",{stay:"약 1시간 30분",key:["카파도키아 여행의 중심 마을이다.", "11.1 아침까지 이 마을 숙소에서 지낸다.", "숙소(열기구 픽업 장소) 앞에 도착해 차에서 쉰다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-about","cap-hotel"]}),
-  s("05:30","열기구",{moveOnly:true,move:"숙소 앞 차 안에서 기다린다",key:["05:00~05:30에 오는 업체 연락으로 열기구 취소를 확인한다.", "11.1로 옮겨 달라고 요청한다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-balloon"]}),
-  s("06:30","일출",{moveOnly:true,move:"고른 전망대로 차로 이동",stay:"약 1시간 20분",key:["러브 밸리·로즈 밸리 전망대나 숙소 옆 선셋 전망대에서 해 뜨는 모습을 본다.", "일출은 07:06이다.", "새벽엔 카페가 열지 않아 보온병과 간식을 챙긴다."],photos:[{src:CAP.rose,alt:"로즈 밸리 전망대에서 본 카파도키아 계곡"}],q:"Love Valley Viewpoint Cappadocia",map:gmap("Love Valley Viewpoint Cappadocia"),rel:["cap-love","cap-rose","cap-sunsetview"]}),
-  s("08:30","데린쿠유 지하도시",{move:"차로 약 40분",moveAt:"07:50",stay:"약 2시간",key:["땅속 깊이 파 내려간 옛 지하도시로, 위험할 때 사람들이 숨어 지내던 곳이다.", "통로가 좁고 낮아 허리를 숙이는 곳이 많다."],q:"Derinkuyu Underground City",map:gmap("Derinkuyu Underground City"),rel:["cap-derinkuyu"]}),
-  s("11:00","점심식사",{photos:[{src:I[119],alt:"피데 (예시 사진)"}],move:"차로 약 35분",moveAt:"10:25",stay:"약 50분",key:["새벽부터 움직였으니 괴레메 시내에서 이른 점심을 먹으며 쉰다."],q:"Göreme",map:"https://www.google.com/maps/search/?api=1&query=G%C3%B6reme&query_place_id=ChIJq9Fr03loKhURUK4_ohdObEY",rel:["wish-cap-firin","wish-cap-safak","wish-cap-kings"]}),
-  s("12:00","우치사르 성채",{move:"차로 약 10분",moveAt:"11:50",stay:"약 40분",key:["카파도키아에서 가장 높은 바위 요새로, 꼭대기에서 일대가 한눈에 보인다.", "입장료와 주차비를 현금 리라로 받는다."],q:"Uchisar Castle",map:gmap("Uchisar Castle"),rel:["cap-uchisar"]}),
-  s("13:00","파샤바 계곡",{move:"차로 약 20분",moveAt:"12:40",stay:"약 40분",key:["바람과 물에 깎인 버섯 모양 바위가 모인 계곡이다.", "입장은 무료이고 낮에는 단체 관광객이 많다."],q:"Pasabag Monks Valley Cappadocia",map:gmap("Pasabag Monks Valley Cappadocia"),rel:["cap-pasabag","cap-avanos","cap-zelve"]}),
-  s("14:00","숙소 체크인",{moveOnly:true,move:"숙소로 이동",stay:"약 1시간",key:["새벽부터 움직였으니 체크인하고 샤워와 낮잠으로 쉰다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-hotel","cap-hamam"]}),
+  s("05:30","열기구",{photos:[{src:I[152],alt:"일출 무렵 괴레메 상공을 나는 열기구"}],moveOnly:true,move:"숙소 앞에서 업체 픽업",stay:"약 4시간 20분",key:["06:00 숙소 픽업이 기준이고, 업체 연락에 맞춘다.", "07:06 해 뜨는 모습을 하늘에서 본다.", "비행 뒤 09:00쯤 숙소로 돌아와 조식을 먹는다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-balloon"]}),
+  s("10:30","데린쿠유 지하도시",{move:"차로 약 40분",moveAt:"09:50",stay:"약 2시간",key:["땅속 깊이 파 내려간 옛 지하도시로, 위험할 때 사람들이 숨어 지내던 곳이다.", "통로가 좁고 낮아 허리를 숙이는 곳이 많다."],q:"Derinkuyu Underground City",map:gmap("Derinkuyu Underground City"),rel:["cap-derinkuyu"]}),
+  s("13:05","점심식사",{photos:[{src:I[119],alt:"피데 (예시 사진)"}],move:"차로 약 35분",moveAt:"12:30",stay:"약 50분",key:["데린쿠유를 본 뒤 괴레메 시내에서 점심을 먹으며 쉰다."],q:"Göreme",map:"https://www.google.com/maps/search/?api=1&query=G%C3%B6reme&query_place_id=ChIJq9Fr03loKhURUK4_ohdObEY",rel:["wish-cap-firin","wish-cap-safak","wish-cap-kings"]}),
+  s("14:05","우치사르 성채",{move:"차로 약 10분",moveAt:"13:55",stay:"약 40분",key:["카파도키아에서 가장 높은 바위 요새로, 꼭대기에서 일대가 한눈에 보인다.", "입장료와 주차비를 현금 리라로 받는다."],q:"Uchisar Castle",map:gmap("Uchisar Castle"),rel:["cap-uchisar","cap-pasabag","cap-avanos","cap-zelve"]}),
+  s("15:00","숙소 체크인",{move:"차로 약 10분",moveAt:"14:45",stay:"약 1시간",key:["새벽부터 움직였으니 체크인하고 샤워와 낮잠으로 쉰다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-hotel","cap-hamam"]}),
   s("16:00","일몰",{moveOnly:true,move:"전망대는 차로 약 10분 · 승마는 숙소 픽업",stay:"약 2시간 30분",key:["계곡 위로 해 지는 모습을 본다.", "전망대(러브·로즈·레드 밸리, 숙소 옆 선셋 전망대)에서 보거나 말을 타고 계곡에서 본다.", "일몰은 17:41이고, 해가 지면 가로등이 없어 어두워지기 전에 돌아온다."],q:"Sunset Viewpoint Goreme",map:"https://maps.app.goo.gl/yhzhKiUiEvzGAdUw9",rel:["cap-love","cap-rose","cap-sunsetview","cap-redvalley","cap-horse"]}),
   s("18:45","저녁식사",{photos:[{src:I[177],alt:"항아리에 담겨 나온 테스티 케밥 (예시 사진)"}],move:"차로 약 10분",moveAt:"18:30",stay:"약 1시간",key:["괴레메 시내에서 저녁을 먹는다.", "항아리에 고기와 채소를 넣어 익힌 테스티 케밥이 이 지역 음식이다.", "인기 식당은 6명이 앉으려면 기다릴 수 있어 일찍 간다."],q:"Göreme",map:"https://www.google.com/maps/search/?api=1&query=G%C3%B6reme&query_place_id=ChIJq9Fr03loKhURUK4_ohdObEY",rel:["wish-cap-seten","wish-cap-inci","wish-cap-nazar","wish-cap-topdeck","wish-cap-pumpkin","wish-cap-woodfire","wish-cap-han","f36"]}),
-  s("20:00","숙소 복귀",{photos:[{src:I[163],alt:"괴레메 동굴 호텔 외관과 테라스 (예시 사진)"}],move:"차로 약 10분",moveAt:"19:45",key:["열기구가 11.1로 옮겨졌다면 일찍 잔다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme")})
-],"데린쿠유 1인 €13 · 우치사르 400리라 + 주차 50리라(현장 현금) · 파샤바 무료 · 승마·저녁은 별도");
+  s("20:00","숙소 복귀",{photos:[{src:I[163],alt:"괴레메 동굴 호텔 외관과 테라스 (예시 사진)"}],move:"차로 약 10분",moveAt:"19:45",key:["밤새 운전하고 새벽부터 움직인 날이라 일찍 잔다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme")})
+],"데린쿠유 1인 €13 · 우치사르 400리라 + 주차 50리라(현장 현금) · 열기구·승마·저녁은 별도");
 
 day("d1101","2026.11","01","일요일","카파도키아 마지막 날 · 이스탄불로","10:00 와인하우스 · 10:35 야외박물관 · 13:15 점심식사 · 15:30 소금호수 · 22:00 이스탄불 도착",[
-  s("새벽","열기구",{photos:[{src:I[152],alt:"일출 무렵 괴레메 상공을 나는 열기구"}],key:["열기구가 11.1로 옮겨졌고 일출 비행이면 09:00쯤 돌아와 조식을 먹는다.", "2차 비행이면 09:30~10:00에 돌아오니 조식은 돌아와서 먹고 체크아웃 시간은 호텔과 조율한다.", "이후 일정이 30분쯤 밀리면 점심을 짧게 먹는다.", "안 옮겨졌다면 바로 호텔 조식을 먹는다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme")}),
-  s("09:20","체크아웃",{moveOnly:true,move:"조식 뒤 프런트로 이동",stay:"약 30분",key:["짐을 모두 차에 싣는다.", "체크아웃 기한은 11:00이지만 일정 때문에 일찍 나선다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-hotel"]}),
-  s("10:00","와인하우스",{move:"차로 약 5분",moveAt:"09:50",stay:"약 30분",key:["카파도키아 와인을 파는 와인하우스에 잠깐 들러 맛본다.", "아바노스나 위르귑에 있는 곳은 괴레메보다 차로 더 걸린다.", "긴 운전이 남아 있어 운전하는 사람은 마시지 않는다.", "열기구로 늦어지면 와인하우스를 먼저 뺀다."],q:"Göreme",map:"https://www.google.com/maps/search/?api=1&query=G%C3%B6reme&query_place_id=ChIJq9Fr03loKhURUK4_ohdObEY",rel:["wish-cap-redred","wish-cap-aryatus","wish-cap-turasan","wish-cap-salkim"]}),
+  s("09:20","체크아웃",{stay:"약 30분",key:["08:30에 숙소에서 조식을 먹고 체크아웃한다.", "짐을 모두 차에 싣는다.", "체크아웃 기한은 11:00이지만 일정 때문에 일찍 나선다."],q:"Cappadocia Cave Suites Goreme",map:gmap("Cappadocia Cave Suites Goreme"),rel:["cap-hotel"]}),
+  s("10:00","와인하우스",{move:"차로 약 5분",moveAt:"09:50",stay:"약 30분",key:["카파도키아 와인을 파는 와인하우스에 잠깐 들러 맛본다.", "아바노스나 위르귑에 있는 곳은 괴레메보다 차로 더 걸린다.", "긴 운전이 남아 있어 운전하는 사람은 마시지 않는다."],q:"Göreme",map:"https://www.google.com/maps/search/?api=1&query=G%C3%B6reme&query_place_id=ChIJq9Fr03loKhURUK4_ohdObEY",rel:["wish-cap-redred","wish-cap-aryatus","wish-cap-turasan","wish-cap-salkim"]}),
   s("10:35","괴레메 야외박물관",{move:"차로 약 5분",moveAt:"10:30",stay:"약 1시간 25분",key:["바위를 파서 만든 비잔틴 시대 수도원과 교회가 모인 곳이다.", "10.29 낙석 사고로 폐쇄됐으니 10.31에 열었는지 호텔이나 박물관에 직접 확인한다.", "열려 있지 않으면 젤베 야외박물관이나 계곡 전망으로 바꾼다."],q:"Goreme Open Air Museum",map:gmap("Goreme Open Air Museum"),rel:["cap-goreme","cap-zelve"]}),
   s("13:15","점심식사",{photos:[{src:I[172],alt:"그릇에 담은 토마토 수프 (예시 사진)"}],move:"차로 약 1시간 15분",moveAt:"12:00",stay:"약 1시간",key:["악사라이 근처 휴게소에서 가볍게 먹는다.", "소금호수로 가는 길목이라 돌아가지 않는다."],q:"Ağaçlı Restaurant Aksaray",map:gmap("Ağaçlı Restaurant Aksaray"),rel:["wish-road-agacli","wish-road-altinsoy"]}),
   s("15:30","소금호수",{move:"차로 약 1시간 15분",moveAt:"14:15",stay:"약 40분",key:["앙카라 남쪽의 큰 소금 호수를 낮에 본다.", "10월에는 휴게소보다 물이 있는 히든스팟이 사진이 잘 나온다는 후기가 있다."],q:"Tuz Gölü Ziyaret Alanı Tuz Gölü Giriş",map:gmap("Tuz Gölü Ziyaret Alanı Tuz Gölü Giriş"),rel:["cap-tuzgolu","cap-ihlara"]}),
@@ -380,8 +377,8 @@ const DEPARTURES = {
   d1028:["Istanbul Experiences Workshops","셰흐자데 자 케밥","이집션 바자르","피에르 로티 언덕","호텔"],
   d1029:["그랜드 바자르","Cevahir 쇼핑몰","Günaydın","MADO","호텔"],
   d1030:["탁심 렌터카","Berceste 휴게소","볼루","악사라이"],
-  d1031:["괴레메 숙소","열기구 업체 연락","일출 전망대","데린쿠유 지하도시","괴레메 시내","우치사르 성채","파샤바 계곡","숙소","일몰","괴레메 시내","숙소"],
-  d1101:["열기구 확인","체크아웃","와인하우스","괴레메 야외박물관","악사라이 휴게소","소금호수","호텔"],
+  d1031:["괴레메 숙소","숙소","데린쿠유 지하도시","괴레메 시내","우치사르 성채","숙소","일몰","괴레메 시내","숙소"],
+  d1101:["체크아웃","와인하우스","괴레메 야외박물관","악사라이 휴게소","소금호수","호텔"],
   d1102:["그랜드 바자르","Lezzet-i Şark","발랏","Old Balat Cafe","호텔"],
   d1103:["Selim Usta 쾨프테","터키 이슬람 미술관","아라스타 바자르","호텔"],
   d1104:["돌마바흐체 궁전","블루 모스크","히포드롬 광장","술탄 아흐메트 묘당","점심","예레바탄 지하저수지","아야소피아","톱카프 궁전","하렘","호텔","이스탄불공항","인천공항","집"]
@@ -955,7 +952,7 @@ place({id:"cap-derinkuyu",g:"카파도키아",t:"데린쿠유 지하도시",s:"D
   intro:"땅속 깊이 파 내려간 옛 지하도시다.",
   about:["발견된 지하도시 가운데 가장 깊은 곳으로 알려져 있다. 방문객이 들어가는 곳은 8층까지이고, 전체의 일부다. 깊이는 85m쯤이라는 후기가 있다.","아주 오래전부터 사람들이 바위를 파서 썼다. 처음 판 때는 자료마다 달라 정확하지 않다. 위험할 때 숨는 곳으로 쓰였고, 한창때는 2만 명이 살았다는 이야기가 있다."],
   memo:["통로가 좁고 낮아 허리를 숙이는 구간이 많다.","계단에서 줄이 막히기도 한다.","안이 서늘하다.","입구 옆 무료 주차장은 단체 버스가 오면 금방 찬다.","어둡고 습하다. 폐쇄공포증이 있으면 조심한다.","빨간·초록 화살표로 들어가는 길과 나오는 길을 확인한다. 사람이 많으면 앞사람만 보고 따라가게 된다는 후기가 있다.","매표소 안내는 약 30분 코스다.","가는 길 테라스 카페에서 화장실을 쓸 수 있다."],
-  how:"일출 전망대에서 차로 약 40분",
+  how:"숙소에서 차로 약 40분",
   rows:[["운영","08:00~17:00 · 마지막 표 16:15"],["요금","1인 €13 · 6명 €78 (2026년 10월 17일 확인)"]],
   caution:["천장이 낮은 곳에서 머리를 부딪히지 않게 조심한다."],
   map:gmap("Derinkuyu Underground City")});
@@ -1017,10 +1014,10 @@ place({id:"cap-tuzgolu",g:"카파도키아",t:"소금호수",s:"Tuz Gölü Tesis
   extra:[{t:"links", i:[["가이드가 고른 호숫가 지점(Palus Tattaeus) 위치","https://maps.app.goo.gl/PjbhkSr7RHMsFfVS6"]]}],
   rows:[["운영","시설 22:00까지"]],
   map:gmap("Tuz Gölü Ziyaret Alanı Tuz Gölü Giriş")});
-place({id:"cap-balloon",g:"카파도키아",t:"열기구",s:"10.31 새벽 · 업체 연락 05:00~05:30",
-  intro:"열기구가 뜨는지는 업체의 새벽 연락으로 정해진다.",
-  about:["해 뜰 무렵 열기구를 타고 카파도키아의 계곡과 바위 마을 위를 떠다니는 체험이다.","바람과 날씨가 맞아야 뜰 수 있다. 그래서 당일 새벽에 업체가 비행 여부를 알려 준다."],
-  memo:["10.31 예보는 흐림, 비 10%, 남풍 약 8km/h이고 열기구 비행 가능성은 75%다. 예보가 아니라 업체 연락으로 정한다.","새벽 6°C 안팎(10.30 예보) · 일출 07:06 · 일몰 17:41","가이드 일정은 06:00 호텔 픽업이다. 픽업 전에 로비에서 기다린다.","혹시 뜨면: 업체 픽업에 맞춰 비행하고 09:00쯤 돌아와 조식을 먹는다. 일정이 2시간쯤 밀리니 데린쿠유는 10:30으로 늦추고, 시간이 모자라면 파샤바를 먼저 빼고 우치사르만 짧게 본다.","취소되면: 그 자리에서 11.1로 옮겨 달라고 요청한다. 일출 비행인지 2차 비행인지 업체에 확인한다(사이트상 일요일 일출은 매진). 2차 비행이면 09:30~10:00에 돌아온다."],
+place({id:"cap-balloon",g:"카파도키아",t:"열기구",s:"10.31 일출 비행 · 숙소 픽업",
+  intro:"10.31 아침 일출 비행이 확정됐다.",
+  about:["해 뜰 무렵 열기구를 타고 카파도키아의 계곡과 바위 마을 위를 떠다니는 체험이다.","바람과 날씨가 맞아야 뜰 수 있어서 비행 직전까지 업체 연락을 확인한다."],
+  memo:["새벽 6°C 안팎(10.30 예보) · 일출 07:06 · 일몰 17:41","가이드 일정은 06:00 호텔 픽업이다. 픽업 전에 로비에서 기다린다.","비행 뒤 09:00쯤 숙소로 돌아와 조식을 먹고, 데린쿠유는 10:30에 간다."],
   how:"호텔(Cappadocia Cave Suites)에서 업체 픽업",
   extra:[{t:"links", i:[["비행 가능 여부 확인 (Kapadokya SHM)","https://shmkapadokya.kapadokya.edu.tr/en/"]]}],
   map:gmap("Cappadocia hot air balloon Goreme")});
@@ -1063,7 +1060,7 @@ place({id:"cap-ihlara",g:"카파도키아",t:"일라라 계곡",s:"Ihlara Valley
 place({id:"cap-hamam",g:"카파도키아",t:"하맘",s:"터키식 목욕 · GetYourGuide",
   intro:"터키식 전통 목욕(하맘)이다. 씻고 쉬고 싶을 때 고르는 선택지다.",
   about:["예약할 수 있는 상품이 두 가지 있다. 하맘에 오일 마사지를 더한 상품과 따로 쓰는 프라이빗 하맘이다."],
-  memo:["10.31 열기구가 취소돼 낮에 쉴 때 14:00 낮잠 대신 고르는 선택지다.","하맘 + 오일 마사지: 오전 10시부터 이용할 수 있다. 클래식 코스 45분, 시그니처 코스 1시간.","프라이빗 하맘: 오전 9시부터 이용할 수 있다. 1시간.","플랫폼마다 운영 시간이 달라 업체에 직접 시간과 취소 조건을 확인한다."],
+  memo:["낮에 쉴 때 낮잠 대신 고르는 선택지다.","하맘 + 오일 마사지: 오전 10시부터 이용할 수 있다. 클래식 코스 45분, 시그니처 코스 1시간.","프라이빗 하맘: 오전 9시부터 이용할 수 있다. 1시간.","플랫폼마다 운영 시간이 달라 업체에 직접 시간과 취소 조건을 확인한다."],
   rows:[["요금","클래식 45분 €38.52 · 시그니처 1시간 €57.98 · 프라이빗 1시간 €40.86 (10.31 예약 화면 기준)"]],
   extra:[{t:"links", i:[["하맘 + 오일 마사지 예약 (GetYourGuide)","https://www.getyourguide.com/cappadocia-l1400/cappadocia-turkish-bathhamam-massage-t752633"],["프라이빗 하맘 예약 (GetYourGuide)","https://www.getyourguide.com/ko-kr/goreme-l984/cappadocia-private-turkish-bath-spa-experience-t1367377/"]]}],
   map:null});
