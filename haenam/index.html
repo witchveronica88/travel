@@ -227,17 +227,20 @@ const store = {
 
 /* ---------- 지도 ---------- */
 const PT = {
-  "동탄역":[127.095111,37.201167],"목포역":[126.38722,34.79194],"목포역 렌터카":[126.38722,34.79194],
-  "우수영관광지":[126.3025741,34.5666332],"해남읍 떡갈비":[126.59912,34.57343],"해남 대흥사":[126.61667,34.47667],
-  "해남 미황사":[126.577361,34.382917],"땅끝비치모텔":[126.52726,34.297919],"해남 땅끝전망대":[126.5249677,34.2948056],
-  "해남 땅끝탑":[126.5238202,34.2924565],"해남 갈두항":[126.5295352,34.2983878],"해남 맴섬":[126.5297763212,34.2984887873],
-  "목포 코롬방제과":[126.3783584333,34.7925086435],"목포해상케이블카 북항승강장":[126.3697054,34.799408],
-  "목포 인동주마을":[126.43672948,34.80387463],"목포 영란횟집":[126.38407464,34.78613239],"목포역 주유소":[126.38722,34.79194],
-  "목포근대역사관 1관":[126.381943,34.787606],"목포 연희네슈퍼":[126.37728,34.78172],"목포 보리마당":[126.37667,34.78222],
-  "목포 화신연쇄점":[126.38667,34.78861],"목포 유달콩물":[126.38439,34.79235],"목포 유달산 노적봉":[126.3820996,34.7879739],
-  "목포 미락식당":[126.41405,34.80194],"목포 장모님밥상":[126.43432,34.79833],"목포 하당먹거리":[126.43065,34.80545]
+  "동탄역":[127.0957376,37.1999428],"목포역":[126.3865755,34.7911345],"목포역 렌터카":[126.38722,34.79194],
+  "우수영관광지":[126.309753,34.5723634],"해남읍 떡갈비":[126.59912,34.57343],"해남 대흥사":[126.6168669,34.4762592],
+  "해남 미황사":[126.577576,34.3831325],"땅끝비치모텔":[126.5274308,34.2982795],"해남 땅끝전망대":[126.5250088,34.2947435],
+  "해남 땅끝탑":[126.523866,34.2924638],"해남 갈두항":[126.5303593,34.2982727],"해남 맴섬":[126.5303189,34.2979237],
+  "목포 코롬방제과":[126.3844161,34.7898517],"목포해상케이블카 북항승강장":[126.3700214,34.7993959],
+  "목포 인동주마을":[126.4365261,34.8042335],"목포 영란횟집":[126.3840636,34.7861271],"목포역 주유소":[126.38722,34.79194],
+  "목포근대역사관 1관":[126.3820865,34.7875323],"목포 연희네슈퍼":[126.3772791,34.7817163],"목포 보리마당":[126.3768463,34.782319],
+  "목포 화신연쇄점":[126.3866076,34.7884142],"목포 유달콩물":[126.3843888,34.7923502],"목포 유달산 노적봉":[126.3815751,34.7885582],
+  "목포 미락식당":[126.4140445,34.8019405],"목포 장모님밥상":[126.4343174,34.798329],"목포 하당먹거리":[126.4306494,34.8054456]
 };
-const naver = q => "https://map.naver.com/p/search/" + encodeURIComponent(q);
+/* 지도 아이콘은 카카오맵 장소 화면을 바로 연다. 장소 id는 카카오맵 검색(k-skill kakao-map)으로 이름·주소를 확인한 것만 적는다.
+   식당이 정해지지 않은 카드(떡갈비·렌터카·주유소)는 카카오맵 검색 화면을 연다 */
+const KAKAO = {"우수영국민관광지":"8039523","해남 대흥사":"8258582","해남 미황사":"7881002","해남 땅끝전망대":"18720746","해남 땅끝탑":"13133784","해남 맴섬":"1300878646","해남 땅끝항":"2050401817","땅끝비치모텔":"21594115","목포해상케이블카 북항승강장":"1906020777","목포근대역사관 1관":"11739604","목포 연희네슈퍼":"351172983","목포 보리마당 골목길":"647574179","목포 유달산 노적봉":"25197639","코롬방제과":"9466320","목포 화신연쇄점":"1177581244","목포 유달콩물":"11892242","JD인동주마을":"426154707","목포 영란횟집":"10649722","목포 미락식당":"1230804847","목포 장모님밥상":"8535940","목포 하당먹거리":"15826901","동탄역":"1589447336","목포역":"7875967"};
+const kakao = q => KAKAO[q] ? "https://place.map.kakao.com/" + KAKAO[q] : "https://map.kakao.com/link/search/" + encodeURIComponent(q);
 const tmap = t => {
   if(!PT[t]) return "";
   const [lon, lat] = PT[t], ios = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -316,7 +319,7 @@ place({id:"k5",g:"목포",title:"노적봉",sub:"유달산 입구",stars:3,img:"
   rows:[["주소","목포시 노적봉길 45"],["운영","야외 상시 개방"],["관광 문의","061-270-8411"],["요금","무료"],["머무는 시간","40분"]]});
 food({id:"f1",g:"첫째날 점심",title:"해남읍 떡갈비",sub:"점심 · 해남읍",stars:4,img:"i02",n:"해남읍 떡갈비",t:"해남읍 떡갈비",
   about:"떡갈비는 소갈비 살을 다져 납작하게 빚은 뒤 숯불에 구운 남도 음식. 해남읍에 떡갈비집이 모여 있음.",
-  rows:[["업소","특정 식당 미정"],["메뉴","떡갈비 정식"],["고르는 법","네이버지도에서 '해남읍 떡갈비' 검색 후 당일 영업하는 곳으로"],["머무는 시간","1시간"]],
+  rows:[["업소","특정 식당 미정"],["메뉴","떡갈비 정식"],["고르는 법","카카오맵에서 '해남읍 떡갈비' 검색 후 당일 영업하는 곳으로"],["머무는 시간","1시간"]],
   tips:["오래된 집으로 천일식당이 유명함. 영업시간과 쉬는 날은 출발 전 확인"]});
 food({id:"f2",g:"첫째날 저녁",title:"땅끝항 횟집 선택",sub:"저녁 · 땅끝마을",stars:3,img:"i08",n:"해남 땅끝항",t:"해남 갈두항",
   about:"숙소에서 걸어서 5분 거리인 땅끝항(옛 갈두항) 앞 식당들. 회, 전복, 해산물 위주.",
@@ -440,7 +443,7 @@ ENTRIES.forEach(e=>{
   if(e.tab!=="장소"&&e.tab!=="맛집")return;
   const ph=photoBlock(e.img,e.title);
   e.tel=e.tel?"tel:"+e.tel.replace(/-/g,""):telOf(((e.rows||[]).find(r=>r[0]==="전화")||[])[1]);
-  e.map=e.n?naver(e.n):"";e.nav=tmap(e.t);
+  e.map=e.n?kakao(e.n):"";e.nav=tmap(e.t);
   /* 장소: 왜 가는지 → 사진 → 아이콘 → 어떤 곳 · 메모 · 정보. 식당: 어떤 곳 → 사진 → 아이콘 → 메모 · 정보 */
   e.blocks=e.tab==="장소"?[
     ...(e.why?[{t:"p",x:e.why}]:[]),
@@ -457,7 +460,7 @@ ENTRIES.forEach(e=>{
     ...(e.rows&&e.rows.length?[{h:"정보",t:"rows",i:e.rows}]:[])
   ];
 });
-prepHotel.map=naver(HOTEL);prepHotel.nav=tmap(HOTEL);
+prepHotel.map=kakao(HOTEL);prepHotel.nav=tmap(HOTEL);
 prepHotel.blocks=[...(photoBlock(prepHotel.img,HOTEL)?[photoBlock(prepHotel.img,HOTEL)]:[]),{t:"actions"},...prepHotel.blocks];
 
 /* ---------- 상태: 마지막으로 본 탭, 체크는 이 기기에 기억한다 ---------- */
@@ -489,7 +492,7 @@ const KIND_ICONS={
 /* 카드 아래 ＋ 줄 제목 앞에 종류 아이콘: 맛집 · 음식 · 명소 · 쇼핑 · 이동 · 정보 */
 const kindOf=e=>e.tab==="장소"?(e.group==="쇼핑"?"쇼핑":"명소"):e.tab==="팁"||e.tab==="준비"?"정보":e.tab;
 const kindHTML=e=>{const k=kindOf(e);return KIND_ICONS[k]?`<span class="kind" role="img" aria-label="${k}" title="${k}">${KIND_ICONS[k]}</span>`:""};
-const mapBtn=href=>href?`<a class="icon-btn" href="${esc(href)}" target="_blank" rel="noopener noreferrer" aria-label="네이버지도" title="지도">${MAP_ICON}</a>`:"";
+const mapBtn=href=>href?`<a class="icon-btn" href="${esc(href)}" target="_blank" rel="noopener noreferrer" aria-label="카카오맵" title="지도">${MAP_ICON}</a>`:"";
 const navBtn=href=>href?`<a class="icon-btn" href="${esc(href)}" aria-label="티맵 내비" title="내비">${NAV_ICON}</a>`:"";
 
 /* ---------- 날짜: 연도와 요일은 빼고 11.7처럼 (월.일) ---------- */
@@ -539,10 +542,10 @@ function stopHTML(st,si,dayId){
   const ph=photoBlock(st.img,st.title);
   const icons=[];
   if(st.t&&tmap(st.t))icons.push(navBtn(tmap(st.t)));
-  if(st.n)icons.push(mapBtn(naver(st.n)));
+  if(st.n)icons.push(mapBtn(kakao(st.n)));
   /* 이 카드의 장소 정보 · 후보 식당 · 이동 · 숙소는 카드 맨 아래 ＋ 줄로 붙인다 */
   const more=[...new Set(st.rel||[])].map(id=>BY[id]).filter(Boolean);
-  const own=e=>!!(st.n&&e.map&&e.map===naver(st.n));
+  const own=e=>!!(st.n&&e.map&&e.map===kakao(st.n));
   const foot=stay||icons.length?`<div class="stop-foot"><span class="stay">${stay?"체류 "+esc(stay):""}</span>${icons.length?`<span class="stop-actions">${icons.join("")}</span>`:""}</div>`:"";
   return `<article class="stop"><div class="hd"><time class="tm">${esc(st.time)}</time><h3${st.chg?' class="chg-title"':""}>${rich(st.title)}</h3></div>${st.key?`<p class="stop-key">${rich(st.key)}</p>`:""}${ph?`<div class="stop-media one"><img class="stop-photo" src="${esc(ph.src)}" alt="${esc(st.title)}" loading="lazy"></div>`:""}${foot}${more.length?`<div class="stop-more fold-list">${more.map(e=>rowHTML(e,{at:`${dayId}-${si}:`,own:own(e)})).join("")}</div>`:""}</article>`;
 }
