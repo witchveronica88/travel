@@ -340,14 +340,12 @@ day("d1101","2026.11","01","일요일","카파도키아 마지막 날 · 이스�
   s("23:25 예상","호텔 도착",{move:"차로 약 5시간 45분",moveAt:"17:40",q:"Sheraton Istanbul City Center",map:gmap("Sheraton Istanbul City Center"),key:["23:25는 휴식·정체를 뺀 계산이라 더 늦어질 수 있다."]})
 ],"데린쿠유 1인 €13(6명 €78) · 점심·그릇·통행료·주유 별도");
 
-day("d1102","2026.11","02","월요일","탁심, 그랜드 바자르, 카라쾨이","12:20 점심식사 · 13:45 디저트 · 15:50 그랜드 바자르 · 16:45 카이막 · 17:55 고등어 케밥 · 18:40 바클라바",[
+day("d1102","2026.11","02","월요일","탁심과 그랜드 바자르","12:20 점심식사 · 13:45 디저트 · 15:50 그랜드 바자르 · 16:45 카이막",[
   s("12:20","점심식사",{photos:[{src:I[181],alt:"그릴에서 굽는 시시 케밥 (예시 사진)"}],stay:"약 1시간 20분",key:["탁심 근처 오자크바시(숯불 고기 구이집)에서 램찹(양갈비 구이)으로 점심을 먹는다.", "12:00 호텔 셔틀로 탁심에 가서 걸어간다(도보 약 10분)."],q:"Hasan Ustam Ocakbaşı Beyoğlu",map:gmap("Hasan Ustam Ocakbaşı Beyoğlu"),placeId:"wish-hasan-ustam"}),
   s("13:45","디저트",{move:"도보 약 1분",moveAt:"13:40",stay:"약 1시간 30분",key:["바로 옆 오래된 제과점에서 프로피테롤을 먹는다."],q:"İnci Pastanesi Beyoğlu",map:gmap("İnci Pastanesi Beyoğlu"),placeId:"wish-inci"}),
   s("15:50","그랜드 바자르",{move:"대중교통 약 35분 · 택시 약 25분",moveAt:"15:15",stay:"약 45분",key:["15세기 중반에 시작된 거대한 지붕 시장이다.", "월요일은 19:00에 문을 닫는다.", "입구가 여러 곳이라 들어온 문 이름을 사진으로 찍어 둔다.", "값은 흥정이 기본이다."],q:"Kapalıçarşı",map:gmap("Kapalıçarşı"),rel:["m3","r3"]}),
   s("16:45","카이막",{photos:[{src:I[135],alt:"꿀과 빵을 곁들인 카이막(대표 음식 예시 사진)"}],move:"도보 약 10분",moveAt:"16:35",stay:"약 40분",key:["쿰카프의 오래된 아침집에서 물소 젖 크림 카이막에 꿀을 얹어 빵과 먹는다."],q:"Boris'in Yeri Ördekli Bakkal Sokak Kumkapı İstanbul",map:gmap("Boris'in Yeri Ördekli Bakkal Sokak Kumkapı İstanbul"),placeId:"wish-boris"}),
-  s("17:55","고등어 케밥",{photos:[{src:I[34],alt:"카라쾨이 메멧 우스타 발륵 뒤륌 가게의 붉은 차양과 생선 굽는 노점"}],move:"대중교통 약 30분 · 택시 약 20분",moveAt:"17:25",stay:"약 40분",key:["카라쾨이 바닷가 근처에서 구운 고등어를 얇은 빵에 만 발륵 뒤륌을 먹는다."],q:"Sokak Lezzeti Tarihi Balık Dürümcü Mehmet Usta, Necatibey Cd. 71B, Karaköy, İstanbul",map:gmap("Sokak Lezzeti Tarihi Balık Dürümcü Mehmet Usta, Necatibey Cd. 71B, Karaköy, İstanbul"),placeId:"wish-mehmet",rel:["dine3"]}),
-  s("18:40","바클라바",{move:"도보 약 5분",moveAt:"18:35",stay:"약 40분",key:["카라쾨이의 오래된 바클라바 가게에서 바클라바를 먹는다."],q:"Karaköy Güllüoğlu",map:gmap("Karaköy Güllüoğlu"),rel:["f9","f17"]}),
-  s("19:50","호텔 도착",{q:"Sheraton Istanbul City Center",map:gmap("Sheraton Istanbul City Center"),move:"대중교통 약 30분 · 택시 약 20분",moveAt:"19:20",key:["호텔로 돌아와 쉰다."]})
+  s("18:15","호텔 도착",{q:"Sheraton Istanbul City Center",map:gmap("Sheraton Istanbul City Center"),move:"대중교통 약 40~60분 · 택시 약 20~25분",moveAt:"17:25",key:["호텔로 돌아와 쉰다."]})
 ],"교통비와 점심·디저트·간식 비용");
 
 day("d1103","2026.11","03","화요일","술탄아흐메트 일대","13:10 쾨프테 점심 · 14:30 터키 이슬람 미술관 · 15:25 아라스타 바자르",[
@@ -384,7 +382,7 @@ const DEPARTURES = {
   d1030:["탁심 렌터카","Berceste 휴게소","볼루","악사라이"],
   d1031:["괴레메 숙소","숙소","괴레메 시내","하맘","숙소","괴레메 야외박물관","우치사르 마을","와인 가게","우치사르 성채","괴레메 시내","숙소"],
   d1101:["체크아웃","데린쿠유 지하도시","Chez Galip","아바노스 식당","MORU atelier","소금호수","호텔"],
-  d1102:["탁심 식당","İnci Pastanesi","그랜드 바자르","쿰카프","카라쾨이","Karaköy Güllüoğlu","호텔"],
+  d1102:["탁심 식당","İnci Pastanesi","그랜드 바자르","쿰카프","호텔"],
   d1103:["Selim Usta 쾨프테","터키 이슬람 미술관","아라스타 바자르","호텔"],
   d1104:["돌마바흐체 궁전","블루 모스크","히포드롬 광장","술탄 아흐메트 묘당","점심","예레바탄 지하저수지","아야소피아","톱카프 궁전","하렘","호텔","이스탄불공항","인천공항","집"]
 };
@@ -552,7 +550,7 @@ const placeCost = o => (o.rows||[]).find(isCostRow)?.[1]||"";
 const paidPlaceCost = o => {const x=placeCost(o);return /(?:리라|유로|요금|비용|별도|이스탄불카드|음식값|카페 이용료)/.test(x)?x:""};
 const placeInfo = o => [["현지 이름",LOCAL[o.id]],["가는 법",o.how],...(o.rows || []).filter(r=>!isCostRow(r))];
 const PLACE_SCHEDULE_DATES = {
-  dine3:"11/2",
+  dine3:"",
   l3:"",bo1:"10/26",ye1:"10/26",
   p1:"",p2:"",p4:"",p6:"10/28",
   s1:"10/25",s2:"10/25",s8:"10/25",m6:"10/25",c1:"10/25",cu1:"10/25",s3:"11/4",s4:"10/27",s5:"10/26",s7:"",s9:"10/26·10/27",s10:"10/28",s11:"10/27",shop3:"10/28",s12:"",s13:"10/27",s14:"",
@@ -1209,7 +1207,7 @@ wishlistRestaurant({id:"wish-balik-ekmek",g:"해산물",t:"Tarihi Eminönü Bal�
 wishlistRestaurant({id:"wish-sultanahmet-kofte",g:"케밥·고기",t:"Tarihi Sultanahmet Köftecisi Selim Usta",region:"술탄아흐메트",price:"가성비",address:"Alemdar, Divan Yolu Cd. No:12, Fatih",hours:"매일 10:30~22:30",feature:"1920년부터 이어진 쾨프테 전문점. 숯불에 구운 쇠고기 쾨프테를 피야즈와 아이란에 곁들인다.",map:gmap("Tarihi Sultanahmet Köftecisi Selim Usta Alemdar Divanyolu Cd. No:12 Fatih"),photo:{src:I[86],alt:"술탄아흐메트의 타리히 술탄아흐멧 쾨프테지시 셀림 우스타 외관"}});
 wishlistRestaurant({id:"wish-iskender1867",g:"케밥·고기",t:"İSKENDER Kuruluş 1867",region:"니샨타시",price:"고급",address:"Teşvikiye, Şakayık Sk. No:67, Park Palas Apt., Şişli",hours:"대체로 12:00~22:00 · 방문 당일 확인",feature:"이스켄데르 케밥을 만든 가문의 이스탄불 공식 지점. 얇게 썬 도네르에 토마토소스·요거트·버터를 곁들인다.",map:gmap("İskender 1867 Nişantaşı İstanbul"),photo:{src:I[87],alt:"이스켄데르 1867의 도네르와 토마토소스, 요거트를 곁들인 이스켄데르 케밥"}});
 wishlistRestaurant({id:"wish-kanaat",g:"가정식·로칸타",t:"Kanaat Lokantası",region:"위스퀴다르",price:"보통",address:"Selmani Pak Cd. No:9, Sultantepe, Üsküdar",hours:"매일 약 06:30~23:00 (자료마다 다름)",feature:"1933년부터 이어온 위스퀴다르의 로칸타(만든 음식을 골라 먹는 식당)다. 점심이 가장 붐비고 평일이 한가하다. 에크멕 카다이프(시럽에 담근 빵 디저트)와 마르멜로 디저트, 직접 만든 아이스크림과 요거트가 알려져 있다. 술은 팔지 않는다. 예전에는 현금만 받았고 지금은 카드가 되는지 자료가 엇갈려 현금을 준비한다. 번지는 자료마다 달라 지도 앱으로 확인한다.",map:gmap("Kanaat Lokantası Üsküdar İstanbul")});
-wishlistRestaurant({id:"wish-mehmet",g:"해산물",t:"Sokak Lezzeti Tarihi Balık Dürümcü Mehmet Usta",region:"카라쾨이",price:"가성비",address:"Hacımimi Mah., Necatibey Cd. 71B, Beyoğlu",hours:"일~금 09:00~00:30 · 토 11:00~00:30",phone:"+90 505 154 55 77",feature:"주문 즉시 구운 고등어를 야채·소스와 함께 라바시에 말아 내는 길거리 맛집. 현지인과 관광객 모두 찾으며 줄이 길어도 회전은 빠른 편이다. 카드 결제가 가능하고 옆 골목에 간이 좌석이 있다.",visit:"11/2 간식",map:gmap("Sokak Lezzeti Tarihi Balık Dürümcü Mehmet Usta, Necatibey Cd. 71B, Karaköy, İstanbul"),photo:{src:I[34],alt:"카라쾨이 메멧 우스타 발륵 뒤륌 가게의 붉은 차양과 생선 굽는 노점"}});
+wishlistRestaurant({id:"wish-mehmet",g:"해산물",t:"Sokak Lezzeti Tarihi Balık Dürümcü Mehmet Usta",region:"카라쾨이",price:"가성비",address:"Hacımimi Mah., Necatibey Cd. 71B, Beyoğlu",hours:"일~금 09:00~00:30 · 토 11:00~00:30",phone:"+90 505 154 55 77",feature:"주문 즉시 구운 고등어를 야채·소스와 함께 라바시에 말아 내는 길거리 맛집. 현지인과 관광객 모두 찾으며 줄이 길어도 회전은 빠른 편이다. 카드 결제가 가능하고 옆 골목에 간이 좌석이 있다.",visit:"",map:gmap("Sokak Lezzeti Tarihi Balık Dürümcü Mehmet Usta, Necatibey Cd. 71B, Karaköy, İstanbul"),photo:{src:I[34],alt:"카라쾨이 메멧 우스타 발륵 뒤륌 가게의 붉은 차양과 생선 굽는 노점"}});
 wishlistRestaurant({id:"wish-breakfast1",g:"가정식·로칸타",t:"Lades Menemen",region:"탁심",price:"가성비",address:"Katip Mustafa Çelebi, Sadri Alışık Sk. No:11, Beyoğlu",hours:"영업시간 정보가 엇갈림 · 방문 당일 확인",phone:"+90 212 251 32 03",feature:"1958년부터 달걀·토마토·고추를 볶는 메네멘으로 알려진 오래된 아침 식당.",map:gmap("Lades Menemen Sadri Alışık Sok. No:11 Beyoğlu İstanbul"),photo:{src:I[88],alt:"라데스 메네멘의 터키식 달걀 요리 메네멘"}});
 wishlistRestaurant({id:"wish-breakfast2",g:"가정식·로칸타",t:"Çakmak Kahvaltı Salonu",region:"베식타시",price:"가성비",address:"Sinanpaşa, Çelebioğlu Sk. No:8, Beşiktaş",hours:"매일 07:00~18:00",phone:"+90 212 227 04 85",feature:"베식타시 조식 골목의 터키식 아침 식당. 치즈·올리브·달걀과 카이막을 조합해 먹기 좋다.",map:gmap("Çakmak Kahvaltı Salonu Çelebioğlu Sk. No:8 Beşiktaş İstanbul"),photo:{src:I[89],alt:"차크막 카흐발트의 치즈와 올리브가 차려진 터키식 아침상"}});
 wishlistRestaurant({id:"wish-breakfast3",g:"디저트·카페",t:"Privato Café",region:"갈라타",price:"보통",address:"Şahkulu, Tımarcı Sk. No:3/B, Beyoğlu",hours:"월~토 08:30~23:00 · 일 09:00~23:00",phone:"+90 212 293 20 55",feature:"갈라타 타워 근처의 아늑한 카페. 여러 종류의 치즈와 잼이 나오는 터키식 아침 한상이 대표 메뉴다.",map:gmap("Privato Cafe Tımarcı Sok. No:3/B Şahkulu Beyoğlu İstanbul"),photo:{src:I[90],alt:"프리바토 카페의 치즈와 잼을 곁들인 터키식 아침상"}});
