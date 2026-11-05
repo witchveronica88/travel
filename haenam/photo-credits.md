@@ -1,6 +1,6 @@
 # 사진 출처 (Wikimedia Commons)
 
-2026-10-30에 새로 넣은 사진의 출처다. 모두 Wikimedia Commons에서 받아 크기를 줄여 넣었다. 라이선스는 각 파일 페이지에서 확인한다. 그 전에 있던 사진(i00~i14)의 출처는 여기에 기록돼 있지 않다. 2026-11-05에 땅끝항 횟집·렌터카 사진을 아래와 같이 바꿨다.
+2026-10-30에 새로 넣은 사진의 출처다. 모두 Wikimedia Commons에서 받아 크기를 줄여 넣었다. 라이선스는 각 파일 페이지에서 확인한다. 그 전에 있던 사진(i00~i14)의 출처는 여기에 기록돼 있지 않다. 2026-11-05에 땅끝항 횟집·렌터카 사진을 아래와 같이 바꿨고, KTX 타는 일정 카드에 KTX-산천 사진을 새로 넣었다.
 
 | 쓴 곳 | Commons 파일 | 라이선스 |
 |---|---|---|
@@ -8,6 +8,7 @@
 | 노적봉 | Yudalsan Mokpo Nojeokbong peak.jpg (Mar del Este) | CC BY-SA 4.0 |
 | 렌터카 인수 · 반납 (예시) | 0 Hyundai Avante (CN7) FL 1.jpg (Benespit) | CC BY-SA 4.0 |
 | 땅끝항 횟집 (예시) | Korean cuisine-Mineo Sashimi Mokpo South Korea (1).jpg (Mar del Este) | CC BY-SA 4.0 |
+| KTX 타는 일정 (예시) | KTX-Sancheon.jpg (Minseong Kim) | CC BY-SA 4.0 |
 | 유달콩물 (예시) | Kongguksu (soybean cold noodle).jpg (vedanti) | CC0 |
 | JD인동주마을 · 점심 예정(11/8) (예시) | Ganjang-gejang 1.jpg (lazy fri13th) | CC BY 2.0 |
 | 영란횟집 (예시) | 민어회, 고등어구이.jpg (Sadopaul) | CC BY-SA 4.0 |
