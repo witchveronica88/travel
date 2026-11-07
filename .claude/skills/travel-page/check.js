@@ -32,7 +32,7 @@ const file = path.resolve(__dirname, '../../..', trip, 'index.html');
       const toMin = s => { const m = String(s).match(/(\d{1,2}):(\d{2})/); return m ? +m[1] * 60 + +m[2] : null; };
       const dur = s => { const h = (String(s).match(/(\d+)\s*시간/) || [0, 0])[1], m = (String(s).match(/(\d+)\s*분/) || [0, 0])[1]; return +h * 60 + +m; };
       /* '대중교통 약 30~50분', '약 1시간~1시간 30분' → [최소, 최대]분. 단위가 없는 쪽은 다른 쪽 단위를 따른다 */
-      const range = s => { const seg = String(s).split('·')[0]; const sides = seg.split('~'); if (sides.length < 2) { const v = dur(seg); return [v, v]; }
+      const range = s => { const seg = String(s).split(' · ')[0]; const sides = seg.split('~'); if (sides.length < 2) { const v = dur(seg); return [v, v]; }
         const unit = /시간\s*$/.test(sides[1].trim()) && !/분/.test(sides[1]) ? '시간' : '분'; const fix = x => /시간|분/.test(x) ? x : x.replace(/(\d+)\s*$/, '$1' + unit);
         return [dur(fix(sides[0])), dur(sides.slice(1).join('~'))]; };
       const wrap = x => ((x % 1440) + 2160) % 1440 - 720;
@@ -49,7 +49,7 @@ const file = path.resolve(__dirname, '../../..', trip, 'index.html');
         if (i > 0 && st.move && !/\d{1,2}\.\d{1,2}\s+\d/.test(String(st.moveAt || '')) && !/비행기/.test(st.move)) {
           const prev = d.stops[i - 1]; const dep = st.moveAt ? toMin(st.moveAt) : toMin(st.move);
           if (dep != null && prev.stay && toMin(prev.time) != null) { const tt = String(prev.time).match(/\d{1,2}:\d{2}/g) || []; const s0 = toMin(tt[0]) + dur(prev.stay), s1 = (tt[1] ? toMin(tt[1]) : toMin(tt[0])) + dur(prev.stay); if (wrap(dep - s0) < -5 || wrap(dep - s1) > 5) o.push(`시각 사슬: ${tag} 출발 ${Math.floor(dep / 60)}:${String(dep % 60).padStart(2, '0')} ≠ 앞 카드 끝 ${Math.floor(s0 / 60)}:${String(s0 % 60).padStart(2, '0')}`); }
-          const tm = String(st.move).replace(/^\d{1,2}:\d{2} 출발 · /, '').split('·')[0];
+          const tm = String(st.move).replace(/^\d{1,2}:\d{2} 출발 · /, '').split(' · ')[0];
           if (dep != null && toMin(st.time) != null) { const [lo, hi] = range(tm); const t0 = toMin(st.time); if (wrap(t0 - (dep + lo)) < -10 || wrap(t0 - (dep + hi)) > 10) { const arr = dep + lo; o.push(`시각 사슬: ${tag} 도착 계산 ${Math.floor(arr / 60)}:${String(arr % 60).padStart(2, '0')}`); } }
         }
       }));
