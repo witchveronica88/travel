@@ -81,7 +81,7 @@ python3 .claude/skills/travel-page/addphoto.py istanbul 받은사진.jpg
 2. `const I=[...]` 배열 맨 끝에 `"data:,N"`을 붙인다. 그 칸의 번호가 K다.
    - 지운 사진 자리가 있어서 K와 N은 다를 수 있다(예: `I[159]` = `"data:,164"`).
 
-**해남(`haenam/index.html`)은 구조가 조금 다르다.** 사진 자리는 `const IMG = {"i00":"data:,0", …}` 객체이고, 카드에는 `img:"i07"`처럼 이름으로 쓴다. `addphoto.py haenam 사진.jpg`가 새 이름(`img:"iNN"`)을 알려 주면 그 장소·식당·일정 카드에 `img:"iNN"`을 넣는다. `photos.js`는 이스탄불 전용이라 해남은 화면을 보며 사진 없는 카드를 찾는다.
+**해남(`haenam/index.html`)은 구조가 조금 다르다.** 사진 자리는 `const IMG = {"i00":"data:,0", …}` 객체이고, 카드에는 `img:"i07"`처럼 이름으로 쓴다. `addphoto.py haenam 사진.jpg`가 새 이름(`img:"iNN"`)을 알려 주면 그 장소·식당·일정 카드에 `img:"iNN"`을 넣는다. 사진 없는 카드는 `photos.js haenam`으로 찾는다. 해남 일정 카드는 ＋ 줄 카드의 사진을 물려받지 않으니 일정 카드에도 `img`를 따로 넣는다(같은 번호를 써도 된다). 사진이 필요 없는 일정 카드(주유 · 역)는 `noPhoto:1`로 목록에서 뺀다.
 
 ### ② 받은 번호 `I[K]`를 카드에 연결한다(이스탄불)
 
